@@ -10,7 +10,7 @@
 \setmathfont{TeX Gyre DejaVu Math}
 \setmathfont{Latin Modern Math}[range=it/{latin},Scale=MatchLowercase] % lettres minuscule en cursif
 \setmathfont{Latin Modern Math}[range=up/{greek},Scale=MatchLowercase] % lettres grecques minuscule en cursif
-\setmathfont{Noto Sans Math}[range={up/{num},bfup/{num}},Script=Default] % Nombre en sans serif.
+\setmathfont{Noto Sans Math}[range={up/{num},bfup/{num}}] % Nombre en sans serif.
 \usepackage{sourcecodepro}    % Police à chasse fixe
 \usepackage[french]{babel}    % françisation partielle de l'output
 \DecimalMathComma
@@ -18,7 +18,7 @@
 \ifboolexpr{test    {\@ifclassloaded{article}}
             or test {\@ifclassloaded{book}}}
 {
-\usepackage[a4paper,top=1cm,bottom=1cm,left=2cm,right=2cm]{geometry}  % Mise en page, marges
+\usepackage[a4paper,top=1cm,bottom=1cm,left=1.5cm,right=1.5cm]{geometry}  % Mise en page, marges
 }
 {}
 \makeatother
@@ -37,6 +37,7 @@
 {\usepackage{xcolor}}
 \usepackage{pgfplots}
 \usepackage{pgf-pie}
+\pgfplotsset{compat=1.16}
 \usepackage[tikz]{mdframed}     % boites fancy autour des théorèmes et autres
 \usepackage{contour}            % Pour souligner
 \usepackage{ulem}               % Pour souligner
@@ -160,6 +161,11 @@
     frametitle={Cours},
 }
 
+\mdfdefinestyle{proprietestyle}{
+    style=redstyle,
+    frametitle={Propriété},
+}
+
 \mdfdefinestyle{methodestyle}{
 	style=redstyle,
     frametitle={Méthode},
@@ -225,6 +231,7 @@
 \newmdenv[style=exemplestyle]{exemple}
 \newmdenv[style=applicationstyle]{application}
 \newmdenv[style=coursstyle]{cours}
+\newmdenv[style=proprietestyle]{propriete}
 \newmdenv[style=methodestyle]{methode}
 \let\definition\@undefined
 \let\enddefinition\@undefined
@@ -244,6 +251,17 @@
 }
 \def\cours@opt[#1]{
   \orig@cours[frametitle={Cours : #1}]
+}
+\makeatother
+
+%Titre optionel pour les blocks 'Propriété'
+\makeatletter
+\let\orig@propriete=\propriete
+\def\propriete{
+  \@ifnextchar[{\propriete@opt}{\orig@propriete}
+}
+\def\propriete@opt[#1]{
+  \orig@propriete[frametitle={Propriété : #1}]
 }
 \makeatother
 
@@ -319,18 +337,31 @@
 \node[shape=rectangle,draw,fill=#1,inner sep=2pt] (char) {#2};}%
 }
 
+% Pour faire un cadre
+\newcommand{\squareFrame}[1]{%
+\tikz[baseline=(char.base)]{%
+\node[shape=rectangle,fill=white,draw,drop shadow] (char) {#1};}%
+}
+
 \newcommand{\myArrow}{-{Latex[length=3mm, width=2mm]}}
 
-\newcommand{\TitreDActivite}[1]{%
-\makeatletter
-\renewcommand{\maketitle}{%
-{\scriptsize colle dans ton cahier d'exercices}
-	\begin{center}
-		\LARGE
-		\uline{#1}
-		\vspace{1em}
-	\end{center}
+\newcommand{\correction}[1]{
+\ifdefined\makeCorrection
+	{\color{red}#1}
+\else
+	\phantom{#1}
+\fi
 }
+
+\newcommand{\TitreDActivite}[3]{%
+\makeatletter
+Lycée La Martinière Diderot \hfill Mathématiques, #3 \hfill #1
+\hrule
+\begin{center}
+	\LARGE
+	\uline{#2}
+	\vspace{1em}
+\end{center}
 \makeatother
 }
 

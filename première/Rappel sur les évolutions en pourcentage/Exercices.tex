@@ -1,0 +1,121 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage{préambule}
+\usepackage{clipboard}
+
+\renewcommand{\arraystretch}{1.5}
+
+\newcounter{exercicesCounter}
+\setcounter{exercicesCounter}{1}
+\newcommand{\makeExercice}{
+	\uline{\textbf{Exercice 1.\arabic{exercicesCounter}}}\stepcounter{exercicesCounter}
+}
+
+\begin{document}
+
+\newcommand{\placeDeCorrection}{}
+
+
+\Copy{Exercices}{
+	\TitreDActivite{Exercices \textbf{Chapitre 1}}{Proportionnalité et pourcentages}{1STI2D}
+
+	\makeExercice : Exercices de référence
+	\vspace{1em}
+
+	\renewcommand{\placeDeCorrection}{6em}
+	\begin{minipage}{0.23\linewidth}
+		Le prix d’un ordinateur est de
+		1 100 €. Le nouveau modèle
+		coûtera 13\% de plus. Calculer
+		le prix du nouveau modèle.
+
+		\correction{1243 €}
+		\vspace{\placeDeCorrection}
+	\end{minipage}
+	\hfill\vline\hfill
+	\begin{minipage}{0.23\linewidth}
+		Une forêt a une surface de 550
+		hectares. Après un feu la surface
+		a diminué de 6\%. Calculer la
+		surface de la forêt après le feu.
+
+		\correction{517 hectares}
+		\vspace{\placeDeCorrection}
+	\end{minipage}
+	\hfill\vline\hfill
+	\begin{minipage}{0.23\linewidth}
+		Après une augmentation de $10\%$,
+		le prix d’un jeu est de $49,5€$.
+		Calculer le prix initial du jeu.
+
+		\correction{45 €}
+		\vspace{8em}
+	\end{minipage}
+	\hfill\vline\hfill
+	\begin{minipage}{0.23\linewidth}
+		Le nombre de visites d’un site
+		web est passé de 1200 à 1308 en
+		un jour. \\
+		Calculer le taux d’augmentation.
+
+		\correction{1.09}
+		\vspace{\placeDeCorrection}
+	\end{minipage}
+
+	\makeExercice : Exercices de référence sur successions
+	\vspace{1em}
+
+	\renewcommand{\placeDeCorrection}{4em}
+	\begin{minipage}{0.23\linewidth}
+		Il y a 8 milliards d’humains sur
+		Terre. Combien serons-nous dans
+		30 ans si l’augmentation est de
+		1\% par an ?
+
+		\correction{10 782 791 322}
+		\vspace{7em}
+	\end{minipage}
+	\hfill\vline\hfill
+	\begin{minipage}{0.23\linewidth}
+		J’emprunte la somme de $50 000
+			€$ à un taux annuel de 4\% sur une
+		durée de 10 ans. Si je ne
+		rembourse rien avant l’échéance,
+		combien devrai-je rembourser ?
+
+		\correction{74 012 €}
+		\vspace{\placeDeCorrection}
+	\end{minipage}
+	\hfill\vline\hfill
+	\begin{minipage}{0.23\linewidth}
+		Un Youtubeur a perdu en
+		popularité. Il avait 1 200 000
+		abonnés en 2017 puis a perdu
+		10\% d’abonnés chaque année.
+		Combien a-t-il encore d’abonnés
+		en 2022 ?
+
+		\correction{708 588}
+		\vspace{\placeDeCorrection}
+	\end{minipage}
+	\hfill\vline\hfill
+	\begin{minipage}{0.23\linewidth}
+		Le chiffre d’affaire d’une
+		entreprise est passé de $100 k€$ à
+		$144 k€$ en deux ans avec le même
+		taux annuel d’augmentation.
+		Quel est ce taux annuel ?
+
+		\correction{1.12}
+		\vspace{\placeDeCorrection}
+	\end{minipage}
+}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\setcounter{exercicesCounter}{1}
+\Paste{Exercices}
+
+\end{document}
