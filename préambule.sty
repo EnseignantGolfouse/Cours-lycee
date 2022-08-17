@@ -1,0 +1,352 @@
+% !TeX program = lualatex
+
+% This is meant to be used with document class 'article' or 'beamer'.
+
+\ProvidesPackage{préambule}
+
+\usepackage{fontspec}           % Pour changer la police
+\setmainfont[Ligatures=TeX]{DejaVuSans} % Police avec support pour l'UTF-8
+\usepackage[math-style=french,sans-style=upright]{unicode-math}       % Symboles unicodes en mode math
+\setmathfont{TeX Gyre DejaVu Math}
+\setmathfont{Latin Modern Math}[range=it/{latin},Scale=MatchLowercase] % lettres minuscule en cursif
+\setmathfont{Latin Modern Math}[range=up/{greek},Scale=MatchLowercase] % lettres grecques minuscule en cursif
+\setmathfont{Noto Sans Math}[range={up/{num},bfup/{num}},Script=Default] % Nombre en sans serif.
+\usepackage{sourcecodepro}    % Police à chasse fixe
+\usepackage[french]{babel}    % françisation partielle de l'output
+\DecimalMathComma
+\makeatletter
+\ifboolexpr{test    {\@ifclassloaded{article}}
+            or test {\@ifclassloaded{book}}}
+{
+\usepackage[a4paper,top=1cm,bottom=1cm,left=2cm,right=2cm]{geometry}  % Mise en page, marges
+}
+{}
+\makeatother
+\usepackage{amsthm}             % maths
+\usepackage{amsmath}            % maths
+\usepackage{graphicx}           % figures
+\usepackage{titlesec}           % permet de changer l'affichage des sections et autres
+\usepackage{color}              % couleurs rgb
+\usepackage{censor} % soulignage
+\makeatletter
+\ifboolexpr{test    {\@ifclassloaded{article}}
+            or test {\@ifclassloaded{book}}}
+{
+\usepackage[dvipsnames,table]{xcolor} % plus de couleurs
+}
+{\usepackage{xcolor}}
+\usepackage{pgfplots}
+\usepackage{pgf-pie}
+\usepackage[tikz]{mdframed}     % boites fancy autour des théorèmes et autres
+\usepackage{contour}            % Pour souligner
+\usepackage{ulem}               % Pour souligner
+\usetikzlibrary{shadows}        % effet d'ombre sur les boites ('shadow = true')
+\usetikzlibrary{arrows.meta}    % Flèche \myArrow 
+\usepackage{nopageno}           % pas de numéros de page
+\usepackage[makeroom]{cancel}   % texte barré
+\usepackage{hyperref}           % références
+\usepackage{multicol}           % avoir le texte en plusieurs colonnes
+\usepackage{caption}            % Custom image captions
+\usepackage{floatrow}           % ??? plusieurs images côte à côte
+\usepackage[thinlines]{easytable} % Table plus faciles à utiliser (environnement TAB)
+\ifboolexpr{test    {\@ifclassloaded{article}}
+            or test {\@ifclassloaded{book}}}
+{
+\usepackage[shortlabels]{enumitem}           % Pour facilement modifier les listes.
+}
+{}
+\usepackage{tabularx} % meileurs tableaux
+\usepackage{luacode} % \begin{luacode} ... \end{luacode}
+\usepackage{wrapfig} % Texte autour d'images
+\usepackage{awesomebox} % Diverse boites de texte
+\usepackage{fontawesome} % Icône web (via \faicon{...})
+
+\setlength{\parindent}{0pt} % Pas d'indentation implicite des paragraphes.
+
+% Symboles des listes
+\ifboolexpr{test    {\@ifclassloaded{article}}
+            or test {\@ifclassloaded{book}}}
+{
+\setlist[itemize,1]{label=•}
+\setlist[itemize,2]{label=◦}
+\setlist[itemize,3]{label=■}
+\setlist[itemize,4]{label=□}
+}{}
+
+% Si on est en "landscape", changer l'espacement.
+\makeatletter
+\@ifclassloaded{article}{
+\ifthenelse{
+	\lengthtest{\paperwidth<297.5mm}\AND\lengthtest{\paperwidth>296.5mm}
+	\AND\lengthtest{\paperheight<210.5mm}\AND\lengthtest{\paperheight>209.5mm}}{
+	\geometry{left=1cm}
+	\setlength{\columnsep}{0.8cm}
+}{}
+}{}
+
+% 'require' ne fonctionne pas bien...
+
+\begin{luacode}
+	local myrequireclone = require
+	function require(module)
+		return myrequireclone(package.searchpath(module, package.path))
+	end
+\end{luacode}
+
+% Définition des théorèmes, remarques...
+
+\definecolor{myred}{RGB}{220, 20, 20}
+\definecolor{mygreen}{RGB}{0, 170, 40}
+\definecolor{myblue}{RGB}{0, 0, 100}
+
+\mdfdefinestyle{boxstyle}{
+    linecolor=black!70,
+    linewidth=1pt,
+    leftmargin=12,
+    innertopmargin=\topskip,
+}
+
+\mdfdefinestyle{importantstyle}{
+	linecolor=gray!60,
+    linewidth=1pt,
+	frametitlebackgroundcolor=gray!20,
+    frametitlerule=true,
+    frametitlerulewidth=1pt,
+	roundcorner=5pt,
+    innertopmargin=\topskip,
+}
+
+\mdfdefinestyle{importantshadowstyle}{
+	style=importantstyle,
+    shadow=true,
+}
+
+\mdfdefinestyle{redstyle}{
+	style=importantshadowstyle,
+    frametitlefontcolor=myred,
+    frametitlerulecolor=myred!50,
+}
+
+\mdfdefinestyle{bluestyle}{
+	linecolor=black!70,
+    linewidth=1pt,
+    backgroundcolor=gray!0,
+    frametitlefontcolor=myblue,
+    frametitlebackgroundcolor=gray!10,
+    frametitlerulecolor=black!30,
+	topline=false,
+    bottomline=false,
+    rightline=false,
+    leftmargin=12,
+    innertopmargin=\topskip,
+}
+
+\mdfdefinestyle{greenstyle}{
+	linecolor=gray!60,
+    linewidth=1pt,
+    frametitlefontcolor=mygreen,
+	frametitlebackgroundcolor=gray!20,
+    frametitlerule=true,
+    frametitlerulewidth=1pt,
+    frametitlerulecolor=mygreen!50,
+	roundcorner=5pt,
+    leftmargin=12,
+    innertopmargin=\topskip,
+}
+	
+
+\mdfdefinestyle{coursstyle}{
+    style=redstyle,
+    frametitle={Cours},
+}
+
+\mdfdefinestyle{methodestyle}{
+	style=redstyle,
+    frametitle={Méthode},
+}
+
+\mdfdefinestyle{vocabulairestyle}{
+	style=greenstyle,
+    frametitle={Vocabulaire},
+}
+
+\mdfdefinestyle{enoncestyle}{
+    style=greenstyle,
+    frametitle={Énoncé},
+}
+
+\mdfdefinestyle{exemplestyle}{
+    style=bluestyle,
+    frametitle={Exemple},
+}
+
+\mdfdefinestyle{applicationstyle}{
+    style=bluestyle,
+    frametitle={Application},
+}
+
+\mdfdefinestyle{greyboxstyle}{
+	style=boxstyle,
+    frametitlebackgroundcolor=gray!10,
+    frametitlerulecolor=black!30,
+    topline=false,
+    bottomline=false,
+    rightline=false,
+}
+
+\mdfdefinestyle{paleboxstyle}{
+    frametitlebackgroundcolor=gray!10,
+    frametitlerulecolor=black!30,
+	leftline=false,
+    topline=false,
+    bottomline=false,
+    rightline=false,
+    leftmargin=20,
+    innertopmargin=\topskip,
+}
+
+% théorème qui souligne son titre.
+\newtheoremstyle{underline_theorem_style}
+	{\topsep} % espace avant
+	{\topsep} % espace après
+	{} % Police utilisee par le style de thm
+	{} % Indentation (vide = aucune, \parindent = indentation paragraphe)
+	{\bfseries}% Police du titre de thm
+	{.} % Signe de ponctuation apres le titre du thm
+	{ }% Espace apres le titre du thm (\newline = linebreak)
+	{\uline{\thmname{#1}\thmnumber{ #2}\thmnote{ \normalfont{\textbf{#3}}}}}% composants du titre du thm : \thmname = nom du thm, \thmnumber = numéro du thm, \thmnote = sous-titre du thm
+
+\theoremstyle{underline_theorem_style}
+\newtheorem{question}{Question}
+\newtheorem*{question*}{Question}
+\newtheorem{exercice}{Exercice}
+\newtheorem*{exercice*}{Exercice}
+
+\newmdenv[style=exemplestyle]{exemple}
+\newmdenv[style=applicationstyle]{application}
+\newmdenv[style=coursstyle]{cours}
+\newmdenv[style=methodestyle]{methode}
+\let\definition\@undefined
+\let\enddefinition\@undefined
+\newmdenv[style=greenstyle]{definition}
+\newmdenv[style=vocabulairestyle]{vocabulaire}
+\newmdenv[style=enoncestyle]{enonce}
+\newmdenv[style=redstyle]{attention}
+\newmdenv[style=boxstyle]{mybox}
+\newmdenv[style=greyboxstyle]{greybox}
+\newmdenv[style=paleboxstyle]{palebox}
+
+%Titre optionel pour les blocks 'Cours'
+\makeatletter
+\let\orig@cours=\cours
+\def\cours{
+  \@ifnextchar[{\cours@opt}{\orig@cours}
+}
+\def\cours@opt[#1]{
+  \orig@cours[frametitle={Cours : #1}]
+}
+\makeatother
+
+%Titre optionel pour les blocks 'Définition'
+\makeatletter
+\let\orig@definition=\definition
+\def\definition{
+  \@ifnextchar[{\definition@opt}{\orig@definition}
+}
+\def\definition@opt[#1]{
+  \orig@definition[frametitle={Définition : #1}]
+}
+\makeatother
+
+% Titre optionel pour les blocks 'Méthode'
+\makeatletter
+\let\orig@methode=\methode
+\def\methode{
+  \@ifnextchar[{\methode@opt}{\orig@methode}
+}
+\def\methode@opt[#1]{
+  \orig@methode[frametitle={Méthode : #1}]
+}
+\makeatother
+
+% Titre optionel pour les blocks 'Application'
+\makeatletter
+\let\orig@application=\application
+\def\application{
+  \@ifnextchar[{\application@opt}{\orig@application}
+}
+\def\application@opt[#1]{
+  \orig@application[frametitle={Application : #1}]
+}
+\makeatother
+
+% Titre optionel pour les blocks 'Vocabulaire'
+\makeatletter
+\let\orig@vocabulaire=\vocabulaire
+\def\vocabulaire{
+  \@ifnextchar[{\vocabulaire@opt}{\orig@vocabulaire}
+}
+\def\vocabulaire@opt[#1]{
+  \orig@vocabulaire[frametitle={Vocabulaire : #1}]
+}
+\makeatother
+
+%Titre optionel pour les blocks 'Énoncé'
+\makeatletter
+\let\orig@enonce=\enonce
+\def\enonce{
+  \@ifnextchar[{\enonce@opt}{\orig@enonce}
+}
+\def\enonce@opt[#1]{
+  \orig@enonce[frametitle={Énoncé : #1}]
+}
+\makeatother
+
+
+\newcommand{\somme}[2]{\overset{#2}{\underset{#1}{\sum}}}
+\newcommand{\produit}[2]{\overset{#2}{\underset{#1}{\prod}}}
+\newcommand{\sommedirecte}[2]{\overset{#2}{\underset{#1}{\oplus}}}
+\renewcommand*{\proofname}{Preuve}
+
+% Pour entourer un nombre
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+% Pour entourer un nombre par un carré.
+% On peut optionnelement spécifier la couleur de fond.
+\newcommand{\squared}[2][white]{%
+\tikz[baseline=(char.base)]{%
+\node[shape=rectangle,draw,fill=#1,inner sep=2pt] (char) {#2};}%
+}
+
+\newcommand{\myArrow}{-{Latex[length=3mm, width=2mm]}}
+
+\newcommand{\TitreDActivite}[1]{%
+\makeatletter
+\renewcommand{\maketitle}{%
+{\scriptsize colle dans ton cahier d'exercices}
+	\begin{center}
+		\LARGE
+		\uline{#1}
+		\vspace{1em}
+	\end{center}
+}
+\makeatother
+}
+
+% L'argument optionel remplit le champ "prénom".
+\makeatletter
+\newcommand{\TitreDEvaluation}[2][]{%
+\renewcommand{\maketitle}{%
+	Prénom: \ifthenelse{\equal{#1}{}}{........................}{{#1}} \hfill \@date
+	\begin{center}
+		\LARGE
+		#2
+	\end{center}
+	\vspace{1em}
+}
+}
+\makeatother
+
+% Enlève l'espace après la virgule en mode maths
+\thinmuskip=0mu
