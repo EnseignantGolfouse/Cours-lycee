@@ -1,5 +1,9 @@
-% !TEX root = ./première-activité.tex
-\documentclass[première-activité-correction.tex]{subfiles}
+\documentclass[
+	classe=$2^{de}$,
+	exercices=Exercices\space chapitre\space 1
+]{exercice}
+
+\usepackage{préambule}
 
 % APMEP n°185, JEUX 8
 
@@ -7,15 +11,22 @@
 \setcounter{QCMQuestionCounter}{1}
 \newcounter{QCMReponseCounter}
 
+\renewcommand{\arraystretch}{2}
 \newcommand{\QCMQuestion}[1]{
-	& & & & & & & \\
-	\multicolumn{8}{l}{\arabic{QCMQuestionCounter}. #1}\stepcounter{QCMQuestionCounter} \\
+	\hline\multicolumn{8}{l}{\arabic{QCMQuestionCounter}. #1}\stepcounter{QCMQuestionCounter} \\
 }
 \newcommand{\QCMReponse}[8]{
 	\setcounter{QCMReponseCounter}{1}         \alph{QCMReponseCounter}) #1 & [#2] & \stepcounter{QCMReponseCounter}           \alph{QCMReponseCounter}) #3 & [#4] & \stepcounter{QCMReponseCounter}           \alph{QCMReponseCounter}) #5 & [#6] & \stepcounter{QCMReponseCounter}           \alph{QCMReponseCounter}) #7 & [#8] \\
 }
+\newcommand{\QCMJuste}[1]{
+\ifdefined\makeCorrection
+\uline{#1}
+\else
+#1
+\fi
+}
 
-\title{{\huge Q.C.M. et dessin}\\ Racines carrées}
+\title{{\huge Q.C.M. et dessin}}
 \author{}
 \date{}
 
@@ -49,7 +60,7 @@
 				\node at (\l) {⋅};
 				\node[above left] at (\l) {{\scriptsize \l}};
 			}
-		\ifdefined\modeCorrection
+		\ifdefined\makeCorrection
 			\foreach \a/\b in {a/g,l/v,r/t,d/m,g/c,o/z,d/o,h/r,r/w,k/l,l/m,h/j,c/h,a/k} {
 					\draw[red] (\a) -- (\b);
 				}
@@ -57,25 +68,27 @@
 	\end{tikzpicture}
 \end{minipage}
 
+\vspace{1em}
+
 \begin{tabular}{llllllll}
-	\QCMQuestion{La racine carrée de 100 est}
-	\QCMReponse{10}{ag}{10 ou -10}{ci}{50}{gk}{10 000}{lr}
-	\QCMQuestion{Parmi les quatre égalités, laquelle (lesquelles) sont fausse(s) ?}
-	\QCMReponse{$(\sqrt{17²}) = 17$}{lp}{$(\sqrt{13})² = 13$}{bg}{$\sqrt{9,25} = 3,5$}{lv}{$\sqrt{(-3)²} = -3$}{rt}
+	\QCMQuestion{Le résultat de $-5 × 5 + (-3)$ est}
+	\QCMReponse{$22$}{ag}{\QCMJuste{$-28$}}{ci}{$-10$}{gk}{$-22$}{lr}
+	\QCMQuestion{Pour obtenir $-6$, on peut faire le calcul :}
+	\QCMReponse{$2 × ($-$14) + 17$}{lp}{$9 - ($-$3 - 18)$}{bg}{\QCMJuste{$5 × ($-$4) + 17$}}{lv}{\QCMJuste{-$7 - ($-$9 + 2 × 4)$}}{rt}
 	\QCMQuestion{Avec $x=\sqrt{5}$, l'expression $(x-1)(x+5)$ est égale à :}
-	\QCMReponse{$4\sqrt{5} - 3$}{de}{$2\sqrt{5} + 4$}{di}{$4\sqrt{5}$}{dm}{$6\sqrt{5} + 10$}{ej}
-	\QCMQuestion{$(2 - \sqrt{3})² =$}
-	\QCMReponse{$7+4\sqrt{3}$}{in}{$7-2\sqrt{3}$}{cg}{$7-4\sqrt{3}$}{gc}{$1$}{cn}
-	\QCMQuestion{$\sqrt{3}×\sqrt{6} =$}
-	\QCMReponse{18}{uw}{$\sqrt{18}$}{oz}{$3\sqrt{2}$}{do}{$9\sqrt{2}$}{pq}
-	\QCMQuestion{$\sqrt{3}/\sqrt{15} =$}
-	\QCMReponse{$\sqrt{3/15}$}{hr}{$\sqrt{1/5}$}{rw}{$1/\sqrt{5}$}{kl}{$\sqrt{5}/5$}{lm}
-	\QCMQuestion{$\sqrt{5}+\sqrt{20} =$}
-	\QCMReponse{}{hj}{}{gl}{}{jo}{}{ac}
-	\QCMQuestion{$\sqrt{3² + 4²} =$}
-	\QCMReponse{}{lu}{}{nx}{}{wz}{}{ch}
+	\QCMReponse{$4\sqrt{5} - 3$}{de}{$2\sqrt{5} + 4$}{di}{\QCMJuste{$4\sqrt{5}$}}{dm}{$6\sqrt{5} + 10$}{ej}
+	\QCMQuestion{$-2 × (-6) + 9 × 7 - (-3) × 8 =$}
+	\QCMReponse{$123$}{in}{$171$}{cg}{\QCMJuste{$75$}}{gc}{$88$}{cn}
+	\QCMQuestion{La fraction $\dfrac{20 + (-5)}{-3 × (-6)}$ est égale à}
+	\QCMReponse{$\frac{6}{5}$}{uw}{\QCMJuste{$\frac{5}{6}$}}{oz}{\QCMJuste{$\frac{15}{18}$}}{do}{$-\frac{5}{6}$}{pq}
+	\QCMQuestion{$\frac{15}{16} ÷ \frac{-7 + (4)}{2 × (-2) × (-2)} =$}
+	\QCMReponse{\QCMJuste{$-\frac{15 × 16}{16 × 3}$}}{hr}{\QCMJuste{$\frac{15}{-3}$}}{rw}{\QCMJuste{$-\frac{15}{3}$}}{kl}{\QCMJuste{$-5$}}{lm}
+	\QCMQuestion{$\frac{5}{13}-\frac{2}{5} =$}
+	\QCMReponse{\QCMJuste{$-\frac{1}{65}$}}{hj}{$\frac{3}{8}$}{gl}{$\frac{55}{65}$}{jo}{$\frac{2}{13}$}{ac}
+	\QCMQuestion{$\frac{6}{8} + \frac{7}{12} =$}
+	\QCMReponse{$\frac{19}{12}$}{lu}{$\frac{13}{20}$}{nx}{$\frac{4}{5}$}{wz}{\QCMJuste{$\frac{4}{3}$}}{ch}
 	\QCMQuestion{Lequel de ces quatre nombres n'est pas égal au trois autres ?}
-	\QCMReponse{}{nw}{}{nz}{}{mz}{}{ak}
+	\QCMReponse{$\dfrac{\text{-}5 + (-7)}{4}$}{nw}{$\dfrac{-5 + (\text{-}25)}{2 × 7 - 9} ÷ (\text{-}2)$}{nz}{$\dfrac{\text{-}6}{17 + 3 × (\text{-}5)}$}{mz}{\QCMJuste{$5 + (\text{-}3) × 3$}}{ak}
 \end{tabular}
 
 \end{document}

@@ -1,0 +1,111 @@
+\documentclass[
+	classe=$2^{de}$,
+	exercices=Activité\space-\space Chapitre\space 1
+]{exercice}
+
+\usepackage{préambule}
+
+\renewcommand{\arraystretch}{1.3}
+
+\title{Activité : résolution d'équations du premier degré}
+
+\begin{document}
+
+\maketitle
+
+\textbf{\uline{Exercice 1 : Calcul de position}}
+\begin{center}
+	\begin{tikzpicture}[scale=0.6]
+		\draw[\myArrow] (-10.5, 0) -- (10.7, 0);
+		\foreach \x in {-10, ..., 10} {
+				\draw (\x,0) -- ++(0,-0.2);
+			}
+		\node[below] at (0,-0.2) {$0$};
+	\end{tikzpicture}
+\end{center}
+
+On dispose d'une série d'instructions pour se déplacer sur une droite :
+
+\begin{center}
+	\begin{tabular}{|l|}
+		\hline Démarrer sur la position de son choix, notée $d$. \\
+		\hline Multiplier sa distance à l'origine par $3$.       \\
+		\hline Avancer de $5$ unités vers la droite.             \\
+		\hline Effectuer une symétrie par rapport à l'origine.   \\
+		\hline Avancer de $9$ unités vers la droite.             \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{enumerate}
+	% TODO: cela **présuppose** qu'ils connaissent (bien ?) le calcul littéral !
+	\item Écrire une expression mathématique permettant de trouver la position d'arrivée $a$ à partir de la position de départ $d$ :
+	      \begin{center}
+		      \correctionDots{$a = -(3d + 5) + 9$}
+	      \end{center}
+	\item Pour chacune des positions de \textbf{départ} suivantes, déterminer la position d'\textbf{arrivée} :
+	      \begin{multicols}{2}
+		      \begin{enumerate}
+			      \item Si $d = 6$, $a = $\correctionDots{$-14$}
+			      \item Si $d = -2$, $a = $\correctionDots{$10$\hspace{1em}}
+			      \item Si $d = -7$ , $a = $\correctionDots{$25$\hspace{1em}}
+			      \item Si $d = 3,5$, $a = $\correctionDots{$-6,5$\hspace{0.5em}}
+			      \item Si $d = 7,2$, $a = $\correctionDots{$-17,6$}
+			      \item Si $d = -4,1$, $a = $\correctionDots{$16,3$\hspace{0.8em}}
+		      \end{enumerate}
+	      \end{multicols}
+	\item Écrire une expression mathématique permettant de trouver la position de départ $d$ à partir de la position d'arrivée $a$ :
+	      \begin{center}
+		      \correctionDots{$d = (-(a - 9) - 5) ÷ 3$}
+	      \end{center}
+	\item Pour chacune des positions d'\textbf{arrivée} suivantes, retrouver la position de \textbf{départ} :
+	      \begin{multicols}{2}
+		      \begin{enumerate}
+			      \item Si $a = 1$, $d = $\correctionDots{$1$\hspace{2em}}
+			      \item Si $a = 7$, $d = $\correctionDots{$-1$\hspace{1em}}
+			      \item Si $a = 8,5$, $d = $\correctionDots{$-1,5$}
+			      \item Si $a = 14,5$, $d = $\correctionDots{$-3,5$}
+			      \item Si $a = -15,2$, $d = $\correctionDots{$6,4$\hspace{0.7em}}
+			      \item Si $a = -80$, $d = $\correctionDots{$28$\hspace{1em}}
+		      \end{enumerate}
+	      \end{multicols}
+\end{enumerate}
+
+\textbf{\uline{Exercice 2 : Abonnement}}\vspace{0.5em}
+
+On veut décider, parmi 2 formules d'abonnement téléphone, laquelle nous arrangera le plus.
+
+\begin{center}
+	\begin{minipage}{0.45\textwidth}
+		Le premier abonnement coûte $30€$, puis $0,003 €$ par seconde passée au téléphone.
+	\end{minipage}
+	\hfill\vrule\hfill
+	\begin{minipage}{0.45\textwidth}
+		Le premier abonnement coûte $45€$, puis $0,002 €$ par seconde passée au téléphone.
+	\end{minipage}
+\end{center}
+
+\begin{enumerate}
+	\item Calculer le coût total pour chaque abonnement si l'on passe $3$, $4$, $5$, ou $6$ heures au téléphone :
+
+	      \begin{tabular}{|l|c|c|c|c|}
+		      \hline Nombre d'heures :           & 3                     & 4                     & 5                                               & 6                     \\
+		      \hline Coût total (abonnement 1) : & \correction{$62,4 €$} & \correction{$73,2 €$} & \hspace{0.5em}\correction{$84 €$}\hspace{0.5em} & \correction{$94,8 €$} \\
+		      \hline Coût total (abonnement 2) : & \correction{$66,6 €$} & \correction{$73,8 €$} & \correction{$81 €$}                             & \correction{$88,2 €$} \\
+		      \hline
+	      \end{tabular}
+	\item Écrire une expression mathématique correspondant aux abonnements 1 et 2 (on nommera le nombre de secondes $n$) :
+	      \begin{center}
+		      Abonnement 1 : \correctionDots{$30 + n × 0,003$}, Abonnement 2: \correctionDots{$45 + n × 0,002$}
+	      \end{center}
+	\item Écrire une expression mathématique correspondant au cas où l'abonnement 1 est moins cher que l'abonnement 2:
+	      \begin{center}
+		      \correctionDots{$30 + n × 0,003 < 45 + n × 0,002$}
+	      \end{center}
+	\item Résoudre l'inéquation obtenue :
+	      \begin{center}
+		      \correctionDots{$n < 15\ 000$ secondes}
+	      \end{center}
+\end{enumerate}
+
+\end{document}

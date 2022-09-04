@@ -1,9 +1,12 @@
-\documentclass[a4paper,10pt]{article}
+\documentclass[
+	10pt,
+	classe=$2^{de}$,
+]{coursclass}
 
 \usepackage{préambule}
 
 \title{Cours chapitre 1}
-\author{Rappel sur les règles de calcul}
+\author{Règles de calcul}
 \date{}
 
 \begin{document}
@@ -83,5 +86,59 @@
 		ka + kb     & = k × (a + b) \hspace{5em}\text{(factorisation)}
 	\end{align*}
 \end{propriete}
+
+\section{Résolution d’équations et d’inéquations}
+
+\begin{propriete}[Résolution d'équations]
+	Si on effectue une \textit{même opération de base} (addition, soustraction, multiplication, division), en excluant la division par $0$, des \textbf{deux côtés de l'équation}, on obtient une équation équivalente (les solutions restent les mêmes).
+\end{propriete}
+
+\begin{exemple}
+	\begin{align*}
+		3x + 7 & = x + 15 &                           \\
+		3x     & = x + 8  & \text{(on soustrait 7)}   \\
+		2x     & = 8      & \text{(on soustrait $x$)} \\
+		x      & = 4      & \text{(on divise par 2)}
+	\end{align*}
+\end{exemple}
+
+\begin{propriete}[Résolution d'inéquations]
+	Les mêmes règles que pour la résolution d'équation s'appliquent, \textbf{SAUF} :
+
+	Si on effectue une multiplication ou une division par un nombre \textbf{strictement négatif} des deux côtés de l’inéquation, on obtient une inéquation équivalente (qui a les mêmes solutions) \textbf{à condition de changer le signe de l’inéquation} (inférieur devient supérieur ou inversement).
+\end{propriete}
+
+\begin{exemple}
+	\begin{align*}
+		-x + 2 & ≤ x + 6 &                                                                 \\
+		-x     & ≤ x + 4 & \text{(on soustrait 2)}                                         \\
+		-2x    & ≤ 4     & \text{(on soustrait $x$)}                                       \\
+		x      & ≥ -2    & \text{(on divise par $-2$ : le signe de l'inéquation change !)} \\
+	\end{align*}
+\end{exemple}
+
+\section{Valeur absolue et distance}
+
+\begin{definition}[Valeur absolue]
+	Si $x$ est un nombre négatif, on note $|x|$ et on appelle \textbf{valeur absolue} de $x$ la distance à zéro de $x$.
+
+	C'est-à-dire :
+	\begin{itemize}
+		\item Si $x ≥ 0$, $|x| = x$.
+		\item Si $x < 0$, $|x| = -x$.
+	\end{itemize}
+\end{definition}
+
+\begin{exemple}
+	\begin{align*}
+		|2| & = 2 & |5,3| & = 5,3 & |-9| & = 9 & |-7,1| & = 7,1
+	\end{align*}
+\end{exemple}
+
+\begin{definition}[distance sur une droite graduée]
+	Soient $A$ un point d'abscisse $a$, et $B$ un point d'abscisse $b$, positionés sur une droite graduée.
+
+	Alors la distance entre $A$ et $B$ est : $|a - b|$.
+\end{definition}
 
 \end{document}

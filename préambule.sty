@@ -14,14 +14,6 @@
 \usepackage{sourcecodepro}    % Police à chasse fixe
 \usepackage[french]{babel}    % françisation partielle de l'output
 \DecimalMathComma
-\makeatletter
-\ifboolexpr{test    {\@ifclassloaded{article}}
-            or test {\@ifclassloaded{book}}}
-{
-\usepackage[a4paper,top=1cm,bottom=1cm,left=1.5cm,right=1.5cm]{geometry}  % Mise en page, marges
-}
-{}
-\makeatother
 \usepackage{amsthm}             % maths
 \usepackage{amsmath}            % maths
 \usepackage{graphicx}           % figures
@@ -72,17 +64,6 @@
 \setlist[itemize,2]{label=◦}
 \setlist[itemize,3]{label=■}
 \setlist[itemize,4]{label=□}
-}{}
-
-% Si on est en "landscape", changer l'espacement.
-\makeatletter
-\@ifclassloaded{article}{
-\ifthenelse{
-	\lengthtest{\paperwidth<297.5mm}\AND\lengthtest{\paperwidth>296.5mm}
-	\AND\lengthtest{\paperheight<210.5mm}\AND\lengthtest{\paperheight>209.5mm}}{
-	\geometry{left=1cm}
-	\setlength{\columnsep}{0.8cm}
-}{}
 }{}
 
 % 'require' ne fonctionne pas bien...
@@ -352,17 +333,28 @@
 	\phantom{#1}
 \fi
 }
-
-\newcommand{\TitreDActivite}[3]{%
-\makeatletter
-Lycée La Martinière Diderot \hfill Mathématiques, #3 \hfill #1
-\hrule
-\begin{center}
-	\LARGE
-	\uline{#2}
-	\vspace{1em}
-\end{center}
-\makeatother
+\newbox\correctionDotsBox
+\newbox\correctionDotsPoint
+\newlength\pointwd
+\setbox\correctionDotsPoint=\hbox{.}
+\newcommand{\correctionDots}[1]{
+\ifdefined\makeCorrection
+	{\color{red}#1}
+\else
+\ifx\@empty#1\@empty%
+\fi%
+\noindent
+\leavevmode%
+	\ifmmode\savebox\correctionDotsBox{$#1$}%
+	\else\savebox{\correctionDotsBox}{#1}%
+	\fi%
+	\setlength\pointwd{0pt}%
+\loop%
+	\ifdim\pointwd<\wd\correctionDotsBox%
+	\rule{0pt}{\baselineskip}\usebox{\correctionDotsPoint}\hskip-\fboxrule %
+	\advance\pointwd by 0.6\wd\correctionDotsPoint %coefficient à ajuster 
+\repeat%
+\fi
 }
 
 % L'argument optionel remplit le champ "prénom".

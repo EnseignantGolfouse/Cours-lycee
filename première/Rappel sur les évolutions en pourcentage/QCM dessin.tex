@@ -1,0 +1,94 @@
+\documentclass[
+	classe=$2^{de}$,
+	exercices=Exercices\space chapitre\space 1
+]{exercice}
+
+\usepackage{préambule}
+
+% APMEP n°185, JEUX 8
+
+\newcounter{QCMQuestionCounter}
+\setcounter{QCMQuestionCounter}{1}
+\newcounter{QCMReponseCounter}
+
+\renewcommand{\arraystretch}{2}
+\newcommand{\QCMQuestion}[1]{
+	\hline\multicolumn{8}{l}{\arabic{QCMQuestionCounter}. #1}\stepcounter{QCMQuestionCounter} \\
+}
+\newcommand{\QCMReponse}[8]{
+	\setcounter{QCMReponseCounter}{1}         \alph{QCMReponseCounter}) #1 & [#2] & \stepcounter{QCMReponseCounter}           \alph{QCMReponseCounter}) #3 & [#4] & \stepcounter{QCMReponseCounter}           \alph{QCMReponseCounter}) #5 & [#6] & \stepcounter{QCMReponseCounter}           \alph{QCMReponseCounter}) #7 & [#8] \\
+}
+\newcommand{\QCMJuste}[1]{
+\ifdefined\makeCorrection
+\uline{#1}
+\else
+#1
+\fi
+}
+
+\title{{\huge Q.C.M. et dessin}}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{minipage}{0.5\linewidth}
+	Pour chaque question de ce QCM, il y a une ou plusieurs bonnes réponses.
+
+	Si tu penses que la réponse de la première question est «a», trace, dans le cadre, le segment [ag], et ainsi de suite. \\
+
+	Ce dessin est constitué de quatre lettres, qui désignent le mot : ...................
+\end{minipage}
+\hspace{0.08\linewidth}
+\begin{minipage}{0.4\linewidth}
+	\newcommand{\placePoint}[2]{
+		#1 * \linewidth / 4.8 - \linewidth / 8, \linewidth - #2 * \linewidth / 4.8 + \linewidth / 8
+	}
+
+	\begin{tikzpicture}
+		\draw[color=blue,line width=0.18cm,rounded corners=5pt] (0,0) -- ++(\linewidth, 0) -- ++(0, \linewidth) -- ++(-\linewidth, 0) -- cycle;
+
+		\foreach \x/\y/\l in {
+				1/1/a, 2/1/b, 3/1/c, 4/1/d, 5/1/e,
+				1/2/f, 2/2/g, 3/2/h, 4/2/i, 5/2/j,
+				1/3/k, 2/3/l, 3/3/m, 4/3/n, 5/3/o,
+				1/4/p, 2/4/q, 3/4/r, 4/4/s, 5/4/t,
+				1/5/u, 2/5/v, 3/5/w, 4/5/y, 5/5/z} {
+				\coordinate (\l) at (\placePoint{\x}{\y});
+				\node at (\l) {⋅};
+				\node[above left] at (\l) {{\scriptsize \l}};
+			}
+		\ifdefined\makeCorrection
+			\foreach \a/\b in {a/g,l/v,r/t,d/m,g/c,o/z,d/o,h/r,r/w,k/l,l/m,h/j,c/h,a/k} {
+					\draw[red] (\a) -- (\b);
+				}
+		\fi
+	\end{tikzpicture}
+\end{minipage}
+
+\vspace{1em}
+
+\begin{tabular}{llllllll}
+	\QCMQuestion{Un augmentation de $10\%$ suivie d'une diminution de $10\%$ équivaut à :}
+	\QCMReponse{$+0\%$}{ag}{\QCMJuste{$-28$}}{ci}{$-10$}{gk}{$-22$}{lr}
+	\QCMQuestion{???}
+	\QCMReponse{$ $}{lp}{$ $}{bg}{\QCMJuste{$REPONSE$}}{lv}{\QCMJuste{$REPONSE$}}{rt}
+	\QCMQuestion{Avec $x=\sqrt{5}$, l'expression $(x-1)(x+5)$ est égale à :}
+	\QCMReponse{$4\sqrt{5} - 3$}{de}{$2\sqrt{5} + 4$}{di}{\QCMJuste{$4\sqrt{5}$}}{dm}{$6\sqrt{5} + 10$}{ej}
+	\QCMQuestion{$(2 - \sqrt{3})² =$}
+	\QCMReponse{$7+4\sqrt{3}$}{in}{$7-2\sqrt{3}$}{cg}{\QCMJuste{$7-4\sqrt{3}$}}{gc}{$1$}{cn}
+	\QCMQuestion{La fraction $\dfrac{20 + (-5)}{-3 × (-6)}$ est égale à}
+	\QCMReponse{$\dfrac{6}{5}$}{uw}{\QCMJuste{$\sqrt{5}{6}$}}{oz}{\QCMJuste{$\sqrt{15}{18}$}}{do}{$-\dfrac{5}{6}$}{pq}
+	\QCMQuestion{$\sqrt{3} ÷ \sqrt{15} =$}
+	\QCMReponse{\QCMJuste{$\sqrt{3 ÷ 15}$}}{hr}{\QCMJuste{$\sqrt{1 ÷ 5}$}}{rw}{\QCMJuste{$1 ÷ \sqrt{5}$}}{kl}{\QCMJuste{$\sqrt{5} ÷ 5$}}{lm}
+	\QCMQuestion{$\sqrt{5}+\sqrt{20} =$}
+	\QCMReponse{\QCMJuste{REPONSE}}{hj}{}{gl}{}{jo}{}{ac}
+	\QCMQuestion{$\sqrt{3² + 4²} =$}
+	\QCMReponse{}{lu}{}{nx}{}{wz}{\QCMJuste{REPONSE}}{ch}
+	\QCMQuestion{Lequel de ces quatre nombres n'est pas égal au trois autres ?}
+	\QCMReponse{}{nw}{}{nz}{}{mz}{\QCMJuste{REPONSE}}{ak}
+\end{tabular}
+
+\end{document}
