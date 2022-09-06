@@ -1,0 +1,32 @@
+\documentclass{beamer}
+
+\usepackage{préambule}
+
+\begin{document}
+
+\begin{frame}
+	\begin{minipage}{0.45\textwidth}
+		\begin{LARGE}
+			\begin{center}
+				\begin{TAB}(r,0cm,0cm)[0pt,5cm,5cm]{|c|c|c|c|c|}{|c|c|c|c|}
+					1 & 2 & 3 & 4 & 5 \\
+					6 & 7 & 8 & 9 & 10 \\
+					11 & 12 & 13 & 14 & 15 \\
+					16 & 17 & 18 & 19 & 20 \\
+				\end{TAB}
+			\end{center}
+		\end{LARGE}
+	\end{minipage}
+	\begin{minipage}{0.45\textwidth}
+		\uline{\textbf{Règles :}}
+		\begin{itemize}
+			\item À chaque tour, on sélectionne un nombre qui n'a pas encore été sélectionné.
+			\item Le nombre doit être un \textbf{multiple} ou \textbf{diviseur} du nombre précédent. On commence par le nombre de son choix.
+			\item La partie s'arrête lorsqu'on ne peut plus jouer de coup.
+			\item Le but est d'avoir sélectionné un maximum de nombres à la fin.
+		\end{itemize}
+	\end{minipage}
+\end{frame}
+% Exemple
+
+\end{document}
