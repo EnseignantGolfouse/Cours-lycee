@@ -1,0 +1,3 @@
+[submodule "git submodules/annotate-equations"]
+	path = git submodules/annotate-equations
+	url = https://github.com/st--/annotate-equations

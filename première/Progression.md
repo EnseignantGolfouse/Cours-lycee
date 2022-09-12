@@ -2,7 +2,15 @@
 
 ## 1) Rappel sur les évolutions en %
 
+- Coefficient global (plusieurs variations)
+- Coefficient réciproque
+
 ## 2) Généralités sur les fonctions
+
+- Lecture graphique, image, antécédents
+- Tableau de variation, de signe
+- Fonctions affines
+- Taux de variations
 
 ## 3) Probabilités (partie 1)
 

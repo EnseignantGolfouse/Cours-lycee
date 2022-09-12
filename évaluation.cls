@@ -1,7 +1,7 @@
 %%Identification
 %%The class identifies itself and the LaTeX version needed
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{exercice}[2022/09/04 Classe pour les exercices de mathématiques]
+\ProvidesClass{évaluation}[2022/09/12 Classe pour les évaluations de mathématiques]
 
 \usepackage{kvoptions}
 \usepackage{kvoptions-patch}
@@ -13,13 +13,8 @@
 	prefix=Options@
 }
 \DeclareStringOption[]{classe}
-\DeclareVoidOption{twocolumn}{
-\makeatletter\newcommand{\internal@hastwocolumn}{}\makeatother%
-}
-\DeclareVoidOption{noheader}{
-\makeatletter\newcommand{\internal@noheader}{}\makeatother%
-}
-\DeclareStringOption[Exercices]{exercices}
+\DeclareBoolOption[false]{twocolumn}
+\DeclareStringOption[Évaluation]{headerTitle}
 \DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessKeyvalOptions*
 \LoadClass[a4paper]{article}
@@ -30,12 +25,10 @@
 \usepackage{fancyhdr} % Haut et bas de page
 
 % =========== fancyhdr ===========
-\makeatletter
-\ifdefined\internal@noheader
-\else
 \pagestyle{fancy}
 \fancyhf{}
-\ifdefined\internal@hastwocolumn
+\makeatletter
+\ifOptions@twocolumn
 \setlength{\headheight}{20pt}
 \renewcommand{\headrule}{\hrulefill\hspace{20pt}\hrulefill}
 \fancyhead[L,R]{\makebox[\columnwidth]{
@@ -47,7 +40,7 @@
 		\Options@classe - Mathématiques
 	}
 	\hfill
-	\Options@exercices
+	\Options@headerTitle
 }}
 \else
 \setlength{\headheight}{15.5pt}
@@ -59,15 +52,27 @@
 		\Options@classe\space - Mathématiques
 	}
 }
-\fancyhead[R]{\Options@exercices}
+\fancyhead[R]{\Options@headerTitle}
 \fi
+\makeatother
 \fancypagestyle{plain}{%
   \fancyhf{} % remove everything
 }
-\fi
-\makeatother
 
 % =========== Autres définitions ===========
+\newcounter{exerciceCounter}
+\setcounter{exerciceCounter}{1}
+\renewenvironment{exercice}[1][]{
+\vspace{0.5em}
+\textbf{\uline{Exercice \theexerciceCounter}}
+\ifthenelse{\equal{#1}{}}{}
+{(#1 points)}%
+:
+}{%
+\vspace{0.5em}%
+\stepcounter{exerciceCounter}%
+}
+
 \makeatletter
 \renewcommand{\maketitle}{
 	\begin{center}
@@ -76,5 +81,19 @@
 		\vspace{1em}
 	\end{center}
 	\thispagestyle{fancy}
+}
+\makeatother
+
+% L'argument optionel remplit le champ "prénom".
+\makeatletter
+\newcommand{\TitreDEvaluation}[2][]{%
+\renewcommand{\maketitle}{%
+	Prénom: \ifthenelse{\equal{#1}{}}{........................}{{#1}} \hfill \@date
+	\begin{center}
+		\LARGE
+		#2
+	\end{center}
+	\vspace{1em}
+}
 }
 \makeatother

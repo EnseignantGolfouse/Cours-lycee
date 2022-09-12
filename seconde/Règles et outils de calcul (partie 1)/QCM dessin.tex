@@ -3,8 +3,6 @@
 	exercices=Exercices\space chapitre\space 1
 ]{exercice}
 
-\usepackage{préambule}
-
 % APMEP n°185, JEUX 8
 
 \newcounter{QCMQuestionCounter}
@@ -20,7 +18,7 @@
 }
 \newcommand{\QCMJuste}[1]{
 \ifdefined\makeCorrection
-\uline{#1}
+\uline{{\color{red}#1}}
 \else
 #1
 \fi
@@ -74,14 +72,14 @@
 	\QCMQuestion{Le résultat de $-5 × 5 + (-3)$ est}
 	\QCMReponse{$22$}{ag}{\QCMJuste{$-28$}}{ci}{$-10$}{gk}{$-22$}{lr}
 	\QCMQuestion{Pour obtenir $-6$, on peut faire le calcul :}
-	\QCMReponse{$2 × ($-$14) + 17$}{lp}{$9 - ($-$3 - 18)$}{bg}{\QCMJuste{$5 × ($-$4) + 17$}}{lv}{\QCMJuste{-$7 - ($-$9 + 2 × 4)$}}{rt}
+	\QCMReponse{$2 × ($-$14) + 14$}{lp}{$9 - ($-$3 - 18)$}{bg}{\QCMJuste{$5 × ($-$4) + 17$}}{lv}{\QCMJuste{-$7 - ($-$9 + 2 × 4)$}}{rt}
 	\QCMQuestion{Avec $x=\sqrt{5}$, l'expression $(x-1)(x+5)$ est égale à :}
 	\QCMReponse{$4\sqrt{5} - 3$}{de}{$2\sqrt{5} + 4$}{di}{\QCMJuste{$4\sqrt{5}$}}{dm}{$6\sqrt{5} + 10$}{ej}
 	\QCMQuestion{$-2 × (-6) + 9 × 7 - (-3) × 8 =$}
 	\QCMReponse{$123$}{in}{$171$}{cg}{\QCMJuste{$99$}}{gc}{$88$}{cn}
 	\QCMQuestion{La fraction $\dfrac{20 + (-5)}{-3 × (-6)}$ est égale à}
 	\QCMReponse{$\frac{6}{5}$}{uw}{\QCMJuste{$\frac{5}{6}$}}{oz}{\QCMJuste{$\frac{15}{18}$}}{do}{$-\frac{5}{6}$}{pq}
-	\QCMQuestion{$\frac{15}{16} ÷ \frac{-7 + (4)}{2 × (-2) × (-2)} =$}
+	\QCMQuestion{$\frac{15}{16} ÷ \frac{-7 + (4)}{4 × (-2) × (-2)} =$}
 	\QCMReponse{\QCMJuste{$-\frac{15 × 16}{16 × 3}$}}{hr}{\QCMJuste{$\frac{15}{-3}$}}{rw}{\QCMJuste{$-\frac{15}{3}$}}{kl}{\QCMJuste{$-5$}}{lm}
 	\QCMQuestion{$\frac{5}{13}-\frac{2}{5} =$}
 	\QCMReponse{\QCMJuste{$-\frac{1}{65}$}}{hj}{$\frac{3}{8}$}{gl}{$\frac{55}{65}$}{jo}{$\frac{2}{13}$}{ac}

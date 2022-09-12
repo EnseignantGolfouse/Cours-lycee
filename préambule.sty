@@ -135,36 +135,10 @@
     leftmargin=12,
     innertopmargin=\topskip,
 }
-	
-
-\mdfdefinestyle{coursstyle}{
-    style=redstyle,
-    frametitle={Cours},
-}
-
-\mdfdefinestyle{proprietestyle}{
-    style=redstyle,
-    frametitle={Propriété},
-}
-
-\mdfdefinestyle{methodestyle}{
-	style=redstyle,
-    frametitle={Méthode},
-}
-
-\mdfdefinestyle{vocabulairestyle}{
-	style=greenstyle,
-    frametitle={Vocabulaire},
-}
 
 \mdfdefinestyle{enoncestyle}{
     style=greenstyle,
     frametitle={Énoncé},
-}
-
-\mdfdefinestyle{exemplestyle}{
-    style=bluestyle,
-    frametitle={Exemple},
 }
 
 \mdfdefinestyle{applicationstyle}{
@@ -209,86 +183,11 @@
 \newtheorem{exercice}{Exercice}
 \newtheorem*{exercice*}{Exercice}
 
-\newmdenv[style=exemplestyle]{exemple}
-\newmdenv[style=applicationstyle]{application}
-\newmdenv[style=coursstyle]{cours}
-\newmdenv[style=proprietestyle]{propriete}
-\newmdenv[style=methodestyle]{methode}
-\let\definition\@undefined
-\let\enddefinition\@undefined
-\newmdenv[style=greenstyle]{definition}
-\newmdenv[style=vocabulairestyle]{vocabulaire}
 \newmdenv[style=enoncestyle]{enonce}
 \newmdenv[style=redstyle]{attention}
 \newmdenv[style=boxstyle]{mybox}
 \newmdenv[style=greyboxstyle]{greybox}
 \newmdenv[style=paleboxstyle]{palebox}
-
-%Titre optionel pour les blocks 'Cours'
-\makeatletter
-\let\orig@cours=\cours
-\def\cours{
-  \@ifnextchar[{\cours@opt}{\orig@cours}
-}
-\def\cours@opt[#1]{
-  \orig@cours[frametitle={Cours : #1}]
-}
-\makeatother
-
-%Titre optionel pour les blocks 'Propriété'
-\makeatletter
-\let\orig@propriete=\propriete
-\def\propriete{
-  \@ifnextchar[{\propriete@opt}{\orig@propriete}
-}
-\def\propriete@opt[#1]{
-  \orig@propriete[frametitle={Propriété : #1}]
-}
-\makeatother
-
-%Titre optionel pour les blocks 'Définition'
-\makeatletter
-\let\orig@definition=\definition
-\def\definition{
-  \@ifnextchar[{\definition@opt}{\orig@definition}
-}
-\def\definition@opt[#1]{
-  \orig@definition[frametitle={Définition : #1}]
-}
-\makeatother
-
-% Titre optionel pour les blocks 'Méthode'
-\makeatletter
-\let\orig@methode=\methode
-\def\methode{
-  \@ifnextchar[{\methode@opt}{\orig@methode}
-}
-\def\methode@opt[#1]{
-  \orig@methode[frametitle={Méthode : #1}]
-}
-\makeatother
-
-% Titre optionel pour les blocks 'Application'
-\makeatletter
-\let\orig@application=\application
-\def\application{
-  \@ifnextchar[{\application@opt}{\orig@application}
-}
-\def\application@opt[#1]{
-  \orig@application[frametitle={Application : #1}]
-}
-\makeatother
-
-% Titre optionel pour les blocks 'Vocabulaire'
-\makeatletter
-\let\orig@vocabulaire=\vocabulaire
-\def\vocabulaire{
-  \@ifnextchar[{\vocabulaire@opt}{\orig@vocabulaire}
-}
-\def\vocabulaire@opt[#1]{
-  \orig@vocabulaire[frametitle={Vocabulaire : #1}]
-}
-\makeatother
 
 %Titre optionel pour les blocks 'Énoncé'
 \makeatletter
@@ -326,6 +225,9 @@
 
 \newcommand{\myArrow}{-{Latex[length=3mm, width=2mm]}}
 
+% Enlève l'espace après la virgule en mode maths
+\thinmuskip=0mu
+
 \newcommand{\correction}[1]{
 \ifdefined\makeCorrection
 	{\color{red}#1}
@@ -356,20 +258,3 @@
 \repeat%
 \fi
 }
-
-% L'argument optionel remplit le champ "prénom".
-\makeatletter
-\newcommand{\TitreDEvaluation}[2][]{%
-\renewcommand{\maketitle}{%
-	Prénom: \ifthenelse{\equal{#1}{}}{........................}{{#1}} \hfill \@date
-	\begin{center}
-		\LARGE
-		#2
-	\end{center}
-	\vspace{1em}
-}
-}
-\makeatother
-
-% Enlève l'espace après la virgule en mode maths
-\thinmuskip=0mu

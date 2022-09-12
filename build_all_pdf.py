@@ -19,8 +19,12 @@ def find_tex_files_in(directory: str) -> list:
     Returns a list of `(dir, file)`, where
     - `dir` is the directory where the file was found
     - `file` is the base name of the file.
+
+    Note that git submodules are excluded.
     """
     result: list = []
+    if directory.startswith("./git submodules"):
+        return result
     for item in os.listdir(directory):
         name: str = os.path.join(directory, item)
         if os.path.isfile(name):
@@ -280,7 +284,8 @@ def main(args: list):
         else:
             print("aborting clean.")
     else:
-        compile_all(path, DEFAULT_ARTIFACTS_DIR, DEFAULT_OUTPUT_DIR, number_of_cpus)
+        compile_all(path, DEFAULT_ARTIFACTS_DIR,
+                    DEFAULT_OUTPUT_DIR, number_of_cpus)
 
 
 if __name__ == "__main__":
