@@ -1,8 +1,26 @@
 \documentclass[
-	classe=1 STI2D
+	classe=$1^{ere}$STI2D
 ]{coursclass}
 
 \usepackage{annotate-equations}
+
+\newcommand{\makegrid}[2]{
+	\foreach \y in {-#1, ..., #1} {
+		\draw[ultra thin] (-#2,\y) -- (#2,\y);
+		\ifthenelse{\equal{\y}{0}}{}{
+		\draw[thick] (-0.2,\y) node[left] {\y} -- (0,\y);
+		}
+	}
+	\foreach \x in {-#2, ..., #2} {
+		\draw[ultra thin] (\x,-#1) -- (\x,#1);
+		\ifthenelse{\equal{\x}{0}}{}{
+		\draw[thick] (\x,-0.2) node[below] {\x} -- (\x,0);
+		}
+	}
+	\node[below,left] at (-0.2,-0.3) {$0$};
+	\draw[very thick,\myArrow] (-#2 - 0.3,0) -- (#2 + 0.5,0);
+	\draw[very thick,\myArrow] (0,-#1 - 0.3) -- (0,#1 + 0.5);
+}
 
 \title{Cours Chapitre 2}
 \author{Généralités sur les fonctions}
@@ -13,18 +31,17 @@
 \maketitle
 
 \begin{definition}[Fonction]
-	Une \textbf{fonction} $f$ est un objet mathématique qui associe des valeurs d'un ensemble de \textbf{départ} $D$ à celles d'un ensemble \textbf{d'arrivée} $A$.
+	Une \textbf{fonction} numérique est un procédé qui à tout nombre associe un \textit{unique} autre nombre.
+
+	La fonction est généralement notée $f$, le nombre de départ est noté $x$ et le nombre obtenu est noté $f(x)$. On le lit « $f$ de $x$ », ou encore « $f$ appliquée à $x$ ».
 
 	On la note
-	\begin{align*}
-		f :\  & \eqnmark[red]{A}{A\vphantom{A⁵}} → \eqnmark[blue]{B}{B\vphantom{A⁵}} \\
-		      & x ↦ f(x)
-	\end{align*}
-	\annotate[yshift=2em]{above}{A}{Départ}
-	\annotate[yshift=1em]{above}{B}{Arrivée}
+	$$ f : x ↦ f(x) $$
 
 	\begin{itemize}
 		\item $f(x)$ est \textbf{l'image} de $x$ par la fonction $f$.
+
+		      On représente une image par la lettre $y$, et on écrit alors \uline{$f(x) = y$}.
 		\item $x$ est \textbf{\uline{un} antécédent} de $f(x)$ par la fonction $f$.
 	\end{itemize}
 \end{definition}
@@ -36,8 +53,37 @@
 	\end{itemize}
 \end{remarque}
 
-\section{Représentation graphique}
+\begin{exemple}
+	\begin{minipage}{0.7\linewidth}
+		\includegraphics[width=\linewidth]{graphe 1.png}
+	\end{minipage}
+	\begin{minipage}{0.3\linewidth}
+		\begin{center}
+			\renewcommand{\arraystretch}{1.2}
+			\begin{tabular}{|c|c|}
+				\hline $x$  & $f(x)$ \\
+				\hline $-5$ &        \\
+				\hline $-4$ &        \\
+				\hline $-3$ &        \\
+				\hline $-2$ &        \\
+				\hline $-1$ &        \\
+				\hline $0$  &        \\
+				\hline $1$  &        \\
+				\hline $2$  &        \\
+				\hline $3$  &        \\
+				\hline $4$  &        \\
+				\hline $5$  &        \\
+				\hline
+			\end{tabular}
 
-TODO ! :)
+			\begin{itemize}
+				\item L'\textbf{image} de $2$ est .....\vspace{0.5em}
+				\item L'\textbf{image} de $-1$ est .....\vspace{0.5em}
+				\item Les \textbf{antécédents} de $4$ sont .........\vspace{0.5em}
+				\item Les \textbf{antécédents} de $-3$ sont .........
+			\end{itemize}
+		\end{center}
+	\end{minipage}
+\end{exemple}
 
 \end{document}

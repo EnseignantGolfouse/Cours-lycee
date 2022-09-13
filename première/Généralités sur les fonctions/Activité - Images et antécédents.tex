@@ -1,0 +1,120 @@
+\documentclass[
+	classe=$1^{ere}$STI2D,
+	exercices=Images\space et\space antécédents
+]{exercice}
+
+\title{Images et antécédents}
+
+\newcommand{\makegrid}[2]{
+	\foreach \y in {-#1, ..., #1} {
+		\draw[ultra thin] (-#2,\y) -- (#2,\y);
+		\ifthenelse{\equal{\y}{0}}{}{
+		\draw[thick] (-0.2,\y) node[left] {\y} -- (0,\y);
+		}
+	}
+	\foreach \x in {-#2, ..., #2} {
+		\draw[ultra thin] (\x,-#1) -- (\x,#1);
+		\ifthenelse{\equal{\x}{0}}{}{
+		\draw[thick] (\x,-0.2) node[below] {\x} -- (\x,0);
+		}
+	}
+	\node[below,left] at (-0.2,-0.3) {$0$};
+	\draw[very thick,\myArrow] (-#2 - 0.3,0) -- (#2 + 0.5,0);
+	\draw[very thick,\myArrow] (0,-#1 - 0.3) -- (0,#1 + 0.5);
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{exercice}
+	Soit $f$ la fonction qui à $x$ associe $x - 1$.
+
+	\begin{minipage}{0.45\linewidth}
+		Déterminer :
+		\begin{itemize}
+			\item l'image de $5$ par $f$ : \correction{$4$}
+			\item l'image de $3,5$ par $f$ : \correction{$2,5$}
+			\item l'image de $-2$ par $f$ : \correction{$-3$}
+			\item l'image de $1$ par $f$ : \correction{$0$}
+			\item Un antécédent de $2$ par $f$ : \correction{$3$}
+			\item Un antécédent de $-6$ par $f$ : \correction{$-5$}
+		\end{itemize}
+	\end{minipage}
+	\hfill\vrule\hfill
+	\begin{minipage}{0.45\linewidth}
+		Placer les points obtenus sur le graphe suivant :\vspace{1em}
+
+		\begin{tikzpicture}[scale=0.75]
+			\draw[ultra thin,gray] (-5.5,-6.5) grid (5.5,5.5);
+			\draw[thick,\myArrow] (-5.5,0) -- (5.7,0);
+			\draw[thick,\myArrow] (0,-6.5) -- (0,5.5);
+
+			\foreach \y in {-6, ..., 5} {
+					\ifthenelse{\equal{\y}{0}}{}{
+						\draw[thick] (-0.2,\y) node[left] {\y} -- (0,\y);
+					}
+				}
+			\foreach \x in {-5, ..., 5} {
+					\ifthenelse{\equal{\x}{0}}{}{
+						\draw[thick] (\x,-0.2) node[below] {\x} -- (\x,0);
+					}
+				}
+			\node at (-0.4,-0.4) {0};
+
+			\ifdefined\makeCorrection
+				\foreach \x/\y in {5/4,3.5/2.5,-2/-3,1/0,3/2,-5/-6} {
+						\node[red] at (\x,\y) {×};
+					}
+			\fi
+		\end{tikzpicture}
+	\end{minipage}
+\end{exercice}
+
+\vspace{3em}
+
+\begin{exercice}
+	Soit $g$ la fonction qui à $x$ associe $2x$.
+
+	\begin{minipage}{0.45\linewidth}
+		Déterminer :
+		\begin{itemize}
+			\item l'image de $3$ par $g$ : \correction{$6$}
+			\item l'image de $2,5$ par $g$ : \correction{$1,5$}
+			\item l'image de $-2$ par $g$ : \correction{$-4$}
+			\item Un antécédent de $2$ par $g$ : \correction{$1$}
+			\item Un antécédent de $-3$ par $g$ : \correction{$-1.5$}
+			\item Un antécédent de $-6$ par $g$ : \correction{$-3$}
+		\end{itemize}
+	\end{minipage}
+	\hfill\vrule\hfill
+	\begin{minipage}{0.45\linewidth}
+		Placer les points obtenus sur le graphe suivant :\vspace{1em}
+
+		\begin{tikzpicture}[scale=0.75]
+			\draw[ultra thin,gray] (-5.5,-6.5) grid (5.5,6.5);
+			\draw[thick,\myArrow] (-5.5,0) -- (5.7,0);
+			\draw[thick,\myArrow] (0,-6.5) -- (0,6.5);
+
+			\foreach \y in {-6, ..., 6} {
+					\ifthenelse{\equal{\y}{0}}{}{
+						\draw[thick] (-0.2,\y) node[left] {\y} -- (0,\y);
+					}
+				}
+			\foreach \x in {-5, ..., 5} {
+					\ifthenelse{\equal{\x}{0}}{}{
+						\draw[thick] (\x,-0.2) node[below] {\x} -- (\x,0);
+					}
+				}
+			\node at (-0.4,-0.4) {0};
+
+			\ifdefined\makeCorrection
+				\foreach \x/\y in {3/6,2.5/5,-2/-4,1/2,-1.5/-3,-3/-6} {
+						\node[red] at (\x,\y) {×};
+					}
+			\fi
+		\end{tikzpicture}
+	\end{minipage}
+\end{exercice}
+
+\end{document}
