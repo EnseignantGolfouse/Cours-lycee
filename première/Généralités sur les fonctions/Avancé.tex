@@ -1,0 +1,88 @@
+\documentclass[
+	classe=$1^{ere}$STI2D,
+	noheader
+]{exercice}
+
+\usepackage{xfp}
+\usepackage{clipboard}
+
+\newcommand{\computef}[1]{
+	\fpeval{#1*#1 - 3*#1 + 1}%
+}
+\newcommand{\computeg}[1]{
+	\fpeval{#1*#1*#1 - 3*#1*#1 - #1 + 3.1}%
+}
+\renewcommand{\arraystretch}{1.3}
+
+\begin{document}
+
+\Copy{Exercices}{
+	\setcounter{exercice}{0}
+	\begin{exercice}
+		Soit $f$ la fonction telle que $f(x) = x² - 3x + 1$.
+
+		Remplir le tableau suivant : \vspace{0.5em}
+
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+			\hline
+			$x$    & -1                         & -0.5                         & 0                         & 0.5                         & 1                         & 1.5                         & 2                         & 2.5                         & 3                         & 3.5                         & 4                         \\ \hline
+			$f(x)$ & \correction{\computef{-1}} & \correction{\computef{-0.5}} & \correction{\computef{0}} & \correction{\computef{0.5}} & \correction{\computef{1}} & \correction{\computef{1.5}} & \correction{\computef{2}} & \correction{\computef{2.5}} & \correction{\computef{3}} & \correction{\computef{3.5}} & \correction{\computef{4}} \\ \hline
+		\end{tabular}
+		\vspace{1em}
+
+		Placer ces points dans un repère orthonormé. \vspace{0.5em}
+
+		D'après la courbe obtenue, combien y-a-t'il d'antécédents de $0$ par la fonction $f$ ? ......
+
+		% \begin{tikzpicture}
+		% 	\draw[thin,gray] (-1.5,-5) grid (4.5,8);
+		% 	\draw[thick,\myArrow] (-1.5,0) -- (4.5,0);
+
+		% 	\foreach \x in {-1,-0.5,...,4} {
+		% 			\node[red,thick] at (\x,\computef{\x}) {×};
+		% 		}
+		% \end{tikzpicture}
+	\end{exercice}
+
+	\begin{exercice}
+		Soit $g$ la fonction telle que $f(x) = x³ - 3x² - x + 3,1$.
+
+		Remplir le tableau suivant : \vspace{0.5em}
+
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+			\hline
+			$x$    & -1                         & -0.5                         & 0                         & 0.5                         & 1                         & 1.5                         & 2                         & 2.5                         & 3                         & 3.5                         \\ \hline
+			$f(x)$ & \correction{\computeg{-1}} & \correction{\computeg{-0.5}} & \correction{\computeg{0}} & \correction{\computeg{0.5}} & \correction{\computeg{1}} & \correction{\computeg{1.5}} & \correction{\computeg{2}} & \correction{\computeg{2.5}} & \correction{\computeg{3}} & \correction{\computeg{3.5}} \\ \hline
+		\end{tabular}
+		\vspace{1em}
+
+		Placer ces points dans un repère orthonormé. \vspace{0.5em}
+
+		D'après la courbe obtenue, combien y-a-t'il d'antécédents de $0$ par la fonction $g$ ? ......
+
+		% \begin{tikzpicture}
+		% 	\draw[thin,gray] (-1.5,-5) grid (3.5,8);
+
+		% 	\foreach \x in {-1,-0.5,...,3.5} {
+		% 			\node[red,thick] at (\x,\computeg{\x}) {×};
+		% 		}
+		% \end{tikzpicture}
+	\end{exercice}
+
+	\begin{exercice}\
+
+		\begin{enumerate}
+			\item Vérifier que la fonction $h$ telle que $h(x) = 2x + 1$ n'a qu'un seul antécédent de $0$.
+			\item Faire une hypothèse sur le nombre d'antécédents de $0$ par une fonction donnée, dépendant de la plus grande puissance de $x$ apparaissant dans la fonction.
+
+			      \correction{Le nombre d'antécédents de $0$ d'une fonction est $n$ si la plus grande puissance de $x$ appariassant dans cette fonction est $n$.}
+			\item Trouver une fonction qui contredise cette hypothèse.
+		\end{enumerate}
+	\end{exercice}
+}
+
+\vspace{5em}
+
+\Paste{Exercices}
+
+\end{document}

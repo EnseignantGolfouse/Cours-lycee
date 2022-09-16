@@ -66,4 +66,31 @@
 	Alors la distance entre $A$ et $B$ est : $|a - b|$.
 \end{definition}
 
+\begin{propriete}[Équation avec une valeur absolue]
+	Soit $A$ un point de la droite graduée d'abscisse $a$, et $d$ un nombre positif.
+
+	Résoudre l'équation $|x - a| = d$ revient à trouver tous les points de la droite à distance $d$ du point $A$.
+\end{propriete}
+
+\begin{exemple}
+	\begin{center}
+		\begin{tikzpicture}
+			\draw[\myArrow] (-5.5,0) -- (5.5,0);
+			\foreach \x in {-5,...,5} {
+					\draw (\x,0) -- ++(0,-0.2) node[below] {$\x$};
+				}
+			\foreach \p/\x in {A/1,X/-2,X'/4} {
+					\node[red] at (\x,0) {×};
+					\node[red,above] at (\x,0.2) {$\p$};
+				}
+		\end{tikzpicture}
+	\end{center}
+
+	Sur la droite ci-dessus, le point $A$ a pour abscisse $1$.
+
+	Les points $X$ et $X'$ sont les deux points à distance $3$ du point $A$.
+
+	Ainsi les solutions de l'équation $|x-1| = 3$ sont \squared{$x = -2$} et \squared{$x = 4$}.
+\end{exemple}
+
 \end{document}
