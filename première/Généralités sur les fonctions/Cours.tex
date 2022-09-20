@@ -30,6 +30,8 @@
 
 \maketitle
 
+\section{Généralités}
+
 \begin{definition}[Fonction]
 	Une \textbf{fonction} numérique est un procédé qui à tout nombre associe un \textit{unique} autre nombre.
 
@@ -84,6 +86,98 @@
 			\end{itemize}
 		\end{center}
 	\end{minipage}
+\end{exemple}
+
+\begin{definition}[Courbe représentative]
+	La \textbf{courbe représentative} $𝒞_f$ d'une fonction $f$ dans un repère du plan est l'ensemble des points $(x ; y)$ du repère tels que $y = f(x)$.
+\end{definition}
+
+\begin{exemple}
+	\begin{center}
+		\begin{tikzpicture}
+			\draw[thin,gray] (-1.5,-1.5) grid (8.5,6.5);
+			\draw[thick,\myArrow] (-1.5,0) -- (8.5,0) node[below right] {$x$};
+			\draw[thick,\myArrow] (0,-1.5) -- (0,6.5) node[above left] {$y$};
+
+			\draw[orange,very thick,domain=-1.5:8.5,variable=\x] plot({\x},{-0.16*\x*\x + 1.6*\x + 1}) node[above] {$𝒞_f$};
+			\coordinate (P) at (2.6,4.0784);
+			\coordinate (PX) at (2.6,0);
+			\coordinate (PY) at (0,4.0784);
+			\draw[dashed,blue] (PX) node[below] {$x$} -- (P) -- (PY) node[left] {$f(x)$};
+			\node[yshift=-1,blue] at (P) {∙};
+			\node[below right] at (P) {point de coordonnées};
+			\node[below right] at (2.6,3.5) {$(x ; f(x))$};
+		\end{tikzpicture}
+	\end{center}
+\end{exemple}
+
+\section{Variations d'une fonction}
+
+\begin{definition}[Taux de variation]
+	Soit $f$ une fonction, et $x₁$, $x₂$ deux nombres.
+
+	Le \textbf{taux de variation} de la fonction $f$ entre $x₁$ et $x₂$ et donné par la formule
+
+	$$ \dfrac{f(x₂) - f(x₁)}{x₂ - x₁} $$
+
+	Il correspond à la pente de la droite $(d)$ suivante :
+
+	\begin{center}
+		\begin{tikzpicture}
+			\draw[thin,gray] (-5.5,-1.5) grid (5.5,6.5);
+			\draw[thick,\myArrow] (-5.5,0) -- (5.5,0) node[below right] {$x$};
+			\draw[thick,\myArrow] (0,-1.5) -- (0,6.5) node[above left] {$y$};
+
+			\draw[orange,very thick,domain=-5.5:5.5,variable=\x] plot({\x},{0.03*\x*(\x - 3)*(\x + 3) + 2.5}) node[above] {$𝒞_f$};
+
+			\coordinate (X1) at (-4,1.66);
+			\coordinate (X2) at (5,4.9);
+			\coordinate (dStart) at (-5.5,1.12);
+			\coordinate (dEnd) at (5.5,5.08);
+
+			\node[yshift=-1,blue] at (X1) {∙};
+			\node[yshift=-1,blue] at (X2) {∙};
+			\node[below right] at (X1) {$(x₁ ; f(x₁))$};
+			\node[below right] at (X2) {$(x₂ ; f(x₂))$};
+
+			\draw (dStart) -- node[midway,above] {$(d)$} (dEnd);
+		\end{tikzpicture}
+	\end{center}
+\end{definition}
+
+\begin{definition}[croissance, décroissance]
+	Soit $f$ une fonction, et $I$ un intervalle de $ℝ$.
+
+	\begin{itemize}
+		\item On dit que $f$ est \textbf{croissante sur $I$} si pour tout nombres $x₁$ et $x₂$ dans $I$, le taux de variation $\dfrac{f(x₂) - f(x₁)}{x₂ - x₁}$ est \textit{positif}.
+		\item On dit que $f$ est \textbf{décroissante sur $I$} si pour tout nombres $x₁$ et $x₂$ dans $I$, le taux de variation $\dfrac{f(x₂) - f(x₁)}{x₂ - x₁}$ est \textit{négatif}.
+	\end{itemize}
+\end{definition}
+
+\begin{exemple}
+	\newcommand{\sqrtThree}{1.7320508075688772}
+	\begin{center}
+		\begin{tikzpicture}
+			\draw[thin,gray] (-5.5,-1.5) grid (5.5,6.5);
+			\draw[thick,\myArrow] (-5.5,0) -- (5.5,0) node[below right] {$x$};
+			\draw[thick,\myArrow] (0,-1.5) -- (0,6.5) node[above left] {$y$};
+
+			\draw[red,very thick,domain=-5.5:-\sqrtThree,variable=\x] plot({\x},{0.03*\x*(\x - 3)*(\x + 3) + 2.5});
+			\draw[blue,very thick,domain=-\sqrtThree:\sqrtThree,variable=\x] plot({\x},{0.03*\x*(\x - 3)*(\x + 3) + 2.5});
+			\draw[red,very thick,domain=\sqrtThree:5.5,variable=\x] plot({\x},{0.03*\x*(\x - 3)*(\x + 3) + 2.5}) node[above] {$𝒞_f$};
+
+			\coordinate (A) at (-5.5,0);
+			\coordinate (B) at (-\sqrtThree,0);
+			\coordinate (C) at (\sqrtThree,0);
+			\coordinate (D) at (5.5,0);
+			
+			\draw[red,ultra thick] (A) -- node[midway,above] {$I₁$} (B);
+			\draw[blue,ultra thick] (B) -- node[midway,above left] {$I₂$} (C);
+			\draw[red,ultra thick] (C) -- node[midway,above] {$I₃$} (D);
+		\end{tikzpicture}
+	\end{center}
+
+	Ici, la fonction $f$ est \textbf{croissante} sur $I₁$ et $I₃$, et \textbf{décroissante} sur $I₂$.
 \end{exemple}
 
 \end{document}

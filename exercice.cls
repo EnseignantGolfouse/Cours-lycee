@@ -16,9 +16,7 @@
 \DeclareVoidOption{twocolumn}{
 \makeatletter\newcommand{\internal@hastwocolumn}{}\makeatother%
 }
-\DeclareVoidOption{noheader}{
-\makeatletter\newcommand{\internal@noheader}{}\makeatother%
-}
+\DeclareVoidOption{noheader}{\makeatletter\newcommand{\internal@noheader}{}\makeatother}
 \DeclareStringOption[Exercices]{exercices}
 \DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessKeyvalOptions*

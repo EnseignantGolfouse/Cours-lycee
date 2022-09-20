@@ -1,0 +1,44 @@
+\documentclass{coursclass}
+
+\usepackage{clipboard}
+
+\title{Cours Chapitre 2}
+\author{Généralités sur les fonctions}
+\date{}
+
+\begin{document}
+\thispagestyle{plain}
+
+\Copy{Definition}{
+	\begin{exemple}
+		\newcommand{\sqrtThree}{1.7320508075688772}
+		\begin{center}
+			\begin{tikzpicture}
+				\draw[thin,gray] (-5.5,-1.5) grid (5.5,6.5);
+				\draw[thick,\myArrow] (-5.5,0) -- (5.5,0) node[below right] {$x$};
+				\draw[thick,\myArrow] (0,-1.5) -- (0,6.5) node[above left] {$y$};
+
+				\draw[red,very thick,domain=-5.5:-\sqrtThree,variable=\x] plot({\x},{0.03*\x*(\x - 3)*(\x + 3) + 2.5});
+				\draw[blue,very thick,domain=-\sqrtThree:\sqrtThree,variable=\x] plot({\x},{0.03*\x*(\x - 3)*(\x + 3) + 2.5});
+				\draw[red,very thick,domain=\sqrtThree:5.5,variable=\x] plot({\x},{0.03*\x*(\x - 3)*(\x + 3) + 2.5}) node[above] {$𝒞_f$};
+
+				\coordinate (A) at (-5.5,0);
+				\coordinate (B) at (-\sqrtThree,0);
+				\coordinate (C) at (\sqrtThree,0);
+				\coordinate (D) at (5.5,0);
+
+				\draw[red,ultra thick] (A) -- node[midway,above] {$I₁$} (B);
+				\draw[blue,ultra thick] (B) -- node[midway,above left] {$I₂$} (C);
+				\draw[red,ultra thick] (C) -- node[midway,above] {$I₃$} (D);
+			\end{tikzpicture}
+		\end{center}
+
+		Ici, la fonction $f$ est \correctionDots{croissante} sur $I₁$ et $I₃$, et \correctionDots{décroissante} sur $I₂$.
+	\end{exemple}
+}
+
+\vspace{3em}
+
+\Paste{Definition}
+
+\end{document}

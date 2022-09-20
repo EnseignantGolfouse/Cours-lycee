@@ -1,0 +1,41 @@
+\documentclass{coursclass}
+
+\usepackage{clipboard}
+
+\title{Cours Chapitre 2}
+\author{Généralités sur les fonctions}
+\date{}
+
+\begin{document}
+\thispagestyle{plain}
+
+\Copy{Definition}{
+\begin{definition}[Courbe représentative]
+	La \textbf{courbe représentative} $𝒞_f$ d'une fonction $f$ dans un repère du plan est l'ensemble des points $(x ; y)$ du repère tels que $y = f(x)$.
+\end{definition}
+
+\begin{exemple}
+	\begin{center}
+		\begin{tikzpicture}
+			\draw[thin,gray] (-1.5,-1.5) grid (8.5,6.5);
+			\draw[thick,\myArrow] (-1.5,0) -- (8.5,0) node[below right] {$x$};
+			\draw[thick,\myArrow] (0,-1.5) -- (0,6.5) node[above left] {$y$};
+
+			\draw[orange,very thick,domain=-1.5:8.5,variable=\x] plot({\x},{-0.16*\x*\x + 1.6*\x + 1}) node[above] {$𝒞_f$};
+			\coordinate (P) at (2.6,4.0784);
+			\coordinate (PX) at (2.6,0);
+			\coordinate (PY) at (0,4.0784);
+			\draw[dashed,blue] (PX) node[below] {$x$} -- (P) -- (PY) node[left] {$f(x)$};
+			\node[yshift=-1,blue] at (P) {∙};
+			\node[below right] at (P) {point de coordonnées};
+			\node[below right] at (2.6,3.5) {$(x ; f(x))$};
+		\end{tikzpicture}
+	\end{center}
+\end{exemple}
+}
+
+\vspace{1em}
+
+\Paste{Definition}
+
+\end{document}
