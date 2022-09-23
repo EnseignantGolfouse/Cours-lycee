@@ -1,0 +1,35 @@
+\documentclass{beamer}
+
+\usepackage{préambule}
+
+\begin{document}
+
+\begin{frame}
+	\begin{minipage}{0.6\linewidth}
+		\begin{tikzpicture}[scale=0.7]
+			\draw[thin,gray] (-3.5,-3.5) grid (5.5,5.5);
+			\draw[thick,\myArrow] (-3.5,0) -- (5.5,0);
+			\draw[thick,\myArrow] (0,-3.5) -- (0,5.5);
+			\draw[thick] (1,0) -- ++(0,-0.2) node[below] {$1$};
+			\draw[thick] (0,1) -- ++(-0.2,0) node[left] {$1$};
+			\node at (-0.2,-0.2) {$0$};
+
+			\draw[ultra thick,orange,variable=\x,domain=-3:0] plot({\x},{\x+2});
+			\draw[ultra thick,orange,variable=\x,domain=0:4] plot({\x},{-\x+2});
+			\draw[ultra thick,orange,variable=\x,domain=4:5] plot({\x},{\x-6}) node[above] {$𝒞_f$};
+		\end{tikzpicture}
+	\end{minipage}
+	\begin{minipage}{0.37\linewidth}
+		Soit $f$ la fonction dont la courbe $𝒞_f$ est représentée ci-contre. 
+		
+		Déterminer :
+		\begin{itemize}
+			\item L'image de $3$ :
+			\item Le/les points de $𝒞_f$ d'abscisse $-2$ :
+			\item Le/les points de $𝒞_f$ d'ordonnée $1$ :
+			\item Sur quel(s) intervalle(s) $f$ est-elle croissante ?
+		\end{itemize}
+	\end{minipage}
+\end{frame}
+
+\end{document}

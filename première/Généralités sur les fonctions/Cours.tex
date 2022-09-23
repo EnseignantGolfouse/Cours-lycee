@@ -3,6 +3,7 @@
 ]{coursclass}
 
 \usepackage{annotate-equations}
+\usepackage{xfp}
 
 \newcommand{\makegrid}[2]{
 	\foreach \y in {-#1, ..., #1} {
@@ -170,7 +171,7 @@
 			\coordinate (B) at (-\sqrtThree,0);
 			\coordinate (C) at (\sqrtThree,0);
 			\coordinate (D) at (5.5,0);
-			
+
 			\draw[red,ultra thick] (A) -- node[midway,above] {$I₁$} (B);
 			\draw[blue,ultra thick] (B) -- node[midway,above left] {$I₂$} (C);
 			\draw[red,ultra thick] (C) -- node[midway,above] {$I₃$} (D);
@@ -178,6 +179,86 @@
 	\end{center}
 
 	Ici, la fonction $f$ est \textbf{croissante} sur $I₁$ et $I₃$, et \textbf{décroissante} sur $I₂$.
+\end{exemple}
+
+\begin{definition}[Tableau de signes, de variations]
+	Si $f$ est une fonction, on peut donner deux tableaux :
+	\begin{itemize}
+		\item Un \textbf{tableau de signes}, indiquant sur quels intervalles $f$ est \textit{positive} ou \textit{négative}.
+		\item Un \textbf{tableau de variations}, indiquant sur quels intervalles $f$ est \textit{croissante} ou \textit{décroissante}.
+	\end{itemize}
+\end{definition}
+
+\begin{exemple}
+	\renewcommand{\arraystretch}{1.5}
+	\newcommand{\computef}[1]{
+		\fpeval{-0.1*#1*#1 + 0.5*#1 + 2}%
+	}
+	Soit $f$ une fonction, dont le graphe est donné ci-dessous :
+
+	\begin{tikzpicture}
+		\newcommand{\repereXLow}{-5.5}
+		\newcommand{\repereXHigh}{5.5}
+		\newcommand{\repereYLow}{-3.5}
+		\newcommand{\repereYHigh}{4.5}
+		\draw[thin,gray] (\repereXLow,\repereYLow) grid (\repereXHigh,\repereYHigh);
+		\draw[thick,\myArrow] (\repereXLow,0) -- (\repereXHigh,0) node[below right] {$x$};
+		\draw[thick,\myArrow] (0,\repereYLow) -- (0,\repereYHigh) node[above left] {$y$};
+
+		\draw[orange,ultra thick,domain=\repereXLow+0.5:\repereXHigh-0.5,variable=\x] plot({\x},{-0.1*\x*\x + 0.5*\x + 2}) node[above] {$𝒞_f$};
+
+		\newcommand{\A}{-2.6234753829797994}
+		\newcommand{\B}{2.5}
+
+		\draw[blue,dashed] (-5,-0.2) node[below] {$-5$} -- (-5,-3) -- (0.2,-3) node[right] {$-3$};
+		\draw[blue,dashed] (\A,0) -- ++(0,-0.2) node[below] {$-2,6$} -- (\A,\computef{\A});
+		\draw[blue,dashed] (\B,0) -- ++(0,-0.2) node[below] {$2,5$} -- (\B,\computef{\B}) -- (-0.2,\computef{\B}) node[left] {$2,7$};
+		\draw[blue,dashed] (5,-0.2) node[below] {$5$} -- (5,2) -- (-0.2,2) node[left] {$2$};
+	\end{tikzpicture}
+
+	Le tableau de signes de $f$ est :
+
+	\begin{center}
+		\begin{tikzpicture}
+			\draw (0,0) -- ++(8,0) -- ++(0,-2) -- ++(-8,0) -- cycle;
+			\draw (0,-1) -- ++(8,0);
+			\draw (2,0) -- ++(0,-2);
+
+			\node at (1,-0.5) {$x$};
+			\node at (2.6,-0.5) {$-5$};
+			\node at (5,-0.5) {$-2,6$};
+			\node at (7.4,-0.5) {$5$};
+
+			\node at (1,-1.5) {$f(x)$};
+			\node at (3.5,-1.5) {$-$};
+			\node at (5,-1.5) {$0$};
+			\node at (6.5,-1.5) {$+$};
+			\draw (5,-1) -- ++(0,-0.3) ++ (0,-0.4) -- ++(0,-0.3);
+		\end{tikzpicture}
+	\end{center}
+
+	Le tableau de variations de $f$ est :
+
+	\begin{center}
+		\begin{tikzpicture}
+			\draw (0,0) -- ++(8,0) -- ++(0,-3) -- ++(-8,0) -- cycle;
+			\draw (0,-1) -- ++(8,0);
+			\draw (2,0) -- ++(0,-3);
+
+			\node at (1,-0.5) {$x$};
+			\node at (3,-0.5) {$-5$};
+			\node at (5,-0.5) {$2,5$};
+			\node at (7,-0.5) {$5$};
+
+			\node at (1,-2) {$f(x)$};
+			\node at (3,-2.5) {$-3$};
+			\node at (5,-1.5) {$2,7$};
+			\node at (7,-2.5) {$2$};
+
+			\draw[->] (3.3,-2.3) -- (4.6,-1.7);
+			\draw[->] (5.3,-1.7) -- (6.6,-2.3);
+		\end{tikzpicture}
+	\end{center}
 \end{exemple}
 
 \end{document}
