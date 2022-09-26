@@ -1,0 +1,41 @@
+\documentclass{beamer}
+
+\usepackage{préambule}
+\usepackage{listings}
+
+\begin{document}
+
+\lstset{
+	language={Python},
+	showstringspaces=false,
+	keywordstyle=\color{purple},
+	stringstyle=\color{green}
+}
+
+\begin{frame}
+	Écrire (sur feuille) un programme python effectuant les actions suivantes :
+	\begin{itemize}
+		\item Affiche l'entier 5.
+		\item Affiche le texte "Bonjour tout le monde" !
+		\item Affiche les entiers multiples de 3 entre 1 et 200.
+		\item Définit une fonction qui double le nombre qui lui est donné.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+	\begin{lstlisting}
+print(5)
+
+print("Bonjour tout le monde")
+
+entier = 3
+while entier <= 200:
+    print(entier)
+    entier += 3
+
+def double(x):
+    return 2 * x
+	\end{lstlisting}
+\end{frame}
+
+\end{document}

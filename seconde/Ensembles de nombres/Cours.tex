@@ -1,6 +1,6 @@
-\documentclass{coursclass}
+\documentclass[classe=$2^{de}$]{coursclass}
 
-\title{Chapitre 1 : Ensembles de nombres}
+\title{Chapitre 2 : Ensembles de nombres}
 \date{}
 \author{}
 
@@ -8,11 +8,104 @@
 
 \maketitle
 
-\begin{itemize}
-	\item Ensembles usuels, inclusions avec exemples.
-	\item Intervalles (possible de le faire après la résolution d'équation)
-	\item Arrondis, encadrement.
-	\item valeur absolue.
-\end{itemize}
+\begin{definition}[Entiers]
+	\begin{itemize}
+		\item Un \uline{nombre entier naturel} est un nombre entier positif ou nul. On note l'ensemble des nombres entiers naturels $ℕ$.
+		\item Un \uline{nombre entier relatif} est un nombre entier positif, négatif ou nul. On note l'ensemble des nombres entiers relatifs $ℤ$. % ℤ pour l'allemand "Zahlen"
+	\end{itemize}
+\end{definition}
+
+\begin{remarque}
+	Tout nombre entier naturel est un nombre entier relatif : on note $ℕ ⊂ ℤ$.
+\end{remarque}
+
+\begin{definition}[Nombres décimaux et rationnels]
+	\begin{itemize}
+		\item Un \uline{nombre décimal} est un nombre pouvant s'écrire $\dfrac{a}{10ⁿ}$, où $a$ est un nombre entier relatif et $n$ est un entier naturel. On note l'ensemble des nombres décimaux $𝔻$.
+		\item Un \uline{nombre rationnel} est un nombre pouvant s'écrire $\dfrac{a}{b}$, où $a$ est un nombre entier relatif et $b$ est un entier naturel non nul. On note l'ensemble des nombres rationnels $ℚ$. % ℚ pour "quotient"
+	\end{itemize}
+\end{definition}
+
+\begin{remarque}
+	\begin{itemize}
+		\item Tout entier relatif est un nombre décimal.
+		\item Tout nombre décimal est un nombre rationnel.
+	\end{itemize}
+	On note $ℕ ⊂ ℤ ⊂ 𝔻 ⊂ ℚ$.
+\end{remarque}
+
+\begin{definition}[Nombre réel]
+	On a deux manières de définir les nombres réels :
+	\begin{itemize}
+		\item Si on considére une droite graduée, l'ensemble des abscisses des points de cette droite forme \uline{l'ensemble des nombres réels}.
+		\item Alternativement, un \uline{nombre réel} est un nombre qui peut s'écrire comme un entier suivi d'un nombre fini ou infini de chiffres après la virgule.
+	\end{itemize}
+
+	\begin{center}
+		\begin{tikzpicture}
+			\draw[\myArrow] (-5,0) -- (5,0);
+			\draw (0,0) -- ++(0,-0.2) node[below] {$0$};
+			\draw (1,0) -- ++(0,-0.2) node[below] {$1$};
+			\draw (-3,0) -- ++(0,-0.2) node[below] {$-3$};
+			\draw (2.41,0) -- ++(0,-0.2) node[below] {$\sqrt{2}$};
+			\draw (3.14,0) -- ++(0,-0.2) node[below] {$π$};
+		\end{tikzpicture}
+	\end{center}
+
+	On note l'ensemble des nombres réels $ℝ$.
+\end{definition}
+
+\begin{remarque}
+	Tout nombre rationnel est un nombre réel.
+
+	On note $ℕ ⊂ ℤ ⊂ 𝔻 ⊂ ℚ ⊂ ℝ$.
+\end{remarque}
+
+\begin{center}
+	\begin{tikzpicture}[every node/.style={scale=0.85}]
+		\draw (0,0) ellipse (2 and 1);
+		\draw (0,0.5) ellipse (3.7 and 2);
+		\draw (0,1) ellipse (5.4 and 3);
+		\draw (0,1.5) ellipse (7.1 and 4);
+		\draw (0,2) ellipse (8.8 and 5);
+
+		\node at (0,0.7) {$ℕ$};
+		\node at (-0.9,0.1) {$0$};
+		\node at (0,0.1) {$1$};
+		\node at (0.9,0.1) {$2$};
+		\node at (-0.6,-0.5) {$50$};
+		\node at (0.6,-0.5) {$357$ $892$};
+
+		\node at (0,2.2) {$ℤ$};
+		\node at (-1,1.7) {$-1$};
+		\node at (1.2,1.7) {$-76$};
+		\node at (-2.5,0.5) {$-2689$};
+
+		\node at (0,3.7) {$𝔻$};
+		\node at (-3,2.7) {$0{,}8$};
+		\node at (2,2.8) {$-89{,}127$};
+
+		\node at (0,5.2) {$ℚ$};
+		\node at (-6,2) {$-\frac{6}{11}$};
+		\node at (-3,4) {$\frac{1}{3}$};
+		\node at (5,3.5) {$\frac{60}{859}$};
+
+		\node at (0,6.7) {$ℝ$};
+		\node at (-5,5) {$\sqrt{3}$};
+		\node at (-2,6) {$\sqrt{2}$};
+		\node at (3,6) {$π$};
+		\node at (8,3) {$e$};
+	\end{tikzpicture}
+\end{center}
+
+\begin{exemple}
+	\begin{itemize}
+		\item Exemple d'entiers naturels : $0$, $1$, $2$, $50$, $357$ $892$, ...
+		\item Exemple d'entiers relatifs : $-1$, $-76$, $-2689$, ...
+		\item Exemple de nombres décimaux : $0,8$, $-89,127$, ...
+		\item Exemple de nombres rationnels : $\dfrac{6}{11}$, $\dfrac{1}{3}$, $\dfrac{60}{859}$, ...
+		\item Exemple de nombres réels : $\sqrt{2}$, $\sqrt{3}$, $π$, $e$, ...
+	\end{itemize}
+\end{exemple}
 
 \end{document}
