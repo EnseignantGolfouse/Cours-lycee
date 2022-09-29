@@ -14,10 +14,16 @@
 }
 \DeclareStringOption[]{classe}
 \DeclareBoolOption[false]{twocolumn}
+\DeclareBoolOption[false]{surFeuille}
+\DeclareBoolOption[false]{noheader}
 \DeclareStringOption[Évaluation]{headerTitle}
 \DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessKeyvalOptions*
 \LoadClass[a4paper]{article}
+
+\ifOptions@noheader
+\newcommand{\InternalOption@noheader}{}
+\fi
 
 % =========== Packages ===========
 \usepackage{préambule}
@@ -25,6 +31,8 @@
 \usepackage{fancyhdr} % Haut et bas de page
 
 % =========== fancyhdr ===========
+\ifOptions@noheader
+\else
 \pagestyle{fancy}
 \fancyhf{}
 \makeatletter
@@ -58,42 +66,43 @@
 \fancypagestyle{plain}{%
   \fancyhf{} % remove everything
 }
+\fi
 
 % =========== Autres définitions ===========
-\newcounter{exerciceCounter}
-\setcounter{exerciceCounter}{1}
+\setcounter{exercice}{1}
 \renewenvironment{exercice}[1][]{
 \vspace{0.5em}
-\textbf{\uline{Exercice \theexerciceCounter}}
+\textbf{\uline{Exercice \theexercice}}
 \ifthenelse{\equal{#1}{}}{}
 {(#1 points)}%
 :
 }{%
 \vspace{0.5em}%
-\stepcounter{exerciceCounter}%
+\stepcounter{exercice}%
 }
 
 \makeatletter
+\ifOptions@surFeuille%
+\newcommand{\InternalOption@surFeuille}{}%
+\fi%
 \renewcommand{\maketitle}{
+	\ifdefined\InternalOption@surFeuille%
 	\begin{center}
-		\LARGE
-		\uline{\@title}
-		\vspace{1em}
-	\end{center}
-	\thispagestyle{fancy}
-}
-\makeatother
+		{\LARGE\@title}
 
-% L'argument optionel remplit le champ "prénom".
-\makeatletter
-\newcommand{\TitreDEvaluation}[2][]{%
-\renewcommand{\maketitle}{%
-	Prénom: \ifthenelse{\equal{#1}{}}{........................}{{#1}} \hfill \@date
-	\begin{center}
-		\LARGE
-		#2
+		\@date
 	\end{center}
+	\else%
+	Nom, Prénom: \ifdefined\makeCorrection%
+	{\color{red}CORRECTION}
+	\else%
+	........................
+	\fi%
+	\hfill \@date
+	\begin{center}
+		{\LARGE\@title}
+	\end{center}
+	\fi%
 	\vspace{1em}
-}
 }
 \makeatother

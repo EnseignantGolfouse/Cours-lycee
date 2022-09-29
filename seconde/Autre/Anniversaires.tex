@@ -1,0 +1,98 @@
+\documentclass{beamer}
+
+\usepackage{préambule}
+
+\newcounter{xcounter}
+\newcounter{ycounter}
+\newcommand{\makeGrid}[2][]{%
+	\setcounter{xcounter}{0}%
+	\setcounter{ycounter}{0}%
+	\begin{tikzpicture}[#1]
+		\foreach \x in {0,...,4} {
+				\draw (\x*2,0) -- (\x*2,8);
+				\draw (0,\x*2) -- (8,\x*2);
+			}
+		\foreach \n in {#2} {
+				\node at (2*\thexcounter + 1, 2*\theycounter + 1) {\n};
+
+				\stepcounter{xcounter}
+				\ifthenelse{\equal{\value{xcounter}}{4}}{
+					\setcounter{xcounter}{0}
+					\stepcounter{ycounter}
+				}{}
+			}
+	\end{tikzpicture}
+}
+
+% 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
+% 1 2 3 4 5 6 7 8 17 18 19 20 21 22 23 24
+% 1 2 3 4 9 10 11 12 17 18 19 20 25 26 27 28
+\newcommand{\GrilleUn}[1][]{\makeGrid[#1]{7, 2, 8, 5, 4, 13, 6, 9, 11, 14, 15, 3, 12, 16, 1, 10}}
+\newcommand{\GrilleDeux}[1][]{\makeGrid[#1]{24, 22, 2, 6, 7, 17, 5, 21, 3, 8, 20, 18, 4, 23, 19, 1}}
+\newcommand{\GrilleTrois}[1][]{\makeGrid[#1]{11, 4, 19, 26, 10, 17, 2, 9, 25, 27, 1, 28, 12, 18, 3, 20}}
+\newcommand{\GrilleQuatre}[1][]{\makeGrid[#1]{6, 9, 29, 5, 14, 1, 17, 18, 26, 13, 21, 30, 22, 25, 10, 2}}
+\newcommand{\GrilleCinq}[1][]{\makeGrid[#1]{19, 3, 5, 31, 21, 9, 17, 25, 11, 7, 29, 15, 1, 23, 13, 27}}
+
+% Comment trouver la date ?
+% Si la réponse à la première grille est NON, on ajoute 2^4 = 16
+% Si la réponse à la deuxième grille est NON, on ajoute 2^3 = 8
+% Etc... Ajouter 1 à la fin !
+
+\begin{document}
+
+% \begin{frame}
+% 	\begin{tikzpicture}[scale=0.2]
+% 		\draw      (0, 0) -- ++(32,0);
+% 		\draw[ultra thick,red] (0, 0) -- ++(16,0);
+
+% 		\draw      (0,5) -- ++(32,0);
+% 		\draw[ultra thick,red] (0,5) -- ++(8,0) ++(8,0) -- ++(8,0);
+
+% 		\draw      (0,10) -- ++(32,0);
+% 		\draw[ultra thick,red] (0,10) -- ++(4,0) ++(4,0) -- ++(4,0) ++(4,0) -- ++(4,0) ++(4,0) -- ++(4,0);
+% 	\end{tikzpicture}
+% \end{frame}
+
+\begin{frame}
+	\begin{center}
+		\GrilleUn
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\begin{center}
+		\GrilleDeux
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\begin{center}
+		\GrilleTrois
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\begin{center}
+		\GrilleQuatre
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\begin{center}
+		\GrilleCinq
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\newcommand{\scale}{0.42}
+	\GrilleUn[scale=\scale]{}
+	\GrilleDeux[scale=\scale]{}
+	\GrilleTrois[scale=\scale]{}
+
+	\vspace{0.2cm}
+
+	\GrilleQuatre[scale=\scale]{}
+	\GrilleCinq[scale=\scale]{}
+\end{frame}
+
+\end{document}
