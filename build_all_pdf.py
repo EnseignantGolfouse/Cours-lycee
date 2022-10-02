@@ -11,9 +11,10 @@ from colorama import Fore
 
 DEFAULT_ARTIFACTS_DIR = ".build"
 DEFAULT_OUTPUT_DIR = "pdf"
+DEFAULT_EXCLUDE_PATH = "git submodules"
 
 
-def find_tex_files_in(directory: str) -> list:
+def find_tex_files_in(directory: str, is_root_dir_root: bool = True) -> list:
     """
     Recursively find all `.tex` files in `directory`.
     Returns a list of `(dir, file)`, where
@@ -26,12 +27,14 @@ def find_tex_files_in(directory: str) -> list:
     if directory.startswith("./git submodules"):
         return result
     for item in os.listdir(directory):
+        if DEFAULT_EXCLUDE_PATH != None and item.startswith(DEFAULT_EXCLUDE_PATH):
+            continue
         name: str = os.path.join(directory, item)
         if os.path.isfile(name):
             if name.endswith(".tex"):
                 result.append((directory, item, name[:-4]))
         elif os.path.isdir(name):
-            result.extend(find_tex_files_in(name))
+            result.extend(find_tex_files_in(name, False))
     return result
 
 
@@ -234,17 +237,19 @@ def adjust_lua_path():
 
 
 def print_help(exit_code: int):
-    print("helper to build tex files.")
-    print("")
-    print("USAGE:")
-    print("    build_all_pdf.py [OPTIONS]")
-    print("")
-    print("OPTIONS:")
-    print("    -h, --help             Prints help information")
-    print("    -p, --path <PATH>      Only build tex files under PATH. This defaults to the current directory.")
-    print("    -j, --jobs <INT>       The maximum numbers of parallel processes. Defaults to the number of processors of the machine.")
-    print("        --clean <PATH>     Remove pdf without associated .tex file.")
-    print("        --clean-all <PATH> Clean all pdfs.")
+    print(
+        """helper to build tex files.
+
+USAGE:
+    build_all_pdf.py [OPTIONS]
+
+OPTIONS:
+    -h, --help             Prints help information
+    -p, --path <PATH>      Only build tex files under PATH. This defaults to the current directory.
+    -j, --jobs <INT>       The maximum numbers of parallel processes. Defaults to the number of processors of the machine.
+        --clean <PATH>     Remove pdf without associated .tex file.
+        --clean-all <PATH> Clean all pdfs.
+""")
     sys.exit(exit_code)
 
 
@@ -264,6 +269,7 @@ def main(args: list):
             print_help(0)
         elif opt in ("-p", "--path"):
             path = arg
+            DEFAULT_EXCLUDE_PATH = None
         elif opt in ("-j", "--jobs"):
             number_of_cpus = int(arg)
         elif opt in ("--clean"):

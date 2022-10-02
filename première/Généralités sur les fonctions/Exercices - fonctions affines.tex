@@ -1,0 +1,34 @@
+\documentclass{beamer}
+
+\usepackage{préambule}
+
+\begin{document}
+
+\begin{frame}
+	Répondre aux questions suivantes :
+	\begin{enumerate}
+		\item Construire un repère gradué allant de $-2$ à $6$ en abscisse, et de $-3$ à $4$ en ordonnée.
+		\item Placer les points $(0 ; 2)$ et $(4 ; 0)$ dans le repère, et tracer la droite qui passe par ces points.
+
+		      Quelle est l'expression de la fonction affine $f$ associée à cette droite ?
+		\item Tracer la droite correspondant à la fonction affine $g(x) = \frac{3}{4}x - 1,5$
+		\item En quel(s) point(s) les droites des fonctions $f$ et $g$ se croisent-elles ?
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\begin{center}
+		\begin{tikzpicture}
+			\draw[thin,gray] (-2.5,-3.5) grid (6.5,4.5);
+			\draw[thick,\myArrow] (-2.5,0) -- (6.5,0);
+			\draw[thick,\myArrow] (0,-3.5) -- (0,4.5);
+			\draw[thick] (1,0) -- ++(0,-0.2) node[below] {$1$};
+			\draw[thick] (0,1) -- ++(-0.2,0) node[left] {$1$};
+
+			\draw[very thick,orange,variable=\x,domain=-2:6] plot({\x},{-\x/2 + 2}) node[right] {$𝒞_f$};
+			\draw[very thick,purple,variable=\x,domain=-2:6] plot({\x},{3/4 * \x - 1.5}) node[right] {$𝒞_g$};
+		\end{tikzpicture}
+	\end{center}
+\end{frame}
+
+\end{document}

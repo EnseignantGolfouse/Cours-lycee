@@ -27,6 +27,7 @@
 \author{Généralités sur les fonctions}
 \date{}
 
+\newcommand{\makeCorrection}{}
 \begin{document}
 
 \maketitle
@@ -57,33 +58,33 @@
 \end{remarque}
 
 \begin{exemple}
-	\begin{minipage}{0.7\linewidth}
-		\includegraphics[width=\linewidth]{graphe 1.png}
+	\begin{minipage}{0.67\linewidth}
+		\includegraphics[width=\linewidth]{Images/graphe 1.png}
 	\end{minipage}
 	\begin{minipage}{0.3\linewidth}
 		\begin{center}
 			\renewcommand{\arraystretch}{1.2}
 			\begin{tabular}{|c|c|}
-				\hline $x$  & $f(x)$ \\
-				\hline $-5$ &        \\
-				\hline $-4$ &        \\
-				\hline $-3$ &        \\
-				\hline $-2$ &        \\
-				\hline $-1$ &        \\
-				\hline $0$  &        \\
-				\hline $1$  &        \\
-				\hline $2$  &        \\
-				\hline $3$  &        \\
-				\hline $4$  &        \\
-				\hline $5$  &        \\
+				\hline $x$  & $f(x)$            \\
+				\hline $-5$ & \correction{$-1$} \\
+				\hline $-4$ & \correction{$-3$} \\
+				\hline $-3$ & \correction{$-4$} \\
+				\hline $-2$ & \correction{$-3$} \\
+				\hline $-1$ & \correction{$0$}  \\
+				\hline $0$  & \correction{$3$}  \\
+				\hline $1$  & \correction{$4$}  \\
+				\hline $2$  & \correction{$3$}  \\
+				\hline $3$  & \correction{$0$}  \\
+				\hline $4$  & \correction{$-2$} \\
+				\hline $5$  & \correction{$-5$} \\
 				\hline
 			\end{tabular}
 
 			\begin{itemize}
-				\item L'\textbf{image} de $2$ est .....\vspace{0.5em}
-				\item L'\textbf{image} de $-1$ est .....\vspace{0.5em}
-				\item Les \textbf{antécédents} de $4$ sont .........\vspace{0.5em}
-				\item Les \textbf{antécédents} de $-3$ sont .........
+				\item L'\textbf{image} de $2$ est \correctionDots{$3$}\vspace{0.5em}
+				\item L'\textbf{image} de $-1$ est \correctionDots{$0$}\vspace{0.5em}
+				\item Les \textbf{antécédents} de $4$ sont \correctionDots{$1$}\vspace{0.5em}
+				\item Les \textbf{antécédents} de $3$ sont \correctionDots{$0$ et $2$}
 			\end{itemize}
 		\end{center}
 	\end{minipage}
@@ -141,7 +142,8 @@
 			\node[below right] at (X1) {$(x₁ ; f(x₁))$};
 			\node[below right] at (X2) {$(x₂ ; f(x₂))$};
 
-			\draw (dStart) -- node[midway,above] {$(d)$} (dEnd);
+			\draw (dStart) -- (dEnd);
+			\node at (2.6,4.5) {$(d)$};
 		\end{tikzpicture}
 	\end{center}
 \end{definition}
@@ -257,6 +259,48 @@
 
 			\draw[->] (3.3,-2.3) -- (4.6,-1.7);
 			\draw[->] (5.3,-1.7) -- (6.6,-2.3);
+		\end{tikzpicture}
+	\end{center}
+\end{exemple}
+
+\section{Fonction affine}
+
+\begin{definition}[Fonction affine]
+	Une \textbf{fonction affine} est une fonction telle que $f(x) = a × x + b$, avec $a$ et $b$ deux nombres réels.
+\end{definition}
+
+\begin{propriete}[Graphe d'une fonction affine]
+	Le graphe d'un fonction affine est une \textbf{droite}, telle que :
+	\begin{itemize}
+		\item La pente de cette droite est $a$.
+		\item La droite passe par le point $(0 ; b)$.
+	\end{itemize}
+\end{propriete}
+
+\begin{exemple}
+	La fonction $f(x) = 2x$ a pour graphe
+	\begin{center}
+		\begin{tikzpicture}
+			\draw[thin,gray] (-4.5,-4.5) grid (4.5,4.5);
+			\draw[thick,\myArrow] (-4.5,0) -- (4.5,0);
+			\draw[thick,\myArrow] (0,-4.5) -- (0,4.5);
+			\draw (1,0) -- ++(0,-0.2) node[below] {$1$};
+			\draw (0,1) -- ++(-0.2,0) node[left] {$1$};
+
+			\draw[orange,ultra thick,variable=\x,domain=-2.25:2.25] plot({\x},{2*\x}) node[right] {$𝒞_f$};
+		\end{tikzpicture}
+	\end{center}
+
+	La fonction $g(x) = \dfrac{x}{2} + 1$ a pour graphe
+	\begin{center}
+		\begin{tikzpicture}
+			\draw[thin,gray] (-4.5,-4.5) grid (4.5,4.5);
+			\draw[thick,\myArrow] (-4.5,0) -- (4.5,0);
+			\draw[thick,\myArrow] (0,-4.5) -- (0,4.5);
+			\draw (1,0) -- ++(0,-0.2) node[below] {$1$};
+			\draw (0,1) -- ++(-0.2,0) node[left] {$1$};
+
+			\draw[orange,ultra thick,variable=\x,domain=-4.5:4.5] plot({\x},{\x/2 + 1}) node[right] {$𝒞_g$};
 		\end{tikzpicture}
 	\end{center}
 \end{exemple}
