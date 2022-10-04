@@ -266,7 +266,7 @@
 \section{Fonction affine}
 
 \begin{definition}[Fonction affine]
-	Une \textbf{fonction affine} est une fonction telle que $f(x) = a × x + b$, avec $a$ et $b$ deux nombres réels.
+	Une \textbf{fonction affine} est une fonction telle que $f(x) = ax + b$, avec $a$ et $b$ deux nombres réels.
 \end{definition}
 
 \begin{propriete}[Graphe d'une fonction affine]
@@ -291,7 +291,7 @@
 		\end{tikzpicture}
 	\end{center}
 
-	La fonction $g(x) = \dfrac{x}{2} + 1$ a pour graphe
+	La fonction $g(x) = -\dfrac{x}{2} + 1$ a pour graphe
 	\begin{center}
 		\begin{tikzpicture}
 			\draw[thin,gray] (-4.5,-4.5) grid (4.5,4.5);
@@ -300,7 +300,7 @@
 			\draw (1,0) -- ++(0,-0.2) node[below] {$1$};
 			\draw (0,1) -- ++(-0.2,0) node[left] {$1$};
 
-			\draw[orange,ultra thick,variable=\x,domain=-4.5:4.5] plot({\x},{\x/2 + 1}) node[right] {$𝒞_g$};
+			\draw[orange,ultra thick,variable=\x,domain=-4.5:4.5] plot({\x},{-\x/2 + 1}) node[right] {$𝒞_g$};
 		\end{tikzpicture}
 	\end{center}
 \end{exemple}

@@ -17,6 +17,21 @@
 \end{frame}
 
 \begin{frame}
+	On reprend les fonctions $f$ et $g$.
+
+	\begin{enumerate}
+		\item Donner les tableaux de signes et de variations de $f$ et de $g$ sur $[-2 ; 6]$.
+		\item Donner le taux de variation de $f$ et de $g$ :
+		      \begin{enumerate}[a.]
+			      \item Entre $0$ et $4$.
+			      \item Entre $-2$ et $2$.
+			      \item Entre $2$ et $6$.
+			      \item Que remarque-t-on ?
+		      \end{enumerate}
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
 	\begin{center}
 		\begin{tikzpicture}
 			\draw[thin,gray] (-2.5,-3.5) grid (6.5,4.5);
@@ -25,8 +40,14 @@
 			\draw[thick] (1,0) -- ++(0,-0.2) node[below] {$1$};
 			\draw[thick] (0,1) -- ++(-0.2,0) node[left] {$1$};
 
+			\pause
+
+			\node[orange] at (0,2) {\textbf{×}};
+			\node[orange] at (4,0) {\textbf{×}};
 			\draw[very thick,orange,variable=\x,domain=-2:6] plot({\x},{-\x/2 + 2}) node[right] {$𝒞_f$};
 			\draw[very thick,purple,variable=\x,domain=-2:6] plot({\x},{3/4 * \x - 1.5}) node[right] {$𝒞_g$};
+
+			\draw[green,dashed] (2.8,0) node[below] {\scriptsize $2,8$} -- (2.8,0.6) -- (0,0.6) node[left] {\scriptsize $0,6$};
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
