@@ -153,14 +153,53 @@
 	\end{itemize}
 \end{exemple}
 
-\section{Théorie des ensembles}
+\section{Vocabulaire des ensembles}
 
-En mathématique, on considère souvent des \textbf{ensembles} : c'est-à-dire des groupes d'objets. On dit qu'ils contiennent des \textbf{éléments}.
+\begin{definition}[Ensemble, éléments]
+	Un \textbf{ensemble} contient des \textbf{éléments}.
+
+	Si $e$ est un élément dans $E$, on note \squareFrame{$e ∈ E$}.
+
+	Si un élément $e$ n'est \uline{pas} dans $E$, on note \squareFrame{$e ∉ E$}.
+\end{definition}
 
 \begin{exemple}
 	\begin{itemize}
-		\item ${1, 2}$ est un ensemble, qui contient $1$ et $2$.
-		\item $ℕ$ est un ensemble, qui contient tous les nombres entiers.
+		\item $1 ∈ \{1, 2, 3\}$, $2 ∈ \{1, 2, 3\}$, et $3 ∈ \{1, 2, 3\}$. En revanche, $4 ∉ \{1, 2, 3\}$.
+	\end{itemize}
+\end{exemple}
+
+\begin{definition}[intersection, union]
+	Soient $A$ et $B$ deux ensembles. On note
+	\begin{itemize}
+		\item \squareFrame{$A ∩ B$} l'\textbf{intersection} de $A$ et de $B$, l'ensemble dont les éléments sont dans $A$ \uline{et} dans $B$.
+
+		      On prononce « $A$ \textbf{inter} $B$ ».
+		\item \squareFrame{$A ∪ B$} l'\textbf{union} de $A$ et de $B$, l'ensemble dont les éléments sont dans $A$ \uline{ou} dans $B$.
+
+		      On prononce « $A$ \textbf{union} $B$ ».
+	\end{itemize}
+\end{definition}
+
+\begin{exemple}
+	\begin{itemize}
+		\item $\{1, 2, 3\} ∩ \{2, 3, 4\} = \{2, 3\}$
+		\item $\{1, 2, 3\} ∪ \{2, 3, 4\} = \{1, 2, 3, 4\}$
+		\item $[-1 ; +∞[\ ∩\ ]-∞ ; 1] = [-1 ; 1]$
+	\end{itemize}
+\end{exemple}
+
+\begin{definition}[sous-ensemble]
+	Si tous les éléments de $B$ sont dans $A$, on dit que $B$ est un \textbf{sous-ensemble} de $A$, et on note \squareFrame{$ B ⊂ A $}
+
+	Sinon, on note \squareFrame{$B\ \not⊂\ A$}.
+\end{definition}
+
+\begin{exemple}
+	\begin{itemize}
+		\item $\{1, 2\} ⊂ \{1, 2, 3\}$
+		\item $\{1, 2, 4\} \not⊂ \{1, 2, 3\}$, car $4 ∉ \{1, 2, 3\}$.
+		\item $ℕ ⊂ ℤ$
 	\end{itemize}
 \end{exemple}
 

@@ -11,10 +11,19 @@ from colorama import Fore
 
 DEFAULT_ARTIFACTS_DIR = ".build"
 DEFAULT_OUTPUT_DIR = "pdf"
-DEFAULT_EXCLUDE_PATH = "git submodules"
+DEFAULT_EXCLUDE_PATHS = ["./git submodules", "./.git"]
 
 
-def find_tex_files_in(directory: str, is_root_dir_root: bool = True) -> list:
+def find_tex_files_in(directory: str, ignored_paths: list = []) -> list:
+    normalized_ignored_paths = []
+    for path in DEFAULT_EXCLUDE_PATHS:
+        normalized_ignored_paths.append(os.path.normpath(path))
+    for path in ignored_paths:
+        normalized_ignored_paths.append(os.path.normpath(path))
+    return find_tex_files_recursive(directory, normalized_ignored_paths)
+
+
+def find_tex_files_recursive(directory: str, ignored_paths: list) -> list:
     """
     Recursively find all `.tex` files in `directory`.
     Returns a list of `(dir, file)`, where
@@ -24,17 +33,16 @@ def find_tex_files_in(directory: str, is_root_dir_root: bool = True) -> list:
     Note that git submodules are excluded.
     """
     result: list = []
-    if directory.startswith("./git submodules"):
+
+    if os.path.normpath(directory) in ignored_paths:
         return result
     for item in os.listdir(directory):
-        if DEFAULT_EXCLUDE_PATH != None and item.startswith(DEFAULT_EXCLUDE_PATH):
-            continue
         name: str = os.path.join(directory, item)
         if os.path.isfile(name):
             if name.endswith(".tex"):
                 result.append((directory, item, name[:-4]))
         elif os.path.isdir(name):
-            result.extend(find_tex_files_in(name, False))
+            result.extend(find_tex_files_recursive(name, ignored_paths))
     return result
 
 
@@ -93,7 +101,7 @@ total_ok: int = 0
 total_err: int = 0
 
 
-def compile_all(path: str, artifacts_dir: str, pdf_dir: str, jobs: int):
+def compile_all(path: str, artifacts_dir: str, pdf_dir: str, jobs: int, ignored_paths: list):
     """
     Find and compile all `.tex` files in the current directory (and all its subdirectories).
 
@@ -109,7 +117,7 @@ def compile_all(path: str, artifacts_dir: str, pdf_dir: str, jobs: int):
 
     os.environ["TEXINPUTS"] = "::" + package_dir
 
-    tex_files: list = find_tex_files_in(path)
+    tex_files: list = find_tex_files_in(path, ignored_paths)
     total_files: int = len(tex_files)
     failed_files: list = []
     file_number = 1
@@ -243,9 +251,12 @@ def print_help(exit_code: int):
 USAGE:
     build_all_pdf.py [OPTIONS]
 
+By default, this will not build anything under "./git submodules" and "./.git".
+
 OPTIONS:
     -h, --help             Prints help information
     -p, --path <PATH>      Only build tex files under PATH. This defaults to the current directory.
+    -i, --ignore <PATH>    Ignore all files under the specified path. This option can be specified multiple times.
     -j, --jobs <INT>       The maximum numbers of parallel processes. Defaults to the number of processors of the machine.
         --clean <PATH>     Remove pdf without associated .tex file.
         --clean-all <PATH> Clean all pdfs.
@@ -258,18 +269,21 @@ def main(args: list):
     path = "."
     try:
         opts, args = getopt.getopt(
-            args, "hpj:", ["help", "path=", "jobs=", "clean", "clean-all"])
+            args, "hp:i:j:", ["help", "path=", "ignore=", "jobs=", "clean", "clean-all"])
     except getopt.GetoptError:
         print(Fore.RED + "ERROR: invalid arguments" + Fore.RESET)
         print_help(2)
     cleaning_level: int = 0
     number_of_cpus: int = os.cpu_count()
+    ignored = []
     for opt, arg in opts:
         if opt in ("-h", "--help"):
             print_help(0)
         elif opt in ("-p", "--path"):
             path = arg
-            DEFAULT_EXCLUDE_PATH = None
+            DEFAULT_EXCLUDE_PATHS = []
+        elif opt in ("-i", "--ignore"):
+            ignored.append(arg)
         elif opt in ("-j", "--jobs"):
             number_of_cpus = int(arg)
         elif opt in ("--clean"):
@@ -291,7 +305,7 @@ def main(args: list):
             print("aborting clean.")
     else:
         compile_all(path, DEFAULT_ARTIFACTS_DIR,
-                    DEFAULT_OUTPUT_DIR, number_of_cpus)
+                    DEFAULT_OUTPUT_DIR, number_of_cpus, ignored)
 
 
 if __name__ == "__main__":
