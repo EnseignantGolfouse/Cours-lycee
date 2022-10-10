@@ -235,6 +235,12 @@
 	\phantom{#1}
 \fi
 }
+\newcommand{\correctionPlain}[1]{
+\ifdefined\makeCorrection
+	#1
+\else
+\fi
+}
 \newbox\correctionDotsBox
 \newbox\correctionDotsPoint
 \newlength\pointwd

@@ -13,6 +13,7 @@
 }
 \DeclareStringOption[]{classe}
 \DeclareVoidOption{noheader}{\makeatletter\newcommand{\internal@noheader}{}\makeatother}
+\DeclareStringOption[]{headerTitle}
 \DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessKeyvalOptions*
 % \ProcessOptions\relax
@@ -37,7 +38,11 @@
 \ifthenelse{\equal{\Options@classe}{}}{
 	\fancyhead[C]{Mathématiques}}{
 	\fancyhead[C]{Mathématiques - \Options@classe}}
-\fancyhead[R]{\runtitle}
+\fancyhead[R]{%
+	\ifthenelse{\equal{\Options@headerTitle}{}}%
+	{\runtitle}%
+	{\Options@headerTitle}%
+}
 \fancypagestyle{plain}{ %
   \fancyhf{} % remove everything
   \renewcommand{\headrulewidth}{0pt} % remove lines as well
