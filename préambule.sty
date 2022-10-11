@@ -235,10 +235,11 @@
 	\phantom{#1}
 \fi
 }
-\newcommand{\correctionPlain}[1]{
+\newcommand{\correctionOr}[2]{
 \ifdefined\makeCorrection
 	#1
 \else
+	#2
 \fi
 }
 \newbox\correctionDotsBox

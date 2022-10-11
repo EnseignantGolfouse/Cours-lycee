@@ -1,0 +1,80 @@
+\documentclass[
+	noheader,
+	landscape,
+	twocolumn
+]{coursclass}
+
+\usetikzlibrary{calc}
+
+\title{Chapitre 3 : Généralités sur les vecteurs}
+\date{}
+\author{}
+
+\begin{document}
+
+\newcommand{\myExemple}{
+\begin{exemple}
+	\begin{multicols}{2}
+		\begin{tikzpicture}
+			\draw[->] (0,0) -- node[midway,above] {$\vec{v}₁$} ++(3,1);
+			\draw[->] (1,-1) -- node[midway,above] {$\vec{v}₂$} ++(3,1);
+		\end{tikzpicture}
+
+		\columnbreak
+
+		Les vecteurs $\vec{v}₁$ et $\vec{v}₂$ sont
+
+		................
+	\end{multicols}
+	\hrule
+
+	\begin{multicols}{2}
+		\begin{tikzpicture}
+			\draw[->] (0,0) -- node[midway,above left] {$\vec{v}₁$} ++(2,2);
+			\draw[->] (1,0) -- node[midway,above] {$\vec{v}₂$} ++(3,1);
+		\end{tikzpicture}
+
+		\columnbreak
+
+		Les vecteurs $\vec{v}₁$ et $\vec{v}₂$ sont
+		
+		................
+	\end{multicols}
+	\hrule
+
+	\begin{multicols}{2}
+		\begin{tikzpicture}
+			\draw[->] (0,0) -- node[midway,above] {$\vec{v}₁$} ++(3,1);
+			\draw[->] (4,0) -- node[midway,above] {$\vec{v}₂$} ++(-3,-1);
+		\end{tikzpicture}
+
+		\columnbreak
+
+		Les vecteurs $\vec{v}₁$ et $\vec{v}₂$ sont
+		
+		................
+	\end{multicols}
+	\hrule
+
+	\begin{multicols}{2}
+		\begin{tikzpicture}
+			\draw[->] (0,0) -- node[midway,above] {$\vec{v}₁$} ++(3,1);
+			\draw[->] (1,-1) -- node[midway,above] {$\vec{v}₂$} ++(2,2/3);
+		\end{tikzpicture}
+
+		\columnbreak
+
+		Les vecteurs $\vec{v}₁$ et $\vec{v}₂$ sont
+		
+		................
+	\end{multicols}
+\end{exemple}
+}
+
+\myExemple
+
+\newpage
+
+\myExemple
+
+\end{document}
