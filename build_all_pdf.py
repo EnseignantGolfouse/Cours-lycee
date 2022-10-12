@@ -5,6 +5,7 @@ import subprocess
 import os
 import sys
 import getopt
+import shutil
 from concurrent.futures import ThreadPoolExecutor
 from colorama import Fore
 
@@ -73,18 +74,9 @@ def compile_file(inputs: (str,  str,  str,  str)) -> (bool):
             ],
             stderr=subprocess.STDOUT,
             cwd=working_dir)
-        subprocess.check_output(
-            args=["mkdir", "-p", os.path.join(working_dir, output_dir)],
-            stderr=subprocess.STDOUT,
-            cwd=working_dir
-        )
-        subprocess.check_output(
-            args=[
-                "cp",
-                os.path.join(build_dir, file_pdf),
-                os.path.join(working_dir, output_dir, file_pdf),
-            ],
-            stderr=subprocess.STDOUT)
+        os.makedirs(os.path.join(working_dir, output_dir), exist_ok=True)
+        shutil.copyfile(os.path.join(build_dir, file_pdf),
+                        os.path.join(working_dir, output_dir, file_pdf))
     except subprocess.CalledProcessError as process_error:
         error = process_error.output.decode("utf-8")
     except Exception as e:
@@ -197,11 +189,9 @@ def clean(path: str, output_dir: str):
             if not should_remove:
                 continue
             try:
-                item = os.path.join(pdf_dir, pdf_file)
-                subprocess.check_output([
-                    "rm", item
-                ], stderr=subprocess.STDOUT)
-                print(item, Fore.RED, "[REMOVED]", Fore.RESET)
+                file_to_remove = os.path.join(pdf_dir, pdf_file)
+                os.remove(file_to_remove)
+                print(file_to_remove, Fore.RED, "[REMOVED]", Fore.RESET)
                 total_removed += 1
             except Exception as e:
                 raise e
@@ -219,29 +209,36 @@ def clean_all(path: str, artifacts_dir: str, output_dir: str):
     tex_files: list = find_tex_files_in(path)
     root_dir: str = os.path.abspath(".")
     build_dir: str = os.path.join(root_dir, artifacts_dir)
-    print("removing ", build_dir)
-    try:
-        subprocess.check_output([
-            "rm", "-rf", build_dir
-        ], stderr=subprocess.STDOUT)
-    except Exception as e:
-        raise e
+    if os.path.exists(build_dir):
+        print("removing ", build_dir)
+        shutil.rmtree(build_dir, ignore_errors=True)
     for (directory, file_tex, _) in tex_files:
         pdf_dir = os.path.join(directory, output_dir)
         if os.path.exists(pdf_dir):
             print("removing ", pdf_dir)
-        try:
-            subprocess.check_output([
-                "rm", "-rf", pdf_dir
-            ], stderr=subprocess.STDOUT)
-        except Exception as e:
-            raise e
+            shutil.rmtree(pdf_dir, ignore_errors=True)
 
 
 def adjust_lua_path():
-    lua_path: str = os.environ["LUA_PATH"]
+    env_var_lua_path = os.getenv("LUA_PATH")
+    lua_path: str = ""
+    if env_var_lua_path:
+        lua_path = env_var_lua_path
     new_path: str = os.path.abspath(".") + "/scripts_lua/?.lua"
     os.environ["LUA_PATH"] = new_path + ";" + lua_path
+
+
+def check_executables():
+    """
+    Check that all used executables exist.
+    """
+    # executables run by the subprocess.check_output function
+    used_cmd = ["latexmk", "lualatex"]
+    for cmd in used_cmd:
+        if shutil.which(cmd) == None:
+            print(
+                Fore.RED, f"ERROR: command {cmd} does not exists, please install it.", Fore.RESET)
+            exit(1)
 
 
 def print_help(exit_code: int):
@@ -265,6 +262,7 @@ OPTIONS:
 
 
 def main(args: list):
+    check_executables()
     adjust_lua_path()
     path = "."
     try:
