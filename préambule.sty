@@ -19,7 +19,6 @@
 \usepackage{graphicx}           % figures
 \usepackage{titlesec}           % permet de changer l'affichage des sections et autres
 \usepackage{color}              % couleurs rgb
-\usepackage{censor} % soulignage
 \makeatletter
 \ifboolexpr{test    {\@ifclassloaded{article}}
             or test {\@ifclassloaded{book}}}
@@ -27,27 +26,28 @@
 \usepackage[dvipsnames,table]{xcolor} % plus de couleurs
 }
 {\usepackage{xcolor}}
+\makeatother
 \usepackage{pgfplots}
 \usepackage{pgf-pie}
 \pgfplotsset{compat=1.16}
 \usepackage[tikz]{mdframed}     % boites fancy autour des théorèmes et autres
-\usepackage{contour}            % Pour souligner
 \usepackage{ulem}               % Pour souligner
 \usetikzlibrary{shadows}        % effet d'ombre sur les boites ('shadow = true')
 \usetikzlibrary{arrows.meta}    % Flèche \myArrow 
 \usepackage{nopageno}           % pas de numéros de page
 \usepackage[makeroom]{cancel}   % texte barré
-\usepackage{hyperref}           % références
 \usepackage{multicol}           % avoir le texte en plusieurs colonnes
 \usepackage{caption}            % Custom image captions
 \usepackage{floatrow}           % ??? plusieurs images côte à côte
 \usepackage[thinlines]{easytable} % Table plus faciles à utiliser (environnement TAB)
+\makeatletter
 \ifboolexpr{test    {\@ifclassloaded{article}}
             or test {\@ifclassloaded{book}}}
 {
 \usepackage[shortlabels]{enumitem}           % Pour facilement modifier les listes.
 }
 {}
+\makeatother
 \usepackage{tabularx} % meileurs tableaux
 \usepackage{luacode} % \begin{luacode} ... \end{luacode}
 \usepackage{wrapfig} % Texte autour d'images
@@ -57,6 +57,7 @@
 \setlength{\parindent}{0pt} % Pas d'indentation implicite des paragraphes.
 
 % Symboles des listes
+\makeatletter
 \ifboolexpr{test    {\@ifclassloaded{article}}
             or test {\@ifclassloaded{book}}}
 {
@@ -65,6 +66,7 @@
 \setlist[itemize,3]{label=■}
 \setlist[itemize,4]{label=□}
 }{}
+\makeatother
 
 % 'require' ne fonctionne pas bien...
 
