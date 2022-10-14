@@ -209,14 +209,14 @@
 \renewcommand*{\proofname}{Preuve}
 
 % Pour entourer un nombre
-\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
-            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+\newcommand*\circled[2][transparent]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw=#1,inner sep=2pt] (char) {#2};}}
 
 % Pour entourer un nombre par un carré.
-% On peut optionnelement spécifier la couleur de fond.
-\newcommand{\squared}[2][white]{%
+% On peut optionnelement spécifier la couleur de contour et de fond.
+\NewDocumentCommand{\squared}{O{transparent}O{white}m}{%
 \tikz[baseline=(char.base)]{%
-\node[shape=rectangle,draw,fill=#1,inner sep=2pt] (char) {#2};}%
+\node[shape=rectangle,draw=#1,fill=#2,inner sep=2pt] (char) {#3};}%
 }
 
 % Pour faire un cadre

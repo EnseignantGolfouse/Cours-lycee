@@ -17,7 +17,7 @@
 \makeatletter\newcommand{\internal@hastwocolumn}{}\makeatother%
 }
 \DeclareVoidOption{noheader}{\makeatletter\newcommand{\internal@noheader}{}\makeatother}
-\DeclareStringOption[Exercices]{exercices}
+\DeclareStringOption[Exercices]{headerTitle}
 \DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessKeyvalOptions*
 \LoadClass[a4paper]{article}
@@ -45,7 +45,7 @@
 		\Options@classe - Mathématiques
 	}
 	\hfill
-	\Options@exercices
+	\Options@headerTitle
 }}
 \else
 \setlength{\headheight}{15.5pt}
@@ -57,7 +57,7 @@
 		\Options@classe\space - Mathématiques
 	}
 }
-\fancyhead[R]{\Options@exercices}
+\fancyhead[R]{\Options@headerTitle}
 \fi
 \fancypagestyle{plain}{%
   \fancyhf{} % remove everything

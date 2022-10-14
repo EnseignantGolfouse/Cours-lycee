@@ -1,0 +1,108 @@
+\documentclass[
+	classe=$2^{de}$,
+	headerTitle=Interrogation\space Chapitre\space 2
+]{évaluation}
+
+\usepackage{tkz-euclide}
+\usetikzlibrary{calc}
+
+\newcommand{\intervalle}[4]{\left#1 #2;#3\right#4}
+\newcommand{\correctionEntoure}[1]{%
+\ifdefined\makeCorrection%
+\squared[red]{#1}
+\else%
+#1
+\fi}
+
+\title{Interrogation : ensembles et intervalles (Sujet B)}
+\date{14 octobre 2022}
+
+\renewcommand{\arraystretch}{1.6}
+\begin{document}
+
+\maketitle
+
+\begin{exercice} QCM : Entourer les bonnes réponses \vspace{1em}
+
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			$-6$ appartient à l'ensemble :                        & \correctionEntoure{$\{-7; -6;-5\}$} & \correctionEntoure{$ℝ$}                         & $\intervalle{[}{5}{7}{]}$                      & $ℕ$                           \\ \hline
+			$\{-2; 3; 5\}$ est inclu dans l'ensemble :            & \correctionEntoure{$ℤ$}             & $ℕ$                                             & \correctionEntoure{$\intervalle{[}{-3}{6}{]}$} & $\{0; 3; 5\}$                 \\ \hline
+			$\sqrt{5}$ appartient à l'ensemble :                  & \correctionEntoure{$ℝ$}             & $ℤ$                                             & $ℚ$                                            & \correctionEntoure{$[0; +∞[$} \\ \hline
+			$\intervalle{[}{2}{3}{]}$ est inclu dans l'ensemble : & $ℚ$                                 & \correctionEntoure{$\intervalle{[}{-2}{+∞}{[}$} & \correctionEntoure{$ℝ$}                        & $\intervalle{]}{2}{6}{]}$     \\ \hline
+		\end{tabular}
+	\end{center}
+\end{exercice}
+
+\begin{exercice}
+	Remplir le tableau suivant : chaque ligne correspond à un intervalle.
+
+	\begin{center}
+		\begin{tabular}{|c|c|c|}
+			\hline
+			Inéquation            & Intervalle                                    & Droite                          \\ \hline
+			$x < 5,6$             & \correction{$x ∈ \intervalle{]}{-∞}{5,6}{[}$} & \tikz{\draw[->] (0,0) -- (2,0);
+				\node at (0,0.3) {\phantom{.}};
+				\node at (0,-0.5) {\phantom{.}};
+				\ifdefined\makeCorrection
+					\foreach \x in {0.2,0.4,...,1} {
+							\draw[red] (\x-0.1,0.1) -- (\x+0.1,-0.1);
+						}
+					\draw[red] (1.3,0.2) -- (1.2,0.2) -- (1.2,-0.2) node[below] {$5,6$} -- (1.3,-0.2);
+				\fi
+			}                                                                                                       \\ \hline
+			\correction{$x ≤ -9$} & $x ∈ \intervalle{]}{-∞}{-9}{]}$               & \tikz{\draw[->] (0,0) -- (2,0);
+				\node at (0,0.3) {\phantom{.}};
+				\node at (0,-0.5) {\phantom{.}};
+				\ifdefined\makeCorrection
+					\foreach \x in {0,0.2,...,1} {
+							\draw[red] (\x-0.1,0.1) -- (\x+0.1,-0.1);
+						}
+					\draw[red] (1.1,0.2) -- (1.2,0.2) -- (1.2,-0.2) node[below] {$-9$} -- (1.1,-0.2);
+				\fi
+			}                                                                                                       \\ \hline
+			\correction{$x > -3$} & \correction{$x ∈ \intervalle{]}{-3}{+∞}{[}$}  & \tikz{\draw[->] (0,0) -- (2,0);
+				\node at (0,0.3) {\phantom{.}};
+				\node at (0,-0.5) {\phantom{.}};
+				\foreach \x in {1.2,1.4,1.6,1.8} {
+						\draw (\x-0.1,0.1) -- (\x+0.1,-0.1);
+					}
+				\draw (0.9,0.2) -- (1,0.2) -- (1,-0.2) node[below] {$-3$} -- (0.9,-0.2);
+			}                                                                                                       \\ \hline
+		\end{tabular}
+	\end{center}
+\end{exercice}
+
+\begin{exercice}
+	Pour chaque paire d'ensembles ci-dessous, donner leur union et leur intersection :
+
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			$X$                        & $Y$                         & $X∪Y$                                    & $X∩Y$                                   \\ \hline
+			$\{1;3;5;7\}$              & $\{3;4;5;6\}$               & \correction{$\{1;3;4;5;6;7\}$}           & \correction{$\{3;5\}$}                  \\ \hline
+			$ℝ$                        & $𝔻$                         & \correction{$ℝ$}                         & \correction{$𝔻$}                        \\ \hline
+			$\intervalle{[}{-5}{2}{[}$ & $\intervalle{]}{-3}{8}{]}$  & \correction{$\intervalle{[}{-5}{8}{]}$}  & \correction{$\intervalle{]}{-3}{2}{[}$} \\ \hline
+			$\intervalle{]}{-∞}{5}{[}$ & $\intervalle{[}{-1}{+∞}{[}$ & \correction{$\intervalle{]}{-∞}{+∞}{[}$} & \correction{$\intervalle{[}{-1}{5}{[}$} \\ \hline
+		\end{tabular}
+	\end{center}
+\end{exercice}
+
+\begin{exercice}
+	\begin{center}
+		\begin{tikzpicture}[scale=0.85]
+			\draw (-0.5,0) rectangle ++(5.7,3) node[below right] {←R₁};
+			\draw (2,1) rectangle ++(2,1.5) node[below right] {←R₂};
+			\draw (1.5,-1) rectangle ++(5,5) node[below right] {←R₃};
+			\draw (-1.5,-1.5) rectangle ++(9.5,6.5) node[below right] {←R₄};
+			\draw (1,0.5) node[above left] {R₅→} rectangle ++(2,1.3);
+		\end{tikzpicture}
+	\end{center}
+
+	Sur la figure ci-dessus, quels inclusions peut-on écrire entre les différents rectangles ?
+
+	\correction{On a $R₁ ⊂ R₄$, $R₂ ⊂ R₁$, $R₂ ⊂ R₃$, $R₂ ⊂ R₄$, $R₃ ⊂ R₄$, $R₅ ⊂ R₁$, et $R₅ ⊂ R₄$.}
+\end{exercice}
+
+\end{document}
