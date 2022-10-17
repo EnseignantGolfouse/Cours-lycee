@@ -1,0 +1,105 @@
+\documentclass[
+	classe=$2^{de}$
+]{exercice}
+
+\usetikzlibrary{calc}
+
+\title{Activité : appliquer un vecteur à un point}
+
+\begin{document}
+
+\maketitle
+
+\begin{exercice}
+	Dans chaque cas ci-dessous, placer les points $U$ et $V$, où
+	\begin{itemize}
+		\item $U$ est obtenu en appliquant la translation de vecteur $\vec{u}$ à $T$ ;
+		\item $V$ est obtenu en appliquant la translation de vecteur $\vec{v}$ à $T$.
+	\end{itemize}
+
+	\newcommand{\makeGrille}[4]{
+		\begin{center}
+			\begin{tikzpicture}[scale=0.7]
+				\draw[very thin,gray] (0,0) grid (10,6);
+				\coordinate (T) at (5,3);
+				\coordinate (U) at ($(T) + #3$);
+				\coordinate (V) at ($(T) + #4$);
+
+				\node at (T) {×};
+				\node[above right] at (T) {$T$};
+				\draw[thick,blue,->] #1 -- node[midway,above] {$\vec{u}$} ++ #3;
+				\draw[thick,red,->] #2 -- node[midway,above] {$\vec{v}$} ++ #4;
+
+				\ifdefined\makeCorrection
+					\node[blue] at (U) {×};
+					\node[blue,above right] at (U) {$U$};
+					\node[red] at (V) {×};
+					\node[red,above right] at (V) {$V$};
+				\fi
+			\end{tikzpicture}
+		\end{center}
+	}
+
+	\begin{multicols}{2}
+		\begin{enumerate}
+			\item \
+
+			      \makeGrille{(2,2)}{(8,3)}{(2,1)}{(-1,-2)}
+			\item \
+
+			      \makeGrille{(1,1)}{(1,5)}{(3,1)}{(3,-2)}
+			      \columnbreak
+			\item \
+
+			      \makeGrille{(2,2)}{(3,1)}{(2,0)}{(3,0)}
+			\item \
+
+			      \makeGrille{(8,6)}{(1,5)}{(-4,-2)}{(2,-1)}
+		\end{enumerate}
+	\end{multicols}
+
+	On écrit : $\vec{u} = \correctionDots{\widevec{TU}}$ et $\vec{v} = \correctionDots{\widevec{TV}}$.
+\end{exercice}
+
+\begin{exercice}
+	Dans chaque cas, placer le point $W$ obtenu en appliquant la translation de vecteur $\vec{u}$ à $T$, puis en appliquant la translation de vecteur $\vec{v}$ au résultat :
+	\newcommand{\makeGrille}[4]{
+		\begin{center}
+			\begin{tikzpicture}[scale=0.7]
+				\draw[very thin,gray] (0,0) grid (10,6);
+				\coordinate (T) at (5,3);
+				\coordinate (W) at ($(T) + #3 + #4$);
+
+				\node at (T) {×};
+				\node[above right] at (T) {$T$};
+				\draw[thick,blue,->] #1 -- node[midway,above] {$\vec{u}$} ++ #3;
+				\draw[thick,red,->] #2 -- node[midway,above] {$\vec{v}$} ++ #4;
+
+				\ifdefined\makeCorrection
+					\node[purple] at (W) {×};
+					\node[purple,above right] at (W) {$W$};
+				\fi
+			\end{tikzpicture}
+		\end{center}
+	}
+	\begin{multicols}{2}
+		\begin{enumerate}
+			\item \
+
+			      \makeGrille{(2,2)}{(8,3)}{(2,1)}{(-1,-2)}
+
+			\item \
+
+			      \makeGrille{(1,2)}{(2,1)}{(0,2)}{(3,0)}
+			      \columnbreak
+			\item \
+
+			      \makeGrille{(1,2)}{(2,3)}{(1,2)}{(3,-2)}
+			\item \
+
+			      \makeGrille{(1,2)}{(7,1)}{(3,0)}{(-5,0)}
+		\end{enumerate}
+	\end{multicols}
+\end{exercice}
+
+\end{document}

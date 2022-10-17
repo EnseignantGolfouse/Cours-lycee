@@ -1,0 +1,82 @@
+\documentclass[
+	classe=$2^{de}$,
+]
+{informatique}
+
+\title{Encadrement de $\sqrt{2}$}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+	\item Montrer que $\sqrt{2}$ est une solution de l'équation $x^2 - 2 = 0$ :
+
+	      \correction{si $x = \sqrt{2}$, alors $x^2 - 2 = \sqrt{2}^2 - 2 = 2 - 2 = 0$.}
+	\item On veut pouvoir, en python, calculer rapidement le résultat de $x^2 - 2$ pour n'importe quel $x$. On veut donc une \uline{fonction}, qui prend $x$ en entrée et renvoie $x^2 - 2$.
+
+	      Recopier la fonction suivante dans l'éditeur, et la compléter :
+
+	      \begin{lstlisting}
+def f(x):
+    return ... # compléter ici
+	      \end{lstlisting}
+	\item on va faire afficher 100 valeurs de \texttt{f} pour $x$ entre $1$ et $2$.
+
+	      \begin{itemize}
+		      \item Quel est alors l'écart entre chaque valeur de $x$ ? \correctionDots{$0.01$}
+
+		            On appelle cet écart le \uline{pas}.
+		      \item Recopier le code suivant dans l'éditeur, et le compléter :
+		            \begin{lstlisting}
+a = 1
+b = 2
+N = 100
+pas = ...
+for i in range(...):
+	x = a + ... * pas
+	print("x = ", x, "f(x) = ", f(x))
+			        \end{lstlisting}
+		      \item Donner alors une approximation de $\sqrt{2}$ : \correctionDots{$1,4$}.
+	      \end{itemize}
+	\item On veut maintenant généraliser la méthode ci-dessus : on utilise donc une \textbf{fonction}
+	      \begin{lstlisting}
+def affiche_valeurs(a, b, N):
+    pas = ...
+    for i in range(N):
+        x = a + i * pas
+        print("x = ", x, "f(x) = ", f(x))
+	      \end{lstlisting}
+
+	      Comment calcule-t'on alors le pas correct pour que \texttt{x} aille de \texttt{a} à \texttt{b} ? \correction{\texttt{pas = (b - a) / N}}
+	\item Modifier la fonction ci-dessus afin qu'elle s'arrête dès que \texttt{f(x)} dépasse 0.
+
+	      L'utiliser alors pour déterminer une valeur de $\sqrt{2}$ au millième près : \correctionDots{$\sqrt{2} ≈ 1,414$}
+	\item On veut maintenant visualiser la fonction \texttt{f} : Recopier le code suivant dans l'éditeur :
+	      \begin{lstlisting}
+import matplotlib.pyplot as plt
+
+# representation affiche N + 1 valeur de f(x) entre a et b. 
+def representation(a, b, N):
+    pas = ...
+    for i in range(N+1):
+        x = a + i * pas
+        plt.plot(x, f(x), 'b.')
+
+
+representation(0, 2, 100)   
+plt.plot([0,2], [0,0], 'r--')
+plt.show()
+          \end{lstlisting}
+	      \begin{itemize}
+		      \item Si on veut que \texttt{x} prenne \texttt{N + 1} valeurs entre \texttt{a} et \texttt{b}, quelle doit être la valeur du pas ?
+
+		            \correctionDots{$\texttt{pas} = \frac{b - a}{N}$}.
+		      \item Compléter alors le programme ci-dessus.
+		      \item Lancer le programme, et lire une approximation de $\sqrt{2}$ sur l'image obtenue.
+
+		            Quelle est la précision de l'approximation ? \correctionDots{$1/100$}
+	      \end{itemize}
+\end{enumerate}
+
+\end{document}

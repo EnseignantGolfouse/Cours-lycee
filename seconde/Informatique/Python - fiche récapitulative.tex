@@ -1,0 +1,144 @@
+\documentclass[
+	classe=$2^{de}$,
+	headerTitle=Fiche\space récapitulative
+]
+{informatique}
+
+\usepackage{tcolorbox}
+
+\title{Python - fiche récapitulative}
+
+\begin{document}
+
+\maketitle
+
+\begin{tcolorbox}
+	Python est un language de programmation : il permet d'écrire des instructions qui seront ensuite exécutées par l'ordinateur.
+
+	Cette fiche ne décrit que les bases de Python : on ne parle pas de \texttt{class}, de dictionnaires, ou encore de libraries.
+\end{tcolorbox}
+
+\subsection*{Affichage}
+
+Pour afficher du texte, des nombres ou autre, on utilise la fonction \texttt{print} :
+\begin{lstlisting}
+print(5) # affiche «5»
+print(3.8, 6)  # affiche «3.8 6»
+print("bonjour !") # affiche «bonjour !»
+\end{lstlisting}
+
+\subsection*{Variables}
+
+En python, le symbol \texttt{=} n'a pas le même sens qu'en mathématiques : il sert à \textit{assigner une variable}.
+
+\begin{lstlisting}
+x = 3
+print(x) # affiche «3»
+\end{lstlisting}
+
+Ici la valeur de \texttt{x} peut changer au cours du programme :
+
+\begin{lstlisting}
+x = 3
+print(x) # affiche «3»
+x = 5
+print(x) # affiche «5»
+x = x + 6 # la nouvelle valeur de x est : l'ancienne valeur de x, additionnée à 6
+print(x) # affiche «11»
+\end{lstlisting}
+
+\subsection*{Types}
+
+Chaque valeur en python a un \textbf{type} :
+\begin{itemize}
+	\item \textbf{entier} (\texttt{int}) : ce sont les nombres entiers, comme \texttt{0}, \texttt{15} ou \texttt{-6}.
+	\item \textbf{flottant} (\texttt{float}) : ce sont les nombres à virgule, comme \texttt{2.3}, \texttt{-0.75} ou \texttt{500.2}.
+
+	      À noter : en python, on utilise un point plutôt qu'une virgule.
+	\item \textbf{booléen} (\texttt{bool}) : ce sont les valeur \texttt{True} (Vrai) et \texttt{False} (Faux).
+	\item \textbf{chaîne de caractères} (\texttt{string}) : ce sont les morceaux de texte : par exemple, \texttt{"mon texte"} est une chaîne de caractères.
+\end{itemize}
+
+\subsection*{Calculs}
+
+On peut utiliser les quatres opérations de bases sur les nombres (entiers et flottants) :
+
+\begin{multicols}{2}
+	\begin{itemize}
+		\item addition avec \texttt{+}
+		\item soustraction avec \texttt{-}
+		\item multiplication avec \texttt{*}
+		\item division avec \texttt{/}
+	\end{itemize}
+\end{multicols}
+
+On peut également :
+\begin{itemize}
+	\item Concaténer deux chaînes de caractères avec \texttt{+} : \squareFrame[noshadow]{\texttt{"bon" + "jour !"}}
+	\item Tester si deux valeurs sont égales : \squareFrame[noshadow]{\texttt{3 == 3}}
+	\item Tester si deux valeurs sont différentes : \squareFrame[noshadow]{\texttt{5 != "bonjour"}}
+	\item Tester si une valeur est plus grande ou plus petite qu'une autre :
+	      \squareFrame[noshadow]{\texttt{-1 < 0}}, \squareFrame[noshadow]{\texttt{-1 <= 0}}, \squareFrame[noshadow]{\texttt{0 >= 0}}, \squareFrame[noshadow]{\texttt{1 > 0}}
+	\item Faire une division euclidienne : \texttt{//} donne le quotient, et \texttt{\%} donne le reste. Par exemple,
+
+	      \squareFrame[noshadow]{\texttt{(13 // 3) == 4}} et \squareFrame[noshadow]{\texttt{(13 \% 3) == 1}}.
+\end{itemize}
+
+\subsection*{Boucles}
+
+Il y a deux manière de faire une boucle en Python :
+\begin{itemize}
+	\item La boucle \texttt{for} :
+	      \begin{lstlisting}
+for i in range(6):
+    print(i)
+# affiche «0 1 2 3 4 5»
+	      \end{lstlisting}
+	\item La boucle \texttt{while} :
+	      \begin{lstlisting}
+i = 0
+while i < 6:
+    print(i)
+	i += 1
+# affiche «0 1 2 3 4 5»
+		  \end{lstlisting}
+\end{itemize}
+
+\subsection*{Conditions}
+
+On peut dire à Python d'éxécuter du code seulement si un condition est vraie avec les mots-clé \texttt{if}, \texttt{else} et \texttt{elif} :
+\begin{lstlisting}
+x = 3
+
+if x < 2:      # Si x est plus petit que 2
+	print("a")
+elif x > 5:    # Sinon, si x est plus grand que 5
+	print("b")
+else:          # Sinon
+	print("c")
+# affiche «c», mais pas «a» ni «b».
+\end{lstlisting}
+
+\subsection*{Fonctions}
+
+Pour pouvoir lancer le même code avec des valeurs différentes, Python permet de définir des fonctions avec le mot-clé \texttt{def} :
+
+\begin{lstlisting}
+def ma_fonction(x, y):
+    print(x, y)
+
+ma_fonction(2, 3) # affiche «2 3»
+ma_fonction(5, -1) # affiche «5 -1»
+\end{lstlisting}
+
+\subsection*{Listes}
+
+On peut regrouper les objets dans un autres type : les \textbf{listes} (\texttt{list}) :
+\begin{lstlisting}
+ma_liste = [1, 2, 3] # une liste de 3 éléments
+print(ma_liste[0]) # affiche le premier élément (on compte à partir de 0 en Python)
+ma_liste[1] = 6
+print(ma_liste) # affiche «[1, 6, 3]»
+\end{lstlisting}
+
+\end{document}

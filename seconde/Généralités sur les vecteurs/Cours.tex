@@ -108,4 +108,48 @@
 	Si deux vecteurs ont la même direction, la même norme, mais des sens différents, on dit qu'ils sont \textbf{opposés}.
 \end{definition}
 
+\begin{vocabulaire}
+	\begin{center}
+		\begin{tikzpicture}
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (3,1.5);
+
+			\node[above] at (A) {A};
+			\node[above] at (B) {B};
+			\draw[->] (A) -- node[midway,above left] {$\widevec{AB}$} (B);
+		\end{tikzpicture}
+	\end{center}
+
+	Si une translation envoie le point A sur le point B, on peut appeller le vecteur de cette translation \squareFrame{$\widevec{AB}$}.
+\end{vocabulaire}
+
+\begin{definition}[Somme de vecteurs]
+	Soient deux vecteurs $\vec{u}$ et $\vec{v}$. Si on enchaîne les translations correspondant à $\vec{u}$ et à $\vec{v}$, on obtient une nouvelle translation.
+
+	Le vecteur qui lui est associé est appelé la \textbf{somme de $\vec{u}$ et de $\vec{v}$}. On la note \squareFrame{$\vec{u} + \vec{v}$}.
+\end{definition}
+
+\begin{exemple}
+	\begin{center}
+		\begin{tikzpicture}
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (3,1);
+			\coordinate (C) at (4,-0.5);
+
+			\draw[blue,->] (A) -- node[above] {$\vec{u}$} (B);
+			\draw[blue,->] (B) -- node[above] {$\vec{v}$} (C);
+			\draw[red,->] (A) -- node[below] {$\vec{u}+ \vec{v}$} (C);
+		\end{tikzpicture}
+	\end{center}
+\end{exemple}
+
+\begin{remarque}
+	L'ordre de la somme n'importe pas : $\vec{u} + \vec{v} = \vec{v} + \vec{u}$.
+\end{remarque}
+
+\begin{propriete}[Relation de Chasles]
+	Soient $A$, $B$ et $C$ trois points. On a
+	$$ \widevec{A{\color{red}B}} + \widevec{{\color{red}B}C} = \widevec{AC} $$
+\end{propriete}
+
 \end{document}

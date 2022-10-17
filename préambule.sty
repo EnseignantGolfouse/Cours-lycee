@@ -207,6 +207,7 @@
 \newcommand{\produit}[2]{\overset{#2}{\underset{#1}{\prod}}}
 \newcommand{\sommedirecte}[2]{\overset{#2}{\underset{#1}{\oplus}}}
 \renewcommand*{\proofname}{Preuve}
+\newcommand{\widevec}[1]{\overrightarrow{#1}}
 
 % Pour entourer un nombre
 \newcommand*\circled[2][transparent]{\tikz[baseline=(char.base)]{
@@ -220,10 +221,13 @@
 }
 
 % Pour faire un cadre
-\newcommand{\squareFrame}[1]{%
+\newcommand{\squareFrame}[2][]{%
 \tikz[baseline=(char.base)]{%
-\node[shape=rectangle,fill=white,draw,drop shadow] (char) {#1};}%
-}
+\ifthenelse{\equal{#1}{noshadow}}{%
+	\node[shape=rectangle,fill=white,draw] (char) {#2};%
+}{%
+	\node[shape=rectangle,fill=white,draw,drop shadow] (char) {#2};%
+}}}
 
 \newcommand{\myArrow}{-{Latex[length=3mm, width=2mm]}}
 
