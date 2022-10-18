@@ -1,0 +1,73 @@
+\documentclass[noheader,landscape,twocolumn]{coursclass}
+
+\usepackage{diagbox}
+
+\newgeometry{margin=0.5cm,top=1cm}
+
+\begin{document}
+
+\newcommand{\Cours}{
+	\begin{definition}[Tableau croisé d'effectifs]
+		Lorsqu'on étudie deux \textbf{caractères} d'un objet, on utilise un \textbf{tableau croisé d'effectifs} (aussi appelé \textbf{tableau à double entrée}).
+
+		Le premier caractère est noté $X$, et le deuxième $Y$. \medskip
+
+		Les valeurs prisent par le caractère $X$ sont notées $x₁$, $x₂$, $x₃$, ..., et sont notées sur la première colonne.
+
+		Les valeurs prisent par le caractère $Y$ sont notées $y₁$, $y₂$, $y₃$, ..., et sont notées sur la première ligne. \medskip
+
+		Dans chaque case, on place \textbf{l'effectif} correspondant au valeurs décritent.
+
+		L'effectif correspondant aux valeurs $(xᵢ ; yⱼ)$ est noté $n_{ij}$.
+
+		Les totaux de chaque colonne et chaque ligne sont appelés les \textbf{effectifs marginaux}. On les place dans la dernière ligne/colonne.
+
+		Dans la case en bas à droite, on place \textbf{l'effectif total} $N$.
+	\end{definition}
+
+	\begin{exemple}
+		un constructeur de smartphone vend un modèle disponible en trois couleurs différentes et avec trois capacités de stockage possibles. Un magasin fait le bilan du nombre de smartphones vendus selon ces deux caractères. \bigskip
+
+		\begin{minipage}{0.79\linewidth}
+			\renewcommand{\arraystretch}{1.4}
+			\begin{tabular}{|l|*{4}{>{\centering}p{1.4cm}|}}
+				\hline
+				\diagbox[width=3cm]{couleur}{mémoire} & $y₁ = 64$ Go & $y₂ = 128$ Go & $y₃ = 256$ Go & Total\tabularnewline
+				\hline
+				$x₁ =$ Noir                           & 36           & 73            & 16            & \tabularnewline
+				\hline
+				$x₂ =$ Blanc                          & 20           & 52            & 3             & \tabularnewline
+				\hline
+				$x₃ =$ Rouge                          & 24           & 17            & 9             & \tabularnewline
+				\hline
+				Total                                 &              &               &               & \tabularnewline
+				\hline
+			\end{tabular}
+		\end{minipage}
+		\begin{minipage}{0.05\linewidth}
+			\tikz{
+				\coordinate (X) at (0.7,0);
+				\node at (0,1) {\phantom{ }};
+				\draw[->] (X) node[right] {\begin{tabular}{c} Effectifs\\ marginaux \end{tabular}} -- (0,0);
+				\draw[->] (X) -- (0,-0.5);
+				\draw[->] (X) -- (0,0.5);
+			}
+		\end{minipage}
+
+		\tikz{
+			\node at (-5.5,0) {\phantom{ }};
+			\draw[->] (0,-1) node[below] {Effectifs marginaux} -- (0,0);
+			\draw[->] (0,-1) -- (1.8,0);
+			\draw[->] (0,-1) -- (-1.8,0);
+			\draw[->] (3.8,-1) node[below] {Effectif total ($N$)} -- (3.8,0);
+		}
+	\end{exemple}
+}
+
+\Cours
+
+\newpage
+
+\Cours
+
+\end{document}

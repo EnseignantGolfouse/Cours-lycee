@@ -1,0 +1,73 @@
+\documentclass[xcolor=table]{beamer}
+
+\usepackage{préambule}
+
+\renewcommand{\arraystretch}{1.2}
+
+\setlength{\leftmargini}{0.5cm}
+\setlength{\leftmarginii}{0.5cm}
+
+\title{Activité - effectifs croisés}
+
+\begin{document}
+\footnotesize
+
+\begin{frame}
+	Une usine produit des pièces aréonautiques. Elle peuvent être soit en plastique, soit en aluminium.
+
+	Des études statistiques menées sur un lot de 1000 pièces ont données les renseignements suivants :
+	\begin{itemize}
+		\item $45$ \% de ces pièces proviennent de l'usine A ;
+		\item $270$ pièces qui proviennent de l'usine A sont en aluminium ;
+		\item l'usine B fabrique autant de pièces en plastique que de pièces en aluminium.
+	\end{itemize}
+
+	\begin{enumerate}
+		\item Combien de pièces proviennent de l'usine B ? % 550
+
+		      Combien de pièces en plastique proviennent de l'usine A ? % 195
+		\item Organiser toutes ces données dans un tableau à double entrée.
+		\item On prélève «au hasard» une pièce de ce lot.
+
+		      On note :
+
+		      - A l'évènement «La pièce provient de l'usine A» ;
+
+		      - B l'évènement «La pièce provient de l'usine B» ;
+
+		      - P l'évènement «La pièce est en plastique».
+		      \begin{enumerate}[a.]
+			      \item Déterminer la probabilité de l'évènement A.
+			      \item Définir par une phrase l'évènement $A ∩ B$. Calculer sa probabilité.
+			      \item On choisit au hasard une pièce provenant de l'usine A.
+
+			            Quelle est la probabilité qu'elle soit en aluminium ?
+		      \end{enumerate}
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\begin{enumerate}
+		\color{red}
+		\item 550 pièces proviennent de l'usine B.
+
+		      180 pièces en plastique proviennent de l'usine A.
+		\item \begin{center}
+			      \begin{tabular}{l|c|c|c|}
+				      \cline{2-4}
+				                                                                        & \cellcolor[HTML]{00D2CB}{\color[HTML]{000000} Usine A} & \cellcolor[HTML]{00D2CB}{\color[HTML]{000000} Usine B} & \cellcolor[HTML]{00D2CB}{\color[HTML]{000000} TOTAL} \\ \hline
+				      \multicolumn{1}{|l|}{\cellcolor[HTML]{00D2CB}Pièces en plastique} & 180                                                    & 275                                                    & 455                                                  \\ \hline
+				      \multicolumn{1}{|l|}{\cellcolor[HTML]{00D2CB}Pièces en aluminium} & 270                                                    & 275                                                    & 545                                                  \\ \hline
+				      \multicolumn{1}{|l|}{\cellcolor[HTML]{00D2CB}TOTAL}               & 450                                                    & 550                                                    & 1000                                                 \\ \hline
+			      \end{tabular}
+		      \end{center}
+		\item \begin{enumerate}[a.]
+			      \color{red}
+			      \item La probabilité de l'évènement A est $\dfrac{450}{1000} = 0.45$.
+			      \item L'évènement $A∩B$ correspond à la probabilité que la pièce provienne de l'usine A \uline{et} de l'usine B. Sa probabilité est donc $0$.
+			      \item La probabilité qu'une pièce provenant de l'usine A soit en aluminium est $\dfrac{270}{450} = 0.6$.
+		      \end{enumerate}
+	\end{enumerate}
+\end{frame}
+
+\end{document}

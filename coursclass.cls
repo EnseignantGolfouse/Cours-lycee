@@ -37,7 +37,7 @@
 \let\runtitle\@title
 \ifthenelse{\equal{\Options@classe}{}}{
 	\fancyhead[C]{Mathématiques}}{
-	\fancyhead[C]{Mathématiques - \Options@classe}}
+	\fancyhead[C]{\Options@classe - Mathématiques}}
 \fancyhead[R]{%
 	\ifthenelse{\equal{\Options@headerTitle}{}}%
 	{\runtitle}%

@@ -14,6 +14,11 @@
 
 ## 3) Probabilités (partie 1)
 
+- Tableaux d'effectifs et de fréquences
+- Tableaux des fréquences conditionnelles
+- Cardinal d'un ensemble
+- Probabilités conditionnelles
+
 ## 4) Polynômes de degré 2 et 3
 
 ## 5) Dérivées
@@ -21,6 +26,12 @@
 ## 6) Suites
 
 ## 7) Probabilités (partie 2)
+
+- Variable aléatoire discrète
+- Loi de probabilité
+- Espérance d'une variable aléatoire
+- Loi de Bernoulli
+- Échantillonnage avec loi de Bernoulli
 
 ## 8) Nombres complexes
 

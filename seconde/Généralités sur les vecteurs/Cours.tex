@@ -104,6 +104,10 @@
 	\end{multicols}
 \end{exemple}
 
+\begin{definition}[Vecteur nul]
+	Il n'y a qu'un seul vecteur dont la norme est $0$. On l'appelle le \textbf{vecteur nul}, et on le note $\vec{0}$.
+\end{definition}
+
 \begin{definition}[Vecteurs opposés]
 	Si deux vecteurs ont la même direction, la même norme, mais des sens différents, on dit qu'ils sont \textbf{opposés}.
 \end{definition}
@@ -116,11 +120,11 @@
 
 			\node[above] at (A) {A};
 			\node[above] at (B) {B};
-			\draw[->] (A) -- node[midway,above left] {$\widevec{AB}$} (B);
+			\draw[->] (A) -- node[midway,above left] {$\vec{u} = \widevec{AB}$} (B);
 		\end{tikzpicture}
 	\end{center}
 
-	Si une translation envoie le point A sur le point B, on peut appeller le vecteur de cette translation \squareFrame{$\widevec{AB}$}.
+	Si une translation de vecteur $\vec{u}$ envoie le point A sur le point B, on peut appeller le vecteur de cette translation \squareFrame{$\widevec{AB}$}. On dit alors que $\widevec{AB}$ est un \textbf{représentant} de $\vec{u}$.
 \end{vocabulaire}
 
 \begin{definition}[Somme de vecteurs]
@@ -145,7 +149,53 @@
 
 \begin{remarque}
 	L'ordre de la somme n'importe pas : $\vec{u} + \vec{v} = \vec{v} + \vec{u}$.
+
+	\begin{center}
+		\begin{tikzpicture}
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (3,1.5);
+			\coordinate (C) at (4,-0.5);
+			\coordinate (Bprime) at (1,-2);
+
+			\draw[blue,->] (A) -- node[above] {$\vec{u}$} (B);
+			\draw[blue,->] (B) -- node[above right] {$\vec{v}$} (C);
+			\draw[blue,->] (A) -- node[below left] {$\vec{v}$} (Bprime);
+			\draw[blue,->] (Bprime) -- node[below] {$\vec{u}$} (C);
+			\draw[red,->] (A) -- node[below] {$\vec{v}+\vec{u}$} node[above] {$\vec{u}+\vec{v}$} (C);
+		\end{tikzpicture}
+	\end{center}
 \end{remarque}
+
+\begin{definition}[Soustraction de vecteurs]
+	Soustraire un vecteur revient à additionner son opposé :
+
+	$$ \widevec{AB} - \widevec{CD} = \widevec{AB} + \widevec{DC} $$
+\end{definition}
+
+\begin{definition}[Multiplication de vecteurs]
+	On peut multiplier un vecteur $\vec{u}$ par un nombre réel $x$ : le vecteur obtenu a
+	\begin{itemize}
+		\item La même direction, le même sens que $\vec{u}$.
+		\item Une norme qui est $x$ fois celle de $\vec{u}$.
+	\end{itemize}
+\end{definition}
+
+\begin{exemple}
+	\begin{center}
+		\begin{tikzpicture}
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (2,0.5);
+			\coordinate (C) at (4,1);
+
+			\foreach \p in {A,B,C} {
+					\node at (\p) {×};
+					\node[above] at (\p) {\p};
+				}
+		\end{tikzpicture}
+	\end{center}
+	
+	Ici $\widevec{AC} = 2 × \widevec{AB}$. Inversement, $\widevec{AB} = \frac{1}{2}\widevec{AC}$.
+\end{exemple}
 
 \begin{propriete}[Relation de Chasles]
 	Soient $A$, $B$ et $C$ trois points. On a
