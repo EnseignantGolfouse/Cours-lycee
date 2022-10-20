@@ -19,11 +19,22 @@
 % \ProcessOptions\relax
 \LoadClass[a4paper]{article}
 
-% =========== packages ===========
-\usepackage{préambule}
+\usepackage{préambule-cours}
+\usepackage[shortlabels]{enumitem} % Pour facilement modifier les listes.
 \usepackage[a4paper,top=2cm,bottom=1cm,left=1.5cm,right=1.5cm]{geometry} % Mise en page, marges
 \usepackage{fancyhdr} % Haut et bas de page
-\usepackage[shortlabels]{enumitem} % Pour facilement modifier les listes.
+
+\makeatletter
+\let\internal@maketitle=\maketitle
+\def\maketitle{
+  \internal@maketitle\thispagestyle{fancy}
+}
+\makeatother
+
+\setlist[itemize,1]{label=•}
+\setlist[itemize,2]{label=◦}
+\setlist[itemize,3]{label=■}
+\setlist[itemize,4]{label=□}
 
 % =========== fancyhdr ===========
 \makeatletter
@@ -51,64 +62,3 @@
 }
 \fi
 \makeatother
-
-% =========== Autres définitions ===========
-\mdfdefinestyle{coursstyle}{
-    style=redstyle,
-    frametitle={Cours},
-}
-\mdfdefinestyle{proprietestyle}{
-    style=redstyle,
-    frametitle={Propriété},
-}
-\mdfdefinestyle{methodestyle}{
-	style=redstyle,
-    frametitle={Méthode},
-}
-\mdfdefinestyle{vocabulairestyle}{
-	style=greenstyle,
-    frametitle={Vocabulaire},
-}
-\mdfdefinestyle{exemplestyle}{
-    style=bluestyle,
-    frametitle={Exemple},
-}
-\mdfdefinestyle{remarquestyle}{
-    style=bluestyle,
-    frametitle={Remarque},
-}
-
-\newmdenv[style=exemplestyle]{exemple}
-\newmdenv[style=remarquestyle]{remarque}
-\newmdenv[style=applicationstyle]{application}
-\newmdenv[style=coursstyle]{cours}
-\newmdenv[style=proprietestyle]{propriete}
-\newmdenv[style=methodestyle]{methode}
-% \let\definition\@undefined
-% \let\enddefinition\@undefined
-\newmdenv[style=greenstyle]{definition}
-\newmdenv[style=vocabulairestyle]{vocabulaire}
-
-%=== Titres optionels
-\directlua{
-require "titresOptionels"
-
-titreOptionel("cours", "Cours")
-titreOptionel("propriete", "Propriété")
-titreOptionel("methode", "Méthode")
-titreOptionel("application", "Application")
-titreOptionel("vocabulaire", "Vocabulaire")
-titreOptionel("definition", "Définition")
-}
-
-\makeatletter
-\let\internal@maketitle=\maketitle
-\def\maketitle{
-  \internal@maketitle\thispagestyle{fancy}
-}
-\makeatother
-
-\setlist[itemize,1]{label=•}
-\setlist[itemize,2]{label=◦}
-\setlist[itemize,3]{label=■}
-\setlist[itemize,4]{label=□}

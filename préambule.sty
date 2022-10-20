@@ -4,6 +4,25 @@
 
 \ProvidesPackage{préambule}
 
+\usepackage{kvoptions}
+\usepackage{kvoptions-patch}
+\usepackage{ifthen}
+
+% ===============
+% PACKAGE OPTIONS
+% ===============
+\SetupKeyvalOptions{
+	family=PreambuleOptions,
+	prefix=PreambuleOptions@
+}
+\DeclareBoolOption[false]{nofigures}
+\ProcessKeyvalOptions*
+
+\makeatletter
+
+% ==============
+% PACKAGE IMPORT
+% ==============
 \usepackage{fontspec}           % Pour changer la police
 \setmainfont[Ligatures=TeX]{DejaVuSans} % Police avec support pour l'UTF-8
 \usepackage[math-style=french,sans-style=upright]{unicode-math}       % Symboles unicodes en mode math
@@ -19,35 +38,34 @@
 \usepackage{graphicx}           % figures
 \usepackage{titlesec}           % permet de changer l'affichage des sections et autres
 \usepackage{color}              % couleurs rgb
-\makeatletter
 \ifboolexpr{test    {\@ifclassloaded{article}}
             or test {\@ifclassloaded{book}}}
 {
 \usepackage[dvipsnames,table]{xcolor} % plus de couleurs
 }
 {\usepackage{xcolor}}
-\makeatother
+\ifPreambuleOptions@nofigures
+\else
 \usepackage{pgfplots}
 \usepackage{pgf-pie}
 \pgfplotsset{compat=1.16}
 \usepackage[tikz]{mdframed}     % boites fancy autour des théorèmes et autres
-\usepackage{ulem}               % Pour souligner
 \usetikzlibrary{shadows}        % effet d'ombre sur les boites ('shadow = true')
 \usetikzlibrary{arrows.meta}    % Flèche \myArrow 
+\fi
+\usepackage{ulem}               % Pour souligner
 \usepackage{nopageno}           % pas de numéros de page
 \usepackage[makeroom]{cancel}   % texte barré
 \usepackage{multicol}           % avoir le texte en plusieurs colonnes
 \usepackage{caption}            % Custom image captions
 \usepackage{floatrow}           % ??? plusieurs images côte à côte
 \usepackage[thinlines]{easytable} % Table plus faciles à utiliser (environnement TAB)
-\makeatletter
 \ifboolexpr{test    {\@ifclassloaded{article}}
             or test {\@ifclassloaded{book}}}
 {
 \usepackage[shortlabels]{enumitem}           % Pour facilement modifier les listes.
 }
 {}
-\makeatother
 \usepackage{tabularx} % meileurs tableaux
 \usepackage{luacode} % \begin{luacode} ... \end{luacode}
 \usepackage{wrapfig} % Texte autour d'images
@@ -57,7 +75,6 @@
 \setlength{\parindent}{0pt} % Pas d'indentation implicite des paragraphes.
 
 % Symboles des listes
-\makeatletter
 \ifboolexpr{test    {\@ifclassloaded{article}}
             or test {\@ifclassloaded{book}}}
 {
@@ -66,7 +83,6 @@
 \setlist[itemize,3]{label=■}
 \setlist[itemize,4]{label=□}
 }{}
-\makeatother
 
 % 'require' ne fonctionne pas bien...
 
@@ -82,6 +98,12 @@
 \definecolor{myred}{RGB}{220, 20, 20}
 \definecolor{mygreen}{RGB}{0, 170, 40}
 \definecolor{myblue}{RGB}{0, 0, 100}
+
+% =======================
+% ENVIRONMENT DEFINITIONS
+% =======================
+\ifPreambuleOptions@nofigures
+\else
 
 \mdfdefinestyle{boxstyle}{
     linecolor=black!70,
@@ -168,6 +190,23 @@
     innertopmargin=\topskip,
 }
 
+\newmdenv[style=enoncestyle]{enonce}
+\newmdenv[style=redstyle]{attention}
+\newmdenv[style=boxstyle]{mybox}
+\newmdenv[style=greyboxstyle]{greybox}
+\newmdenv[style=paleboxstyle]{palebox}
+
+%Titre optionel pour les blocks 'Énoncé'
+\let\orig@enonce=\enonce
+\def\enonce{
+  \@ifnextchar[{\enonce@opt}{\orig@enonce}
+}
+\def\enonce@opt[#1]{
+  \orig@enonce[frametitle={Énoncé : #1}]
+}
+
+\fi
+
 % théorème qui souligne son titre.
 \newtheoremstyle{underline_theorem_style}
 	{\topsep} % espace avant
@@ -185,23 +224,9 @@
 \newtheorem{exercice}{Exercice}
 \newtheorem*{exercice*}{Exercice}
 
-\newmdenv[style=enoncestyle]{enonce}
-\newmdenv[style=redstyle]{attention}
-\newmdenv[style=boxstyle]{mybox}
-\newmdenv[style=greyboxstyle]{greybox}
-\newmdenv[style=paleboxstyle]{palebox}
-
-%Titre optionel pour les blocks 'Énoncé'
-\makeatletter
-\let\orig@enonce=\enonce
-\def\enonce{
-  \@ifnextchar[{\enonce@opt}{\orig@enonce}
-}
-\def\enonce@opt[#1]{
-  \orig@enonce[frametitle={Énoncé : #1}]
-}
-\makeatother
-
+% ========================
+% COMMANDES ADDITIONNELLES
+% ========================
 
 \newcommand{\somme}[2]{\overset{#2}{\underset{#1}{\sum}}}
 \newcommand{\produit}[2]{\overset{#2}{\underset{#1}{\prod}}}
@@ -209,6 +234,8 @@
 \renewcommand*{\proofname}{Preuve}
 \newcommand{\widevec}[1]{\overrightarrow{#1}}
 
+\ifPreambuleOptions@nofigures
+\else
 % Pour entourer un nombre
 \newcommand*\circled[2][transparent]{\tikz[baseline=(char.base)]{
             \node[shape=circle,draw=#1,inner sep=2pt] (char) {#2};}}
@@ -230,6 +257,7 @@
 }}}
 
 \newcommand{\myArrow}{-{Latex[length=3mm, width=2mm]}}
+\fi
 
 % Enlève l'espace après la virgule en mode maths
 \thinmuskip=0mu
@@ -271,3 +299,5 @@
 \repeat%
 \fi
 }
+
+\makeatother

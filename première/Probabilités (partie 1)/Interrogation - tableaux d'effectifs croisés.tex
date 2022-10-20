@@ -1,0 +1,96 @@
+\documentclass{beamer}
+
+\usepackage{préambule}
+
+\setbeamertemplate{itemize item}{-}
+\setbeamersize{
+	text margin left=0.5cm,
+	text margin right=0.5cm
+}
+\setlength{\columnseprule}{0.7pt}
+\setlength{\leftmargini}{0.4cm}
+\setlength{\leftmarginii}{0.3cm}
+
+\begin{document}
+\footnotesize
+
+\begin{frame}
+	Une agence de voyage propose trois destinations : Les États-Unis, le Japon, ou le lointain pays de Paris.
+
+	On a effectué une enquête parmi les $400$ clients de cette année pour savoir si ils étaient satisfaits ou déçus. On a alors obtenu les données suivantes :
+	\begin{multicols}{2}
+		\uline{Sujet A}
+
+		\begin{itemize}
+			\item La moitié des clients sont allés aux États-Unis.
+			\item $30$\% des clients sont allés au Japon.
+			\item $80$\% des clients qui sont allés au Japon sont satisfaits.
+			\item $8$ des clients qui sont allés à Paris sont déçus.
+			\item Dans l'ensemble, $72$\% des clients sont satisfaits de leur voyage.
+		\end{itemize}
+
+		\begin{enumerate}
+			\item Organiser ces données dans un tableau d'effectifs croisés, et le remplir.
+			\item Quelle proportion des clients satisfaits étaient allés aux États-Unis ?
+			\item Quel est la destination avec le plus haut taux de satisfaction ?
+		\end{enumerate}
+
+		\columnbreak
+
+		\uline{Sujet B}
+
+		\begin{itemize}
+			\item $35$\% des clients sont allés aux US.
+			\item La moitié des clients sont allés au Japon.
+			\item $76$\% des clients qui sont allés au Japon sont satisfaits.
+			\item $12$ des clients qui sont allés à Paris sont déçus.
+			\item Dans l'ensemble, $73$\% des clients sont satisfaits de leur voyage.
+		\end{itemize}
+
+		\begin{enumerate}
+			\item Organiser ces données dans un tableau d'effectifs croisés, et le remplir.
+			\item Quelle proportion des clients satisfaits étaient allés aux États-Unis ?
+			\item Quel est la destination avec le plus bas taux de satisfaction ?
+		\end{enumerate}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}
+	\small\color{red}
+	\uline{Sujet A : CORRECTION}
+
+	\begin{enumerate}
+		\item \
+
+		      \begin{tabular}{|l|c|c|c|c|}
+			      \hline
+			                     & États-Unis & Japon & Paris & TOTAL \\ \hline
+			      satisfaits     & 120        & 96    & 72    & 288   \\ \hline
+			      non satisfaits & 80         & 24    & 8     & 112   \\ \hline
+			      TOTAL          & 200        & 120   & 80    & 400   \\ \hline
+		      \end{tabular}
+		\item La proportion de clients satisfaits étant allés aux États-Unis est $\dfrac{120}{288} ≈ 0,417$
+		\item Les États-Unis ont $60\%$ de satisfaction, le Japon $80\%$ et Paris $90\%$. Paris a donc le plus haut taux de satisfaction.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\small\color{red}
+	\uline{Sujet B : CORRECTION}
+
+	\begin{enumerate}
+		\item \
+
+		      \begin{tabular}{|l|c|c|c|c|}
+			      \hline
+			                     & États-Unis & Japon & Paris & TOTAL \\ \hline
+			      satisfaits     & 92         & 152   & 48    & 292   \\ \hline
+			      non satisfaits & 58         & 48    & 12    & 108   \\ \hline
+			      TOTAL          & 140        & 200   & 60    & 400   \\ \hline
+		      \end{tabular}
+		\item La proportion de clients satisfaits étant allés aux États-Unis est $\dfrac{92}{292} ≈ 0,315$
+		\item Les États-Unis ont $≈65\%$ de satisfaction, le Japon $76\%$ et Paris $75\%$. Les États-Unis ont donc le plus bas taux de satisfaction.
+	\end{enumerate}
+\end{frame}
+
+\end{document}

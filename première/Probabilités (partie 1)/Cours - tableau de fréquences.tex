@@ -1,0 +1,75 @@
+\documentclass[noheader,landscape,twocolumn]{coursclass}
+
+\usepackage{diagbox}
+
+\newgeometry{margin=0.5cm,top=1cm}
+
+\begin{document}
+
+\newcommand{\Cours}{
+	\begin{definition}[Tableau de fréquences]
+		Lorsqu'on a un tableau d'effectifs, on peut dresser en parallèle un \textbf{tableau de fréquences}. \smallskip
+
+		Chaque case contient le \uline{rapport de l'effectif considéré par l'effectif global.} \smallskip
+
+		Chaque fréquence peut être exprimée comme un \uline{nombre décimal}, une \uline{fraction}
+
+		ou un \uline{pourcentage}. \smallskip
+
+		La fréquence d'un effectif marginal est une \textbf{fréquence marginale}. \smallskip
+
+		La fréquence de la ligne $i$ et de la colonne $j$ est appelée $f_{ij}$.
+	\end{definition}
+
+	\begin{remarque}
+		La fréquence totale est \textbf{toujours} $1$.
+	\end{remarque}
+
+	\begin{exemple}
+		On reprend l'exemple des smartphones : Chaque effectif doit être divisé par ...... (l'effectif total).
+		\bigskip
+
+		\begin{minipage}{0.8\linewidth}
+			\resizebox{1.03\textwidth}{!}{
+				\renewcommand{\arraystretch}{1.4}
+				\begin{tabular}{|l|*{4}{>{\centering}p{1.4cm}|}}
+					\hline
+					\diagbox{couleur}{mémoire} & $y₁ = 64$ Go            & $y₂ = 128$ Go & $y₃ = 256$ Go & Total\tabularnewline
+					\hline
+					$x₁ =$ Noir                & \phantom{$\frac{0}{0}$} &               &               & \tabularnewline
+					\hline
+					$x₂ =$ Blanc               & \phantom{$\frac{0}{0}$} &               &               & \tabularnewline
+					\hline
+					$x₃ =$ Rouge               & \phantom{$\frac{0}{0}$} &               &               & \tabularnewline
+					\hline
+					Total                      & \phantom{$\frac{0}{0}$} &               &               & \tabularnewline
+					\hline
+				\end{tabular}
+			}
+		\end{minipage}
+		\begin{minipage}{0.05\linewidth}
+			\tikz{
+				\node at (0,1) {\phantom{ }};
+				\draw[->] (0.6,0) node[right] {\begin{tabular}{c} Fréquences\\ marginales \end{tabular}} -- (0,0);
+				\draw[->] (0.6,0) -- (0,-0.5);
+				\draw[->] (0.6,0) -- (0,0.5);
+			}
+		\end{minipage}
+
+		\tikz{
+			\node at (-6.2,0) {\phantom{ }};
+			\draw[->] (0,-1) node[below] {Fréquences marginales} -- (0,0);
+			\draw[->] (0,-1) -- (1.6,0);
+			\draw[->] (0,-1) -- (-1.6,0);
+			\draw[->] (3.4,-0.5) node[below] {Fréquence totale ($N$)} -- ++(0,0.5);
+		}
+	\end{exemple}
+}
+
+\Cours
+
+\newpage
+
+\Cours
+
+\end{document}

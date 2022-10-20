@@ -18,11 +18,11 @@
 
 	Le premier caractère est noté $X$, et le deuxième $Y$. \medskip
 
-	Les valeurs prisent par le caractère $X$ sont notées $x₁$, $x₂$, $x₃$, ..., et sont notées sur la première colonne.
+	Les valeurs prises par le caractère $X$ sont notées $x₁$, $x₂$, $x₃$, ..., et sont notées sur la première colonne.
 
-	Les valeurs prisent par le caractère $Y$ sont notées $y₁$, $y₂$, $y₃$, ..., et sont notées sur la première ligne. \medskip
+	Les valeurs prises par le caractère $Y$ sont notées $y₁$, $y₂$, $y₃$, ..., et sont notées sur la première ligne. \medskip
 
-	Dans chaque case, on place \textbf{l'effectif} correspondant au valeurs décritent.
+	Dans chaque case, on place \textbf{l'effectif} correspondant au valeurs décrites.
 
 	L'effectif correspondant aux valeurs $(xᵢ ; yⱼ)$ est noté $n_{ij}$.
 
@@ -44,7 +44,7 @@
 			\hline
 			$x₂ =$ Blanc                           & 20               & 52                & 3                & {\color{blue}75} \tabularnewline
 			\hline
-			$x₃ =$ Rouge                           & {24}               & 17                & 9                & {\color{blue}50} \tabularnewline
+			$x₃ =$ Rouge                           & {24}             & 17                & 9                & {\color{blue}50} \tabularnewline
 			\hline
 			Total                                  & {\color{blue}80} & {\color{blue}142} & {\color{blue}28} & {\color{red}250}\tabularnewline
 			\hline
@@ -65,6 +65,64 @@
 		\draw[->] (0,-1) -- (2,0);
 		\draw[->] (0,-1) -- (-2,0);
 		\draw[->] (5,-1) node[below] {Effectif total ($N$)} -- (5,0);
+	}
+\end{exemple}
+
+\begin{definition}[Tableau de fréquences]
+	Lorsqu'on a un tableau d'effectifs, on peut dresser en parallèle un \textbf{tableau de fréquences}. \smallskip
+
+	Chaque case contient le \uline{rapport de l'effectif considéré par l'effectif global.} \smallskip
+
+	Chaque fréquence peut être exprimée comme un \uline{nombre décimal}, une \uline{fraction} 
+	
+	ou un \uline{pourcentage}. \smallskip
+
+	La fréquence d'un effectif marginal est une \textbf{fréquence marginale}. \smallskip
+
+	La fréquence de la ligne $i$ et de la colonne $j$ est appelée $f_{ij}$.
+\end{definition}
+
+\begin{remarque}
+	La fréquence totale est \textbf{toujours} $1$.
+\end{remarque}
+
+\begin{exemple}
+	On reprend l'exemple des smartphones : Chaque effectif doit être divisé par $250$ (l'effectif total).
+	\bigskip
+
+	\begin{minipage}{0.89\linewidth}
+		\resizebox{\textwidth}{!}{
+			\renewcommand{\arraystretch}{1.4}
+			\begin{tabular}{|l|*{4}{>{\centering}p{2.3cm}|}}
+				\hline
+				\diagbox{$X$ = couleur}{$Y$ = mémoire} & $y₁ = 64$ Go             & $y₂ = 128$ Go            & $y₃ = 256$ Go            & Total\tabularnewline
+				\hline
+				$x₁ =$ Noir                            & $\frac{36}{250} = 0,144$ & $\frac{73}{250} = 0,292$ & $\frac{16}{250} = 0,064$ & {\color{blue}$0,5$} \tabularnewline
+				\hline
+				$x₂ =$ Blanc                           & $0,08$                   & $0,208$                  & $0,012$                  & {\color{blue}0,3} \tabularnewline
+				\hline
+				$x₃ =$ Rouge                           & $0,096$                  & $0,068$                  & $0,036$                  & {\color{blue}$0,2$} \tabularnewline
+				\hline
+				Total                                  & {\color{blue}$0,32$}     & {\color{blue}$0,568$}    & {\color{blue}$0,112$}    & {\color{red}$1$}\tabularnewline
+				\hline
+			\end{tabular}
+		}
+	\end{minipage}
+	\begin{minipage}{0.05\linewidth}
+		\tikz{
+			\node at (0,1) {\phantom{ }};
+			\draw[->] (1,0) node[right] {\begin{tabular}{c} Fréquences\\ marginales \end{tabular}} -- (0,0);
+			\draw[->] (1,0) -- (0,-0.8);
+			\draw[->] (1,0) -- (0,0.8);
+		}
+	\end{minipage}
+
+	\tikz{
+		\node at (-8.6,0) {\phantom{ }};
+		\draw[->] (0,-1) node[below] {Fréquences marginales} -- (0,0);
+		\draw[->] (0,-1) -- (2,0);
+		\draw[->] (0,-1) -- (-2,0);
+		\draw[->] (4.9,-1) node[below] {Fréquence totale ($N$)} -- ++(0,1);
 	}
 \end{exemple}
 

@@ -1,0 +1,60 @@
+\documentclass[
+	classe=$2^{de}$,
+	headerTitle=Activité,
+	landscape,twocolumn
+]{exercice}
+
+\usetikzlibrary{calc}
+
+\title{Activité : \\ construction à la règle et au compas}
+
+\begin{document}
+
+\newcommand{\Activite}{
+	\maketitle
+
+	En utilisant la règle et le compas, construire :
+	\begin{itemize}
+		\item Le représentant de $\vec{u}$ d'origine $A$.
+		\item Le représentant de $\vec{v}$ d'extrémité $B$.
+		\item Le représentant de $\vec{u} + \vec{v}$ d'extrémité $C$.
+		\item Le représentant de $\vec{u} + \vec{u} + \vec{v}$ d'origine $D$.
+	\end{itemize}
+
+	\begin{center}
+		\begin{tikzpicture}
+			\coordinate (uStart) at (0,0);
+			\coordinate (uVec) at (3,1);
+			\coordinate (vStart) at (5,1);
+			\coordinate (vVec) at (-1,-2.5);
+			\coordinate (uvVec) at ($(uVec) + (vVec)$);
+			\coordinate (uuvVec) at ($(uVec) + (uVec) + (vVec)$);
+			\coordinate (A) at (1,-3);
+			\coordinate (B) at (6,-3);
+			\coordinate (C) at (1,-7);
+			\coordinate (D) at (6,-7);
+
+			\draw[->] (uStart) -- node[above] {$\vec{u}$} ++(uVec);
+			\draw[->] (vStart) -- node[above left] {$\vec{v}$} ++(vVec);
+
+			\foreach \p in {A,B,C,D} {
+					\node at (\p) {×};
+					\node[above left] at (\p) {$\p$};
+				}
+			\ifdefined\makeCorrection
+				\draw[red,->] (A) -- ++(uVec);
+				\draw[red,->] (B) ++(vVec) -- (B);
+				\draw[red,->] (C) ++(uvVec) -- (C);
+				\draw[red,->] (D) -- ++(uuvVec);
+			\fi
+		\end{tikzpicture}
+	\end{center}
+}
+
+\Activite
+
+\newpage
+
+\Activite
+
+\end{document}

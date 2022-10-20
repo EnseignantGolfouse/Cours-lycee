@@ -1,0 +1,55 @@
+% !TeX program = lualatex
+
+\ProvidesPackage{préambule-cours}
+
+% =========== packages ===========
+\usepackage{préambule}
+
+% =========== Autres définitions ===========
+\mdfdefinestyle{coursstyle}{
+    style=redstyle,
+    frametitle={Cours},
+}
+\mdfdefinestyle{proprietestyle}{
+    style=redstyle,
+    frametitle={Propriété},
+}
+\mdfdefinestyle{methodestyle}{
+	style=redstyle,
+    frametitle={Méthode},
+}
+\mdfdefinestyle{vocabulairestyle}{
+	style=greenstyle,
+    frametitle={Vocabulaire},
+}
+\mdfdefinestyle{exemplestyle}{
+    style=bluestyle,
+    frametitle={Exemple},
+}
+\mdfdefinestyle{remarquestyle}{
+    style=bluestyle,
+    frametitle={Remarque},
+}
+
+\newmdenv[style=exemplestyle]{exemple}
+\newmdenv[style=remarquestyle]{remarque}
+\newmdenv[style=applicationstyle]{application}
+\newmdenv[style=coursstyle]{cours}
+\newmdenv[style=proprietestyle]{propriete}
+\newmdenv[style=methodestyle]{methode}
+% \let\definition\@undefined
+% \let\enddefinition\@undefined
+\renewmdenv[style=greenstyle]{definition}
+\newmdenv[style=vocabulairestyle]{vocabulaire}
+
+%=== Titres optionels
+\directlua{
+require "titresOptionels"
+
+titreOptionel("cours", "Cours")
+titreOptionel("propriete", "Propriété")
+titreOptionel("methode", "Méthode")
+titreOptionel("application", "Application")
+titreOptionel("vocabulaire", "Vocabulaire")
+titreOptionel("definition", "Définition")
+}
