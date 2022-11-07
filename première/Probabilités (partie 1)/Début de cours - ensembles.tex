@@ -1,0 +1,37 @@
+\documentclass{beamer}
+
+\usepackage{préambule}
+
+\begin{document}
+
+\newcommand{\MainFrame}{
+	\begin{frame}
+		\begin{center}
+			\begin{tikzpicture}
+				\draw (-5,-2) rectangle (5,2);
+				\draw (5,1.5) -- ++(0.5,0.2) node[right] {$Ω$};
+				\draw[red] (-1.5,0) ellipse (3 and 1.2) ++(-1.5,1.05) -- ++(-0.8,0.4) node[above left] {$A$};
+				\draw[blue] (1.5,0) ellipse (3 and 1.2) ++(1.5,1.05) -- ++(0.8,0.4) node[above right] {$B$};
+				\node at (-2.5,0) {$43$};
+				\node at (0,0) {$12$};
+				\node at (2.5,0) {$24$};
+				\node at (4,-1.5) {$21$};
+			\end{tikzpicture}
+		\end{center}
+
+		\begin{itemize}
+			\item Calculer Card($A ∪ B$). \correction{$43+12+24 = 79$}
+			\item Quel est l'effectif total ? \correction{$43+12+24+21 = 100$}
+			\item Quelle est la fréquence de l'évènement de $A$ par rapport à l'effectif total ? \correction{$\frac{43+12}{100}=0,55$ ou $55\%$}
+			\item Quelle est la fréquence de l'évènement de $A ∩ B$ par rapport à l'effectif de $B$ ? \correction{$\frac{12}{12+24} = \frac{1}{3}$}
+		\end{itemize}
+	\end{frame}
+}
+
+\MainFrame
+
+\newcommand{\makeCorrection}{}
+
+\MainFrame
+
+\end{document}

@@ -1,0 +1,57 @@
+\documentclass{beamer}
+
+\usepackage{préambule}
+
+\begin{document}
+
+\newcommand{\MainFrame}{
+	\begin{frame}
+		\begin{center}
+			\begin{tikzpicture}
+				\coordinate (A) at (0,0);
+				\coordinate (B) at (2,0);
+				\coordinate (C) at (4,0);
+				\coordinate (D) at (6,0);
+				\coordinate (E) at (1,2);
+				\coordinate (F) at (3,2);
+				\coordinate (G) at (5,2);
+				\coordinate (H) at (7,2);
+				\coordinate (I) at (0,4);
+				\coordinate (J) at (2,4);
+				\coordinate (K) at (4,4);
+				\coordinate (L) at (6,4);
+
+				\foreach \p in {A,B,C,D,E,F,G,H,I,J,K,L} {
+						\node at (\p) {×};
+						\node[above left] at (\p) {$\p$};
+					}
+
+				\ifdefined\makeCorrection
+					\draw<1>[blue,->] (I) -- (J);
+					\draw<1>[blue,->] (J) -- (G);
+					\draw<1>[red,->] (I) -- (G);
+					\draw<2>[blue,->] (E) -- (B);
+					\draw<2>[blue,->] (C) -- (H);
+					\draw<2>[red,->] (E) -- (G);
+					\draw<3>[blue,->] (H) -- (J);
+					\draw<3>[blue,->] (C) -- (F);
+					\draw<3>[red,->] (D) -- (I);
+				\fi
+			\end{tikzpicture}
+		\end{center}
+
+		\begin{itemize}
+			\item Donner un représentant de $\widevec{IJ} + \widevec{JG}$. \correction{$\widevec{IG}$}
+			\item Donner un représentant de $\widevec{EB} + \widevec{CH}$. \correction{$\widevec{EG}$}
+			\item Donner un représentant de $\widevec{HJ} + \widevec{CF}$. \correction{$\widevec{DI}$}
+		\end{itemize}
+	\end{frame}
+}
+
+\MainFrame
+
+\newcommand{\makeCorrection}{}
+
+\MainFrame
+
+\end{document}

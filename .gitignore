@@ -1,2 +1,3 @@
 .~lock.*.odt#
-.build
+.build/
+__pycache__/
