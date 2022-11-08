@@ -1,0 +1,56 @@
+\documentclass[noheader,landscape,twocolumn]{coursclass}
+
+\usepackage{diagbox}
+
+\newgeometry{margin=0.5cm,top=1cm}
+
+\begin{document}
+
+\renewcommand{\arraystretch}{1.7}
+\newcommand{\Cours}{
+	\begin{definition}[Tableau de fréquences conditionnelles]
+		Si on a un tableau d'effectifs, on peut pour chaque caractère dresser un \textbf{tableau de fréquences conditionnelles} par rapport à ce caractère.
+
+		Dans ce cas, on ne garde que la ligne (ou colonne) liée à ce caractère, et on divise toutes les cases par le total de cette ligne (ou colonne).
+	\end{definition}
+
+	\begin{exemple}
+		Si on reprend l'exemple des smartphones, on peut se demander :
+		\begin{itemize}
+			\item Parmi ceux qui ont 64 Go de capacité, quelle est la répartition des couleurs ?
+
+			      On dresse alors le tableau suivant :\vspace{1em}
+
+			      \begin{tabular}{|l|*{1}{>{\centering}p{2.3cm}|}}
+				      \hline
+				      $X$ = couleur & $y₁ = 64$ Go \tabularnewline
+				      \hline
+				      $x₁ =$ Noir   & $\frac{36}{80} = $ \tabularnewline
+				      \hline
+				      $x₂ =$ Blanc  & \tabularnewline
+				      \hline
+				      $x₃ =$ Rouge  & \tabularnewline
+				      \hline
+				      Total         & \tabularnewline
+				      \hline
+			      \end{tabular}
+			\item Parmi ceux qui sont rouges, quelle est la répartition des capacités ?
+
+			      On dresse alors le tableau suivant :\vspace{1em}
+
+			      \begin{tabular}{|l|*{3}{>{\centering}p{2.3cm}|c|}}
+				      \hline
+				      $Y$ = capacité & $y₁ = 64$ Go       & $y₂ = 64$ Go & $y₃ = 64$ Go & Total \tabularnewline\hline
+				      $x₃ =$ Rouge   & $\frac{24}{50} = $ &              &              & \tabularnewline\hline
+			      \end{tabular}
+		\end{itemize}
+	\end{exemple}
+}
+
+\Cours
+
+\newpage
+
+\Cours
+
+\end{document}

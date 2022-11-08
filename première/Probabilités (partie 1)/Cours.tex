@@ -4,6 +4,7 @@
 ]{coursclass}
 
 \usepackage{diagbox}
+\usetikzlibrary{calc}
 
 \title{Chapitre 3 : Effectifs, fréquences et probabilités}
 \date{}
@@ -12,6 +13,8 @@
 \begin{document}
 
 \maketitle
+
+\section{Tableaux}
 
 \begin{definition}[Tableau croisé d'effectifs]
 	Lorsqu'on étudie deux \textbf{caractères} d'un objet, on utilise un \textbf{tableau croisé d'effectifs} (aussi appelé \textbf{tableau à double entrée}).
@@ -73,8 +76,8 @@
 
 	Chaque case contient le \uline{rapport de l'effectif considéré par l'effectif global.} \smallskip
 
-	Chaque fréquence peut être exprimée comme un \uline{nombre décimal}, une \uline{fraction} 
-	
+	Chaque fréquence peut être exprimée comme un \uline{nombre décimal}, une \uline{fraction}
+
 	ou un \uline{pourcentage}. \smallskip
 
 	La fréquence d'un effectif marginal est une \textbf{fréquence marginale}. \smallskip
@@ -92,18 +95,18 @@
 
 	\begin{minipage}{0.89\linewidth}
 		\resizebox{\textwidth}{!}{
-			\renewcommand{\arraystretch}{1.4}
+			\renewcommand{\arraystretch}{1.5}
 			\begin{tabular}{|l|*{4}{>{\centering}p{2.3cm}|}}
 				\hline
-				\diagbox{$X$ = couleur}{$Y$ = mémoire} & $y₁ = 64$ Go             & $y₂ = 128$ Go            & $y₃ = 256$ Go            & Total\tabularnewline
+				\diagbox{$X$ = couleur}{$Y$ = mémoire} & $y₁ = 64$ Go                  & $y₂ = 128$ Go                  & $y₃ = 256$ Go                  & Total\tabularnewline
 				\hline
-				$x₁ =$ Noir                            & $\frac{36}{250} = 0,144$ & $\frac{73}{250} = 0,292$ & $\frac{16}{250} = 0,064$ & {\color{blue}$0,5$} \tabularnewline
+				$x₁ =$ Noir                            & $\frac{36}{250} = 0,144$      & $\frac{73}{250} = 0,292$       & $\frac{16}{250} = 0,064$       & \noindent{\color{blue}$0,5$} \tabularnewline
 				\hline
-				$x₂ =$ Blanc                           & $0,08$                   & $0,208$                  & $0,012$                  & {\color{blue}0,3} \tabularnewline
+				$x₂ =$ Blanc                           & $0,08$                        & $0,208$                        & $0,012$                        & \noindent{\color{blue}0,3} \tabularnewline
 				\hline
-				$x₃ =$ Rouge                           & $0,096$                  & $0,068$                  & $0,036$                  & {\color{blue}$0,2$} \tabularnewline
+				$x₃ =$ Rouge                           & $0,096$                       & $0,068$                        & $0,036$                        & \noindent{\color{blue}$0,2$} \tabularnewline
 				\hline
-				Total                                  & {\color{blue}$0,32$}     & {\color{blue}$0,568$}    & {\color{blue}$0,112$}    & {\color{red}$1$}\tabularnewline
+				Total                                  & \noindent{\color{blue}$0,32$} & \noindent{\color{blue}$0,568$} & \noindent{\color{blue}$0,112$} & \noindent{\color{red}$1$}\tabularnewline
 				\hline
 			\end{tabular}
 		}
@@ -124,6 +127,143 @@
 		\draw[->] (0,-1) -- (-2,0);
 		\draw[->] (4.9,-1) node[below] {Fréquence totale ($N$)} -- ++(0,1);
 	}
+\end{exemple}
+
+\begin{definition}[Tableau de fréquences conditionnelles]
+	Si on a un tableau d'effectifs, on peut pour chaque caractère dresser un \textbf{tableau de fréquences conditionnelles} par rapport à ce caractère.
+
+	Dans ce cas, on ne garde que la ligne (ou colonne) liée à ce caractère, et on divise toutes les cases par le total de cette ligne (ou colonne).
+\end{definition}
+
+\begin{exemple}
+	Si on reprend l'exemple des smartphones, on peut se demander :
+	\begin{itemize}
+		\item Parmi ceux qui ont 64 Go de capacité, quelle est la répartition des couleurs ?
+
+		      On dresse alors le tableau suivant :
+
+		      \renewcommand{\arraystretch}{1.5}
+		      \begin{tabular}{|l|*{1}{>{\centering}p{2.3cm}|}}
+			      \hline
+			      $X$ = couleur & $y₁ = 64$ Go \tabularnewline
+			      \hline
+			      $x₁ =$ Noir   & $\frac{36}{80} = 0,45$ \tabularnewline
+			      \hline
+			      $x₂ =$ Blanc  & $0,25$ \tabularnewline
+			      \hline
+			      $x₃ =$ Rouge  & $0,3$ \tabularnewline
+			      \hline
+			      Total         & \noindent{\color{blue}$1$} \tabularnewline
+			      \hline
+		      \end{tabular}
+		\item Parmi ceux qui sont rouges, quelle est la répartition des capacités ?
+
+		      On dresse alors le tableau suivant :
+
+		      \renewcommand{\arraystretch}{1.4}
+		      \begin{tabular}{|l|*{4}{>{\centering}p{2.3cm}|}}
+			      \hline
+			      $Y$ = capacité & $y₁ = 64$ Go & $y₂ = 64$ Go & $y₃ = 64$ Go & Total \tabularnewline\hline
+			      $x₃ =$ Rouge   & $0,48$       & $0,34$       & $0,18$       & \noindent{\color{blue}$1$} \tabularnewline\hline
+		      \end{tabular}
+	\end{itemize}
+\end{exemple}
+
+\newpage
+\section{Probabilités conditionnelles}
+
+\subsection*{Rappel : vocabulaire des évènements}
+
+\begin{definition}[Expérience aléatoire, évènements]
+	Une \textbf{expérience aléatoire} est une expérience dont l'\textbf{issue} n'est pas connue à l'avance.
+
+	Un \textbf{évènement} est un regroupement de plusieurs issues.
+\end{definition}
+
+\begin{exemple}
+	Un jeté de dé est une expérience aléatoire, dont les issues sont $\{1, 2, 3, 4, 5, 6\}$.
+
+	On peut noter $A$ l'évènement « le résultat obtenu est pair ». Cet évènement contient les issues $2$, $4$ et $6$ : on note alors $A = \{2, 4, 6\}$.
+\end{exemple}
+
+\begin{definition}[Opérations sur les évènements]
+	Si $A$ et $B$ sont des évènements :
+	\begin{itemize}
+		\item $A ∪ B$ est l'évènement qui regroupe toutes les issues qui sont dans $A$ \textbf{ou} dans $B$ (ou les deux). On le lit « $A$ union $B$ ».
+		\item $A ∩ B$ est l'évènement qui regroupe toutes les issues qui sont dans $A$ \textbf{et} dans $B$. On le lit « $A$ inter $B$ ».
+		\item $\overline{A}$ est l'évènement qui regroupes toutes les issues qui \textbf{ne sont pas} dans $A$. On le lit « $A$ barre ».
+	\end{itemize}
+
+	\begin{center}
+		\begin{tikzpicture}
+			\coordinate (Rect1) at (0,1);
+			\coordinate (Rect2) at (5,1);
+			\coordinate (Rect3) at (10,1);
+
+			\draw[rounded corners] (Rect1) rectangle ++(4,3);
+			\node at ($(Rect1) + (2,-0.5)$) {$A ∪ B$};
+			\draw[fill=gray] (Rect1) ++(1.5,1.5) ellipse (1.2 and 0.8);
+			\draw[fill=gray] (Rect1) ++(2.5,1.5) ellipse (1.2 and 0.8);
+			\draw (Rect1) ++(1.5,1.5) ellipse (1.2 and 0.8);
+
+			\draw[rounded corners] (Rect2) rectangle ++(4,3);
+			\node at ($(Rect2) + (2,-0.5)$) {$A ∩ B$};
+			\begin{scope}
+				\clip (Rect2) ++(1.5,1.5) ellipse (1.2 and 0.8);
+				\draw[fill=gray] (Rect2) ++(2.5,1.5) ellipse (1.2 and 0.8);
+			\end{scope}
+			\draw (Rect2) ++(1.5,1.5) ellipse (1.2 and 0.8);
+			\draw (Rect2) ++(2.5,1.5) ellipse (1.2 and 0.8);
+
+			\draw[rounded corners,fill=gray] (Rect3) rectangle ++(4,3);
+			\node at ($(Rect3) + (2,-0.5)$) {$\overline{A}$};
+			\draw[fill=white] (Rect3) ++(1.5,1.5) ellipse (1.2 and 0.8);
+			\draw (Rect3) ++(2.5,1.5) ellipse (1.2 and 0.8);
+		\end{tikzpicture}
+	\end{center}
+\end{definition}
+
+\begin{definition}[Probabilités]
+	Chaque issue et évènement a une \textbf{probabilité} d'être réalisé. On note $P(A)$ la probabilité de l'évènement $A$.
+\end{definition}
+
+\begin{remarque}
+	On a toujours $P(\overline{A}) = 1 - P(A)$.
+\end{remarque}
+
+\begin{propriete}[Probabilités]
+	Si chaque issue à la même probabilité d'être réalisée, on dit qu'il y a \textbf{équiprobabilité}.
+
+	\uline{Dans ce cas}, on a 
+	$$ P(A) = \dfrac{\text{nombre d'issues dans A}}{\text{nombre total d'issues}} $$
+\end{propriete}
+
+\subsection*{Probabilités conditionnelles}
+
+\begin{definition}[Cardinal]
+	Le \textbf{Cardinal} de l'évènement $A$ est le nombres d'issues dans $A$. On le note $Card(A)$.
+\end{definition}
+
+\begin{definition}[Probabilité conditionnelle]
+	Si $A$ et $B$ sont des évènements, on appelle \textbf{probabilité de $A$ sachant $B$} le nombre
+
+	$$ P_B(A) = \dfrac{Card(A ∩ B)}{Card(B)} $$
+\end{definition}
+
+\begin{exemple}
+	Dans l'exemple des smartphones, on peut se demander : 
+
+	Si on a pris un smartphone au hasard, et on a vu qu'il est rouge ; quelle est la probabilité qu'il ai $256$ Go de capacité ? \medskip
+
+	On a alors
+	\begin{itemize}
+		\item $A$ l'évènement « le smartphone a $256$ Go de capacité ».
+		\item $B$ l'évènement « le smartphone est rouge ».
+	\end{itemize}
+
+	En reprenant le tableau des fréquences, on voit que $Card(B) = 50$, et $Card(A ∩ B) = 9$.
+
+	Ainsi $P_B(A) = \dfrac{9}{50} = 18\%$.
 \end{exemple}
 
 \end{document}

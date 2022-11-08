@@ -1,0 +1,26 @@
+\documentclass{beamer}
+
+\usepackage{préambule}
+
+\begin{document}
+
+\begin{frame}
+	\begin{center}
+		\begin{tikzpicture}
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (3,2);
+			\coordinate (C) at (5,-1);
+
+			\node[left] at (A) {A};
+			\node[above] at (B) {B};
+			\node[right] at (C) {C};
+			\draw (A) -- (B) -- (C) -- cycle;
+		\end{tikzpicture}
+
+		\vspace{1cm}
+
+		$\widevec{AB} + \widevec{BC} = \correctionDots{\widevec{AC}}$
+	\end{center}
+\end{frame}
+
+\end{document}

@@ -1,0 +1,76 @@
+\documentclass[
+	classe=$2^{de}$,
+	headerTitle={Exercices}
+]{exercice}
+
+\title{Exercices : calculs de vecteurs}
+
+\begin{document}
+
+\maketitle
+
+\begin{exercice}
+	Simplifier au maximum les expressions ci-dessous :
+	\newcommand{\correctionSpace}{4em}
+	\begin{enumerate}
+		\item $\widevec{WX} + \widevec{XY} + \widevec{YZ} = \correction{\widevec{WZ}}$
+		      \vspace{\correctionSpace}
+		\item $\widevec{AD} + \widevec{DC} = \correction{\widevec{AC}}$
+		      \vspace{\correctionSpace}
+		\item $\widevec{BE} - \widevec{LE} = \correction{\widevec{BL}}$
+
+		      \vspace{\correctionSpace}
+		\item $\widevec{AB} + \widevec{BC} + \widevec{CD} + \widevec{XY} = \correction{\widevec{AD} + \widevec{XY}}$
+
+		      \vspace{\correctionSpace}
+		\item $\widevec{AB} - 3\widevec{AB} + 6\widevec{AB} = \correction{4\widevec{AB}}$
+
+		      \vspace{\correctionSpace}
+		\item $\dfrac{1}{2}\widevec{CE} - 2\widevec{BE} - \dfrac{1}{2}\widevec{CB} = \correction{\dfrac{3}{2}\widevec{EB}}$
+
+		      \vspace{\correctionSpace}
+		\item $\widevec{AB} - 2\widevec{DA} + \widevec{AD} + \widevec{BD} = \correction{\vec{0}}$
+
+		      \vspace{\correctionSpace}
+	\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+	Placer les vecteurs suivants sur la figure (sans traits de construction !)
+
+	\begin{multicols}{2}
+		\begin{itemize}
+			\item $\vec{t} = \widevec{AD} + \widevec{DB} + \widevec{BC}$
+			\item $\vec{u} = \widevec{CE} - \widevec{AE} + \widevec{AG}$
+			\item $\vec{v} = 2\widevec{DC} + \widevec{EF} - \widevec{EC} + \widevec{FD}$
+			\item $\vec{w} = \dfrac{3}{2}\widevec{AE} + \widevec{EB} - \widevec{FB} - \dfrac{1}{2}\widevec{AD} + \dfrac{1}{2}\widevec{ED}$
+		\end{itemize}
+	\end{multicols}
+
+	\vspace{1cm}
+	\begin{center}
+		\begin{tikzpicture}[scale=1.3]
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (3,2);
+			\coordinate (C) at (4,1);
+			\coordinate (D) at (1.5,2.5);
+			\coordinate (E) at (-2,2.5);
+			\coordinate (F) at (0,4);
+			\coordinate (G) at (2,-1);
+
+			\foreach \p in {A,B,C,D,E,F,G} {
+					\node at (\p) {×};
+					\node[above] at (\p) {$\p$};
+				}
+
+			\ifdefined\makeCorrection
+				\draw[red,\myArrow] (A) -- node[above] {$\vec{t}$} (C);
+				\draw[red,\myArrow] (C) -- node[above] {$\vec{u}$} (G);
+				\draw[red,\myArrow] (D) -- node[above] {$\vec{v}$} (C);
+				\draw[red,\myArrow] (A) -- node[left] {$\vec{w}$} (F);
+			\fi
+		\end{tikzpicture}
+	\end{center}
+\end{exercice}
+
+\end{document}

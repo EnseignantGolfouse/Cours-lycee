@@ -1,0 +1,97 @@
+\documentclass[
+	classe=$1^eSTI2D$,
+	headerTitle={Paradoxe de Simpson}
+]{exercice}
+
+\usepackage{tcolorbox}
+\usepackage{diagbox}
+\usepackage{setspace}
+
+\setstretch{1.2}
+\renewcommand{\arraystretch}{1.3}
+
+\title{Activité : paradoxe de Simpson}
+
+\begin{document}
+
+\maketitle
+
+On va étudier un paradoxe de statistiques : le paradoxe de Simpson.
+
+Il s'énonce ainsi :
+
+\begin{tcolorbox}
+	Un patient atteint d'une maladie grave cherche à savoir quel traitement serait le meilleur pour sa maladie. Le médecin lui indique alors que deux traitements existent : le A, et le B.
+\end{tcolorbox}
+
+\begin{enumerate}
+	\item Le médecin fournit le tableau suivant, issu d'une étude scientifique sur un certain nombre de sujets en hôpital :
+
+	      \vspace{1em}
+	      \begin{center}
+		      \begin{tabular}{|l|*{2}{>{\centering}p{2cm}|}}
+			      \hline
+			      \diagbox{$X$ = Traitement}{$Y$ = Succès} & Réussi & Échoue \tabularnewline
+			      \hline
+			      Traitement A                             & 162    & 39     \tabularnewline
+			      \hline
+			      Traitement B                             & 110    & 90    \tabularnewline
+			      \hline
+		      \end{tabular}
+	      \end{center}
+
+	      \begin{enumerate}
+		      \item Combien de sujets ont testé le traitement A ? \correctionDots{200}
+		      \item Combien de sujets ont testé le traitement B ? \correctionDots{200}
+		      \item À partir de ce tableau, quel traitement semble le plus efficace, et pourquoi ?
+
+		            \correctionDots{Le traitement A semble plus efficace, car il a $81\%$ de taux de réussite, par rapport à $55\%$ pour le traitement B\hspace{9.2em}}
+	      \end{enumerate}
+	\item Le patient, pas encore sûr de lui, décide d'aller voir un autre médecin. Celui ci lui fournit \textbf{la même étude} scientifique, mais lui révèle qu'elle a été menée dans deux établissements différents : on les appelera les hôpitaux 1 et 2.
+
+	      Les deux nouveaux tableaux sont alors :
+
+	      \vspace{1em}
+	      \begin{minipage}{0.25\linewidth}
+		      Hôpital 1 :
+	      \end{minipage}
+	      \begin{minipage}{0.7\linewidth}
+		      \begin{tabular}{|l|*{2}{>{\centering}p{2cm}|}}
+			      \hline
+			      \diagbox{$X$ = Traitement}{$Y$ = Succès} & Réussi & Échoue \tabularnewline
+			      \hline
+			      Traitement A                             & 151    & 19     \tabularnewline
+			      \hline
+			      Traitement B                             & 9      & 1    \tabularnewline
+			      \hline
+		      \end{tabular}
+	      \end{minipage}
+	      \vspace{1em}
+
+	      \begin{minipage}{0.25\linewidth}
+		      Hôpital 2 :
+	      \end{minipage}
+	      \begin{minipage}{0.7\linewidth}
+		      \begin{tabular}{|l|*{2}{>{\centering}p{2cm}|}}
+			      \hline
+			      \diagbox{$X$ = Traitement}{$Y$ = Succès} & Réussi & Échoue \tabularnewline
+			      \hline
+			      Traitement A                             & 11     & 20     \tabularnewline
+			      \hline
+			      Traitement B                             & 101    & 89    \tabularnewline
+			      \hline
+		      \end{tabular}
+	      \end{minipage}
+
+	      \begin{enumerate}
+		      \item Vérifier que combiner les données des hôpitaux 1 et 2 donne bien le tableau de la question 1.
+		      \item Quel semble être le traitement le plus efficace dans l'hôpital 1 ?
+
+		            \correctionDots{Le traitement B semble plus efficace, car il a $90\%$ de taux de réussite, par rapport à $88,9\%$ pour le traitement A\hspace{8.3em}}
+		      \item Quel semble être le traitement le plus efficace dans l'hôpital 2 ?
+
+		            \correctionDots{Le traitement B semble plus efficace, car il a $53,1\%$ de taux de réussite, par rapport à $35,5\%$ pour le traitement A\hspace{7.4em}}
+	      \end{enumerate}
+\end{enumerate}
+
+\end{document}

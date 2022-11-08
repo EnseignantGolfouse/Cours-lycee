@@ -1,0 +1,78 @@
+\documentclass[noheader]{coursclass}
+
+\usepackage{diagbox}
+\usetikzlibrary{calc}
+
+\begin{document}
+
+\begin{center}
+	\LARGE
+	\uline{Rappel : vocabulaire des évènements}
+	\vspace{1em}
+\end{center}
+
+\begin{definition}[Expérience aléatoire, évènements]
+	Une \textbf{expérience aléatoire} est une expérience dont l'\textbf{issue} n'est pas connue à l'avance.
+
+	Un \textbf{évènement} est un regroupement de plusieurs issues.
+\end{definition}
+
+\begin{exemple}
+	Un jeté de dé est une expérience aléatoire, dont les issues sont $\{1, 2, 3, 4, 5, 6\}$.
+
+	On peut noter $A$ l'évènement « le résultat obtenu est pair ». Cet évènement contient les issues $2$, $4$ et $6$ : on note alors $A = \{2, 4, 6\}$.
+\end{exemple}
+
+\begin{definition}[Opérations sur les évènements]
+	Si $A$ et $B$ sont des évènements :
+	\begin{itemize}
+		\item $A ∪ B$ est l'évènement qui regroupe toutes les issues qui sont dans $A$ \textbf{ou} dans $B$ (ou les deux). On le lit « $A$ union $B$ ».
+		\item $A ∩ B$ est l'évènement qui regroupe toutes les issues qui sont dans $A$ \textbf{et} dans $B$. On le lit « $A$ inter $B$ ».
+		\item $\overline{A}$ est l'évènement qui regroupes toutes les issues qui \textbf{ne sont pas} dans $A$. On le lit « $A$ barre ».
+	\end{itemize}
+
+	\begin{center}
+		\begin{tikzpicture}
+			\coordinate (Rect1) at (0,1);
+			\coordinate (Rect2) at (5,1);
+			\coordinate (Rect3) at (10,1);
+
+			\draw[rounded corners] (Rect1) rectangle ++(4,3);
+			\node at ($(Rect1) + (2,-0.5)$) {$A ∪ B$};
+			\draw[fill=gray] (Rect1) ++(1.5,1.5) ellipse (1.2 and 0.8);
+			\draw[fill=gray] (Rect1) ++(2.5,1.5) ellipse (1.2 and 0.8);
+			\draw (Rect1) ++(1.5,1.5) ellipse (1.2 and 0.8);
+
+			\draw[rounded corners] (Rect2) rectangle ++(4,3);
+			\node at ($(Rect2) + (2,-0.5)$) {$A ∩ B$};
+			\begin{scope}
+				\clip (Rect2) ++(1.5,1.5) ellipse (1.2 and 0.8);
+				\draw[fill=gray] (Rect2) ++(2.5,1.5) ellipse (1.2 and 0.8);
+			\end{scope}
+			\draw (Rect2) ++(1.5,1.5) ellipse (1.2 and 0.8);
+			\draw (Rect2) ++(2.5,1.5) ellipse (1.2 and 0.8);
+
+			\draw[rounded corners,fill=gray] (Rect3) rectangle ++(4,3);
+			\node at ($(Rect3) + (2,-0.5)$) {$\overline{A}$};
+			\draw[fill=white] (Rect3) ++(1.5,1.5) ellipse (1.2 and 0.8);
+			\draw (Rect3) ++(2.5,1.5) ellipse (1.2 and 0.8);
+		\end{tikzpicture}
+	\end{center}
+\end{definition}
+
+\begin{definition}[Probabilités]
+	Chaque issue et évènement a une \textbf{probabilité} d'être réalisé. On note $P(A)$ la probabilité de l'évènement $A$.
+\end{definition}
+
+\begin{remarque}
+	On a toujours $P(\overline{A}) = 1 - P(A)$.
+\end{remarque}
+
+\begin{propriete}[Probabilités]
+	Si chaque issue à la même probabilité d'être réalisée, on dit qu'il y a \textbf{équiprobabilité}.
+
+	\uline{Dans ce cas}, on a
+	$$ P(A) = \dfrac{\text{nombre d'issues dans A}}{\text{nombre total d'issues}} $$
+\end{propriete}
+
+\end{document}
