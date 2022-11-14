@@ -73,6 +73,9 @@
 		\uline{\@title}
 		\vspace{1em}
 	\end{center}
-	\thispagestyle{fancy}
+	\ifdefined\internal@noheader%
+	\else%
+	\thispagestyle{fancy}%
+	\fi%
 }
 \makeatother
