@@ -1,0 +1,60 @@
+\documentclass{beamer}
+
+\usepackage{préambule}
+\usepackage{diagbox}
+
+\begin{document}
+
+\begin{frame}
+	On donne le tableau d'effectifs suivant :
+	\begin{center}
+		\begin{tabular}{|l|c|c|c|}
+			\hline
+			\diagbox{$Y$}{$X$} & $x₁$ & $x₂$ & TOTAL \\ \hline
+			$y₁$               & 90   & 16   &       \\ \hline
+			$y₂$               & 10   &      & 25    \\ \hline
+			TOTAL              &      &      &       \\ \hline
+		\end{tabular}
+	\end{center}
+
+	\begin{enumerate}
+		\item Reproduire et compléter le tableau.
+		\item Construire le tableau des fréquences conditionnelles par rapport à $x₁$.
+		\item Construire le tableau des fréquences conditionnelles par rapport à $y₂$.
+	\end{enumerate}
+\end{frame}
+
+\newcommand{\makeCorrection}{}
+\begin{frame}
+	{\color{red}Correction}
+	\begin{enumerate}
+		\item \begin{center}
+			      \begin{tabular}{|l|c|c|c|}
+				      \hline
+				      \diagbox{$Y$}{$X$} & $x₁$             & $x₂$            & TOTAL            \\ \hline
+				      $y₁$               & 90               & 16              & \correction{106} \\ \hline
+				      $y₂$               & 10               & \correction{15} & 25               \\ \hline
+				      TOTAL              & \correction{100} & \correction{31} & \correction{131} \\ \hline
+			      \end{tabular}
+		      \end{center}
+		      \renewcommand{\arraystretch}{1.4}
+		\item \begin{center}
+			      \begin{tabular}{|l|c|}
+				      \hline
+				      $Y$   & $x₁$             \\ \hline
+				      $y₁$  & \correction{$\frac{90}{100} = 0.9$} \\ \hline
+				      $y₂$  & \correction{$\frac{10}{100} = 0.1$} \\ \hline
+				      TOTAL & \correction{$1$}   \\ \hline
+			      \end{tabular}
+		      \end{center}
+		\item \begin{center}
+			      \begin{tabular}{|l|c|c|c|}
+				      \hline
+				      $X$  & $x₁$                               & $x₂$                               & TOTAL          \\ \hline
+				      $y₂$ & \correction{$\frac{10}{25} = 0.4$} & \correction{$\frac{15}{25} = 0.6$} & \correction{$1$} \\ \hline
+			      \end{tabular}
+		      \end{center}
+	\end{enumerate}
+\end{frame}
+
+\end{document}
