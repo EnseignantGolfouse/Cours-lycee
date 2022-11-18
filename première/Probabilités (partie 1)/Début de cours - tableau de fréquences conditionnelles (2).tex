@@ -1,0 +1,52 @@
+\documentclass{beamer}
+
+\usepackage{préambule}
+\usepackage{diagbox}
+
+\begin{document}
+
+\begin{frame}
+	On donne le tableau d'effectifs suivant :
+	\begin{center}
+		\begin{tabular}{|l|c|c|}
+			\hline
+			\diagbox{$X$}{$Y$} & $y₁$ & $y₂$ \\ \hline
+			$x₁$               & 18   & 54   \\ \hline
+			$x₂$               & 25   & 162  \\ \hline
+		\end{tabular}
+	\end{center}
+
+	\begin{enumerate}
+		\item Construire le tableau des fréquences conditionnelles par rapport à $y₂$.
+		\item Construire le tableau des fréquences conditionnelles par rapport à $x₁$.
+		\item Que remarque-t-on ?
+		      \pause
+		\item Proposer une situation modélisée par ce tableau.
+	\end{enumerate}
+\end{frame}
+
+\newcommand{\makeCorrection}{}
+\begin{frame}
+	{\color{red}Correction}
+	\renewcommand{\arraystretch}{1.4}
+	\begin{enumerate}
+		\item \begin{center}
+			      \begin{tabular}{|l|c|}
+				      \hline
+				      $X$   & $y₂$                                  \\ \hline
+				      $x₁$  & \correction{$\frac{54}{216} = 0.25$}  \\ \hline
+				      $x₂$  & \correction{$\frac{162}{216} = 0.75$} \\ \hline
+				      TOTAL & \correction{$1$}                      \\ \hline
+			      \end{tabular}
+		      \end{center}
+		\item \begin{center}
+			      \begin{tabular}{|l|c|c|c|}
+				      \hline
+				      $Y$  & $y₁$                                & $y₂$                                & TOTAL            \\ \hline
+				      $x₁$ & \correction{$\frac{18}{72} = 0.25$} & \correction{$\frac{54}{72} = 0.75$} & \correction{$1$} \\ \hline
+			      \end{tabular}
+		      \end{center}
+	\end{enumerate}
+\end{frame}
+
+\end{document}
