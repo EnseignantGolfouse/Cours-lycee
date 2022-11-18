@@ -1,0 +1,84 @@
+\documentclass{beamer}
+
+\usepackage{préambule}
+\usetikzlibrary{calc}
+
+\newcommand\scalemath[2]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}}
+\renewcommand{\widevec}[1]{\scalemath{0.85}{\overrightarrow{#1}}}
+
+\setbeamersize{
+	text margin left=0.3cm,
+	text margin right=0.3cm
+}
+\setlength{\leftmargini}{0.5cm}
+\setlength{\leftmarginii}{0.3cm}
+
+\begin{document}
+
+\begin{frame}
+	\footnotesize\color{red}
+	\uline{Sujet A : CORRECTION}
+
+	\begin{enumerate}
+		\item \begin{enumerate}[a.]
+			      \item réponses possibles : $\widevec{IA}$, $\widevec{JB}$, $\widevec{KC}$
+			      \item réponses possibles : $\widevec{AG}$, $\widevec{EK}$, $\widevec{FL}$, $\widevec{BH}$
+			      \item réponses possibles : $\widevec{IF}$, $\widevec{JG}$, $\widevec{KH}$, $\widevec{EB}$, $\widevec{FC}$, $\widevec{GD}$
+			      \item réponses possibles : $\widevec{IK}$, $\widevec{JL}$, $\widevec{EG}$, $\widevec{FH}$, $\widevec{AC}$, $\widevec{BD}$
+		      \end{enumerate}
+		\item \
+
+		      \begin{center}
+			      \begin{tikzpicture}[scale=0.5]
+				      \coordinate (A) at (0,0);
+				      \coordinate (B) at (6,0);
+				      \coordinate (C) at (0,5);
+				      \coordinate (D) at ($(A) + (B) - (C)$);
+				      \coordinate (E) at ($(B) + (C) - (A) + (B) - (A)$);
+
+				      \draw (A) -- (B) -- (C) -- (A);
+				      \draw[red,->] (A) -- (D);
+				      \draw[red,->] (B) -- (E);
+
+				      \foreach \p/\dir in {A/below,B/below,C/left,D/below,E/left} {
+						      \node[\dir] at (\p) {\p};
+					      }
+			      \end{tikzpicture}
+		      \end{center}
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\footnotesize\color{red}
+	\uline{Sujet B : CORRECTION}
+
+	\begin{enumerate}
+		\item \begin{enumerate}[a.]
+			      \item réponses possibles : $\widevec{AI}$, $\widevec{BJ}$, $\widevec{CK}$
+			      \item réponses possibles : $\widevec{IK}$, $\widevec{JL}$, $\widevec{EG}$, $\widevec{FH}$, $\widevec{AC}$, $\widevec{BD}$
+			      \item réponses possibles : $\widevec{KE}$, $\widevec{LF}$, $\widevec{GA}$, $\widevec{HB}$
+			      \item réponses possibles : $\widevec{IE}$, $\widevec{JF}$, $\widevec{KG}$, $\widevec{LH}$, $\widevec{EA}$, $\widevec{FB}$, $\widevec{GC}$, $\widevec{HD}$
+		      \end{enumerate}
+		\item \
+
+		      \begin{center}
+			      \begin{tikzpicture}[scale=0.5]
+				      \coordinate (A) at (0,0);
+				      \coordinate (B) at (5,0);
+				      \coordinate (C) at (0,6);
+				      \coordinate (D) at ($(A) + (B) - (C)$);
+				      \coordinate (E) at ($(B) + (C) - (A) + (B) - (A)$);
+
+				      \draw (A) -- (B) -- (C) -- (A);
+				      \draw[red,->] (A) -- (D);
+				      \draw[red,->] (B) -- (E);
+
+				      \foreach \p/\dir in {A/below,B/below,C/left,D/below,E/left} {
+						      \node[\dir] at (\p) {\p};
+					      }
+			      \end{tikzpicture}
+		      \end{center}
+	\end{enumerate}
+\end{frame}
+
+\end{document}

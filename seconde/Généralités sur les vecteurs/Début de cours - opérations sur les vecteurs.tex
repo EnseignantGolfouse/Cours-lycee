@@ -1,0 +1,33 @@
+\documentclass{beamer}
+
+\usepackage{préambule}
+
+\begin{document}
+
+\begin{frame}
+	\begin{center}
+		\begin{tikzpicture}
+			\newcounter{cnti}
+			\setcounter{cnti}{0}
+			\foreach \y in {0,...,4} {
+					\foreach \x in {0,...,4} {
+							\stepcounter{cnti}
+							\node[above left] at (\x, \y) {$\Alph{cnti}$} ;
+							\node at (\x, \y) {×} ;
+						}
+				}
+			\draw[-{Latex[length=2mm, width=1.5mm]}] (0,0) -- node[below] {$\vec{u}$} ++(2,0);
+			\draw[-{Latex[length=2mm, width=1.5mm]}] (0,0) -- node[right] {$\vec{v}$} ++(0,2);
+		\end{tikzpicture}
+	\end{center}
+
+	Donner un représentant de :
+	\begin{itemize}
+		\item $2\vec{v}$ : 
+		\item $\frac{1}{2}\vec{u}$ : 
+		\item $2\vec{u} + \vec{v}$ : 
+		\item $\frac{3}{2}\vec{u} + \frac{5}{2}\vec{v}$ : 
+	\end{itemize}
+\end{frame}
+
+\end{document}

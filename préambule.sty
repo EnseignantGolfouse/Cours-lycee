@@ -232,7 +232,19 @@
 \newcommand{\produit}[2]{\overset{#2}{\underset{#1}{\prod}}}
 \newcommand{\sommedirecte}[2]{\overset{#2}{\underset{#1}{\oplus}}}
 \renewcommand*{\proofname}{Preuve}
-\newcommand{\widevec}[1]{\overrightarrow{#1}}
+\begin{luacode}
+	function make_vec(arg)
+		if string.len(arg) <= 1 then
+			tex.print("\\oldvec{", arg, "}")
+		else
+			tex.print("\\overrightarrow{", arg, "}")
+		end
+	end
+\end{luacode}
+\let\oldvec\vec
+\renewcommand{\vec}[1]{%
+\directlua{make_vec("\luatexluaescapestring{\unexpanded{#1}}")}%
+}
 
 \ifPreambuleOptions@nofigures
 \else

@@ -4,7 +4,7 @@
 \usetikzlibrary{calc}
 
 \newcommand\scalemath[2]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}}
-\renewcommand{\widevec}[1]{\scalemath{0.85}{\overrightarrow{#1}}}
+\renewcommand{\vec}[1]{\scalemath{0.85}{\overrightarrow{#1}}}
 
 \setbeamersize{
 	text margin left=0.3cm,
@@ -44,15 +44,15 @@
 		\end{center}
 		\begin{enumerate}
 			\item \begin{enumerate}[a.]
-				      \item Donner deux vecteurs égaux à $\widevec{LD}$.
-				      \item Donner un représentant de $\widevec{AB} + \widevec{BG}$.
-				      \item Donner deux représentants de $\widevec{EG} + \widevec{HC}$.
-				      \item Donner deux représentants de $\widevec{KD} + \widevec{FK} + \widevec{CG}$.
+				      \item Donner deux vecteurs égaux à $\vec{LD}$.
+				      \item Donner un représentant de $\vec{AB} + \vec{BG}$.
+				      \item Donner deux représentants de $\vec{EG} + \vec{HC}$.
+				      \item Donner deux représentants de $\vec{KD} + \vec{FK} + \vec{CG}$.
 			      \end{enumerate}
 			\item Construire un triangle ABC rectangle en A, avec AB = 6cm et AC = 5cm.
 			      \begin{enumerate}[a.]
-				      \item Construire le point D tel que $\widevec{AD} = \widevec{CB}$.
-				      \item Construire le point E tel que $\widevec{BE} = \widevec{AC} + \widevec{AB}$.
+				      \item Construire le point D tel que $\vec{AD} = \vec{CB}$.
+				      \item Construire le point E tel que $\vec{BE} = \vec{AC} + \vec{AB}$.
 			      \end{enumerate}
 		\end{enumerate}
 
@@ -86,84 +86,18 @@
 		\end{center}
 		\begin{enumerate}
 			\item \begin{enumerate}[a.]
-				      \item Donner deux vecteurs égaux à $\widevec{BJ}$.
-				      \item Donner un représentant de $\widevec{EF} + \widevec{FG}$.
-				      \item Donner deux représentants de $\widevec{KF} + \widevec{HG}$.
-				      \item Donner deux représentants de $\widevec{CA} + \widevec{EB} + \widevec{FG}$.
+				      \item Donner deux vecteurs égaux à $\vec{BJ}$.
+				      \item Donner un représentant de $\vec{EF} + \vec{FG}$.
+				      \item Donner deux représentants de $\vec{KF} + \vec{HG}$.
+				      \item Donner deux représentants de $\vec{CA} + \vec{EB} + \vec{FG}$.
 			      \end{enumerate}
 			\item Construire un triangle ABC rectangle en A, avec AB = 5cm et AC = 6cm.
 			      \begin{enumerate}[a.]
-				      \item Construire le point D tel que $\widevec{AD} = \widevec{CB}$.
-				      \item Construire le point E tel que $\widevec{BE} = \widevec{AC} + \widevec{AB}$.
+				      \item Construire le point D tel que $\vec{AD} = \vec{CB}$.
+				      \item Construire le point E tel que $\vec{BE} = \vec{AC} + \vec{AB}$.
 			      \end{enumerate}
 		\end{enumerate}
 	\end{multicols}
-\end{frame}
-
-\begin{frame}
-	\footnotesize\color{red}
-	\uline{Sujet A : CORRECTION}
-
-	\begin{enumerate}
-		\item \begin{enumerate}[a.]
-			      \item $\widevec{KC}$ et $\widevec{JB}$
-			      \item $\widevec{AG}$
-			      \item $\widevec{EB}$ et $\widevec{FC}$
-			      \item $\widevec{IK}$ et $\widevec{EG}$
-		      \end{enumerate}
-		\item \
-
-		      \begin{center}
-			      \begin{tikzpicture}[scale=0.5]
-				      \coordinate (A) at (0,0);
-				      \coordinate (B) at (6,0);
-				      \coordinate (C) at (0,5);
-				      \coordinate (D) at ($(A) + (B) - (C)$);
-				      \coordinate (E) at ($(B) + (C) - (A) + (B) - (A)$);
-
-				      \draw (A) -- (B) -- (C) -- (A);
-				      \draw[red,->] (A) -- (D);
-				      \draw[red,->] (B) -- (E);
-
-				      \foreach \p/\dir in {A/below,B/below,C/left,D/below,E/left} {
-						      \node[\dir] at (\p) {\p};
-					      }
-			      \end{tikzpicture}
-		      \end{center}
-	\end{enumerate}
-\end{frame}
-
-\begin{frame}
-	\footnotesize\color{red}
-	\uline{Sujet B : CORRECTION}
-
-	\begin{enumerate}
-		\item \begin{enumerate}[a.]
-			      \item $\widevec{AI}$ et $\widevec{CK}$
-			      \item $\widevec{EG}$
-			      \item $\widevec{KE}$ et $\widevec{LF}$
-			      \item $\widevec{GC}$ et $\widevec{EA}$
-		      \end{enumerate}
-		\item \
-
-		      \begin{center}
-			      \begin{tikzpicture}[scale=0.5]
-				      \coordinate (A) at (0,0);
-				      \coordinate (B) at (5,0);
-				      \coordinate (C) at (0,6);
-				      \coordinate (D) at ($(A) + (B) - (C)$);
-				      \coordinate (E) at ($(B) + (C) - (A) + (B) - (A)$);
-
-				      \draw (A) -- (B) -- (C) -- (A);
-				      \draw[red,->] (A) -- (D);
-				      \draw[red,->] (B) -- (E);
-
-				      \foreach \p/\dir in {A/below,B/below,C/left,D/below,E/left} {
-						      \node[\dir] at (\p) {\p};
-					      }
-			      \end{tikzpicture}
-		      \end{center}
-	\end{enumerate}
 \end{frame}
 
 \end{document}
