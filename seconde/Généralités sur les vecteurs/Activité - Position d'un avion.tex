@@ -32,7 +32,6 @@
 
 \title{Activité : Position d'un avion}
 
-% \newcommand{\makeCorrection}{}
 \begin{document}
 
 \maketitle
@@ -84,7 +83,7 @@ On va à présent simuler la gravité. Celle-ci est une \textit{accélération},
 \begin{itemize}
 	\item La gravité est constante, représentée sur le graphique par le vecteur $\vec{g}$.
 	\item À chaque seconde, la vitesse $\vec{v}$ \textbf{devient} $\vec{v} + \vec{g}$.
-	\item À chaque seconde, L'avion est déplacé de $\vec{v}$.
+	\item À chaque seconde, l'avion est déplacé de $\vec{v}$.
 \end{itemize}
 
 \begin{enumerate}
@@ -101,7 +100,7 @@ On va à présent simuler la gravité. Celle-ci est une \textit{accélération},
 		\node at (AvionPosition) {×};
 		\node[above] at (AvionPosition) {$V$};
 		\draw[->] (AvionPosition) -- node[above] {$\vec{v}$} ++(2,1);
-		\draw[->] (AvionPosition) -- node[left] {$\vec{a}$} ++(0,-0.5);
+		\draw[->] (AvionPosition) -- node[left] {$\vec{g}$} ++(0,-0.5);
 
 		\ifdefined\makeCorrection
 			\directlua{

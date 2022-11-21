@@ -1,0 +1,41 @@
+\documentclass{beamer}
+
+\usepackage{préambule}
+
+\begin{document}
+
+\newcounter{letterCount}
+\newcommand{\DebutDeCours}{
+	\begin{frame}
+		\begin{center}
+			\begin{tikzpicture}[scale=0.9]
+				\setcounter{letterCount}{1}
+				\foreach \x in {0,...,4} {
+						\foreach \y in {0,...,3} {
+								\coordinate (\Alph{letterCount}) at (\x,\y);
+								\node at (\Alph{letterCount}) {×};
+								\node[above left] at (\Alph{letterCount}) {{\small$\Alph{letterCount}$}};
+								\stepcounter{letterCount}
+							}
+					}
+			\end{tikzpicture}
+		\end{center}
+
+		\begin{itemize}
+			\item Exprimer $\vec{AB}$ et $\vec{AE}$ en fonction de $\vec{FK}$ et $\vec{FI}$ :
+			      $$ \vec{AB} = \correctionDots{\phantom{-}1/2} × \vec{FK} + \correctionDots{-1/2} × \vec{FI} $$
+			      $$ \vec{AE} = \correctionDots{\phantom{-}1/2} × \vec{FK} + \correctionDots{\phantom{-}1/2} × \vec{FI} $$
+			\item Exprimer $\vec{BT}$ en fonction de $\vec{AB}$ et $\vec{AE}$ :
+			      $$ \vec{BT} = \correctionDots{\phantom{-1/}2} × \vec{AB} + \correctionDots{\phantom{-1/}4} × \vec{AE} $$
+			\item En déduire une expression de $\vec{BT}$ en fonction $\vec{FK}$ et $\vec{FI}$ :
+			      $$ \vec{BT} = \correctionDots{\phantom{-1/}3} × \vec{FK} + \correctionDots{\phantom{-1/}1} × \vec{FI} $$
+		\end{itemize}
+	\end{frame}
+}
+
+\DebutDeCours
+
+\newcommand{\makeCorrection}{}
+\DebutDeCours
+
+\end{document}
