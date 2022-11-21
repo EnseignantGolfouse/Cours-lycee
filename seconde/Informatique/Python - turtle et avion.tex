@@ -1,0 +1,81 @@
+\documentclass[
+	classe=$2^{de}$,
+	headerTitle=Python\space :\space turtle
+]
+{informatique}
+
+\usepackage{tcolorbox}
+
+\newcommand{\codebox}[1]{\squared{\texttt{#1}}}
+
+\title{Python - Tortues et avions}
+
+\begin{document}
+
+\maketitle
+
+On va aujourd'hui utiliser le module \texttt{turtle} de python.
+
+\subsection*{Premiers dessins}
+
+Pour commencer à utiliser \texttt{turtle}, on doit lancer les commandes suivantes dans l'interpréteur (la fenêtre en bas à droite de Spyder) :
+\begin{lstlisting}
+>>> import turtle
+>>> t = turtle.Turtle()
+\end{lstlisting}
+
+On pourra maintenant utiliser \texttt{t} pour dessiner sur la fenêtre apparue :
+\begin{itemize}
+	\item \codebox{t.up()} permet de \textit{lever le stylo} : la tortue de dessinera plus dans cet état. Pour qu'elle puisse à nouveau dessiner, on utilise \codebox{t.down()}.
+	\item La tortue peut \textit{avancer} avec \codebox{t.forward(...)} (mettre un nombre à la place des \texttt{...}).
+
+	      Elle peut aussi \textit{reculer} avec \codebox{t.backward(...)}.
+	\item Pour la faire tourner, on utilisera \codebox{t.right(...)} ou \codebox{t.left(...)}.
+	\item Pour revenir au centre, on utilise \codebox{t.home()}. Pour effacer l'écran, on utilise \codebox{t.clear()}.
+\end{itemize}
+
+\begin{enumerate}
+	\item À quel angle correspond \codebox{t.right(90)} ?
+	\item Dessiner : \begin{itemize}
+		      \item Un carré
+		      \item Un pentagone
+		      \item Un hexagone
+	      \end{itemize}
+
+	      Essayer de tracer ces figures en utilisant une boucle \texttt{for}.
+\end{enumerate}
+
+\subsection*{Avion}
+
+On va reprendre le tracé de la trajectoire d'un avion avec des vecteurs, fait la semaine dernière. Pour rappel :
+\begin{itemize}
+	\item La gravité est un vecteur constant $\vec{g}$, dirigé vers le bas.
+	\item À chaque unité de temps, la vitesse de l'avion $\vec{v}$ \textbf{devient} $\vec{v} + \vec{g}$.
+	\item À chaque unité de temps, l'avion est déplacé de $\vec{v}$.
+\end{itemize}
+
+Ici l'avion sera représenté par notre tortue.
+\begin{enumerate}
+	\item Que fait la fonction \codebox{t.position()} ?
+
+	      Si on écrit \codebox{x, y = t.position()}, à quoi sont alors égal \texttt{x} et \texttt{y} ?
+	\item Que fait la fonction \codebox{t.setpos(..., ...)} ?
+	\item Écrire ainsi les variables \texttt{vitessex} et \texttt{vitessey} permettant de stocker la vitesse de l'avion, ainsi que \texttt{gravitéx} et \texttt{gravitéy} permettant de stocker la gravité.
+	\item Compléter le code suivant afin de faire progresser l'avion :
+	      \begin{lstlisting}
+vitessex = ...
+vitessey = ...
+gravitéx = ...
+gravitéy = ...
+for i in range(100):
+	vitessex = vitessex + ...
+	vitessey = vitessey + ...
+	x, y = t.position()
+	x = x + ...
+	y = y + ...
+	t.setpos(..., ...)
+		  \end{lstlisting}
+	\item (BONUS) Faire en sorte que l'avion rebondisse en touchant le bas de l'écran.
+\end{enumerate}
+
+\end{document}
