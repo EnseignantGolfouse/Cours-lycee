@@ -1,0 +1,129 @@
+\documentclass[
+	a4paper,
+	classe=1STI2D,
+	headerTitle=Activité
+]{exercice}
+
+\renewcommand{\arraystretch}{1.5}
+
+\title{Proportionnalité et pourcentages}
+
+\begin{document}
+
+\maketitle
+
+{\large\uline{1) Calculs de pourcentages}}
+
+Une peintre veut faire de gigantesque toiles. Pour cela, elle fabrique elle-même ses couleurs, à partir de peinture rouge, verte, bleue et noire.
+
+La peintre a fourni les proportions de chaque couleur, ainsi que la quantité de noir :
+
+\begin{center}
+	\begin{tabular}{|c|c|c|c|c||c|}
+		\hline
+		                & Rouge   & Vert    & Bleu    & Noir    & Quantité de noir \\
+		                & (en \%) & (en \%) & (en \%) & (en \%) & (en litres)      \\ \hline
+		Fuschia         & 32      & 8       & 20      & 40      & 20               \\ \hline
+		Or              & 33      & 22      & 0       & 45      & 15               \\ \hline
+		Azur            & 4       & 17      & 26      & 53      & 26.5             \\ \hline
+		Jaune           & 33      & 33      & 0       & 34      & 10               \\ \hline
+		Argile          & 31      & 31      & 32      & 6       & 12               \\ \hline
+		Indigo          & 16      & 4       & 32      & 48      & 12               \\ \hline
+		Gris anthracite & 6       & 6       & 6       & 82      & 41               \\ \hline
+	\end{tabular}
+\end{center}
+
+Pour chacune des couleurs demandées, calculer combien de litres de rouge, de vert, de bleu et de noir sont nécessaires.
+
+\vspace{2em}
+
+\begin{minipage}{0.47\textwidth}
+	{\large\uline{2) Étude d'une augmentation}}
+
+	Un salarié rémunéré 1500 € par mois va être augmenté de $8\%$.
+	Quel sera son nouveau salaire ?
+
+	\vspace{1em}\textbf{Méthode vue au collège} : tableau de proportionnalité
+
+	\begin{tabular}{|l|l|l|}
+		\hline
+		Salaire      & \hspace{2em} 100 & \hspace{1em} \correction{1 500} \\ \hline
+		Augmentation & \correction{8}   & \correction{120}                \\ \hline
+	\end{tabular}
+	\vspace{0.7em}
+
+	Augmentation = \correction{120 €}
+	\begin{align*}
+		\text{Nouveau salaire} & = \text{Ancien salaire} + \text{Augmentation} \\
+		                       & = \correction{1620 €}
+	\end{align*}
+
+	\vspace{1em}\textbf{Méthode plus rapide (lycée)} :
+	\begin{align*}
+		\text{Nouveau salaire} & = \text{Ancien salaire} + \text{Augmentation} \\
+		                       & =  \correction{1500 + 0,08 × 1500}            \\
+		                       & = \correction{1620 €}
+	\end{align*}
+
+	\begin{tabularx}{\linewidth}{|X|}
+		\hline
+		\textbf{Bilan} : pour augmenter un nombre de $8\%$, \\ il suffit de \\
+		\correctionDots{le multiplier par $1,08$.}
+		\\ \hline
+	\end{tabularx}
+\end{minipage}
+\hfill\vline\hfill
+\begin{minipage}{0.45\textwidth}
+	{\large\uline{3) Étude d'une diminution}}
+
+	Une veste au prix initial de 180 € va être soldée de $15\%$. Quel sera le prix soldé ?
+
+	\vspace{1em}\textbf{Méthode vue au collège} : tableau de proportionnalité
+
+	\begin{tabular}{|l|l|l|}
+		\hline
+		Prix initial           & \hspace{2em} 100 & \hspace{2em} \correction{180} \\ \hline
+		Diminution (Réduction) & \correction{15}  & \correction{27}               \\ \hline
+	\end{tabular}
+	\vspace{0.7em}
+
+	Réduction = \correction{27 €}
+	\begin{align*}
+		\text{Prix soldé} & = \text{Prix initial} - \text{Réduction} \\
+		                  & = \correction{153 €}
+	\end{align*}
+
+	\vspace{1em}\textbf{Méthode plus rapide (lycée)} :
+	\begin{align*}
+		\text{Prix soldé} & = \text{Prix initial} - \text{Réduction} \\
+		                  & =  \correction{180 - 0,15 × 180}         \\
+		                  & = \correction{153 €}
+	\end{align*}
+
+	\begin{tabularx}{\linewidth}{|X|}
+		\hline
+		\textbf{Bilan} : pour diminuer un nombre de $15\%$, \\ il suffit de \\
+		\correctionDots{le multiplier par $0,85$.\hfill}
+		\\ \hline
+	\end{tabularx}
+\end{minipage}
+
+\vspace{2em}
+
+{\large\uline{4) Succession d'augmentations}}
+
+Un compte épargne propose un taux d'augmentation annuel de $2\%$. On décide d'y déposer 22 000 €. Quel sera la somme disponible sur le compte dans 5 ans ?
+
+\begin{tabular}{|l|c|c|c|c|c|c|}
+	\hline
+	Année                   & 2022   & 2023                & 2024                  & 2025                  & 2026                  & 2027                  \\ \hline
+	Somme disponible (en €) & 22 000 & \correction{22 440} & \correction{22 888,8} & \correction{23 346,5} & \correction{23 813,5} & \correction{24 289,7} \\ \hline
+\end{tabular}
+
+\begin{tabularx}{\linewidth}{|X|}
+	\hline
+	\textbf{Bilan} : pour augmenter 5 fois de suite un nombre de $2\%$,  il suffit de  \dotfill
+	\\ \hline
+\end{tabularx}
+
+\end{document}

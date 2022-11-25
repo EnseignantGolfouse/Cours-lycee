@@ -1,0 +1,60 @@
+\documentclass[
+	classe=$2^{de}$
+]{coursclass}
+
+\title{Chapitre 4 : Statistiques descriptives}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{definition}[pourcentage]
+	\begin{itemize}
+		\item Prendre $x\%$ d'une valeur revient à la multiplier par $\dfrac{x}{100}$.
+		\item Augmenter une valeur par $x\%$ revient à la multiplier par $1 + \dfrac{x}{100}$.
+		\item Diminuer une valeur par $x\%$ revient à la multiplier par $1 - \dfrac{x}{100}$.
+	\end{itemize}
+\end{definition}
+
+\begin{exemple}
+	Augmenter 5 000 de 20\% revient à calculer
+	$$ 5\ 000 × \left(1 + \frac{20}{100}\right) = 5\ 000 × 1,20 = 6\ 000 $$
+\end{exemple}
+
+\begin{definition}[vocabulaire]
+	\begin{itemize}
+		\item Une \textbf{évolution} est une augmentation ou une diminution.
+		\item Si l'évolution est exprimée en pourcentage, le pourcentage est appelé le \textbf{taux d'évolution}.
+		\item Lorsqu'on multiplie une valeur $v$ par un nombre $c$ pour obtenir une nouvelle valeur $v'$ ($v × c = v'$), on dit que $c$ est le \textbf{coefficient multiplicateur}.
+	\end{itemize}
+\end{definition}
+
+\begin{exemple}
+	Si on a une augmentation de 15\%, le coefficient multiplicateur est $1 + \frac{15}{100} = 1,15$.
+
+	Si on a une diminution de 6\%, le coefficient multiplicateur est $1 - \frac{6}{100} = 0,94$.
+\end{exemple}
+
+\begin{greybox}[frametitle={Remarque}]
+	Si le coefficient d'une évolution est \textit{supérieur à $1$}, c'est une augmentation. Sinon, c'est une diminution.
+\end{greybox}
+
+\begin{propriete}[Évolutions successives et coefficient global]
+	Lorsqu'on applique plusieurs évolutions successives, on obtient le \textbf{coefficient global} en multipliant les coefficients.
+\end{propriete}
+
+\begin{exemple}
+	Si on applique une augmentation de 20\%, suivie d'une diminution de 20\%, l'évolution a pour coefficient global
+	$$ \left(1 + \frac{20}{100}\right) × \left(1 - \frac{20}{100}\right) = 1,2 × 0,8 = 0,96 $$
+	On a donc globalement une diminution.
+\end{exemple}
+
+\begin{propriete}[Évolution réciproque]
+	Pour revenir à la valeur initiale avant une évolution de coefficient $c$, on doit \textit{diviser} par $c$.
+
+	Cette nouvelle évolution est appelée \textbf{l'évolution réciproque}, et son coefficient est le \textbf{coefficient réciproque} $cᵣ = \frac{1}{c}$.
+\end{propriete}
+
+\end{document}
