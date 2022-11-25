@@ -1,0 +1,60 @@
+\documentclass{beamer}
+
+\usepackage{préambule}
+\usepackage{diagbox}
+
+\renewcommand{\arraystretch}{1.3}
+
+\begin{document}
+
+\newcommand{\Tableau}{\begin{tabular}{|l|c|c|c|c|}
+		\hline
+		\diagbox{État}{Prix} & $X = 20€$        & $Y = 35€$       & $Z = 50€$        & TOTAL \tabularnewline \hline
+		$N =$ Neuves         & 32               & 63              & \correction{101} & 196 \tabularnewline \hline
+		$B =$ Bon état       & 29               & \correction{32} & 76               & \correction{137} \tabularnewline \hline
+		$U =$ Un peu usées   & 21               & \correction{2}  & 71               & 94 \tabularnewline \hline
+		$T =$ Très usées     & 33               & 28              & \correction{12}  & 73 \tabularnewline \hline
+		TOTAL                & \correction{115} & 125             & 260              & \correction{500} \tabularnewline \hline
+	\end{tabular}}
+
+\begin{frame}
+	\small
+
+	On veut acheter une paire de chaussures. Voici les prix proposés par un magasin, et la qualité des chaussures associées.
+	\begin{center}
+		\Tableau
+	\end{center}
+
+	\begin{enumerate}
+		\item Recopier et compléter le tableau d'effectifs.
+		\item On prend une paire au hasard parmi tout le magasin. Calculer la probabilité de $X$, $B ∩ Y$ et $B$.
+		\item On prend une paire \uline{neuve} au hasard. Quelle est la probabilité qu'elle coûte $50€$ ?
+		\item À quel prix a-t'on le plus de chances de trouver une paire neuve ?
+	\end{enumerate}
+\end{frame}
+
+\newcommand{\makeCorrection}{}
+\begin{frame}
+	\begin{center}
+		\Tableau
+	\end{center}
+	\color{red}
+
+	{\small 2.}	  $P(X) = 115/500 = 0,23$
+
+	$P(B ∩ Y) = 32/500 = 0,064$
+
+	$P(B) = 137/500 = 0,274$
+
+	{\small 3.} $P_N(Z) = Card(N ∩ Z) / Card(N) = 101/196 ≈ 0,515$
+
+	{\small 4.} $P_X(N) = Card(X ∩ N) / Card(X) = 32/115 ≈ 0,278$
+
+	$P_Y(N) = Card(Y ∩ N) / Card(Y) = 63/125 ≈ 0,504$
+
+	$P_Z(N) = Card(Z ∩ N) / Card(Z) = 101/260 ≈ 0,388$
+
+	Donc on a le plus de chances de trouver une paire neuve parmi celles à $35€$.
+\end{frame}
+
+\end{document}

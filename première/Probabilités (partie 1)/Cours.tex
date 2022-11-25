@@ -6,6 +6,8 @@
 \usepackage{diagbox}
 \usetikzlibrary{calc}
 
+\DeclareMathOperator{\Card}{Card}
+
 \title{Chapitre 3 : Effectifs, fréquences et probabilités}
 \date{}
 \author{}
@@ -234,24 +236,24 @@
 \begin{propriete}[Probabilités]
 	Si chaque issue à la même probabilité d'être réalisée, on dit qu'il y a \textbf{équiprobabilité}.
 
-	\uline{Dans ce cas}, on a 
+	\uline{Dans ce cas}, on a
 	$$ P(A) = \dfrac{\text{nombre d'issues dans A}}{\text{nombre total d'issues}} $$
 \end{propriete}
 
 \subsection*{Probabilités conditionnelles}
 
 \begin{definition}[Cardinal]
-	Le \textbf{Cardinal} de l'évènement $A$ est le nombres d'issues dans $A$. On le note $Card(A)$.
+	Le \textbf{Cardinal} de l'évènement $A$ est le nombres d'issues dans $A$. On le note $\Card(A)$.
 \end{definition}
 
 \begin{definition}[Probabilité conditionnelle]
 	Si $A$ et $B$ sont des évènements, on appelle \textbf{probabilité de $A$ sachant $B$} le nombre
 
-	$$ P_B(A) = \dfrac{Card(A ∩ B)}{Card(B)} $$
+	$$ P_B(A) = \dfrac{\Card(A ∩ B)}{\Card(B)} $$
 \end{definition}
 
 \begin{exemple}
-	Dans l'exemple des smartphones, on peut se demander : 
+	Dans l'exemple des smartphones, on peut se demander :
 
 	Si on a pris un smartphone au hasard, et on a vu qu'il est rouge ; quelle est la probabilité qu'il ai $256$ Go de capacité ? \medskip
 
@@ -261,9 +263,21 @@
 		\item $B$ l'évènement « le smartphone est rouge ».
 	\end{itemize}
 
-	En reprenant le tableau des fréquences, on voit que $Card(B) = 50$, et $Card(A ∩ B) = 9$.
+	En reprenant le tableau des fréquences, on voit que $\Card(B) = 50$, et $\Card(A ∩ B) = 9$.
 
 	Ainsi $P_B(A) = \dfrac{9}{50} = 18\%$.
 \end{exemple}
+
+\begin{remarque}
+	Si $TOTAL$ est le nombre total d'issues,\medskip
+
+	on a $\dfrac{P(A ∩ B)}{P(B)} = \dfrac{\Card(A ∩ B)/TOTAL}{\Card(B)/TOTAL} = \dfrac{\Card(A ∩ B)}{\Card(B)} = P_B(A)$
+
+	Donc
+
+	\begin{center}
+		\squared{$P_B(A) = \dfrac{\Card(A ∩ B)}{\Card(B)} = \dfrac{P(A ∩ B)}{P(B)}$}
+	\end{center}
+\end{remarque}
 
 \end{document}
