@@ -10,36 +10,125 @@
 
 \maketitle
 
-\begin{definition}[pourcentage]
+\section{Proportions et pourcentages}
+
+\begin{definition}[Population]
 	\begin{itemize}
-		\item Prendre $x\%$ d'une valeur revient à la multiplier par $\dfrac{x}{100}$.
-		\item Augmenter une valeur par $x\%$ revient à la multiplier par $1 + \dfrac{x}{100}$.
-		\item Diminuer une valeur par $x\%$ revient à la multiplier par $1 - \dfrac{x}{100}$.
+		\item Une \textbf{population} est un ensemble d'éléments, appelés les \textbf{individus}.
+		\item Une \textbf{sous-population} est une partie de la population.
+		\item Le nombre total d'individus dans la population est appelé l'\textbf{effectif total}.
+	\end{itemize}
+\end{definition}
+
+\begin{remarque}
+	Les individus d'une population ne sont pas toujours des personnes.
+
+	Par exemple, on peut parler de la \textit{population} d'une trousse, dont les \textit{individus} sont les stylos, et une \textit{sous-population} est formée par les stylos rouges.
+\end{remarque}
+
+\begin{definition}[Proportion]
+	On considère une population dont l'effectif total est $N$, et une sous-population dont l'effectif est $n$.
+	\begin{itemize}
+		\item La \textbf{proportion} d'individus dans la sous-population est $p = \dfrac{n}{N}$.
+		\item On peut exprimer cette proportion en pourcentage, en la multipliant par $100$ :
+
+		      $\left(\dfrac{n}{N}×100\right) \%$ des individus sont dans la sous-population.
 	\end{itemize}
 \end{definition}
 
 \begin{exemple}
-	Augmenter 5 000 de 20\% revient à calculer
-	$$ 5\ 000 × \left(1 + \frac{20}{100}\right) = 5\ 000 × 1,20 = 6\ 000 $$
+	\begin{center}
+		\begin{tikzpicture}
+			\foreach \x/\y in {0/0,0/1,1/0,1/1} {
+					\node[red] at (\x,\y) {×};
+				}
+			\foreach \x/\y in {2/0,2/1,3/0,3/1,4/0,4/1} {
+					\node at (\x,\y) {∙};
+				}
+		\end{tikzpicture}
+	\end{center}
+	Dans la population ci-dessus, la proportion de croix est $\dfrac{4}{10} = 0,4$, ou $40\%$.
 \end{exemple}
 
-\begin{definition}[vocabulaire]
+\begin{remarque}
+	Prendre $x\%$ d'une valeur revient à la multiplier par $\dfrac{x}{100}$.
+\end{remarque}
+
+\begin{propriete}[Proportion de proportion, pourcentage de pourcentage]
+	\begin{center}
+		\begin{tikzpicture}
+			\draw[thick,cyan,fill=cyan!20] (0,0) ellipse (2.4 and 1.4);
+			\node[cyan] at (2.6,0.7) {$A$};
+			\draw[thick,red,fill=red!20] (0,0) ellipse (1.7 and 1);
+			\node[red] at (1.9,0.5) {$B$};
+			\draw[thick,Green,fill=Green!20] (0,0) ellipse (1 and 0.6);
+			\node[Green] at (1.2,0.3) {$C$};
+		\end{tikzpicture}
+	\end{center}
+
+	On considère un population $A$, et
 	\begin{itemize}
-		\item Une \textbf{évolution} est une augmentation ou une diminution.
-		\item Si l'évolution est exprimée en pourcentage, le pourcentage est appelé le \textbf{taux d'évolution}.
-		\item Lorsqu'on multiplie une valeur $v$ par un nombre $c$ pour obtenir une nouvelle valeur $v'$ ($v × c = v'$), on dit que $c$ est le \textbf{coefficient multiplicateur}.
+		\item Une sous-population $B$ de $A$, dont la proportion dans $A$ est $p_B$.
+		\item Une sous-population $C$ de $B$, dont la proportion dans $B$ est $p_C$.
+	\end{itemize}
+
+	Alors la proportion de $C$ \uline{dans $A$} est $p = p_B × p_C$
+\end{propriete}
+
+\begin{exemple}
+	On considère la population des véhicules possédés par une entreprise.
+
+	\begin{itemize}
+		\item $75\%$ de ces véhicules sont électriques.
+		\item Parmi les véhicules électriques, $30\%$ sont des deux-roues.
+	\end{itemize}
+	La proportion $p$ de deux-roues électriques dans la population totale est donc
+	$$ p = 0,75 × 0,3 = 0,225 $$
+	Soit $22,5\%$.
+\end{exemple}
+
+\section{Variations et évolutions}
+% TODO : pas trop long, ce n'est pas passionnant
+
+\begin{definition}[Variations]
+	Lorsqu'on passe d'une valeur $V₁$ à une valeur $V₂$, on dit qu'il s'agit d'une \textbf{évolution}. On a alors :
+	\begin{itemize}
+		\item $V₂ - V₁$ est la \textbf{variation absolue}.
+		\item $\dfrac{V₂ - V₁}{V₁}$ est la \textbf{variation relative}, aussi appellée le \textbf{taux d'évolution}.
 	\end{itemize}
 \end{definition}
 
 \begin{exemple}
-	Si on a une augmentation de 15\%, le coefficient multiplicateur est $1 + \frac{15}{100} = 1,15$.
+	Le prix du repas à l'université est passé de 3,20€ en $2017$ à 3,70€ en $2021$.
 
-	Si on a une diminution de 6\%, le coefficient multiplicateur est $1 - \frac{6}{100} = 0,94$.
+	La variation absolue est de $0,40€$.
+
+	Le taux d'évolution est de $\dfrac{0,40}{3,20} = 0,125$, ou $12,5\%$.
 \end{exemple}
 
-\begin{greybox}[frametitle={Remarque}]
+\begin{remarque}
+	\begin{itemize}
+		\item Si la variation absolue (ou le taux d'évolution) est positive, c'est que la valeur à augmenté. Sinon, c'est qu'elle a diminué.
+		\item La variation absolue est dans la même unité que $V₁$ et $V₂$.
+		\item Le taux d'évolution n'a pas d'unité.
+	\end{itemize}
+\end{remarque}
+
+\begin{propriete}[Coefficient multiplicateur]
+	Si $t$ est le taux d'évolution entre deux valeurs $A$ et $B$, on a
+
+	$$ B = A × (1 + t) $$
+\end{propriete}
+\begin{proof}
+	On sait que $t$ est le taux d'évolution, donc $t = \dfrac{B - A}{A}$.
+
+	Donc $A × t = B - A$, et donc
+	$B = A × t + A = A × (1 + t)$.
+\end{proof}
+
+\begin{remarque}
 	Si le coefficient d'une évolution est \textit{supérieur à $1$}, c'est une augmentation. Sinon, c'est une diminution.
-\end{greybox}
+\end{remarque}
 
 \begin{propriete}[Évolutions successives et coefficient global]
 	Lorsqu'on applique plusieurs évolutions successives, on obtient le \textbf{coefficient global} en multipliant les coefficients.
@@ -56,5 +145,7 @@
 
 	Cette nouvelle évolution est appelée \textbf{l'évolution réciproque}, et son coefficient est le \textbf{coefficient réciproque} $cᵣ = \frac{1}{c}$.
 \end{propriete}
+
+\section{Séries statistiques}
 
 \end{document}

@@ -1,0 +1,65 @@
+\documentclass[
+	classe=$2^{de}$,
+	headerTitle=Activité,
+	twocolumn,
+	landscape
+]{exercice}
+
+\newcounter{MySection}
+\setcounter{MySection}{1}
+
+\newcommand{\mysection}[1]{{\large\uline{\arabic{MySection}) #1}}\vspace{1em}\stepcounter{MySection}}
+
+\renewcommand{\arraystretch}{1.5}
+\setlength{\columnsep}{1cm}
+
+\title{Proportionnalité et pourcentages}
+
+\begin{document}
+
+\newcommand{\Exercices}{
+	\maketitle
+
+	\begin{exercice}
+		Au 1ᵉʳ janvier 2017, la France, hors Mayotte,
+		compte 35,7 millions de logements. Les rési-
+		dences principales représentent 82,1 \% du parc, les résidences secondaires et logements occasionnels 9,5 \% et les logements vacants 8,4 \% \textit{(Insee, Tableau de l’économie française, 2018)}.
+		\begin{enumerate}
+			\item Quelle est la population étudiée ici ? \correction{Les logements}
+			\item Citer des sous-populations de cette population. \correction{résidences principales, résidences secondaires, logements occasionnels, logements vacants.}
+			\item Déterminer le nombre de logements vacants en France au 1ᵉʳ janvier 2017. \correction{2 998 800}
+		\end{enumerate}
+	\end{exercice}
+
+	\begin{exercice}\
+
+		Une peintre veut faire de gigantesque toiles. Pour cela, elle fabrique elle-même ses couleurs, à partir de peinture rouge, verte, bleue et noire.
+
+		La peintre a fourni les proportions de chaque couleur, ainsi que la quantité de noir :
+
+		\begin{center}
+			\begin{tabular}{|c|c|c|c|c||c|}
+				\hline
+				                & Rouge   & Vert    & Bleu    & Noir    & Quantité de noir \\
+				                & (en \%) & (en \%) & (en \%) & (en \%) & (en litres)      \\ \hline
+				Fuschia         & 32      & 8       & 20      & 40      & 20               \\ \hline
+				Or              & 33      & 22      & 0       & 45      & 15               \\ \hline
+				Azur            & 4       & 17      & 26      & 53      & 26.5             \\ \hline
+				Jaune           & 33      & 33      & 0       & 34      & 10               \\ \hline
+				Argile          & 31      & 31      & 32      & 6       & 12               \\ \hline
+				Indigo          & 16      & 4       & 32      & 48      & 12               \\ \hline
+				Gris anthracite & 6       & 6       & 6       & 82      & 41               \\ \hline
+			\end{tabular}
+		\end{center}
+
+		Pour chacune des couleurs demandées, calculer combien de litres de rouge, de vert, de bleu et de noir sont nécessaires, et organiser ces données dans un tableau.
+	\end{exercice}
+}
+
+\Exercices
+
+\newpage
+
+\Exercices
+
+\end{document}
