@@ -246,6 +246,8 @@
 \directlua{make_vec("\luatexluaescapestring{\unexpanded{#1}}")}%
 }
 
+\newcommand{\intervalle}[4]{\left#1 #2;#3\right#4}
+
 \ifPreambuleOptions@nofigures
 \else
 % Pour entourer un nombre
