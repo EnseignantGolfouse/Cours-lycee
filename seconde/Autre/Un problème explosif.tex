@@ -1,0 +1,56 @@
+\documentclass[
+	classe=$2^{de}$,
+	headerTitle=Problème,
+	landscape,
+	twocolumn
+]{exercice}
+
+\usepackage{préambule}
+\usetikzlibrary{positioning}
+\usepackage{clipboard}
+
+\setlength{\columnsep}{1cm}
+
+\begin{document}
+
+\Copy{Explosion}{
+	\begin{center}
+		\LARGE
+
+		Un problème explosif
+	\end{center}
+
+	\notebox{\small
+		Ce problème est tiré du TFJM², une compétition mathématique pour lycéen⋅nes.
+	}
+
+	\vspace{1em}
+
+	L'agent secret 1234 doit désamorcer une bombe. Mais il y a un souci : la bombe est protégé par un cadenas à chiffres !
+
+	\begin{itemize}
+		\item Le cadenas possède 4 roues, et une seule combinaison peut l'ouvrir.
+		\item Chaque roue a des chiffres de 0 à 9.
+		\item On ne peut tourner une roue que dans un sens : 0 → 1 → 2 → ⋯ → 9 → 0 → ⋯.
+		\item ATTENTION ! Si on rentre une combinaison déjà essayée, la bombe explose automatiquement !
+	\end{itemize}
+
+	Lorsque l'agent arrive, le cadenas est sur la position 0-0-0-0.
+
+	Son but est donc de tester le plus de combinaisons possibles, en espérant tomber sur la bonne.
+
+	\begin{enumerate}
+		\item On suppose dans cette question que les trois derniers chiffres de la combinaison sont 0.
+
+		      Comment l'agent doit-il procéder pour désamorcer la bombe ?
+		\item Comment doit-il procéder si il sait que les deux derniers chiffres de la combinaison sont 0 ?
+		\item Peut-il désamorcer la bombe à coup sûr si il ne connait aucun chiffre ?
+		\item On suppose maintenant que l'agent n'a pas le droit de faire tourner deux fois de suite la même roue : il doit changer de roue à chaque fois. Peut-il encore désamorcer la bombe ? Comment ?
+	\end{enumerate}
+}
+
+\newpage
+
+\Paste{Explosion}
+
+\end{document}
