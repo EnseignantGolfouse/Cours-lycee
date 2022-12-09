@@ -1,0 +1,52 @@
+\documentclass[
+	classe=$2^{de}$,
+	headerTitle=Activité,
+	twocolumn,
+	landscape
+]{exercice}
+
+\usetikzlibrary{positioning,calc}
+
+\renewcommand{\arraystretch}{1.5}
+\setlength{\columnsep}{1cm}
+
+\title{Activité : évolution réciproque}
+
+\begin{document}
+
+\newcommand{\Activite}{
+\maketitle
+
+Une entreprise compte $250$ salariés en 2020.
+
+En 2021, après une hausse considérable de son activité, elle décide d'embaucher $500$ personnes supplémentaires, pendant une durée d'un an.
+
+\begin{enumerate}
+	\item Quelle est la proportion des nouveaux employés dans l'entreprise en 2021 ? \correctionDots{$2/3$}
+	\item Calculer le \textbf{coefficient} de cette évolution (c'est-à-dire, le nombre par lequel on a multiplié) : \correctionDots{$3$\hspace{1.5em}}.
+	\item En 2022, le contrat des nouveaux arrivants arrive à son terme, et n'est pas renouvelé.
+
+	      Quelle est l'évolution absolue du nombre d'employés ? \correctionDots{$-500$}
+
+	      Quelle est l'évolution relative ? \correctionDots{$-2 / 3$}
+	\item Remplir le schéma suivant :
+	      \begin{center}
+		      \begin{tikzpicture}[node distance=3cm]
+			      \node[draw,circle] (D) {\correction{$250$}\hspace{2em}};
+			      \node[text width=4cm] at ($(D) - (1.5,0)$) {\hspace{1em} employés\\ en 2020/2022};
+			      \node[draw,circle] (A)[right=of D] {\correction{$750$}\hspace{2em}};
+			      \node[text width=4cm] at ($(A) + (3,0)$) {employés\\ en 2021};
+			      \path[->]
+			      (D) edge[bend left] node[above]{$× \correctionDots{3}$} (A)
+			      (A) edge[bend left] node[below]{$× \correctionDots{\dfrac{1}{3}}$} (D);
+		      \end{tikzpicture}
+	      \end{center}
+\end{enumerate}
+}
+
+\Activite
+
+\newpage
+\Activite
+
+\end{document}
