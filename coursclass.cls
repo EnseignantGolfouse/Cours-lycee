@@ -12,8 +12,11 @@
 	prefix=Options@
 }
 \DeclareStringOption[]{classe}
+\DeclareVoidOption{twocolumn}{
+\makeatletter\newcommand{\internal@hastwocolumn}{}\makeatother%
+}
 \DeclareVoidOption{noheader}{\makeatletter\newcommand{\internal@noheader}{}\makeatother}
-\DeclareStringOption[]{headerTitle}
+\DeclareStringOption[Cours]{headerTitle}
 \DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessKeyvalOptions*
 % \ProcessOptions\relax
@@ -40,25 +43,36 @@
 \makeatletter
 \ifdefined\internal@noheader
 \else
-\AtBeginDocument{%
-\setlength{\headheight}{15.3pt}
 \pagestyle{fancy}
 \fancyhf{}
+\ifdefined\internal@hastwocolumn
+\setlength{\headheight}{20pt}
+\renewcommand{\headrule}{\hrulefill\hspace{20pt}\hrulefill}
+\fancyhead[L,R]{\makebox[\columnwidth]{
+	Lycée La Martinière Diderot
+	\hfill
+	\ifthenelse{\equal{\Options@classe}{}}{
+		Mathématiques
+	}{
+		\Options@classe - Mathématiques
+	}
+	\hfill
+	\Options@headerTitle
+}}
+\else
+\setlength{\headheight}{15.5pt}
 \fancyhead[L]{Lycée La Martinière Diderot}
-\let\runtitle\@title
-\ifthenelse{\equal{\Options@classe}{}}{
-	\fancyhead[C]{Mathématiques}}{
-	\fancyhead[C]{\Options@classe - Mathématiques}}
-\fancyhead[R]{%
-	\ifthenelse{\equal{\Options@headerTitle}{}}%
-	{\runtitle}%
-	{\Options@headerTitle}%
+\fancyhead[C]{
+	\ifthenelse{\equal{\Options@classe}{}}{
+		Mathématiques
+	}{
+		\Options@classe\space - Mathématiques
+	}
 }
-\fancypagestyle{plain}{ %
+\fancyhead[R]{\Options@headerTitle}
+\fi
+\fancypagestyle{plain}{%
   \fancyhf{} % remove everything
-  \renewcommand{\headrulewidth}{0pt} % remove lines as well
-  \renewcommand{\footrulewidth}{0pt}
-}
 }
 \fi
 \makeatother
