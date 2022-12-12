@@ -1,0 +1,30 @@
+\documentclass{beamer}
+
+\usepackage{préambule}
+
+\begin{document}
+
+\begin{frame}
+	\textbf{Recopier l'énoncé (y compris le tableau), et répondre aux questions dans son cahier :} \vspace{1em}
+
+	\onslide<2>{
+		On a demandé aux employés s'une entreprise leur temps de trajet depuis leur domicile jusqu'à leur lieu de travail. Leur réponses ont étés placées dans le tableau suivant :
+		\begin{center}
+			\begin{tabular}{|l|*{5}{>{\centering}p{0.7cm}|}}
+				\hline
+				Temps (en minutes) & 5  & 10 & 20 & 30 & 40 \tabularnewline \hline
+				Effectif           & 10 & 15 & 5  & 35 & 50 \tabularnewline \hline
+			\end{tabular}
+		\end{center}
+
+		\begin{enumerate}
+			\item Calculer la moyenne $\overline{x}$ du temps de trajet des employés, au dixième près. \correctionOr{$29,1$ minutes}{}
+			\item Déterminer l'écart-type $σ$ de cette série, au dixième près. \correctionOr{$12,4$ minutes}{}
+			\item Calculer le pourcentage d'employés dont le temps de trajet appartient à l'intervalle $[\overline{x} - σ ; \overline{x} + σ]$.
+
+			      \correctionOr{$[\overline{x} - σ ; \overline{x} + σ] ≈ [16,7 ; 41,5]$, ce qui comprend les employés à $20$, $30$ et $40$ minutes, soit $80$ employés sur un total de $115$, soit $69,6\%$}{}
+		\end{enumerate}
+	}
+\end{frame}
+
+\end{document}

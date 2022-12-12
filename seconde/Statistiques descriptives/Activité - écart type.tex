@@ -1,0 +1,72 @@
+\documentclass[
+	classe=$2^{de}$,
+	headerTitle=Activité,
+	landscape,
+	twocolumn
+]{exercice}
+
+\renewcommand{\arraystretch}{1.3}
+\setlength{\columnsep}{1cm}
+
+\title{Activité : écart-type}
+
+\begin{document}
+
+\newcommand{\Activite}{
+	\maketitle
+
+	On imagine un groupe de $4$ personnes, dans lequel la taille moyenne est $170$ centimètres.
+
+	\begin{enumerate}
+		\item Une répartition possible des tailles dans ce groupe est :
+		      \begin{itemize}
+			      \item[a.] $170$ cm ; $170$ cm ; $170$ cm ; $170$ cm (tout le monde fait la même taille)
+		      \end{itemize}
+
+		      Donner une autre répartition possible des tailles du groupe :
+		      \begin{itemize}
+			      \item[b.] Si deux personnes ont la même taille : \correction{$170$ ; $170$ ; $165$ ; $175$}
+			      \item[c.] Si toutes les personnes ont des tailles différentes : \correction{$168$ ; $169$ ; $171$ ; $172$}
+			      \item[d.] Si une personne fait $153$cm, et une autre $173$cm : \correction{$153$ ; $173$ ; $177$ ; $177$}
+		      \end{itemize}
+		\item On cherche maintenant à savoir si le groupe est plus ou moins homogène (c'est-à-dire si les personnes ont des tailles similaires).
+
+		      Pour cela, on va utiliser la \textbf{variance} :
+
+		      Choisir une des répartitions obtenues dans la question 1 : \correctionDots{c.}
+		      \begin{itemize}
+			      \item Pour chaque personne du groupe, calculer l'écart entre sa taille et la taille moyenne :
+
+			            \correction{$2$cm, $1$cm, $2$cm et $1$cm}
+			      \item Mettre chacun des résultats obtenus au carré :
+
+			            \correction{$4$cm², $1$cm², $4$cm² et $1$cm²}
+			      \item Faire la somme des résultats obtenus, et la diviser par le nombre de personnes (ici 4) :
+
+			            \correction{$\dfrac{4 + 1 + 4 + 1}{4} = 2,5$cm²}
+		      \end{itemize}
+		\item Quelle est \uline{l'unité} du nombre ainsi obtenu ? \correction{des centimètres au carré}
+		\item Quelle opération doit-on faire pour obtenir des centimètres ? \correction{une racine carré.}
+
+		      On obtient alors l'\textbf{écart-type}.
+		\item En reprenant ces étapes, calculer l'écart-type de chaque répartition possible au millimètre près :
+		      \begin{multicols}{2}
+			      \begin{itemize}
+				      \item[a.] \correction{$0$cm}
+				      \item[b.] \correction{$\sqrt{12,5} ≈ 3,5$ cm}
+				      \item[c.] \correction{$\sqrt{2,5} ≈ 1,6$ cm}
+				      \item[d.] \correction{$\sqrt{99} ≈ 9,9$ cm}
+			      \end{itemize}
+		      \end{multicols}
+	\end{enumerate}
+}
+
+\Activite
+
+\ifdefined\makeCorrection
+\else
+	\newpage
+	\Activite
+\fi
+
+\end{document}

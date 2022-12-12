@@ -154,4 +154,55 @@
 
 \section{Séries statistiques}
 
+\begin{definition}[Moyenne, moyenne pondérée]
+	Si on dispose d'une série de valeurs $x₁, ⋯, xₙ$,
+	\begin{itemize}
+		\item on peut calculer leur \textbf{moyenne} :
+		      $$ M = \dfrac{x₁ + ⋯ + xₙ}{n} $$
+		\item La moyenne peut être pondérée, c'est-à-dire que chaque valeur est multipliée par un coefficient $cᵢ$ :
+		      $$ M = \dfrac{c₁ × x₁ + ⋯ + cₙ × xₙ}{c₁ + ⋯ + cₙ} $$
+	\end{itemize}
+\end{definition}
+
+\begin{exemple}
+	La moyenne de la série de notes $8 ; 11 ; 12 ; 17$ est
+	$$ M = \dfrac{8 + 11 + 12 + 17}{4} = \dfrac{48}{4} = 12 $$
+
+	Si la quatrième note (le $17$) était coefficient $2$, et que toutes les autres notes sont coefficient $1$, la moyenne devient
+	$$ M = \dfrac{8 + 11 + 12 + 2 × 17}{1 + 1 + 1 + 2} = \dfrac{65}{5} = 13 $$
+\end{exemple}
+
+\begin{propriete}[Linéarité de la moyenne]
+	\begin{itemize}
+		\item Si on ajoute le même nombre $a$ à chaque valeur, la moyenne augmente de $a$.
+		\item Si on multiplie chaque valeur par un nombre $b$, la moyenne est multipliée par $b$.
+	\end{itemize}
+\end{propriete}
+
+\begin{definition}[Variance, écart-type]
+	Si on dispose d'une série de valeurs $x₁, ⋯, xₙ$, et qu'on dispose de la moyenne $M$, on définit
+	\begin{itemize}
+		\item La \textbf{variance} de cette série
+		      $$ V = \dfrac{(x₁ - M)² + ⋯ + (xₙ - M)²}{n} $$
+		\item L'\textbf{écart-type} de cette série
+		      $$ σ = \sqrt{V} $$
+	\end{itemize}
+\end{definition}
+
+\begin{exemple}
+	Prenons la série de notes $1 ; 4 ; 9 ; 15 ; 18 ; 13$.
+
+	La moyenne de cette série est $10$. Donc on a
+	\begin{itemize}
+		\item $V = \dfrac{(1 - 10)² + (4 - 10)² + (9 - 10)² + (15 - 10)² + (18 - 10)² + (13 - 10)²}{6}$ \vspace{0.5em}
+
+		      $\phantom{V} = \dfrac{(-9)² + (-6)² + (-1)² + 5² + 8² + 3²}{6}$ \vspace{0.5em}
+
+		      $\phantom{V} = \dfrac{81 + 36 + 1 + 25 + 64 + 9}{6}$ \vspace{0.5em}
+
+		      $\phantom{V} = \dfrac{216}{6} = 36$
+		\item $σ = \sqrt{V} = \sqrt{36} = 6$
+	\end{itemize}
+\end{exemple}
+
 \end{document}

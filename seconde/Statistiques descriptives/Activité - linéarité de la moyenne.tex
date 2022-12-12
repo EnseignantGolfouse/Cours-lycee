@@ -1,0 +1,74 @@
+\documentclass[
+	classe=$2^{de}$,
+	headerTitle=Activité
+]{exercice}
+
+\renewcommand{\arraystretch}{1.3}
+
+\title{Activité : linéarité de la moyenne}
+
+\begin{document}
+
+\maketitle
+
+Voici les notes qu'à obtenu un élève en mathématiques :
+
+\begin{center}
+	\begin{tabular}{|l|*{5}{>{\centering}p{1cm}|}}
+		\hline
+		Contrôle & 1  & 2  & 3  & 4 & 5  \tabularnewline \hline
+		Note     & 12 & 14 & 10 & 9 & 10 \tabularnewline \hline
+	\end{tabular}
+\end{center}
+
+\begin{enumerate}
+	\item Calculer la moyenne de cet élève.
+
+	      \correction{moyenne = $\dfrac{12 + 14 + 10 + 9 + 10}{5} = \dfrac{55}{5} = 11$}
+	\item On suppose que
+	      \begin{itemize}
+		      \item La première et la deuxième note est coefficient $0,5$ ;
+		      \item La troisième note est coefficient $2$ ;
+		      \item La quatrième note est coefficient $3$ ;
+		      \item La cinquième note est coefficient $1$.
+	      \end{itemize}
+	      Quelle est alors la moyenne de l'élève ?
+
+	      \correction{moyenne = $\dfrac{12×0,5 + 14×0,5 + 10×2 + 9×3 + 10}{7} = \dfrac{70}{7} = 10$}
+	\item Au deuxième trimestre, toutes ses notes ont augmenté d'un point. Remplir le tableau ci-dessous :
+	      \begin{center}
+		      \begin{tabular}{|l|*{5}{>{\centering}p{1cm}|}}
+			      \hline
+			      Contrôle           & 1                 & 2                 & 3                 & 4                 & 5                 \tabularnewline \hline
+			      Note (trimestre 2) & \correction{$13$} & \correction{$15$} & \correction{$11$} & \correction{$10$} & \correction{$11$} \tabularnewline \hline
+		      \end{tabular}
+	      \end{center}
+
+	      Quelle est alors sa nouvelle moyenne :
+	      \begin{itemize}
+		      \item Sans coefficients ?  \correction{moyenne = $\dfrac{13 + 15 + 11 + 10 + 11}{5} = \dfrac{60}{5} = 12$}
+		      \item Avec coefficients ? \correction{moyenne = $\dfrac{13×0,5 + 15×0,5 + 11×2 + 10×3 + 11}{7} = \dfrac{77}{7} = 11$}
+	      \end{itemize}
+	\item Au troisième trimestre, ses notes ont chuté de $5$ points (par rapport au trimestre 2), puis ont été multipliées par $2$. Remplir le tableau ci-dessous :
+	      \begin{center}
+		      \begin{tabular}{|l|*{5}{>{\centering}p{1cm}|}}
+			      \hline
+			      Contrôle           & 1                 & 2                 & 3                 & 4                 & 5                 \tabularnewline \hline
+			      Note (trimestre 2) & \correction{$16$} & \correction{$20$} & \correction{$12$} & \correction{$10$} & \correction{$12$} \tabularnewline \hline
+		      \end{tabular}
+	      \end{center}
+
+	      Quelle est alors sa nouvelle moyenne :
+	      \begin{itemize}
+		      \item Sans coefficients ?  \correction{moyenne = $\dfrac{16 + 20 + 12 + 10 + 12}{5} = \dfrac{70}{5} = 14$}
+		      \item Avec coefficients ? \correction{moyenne = $\dfrac{16×0,5 + 20×0,5 + 12×2 + 10×3 + 12}{7} = \dfrac{84}{7} = 12$}
+	      \end{itemize}
+
+	\item Que peut-on remarquer sur l'évolution de la moyenne à chaque trimestre ?
+
+	      \correction{Au trimestre 2, sa moyenne a augmenté d'un point.}
+
+	      \correction{Au trimestre 3, sa moyenne a diminué de $5$ points, puis a été multipliée par $2$.}
+\end{enumerate}
+
+\end{document}

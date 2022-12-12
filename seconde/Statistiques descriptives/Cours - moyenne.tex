@@ -1,0 +1,47 @@
+\documentclass[
+	classe=$2^{de}$,
+	landscape,
+	twocolumn
+]{coursclass}
+
+\setlength{\columnsep}{1cm}
+
+\begin{document}
+
+\newcommand{\Cours}{
+	\begin{definition}[Moyenne, moyenne pondérée]
+		Si on dispose d'une série de valeurs $x₁, ⋯, xₙ$,
+		\begin{itemize}
+			\item on peut calculer leur \textbf{moyenne} :
+			      $$ M = \dfrac{x₁ + ⋯ + xₙ}{n} $$
+			\item La moyenne peut être pondérée, c'est-à-dire que chaque valeur est multipliée par un coefficient $cᵢ$ :
+			      $$ M = \dfrac{c₁ × x₁ + ⋯ + cₙ × xₙ}{c₁ + ⋯ + cₙ} $$
+		\end{itemize}
+	\end{definition}
+
+	\begin{exemple}
+		La moyenne de la série de notes $8 ; 11 ; 12 ; 17$ est
+		$$ M = \dfrac{\correction{8 + 11 + 12 + 17}}{\correction{4}} = \correction{\dfrac{48}{4} = 12} $$
+
+		Si la quatrième note (le $17$) était coefficient $2$, et que toutes les autres notes sont coefficient $1$, la moyenne devient
+		$$ M = \dfrac{\correction{8 + 11 + 12 + 2 × 17}}{\correction{1 + 2 + 1 + 1}} = \correction{\dfrac{65}{5} = 13} $$
+	\end{exemple}
+
+	\begin{propriete}[Linéarité de la moyenne]
+		\begin{itemize}
+			\item Si on ajoute le même nombre $a$ à chaque valeur, la moyenne
+
+			      augmente de \correctionDots{$a$}.
+			\item Si on multiplie chaque valeur par un nombre $b$, la moyenne est
+
+			      multipliée par \correctionDots{$b$}.
+		\end{itemize}
+	\end{propriete}
+}
+
+\Cours
+
+\newpage
+\Cours
+
+\end{document}
