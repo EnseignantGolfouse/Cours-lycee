@@ -22,7 +22,7 @@
 \end{definition}
 
 \begin{exemple}
-	Si on développe l'expression $(x + 2)(x - 1)$, on obtient $x² + x - 2$.
+	Si on développe l'expression $(x + 2)(x - 1)$, on obtient $............$.
 
 	On dit que la fonction $f(x) = x² + x - 2$ s'écrit aussi $f(x) = (x + 2)(x - 1)$, et a pour racines
 
@@ -32,17 +32,5 @@
 \begin{propriete}
 	Si $r₁$ et $r₂$ sont les racines d'une fonction de degré 2 $f$, on a $f(r₁) = f(r₂) = 0$.
 \end{propriete}
-
-\begin{figure}[h!]
-	\begin{tikzpicture}[xscale=2]
-		\draw[thin,gray,xstep=0.5] (-3.25,-2.5) grid (3.25,5.5);
-		\draw[thick,->] (-3.25,0) -- (3.25,0);
-		\draw[thick,->] (0,-2.5) -- (0,5.5);
-		\draw[thick] (1,0) -- ++(0,-0.2) node[below] {$1$}
-		(0,1) -- ++(-0.2,0) node[left] {$2$};
-		\draw[thick,purple,variable=\x,domain=-3:3] plot({\x},{0.5*(\x+2)*(\x-1)});
-	\end{tikzpicture}
-	\caption*{graphe de la fonction $f(x) = (x + 2) (x - 1)$}
-\end{figure}
 
 \end{document}
