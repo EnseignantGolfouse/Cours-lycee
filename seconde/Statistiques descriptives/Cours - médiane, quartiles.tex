@@ -1,0 +1,41 @@
+\documentclass[
+	classe=$2^{de}$,
+	twocolumn,
+	landscape
+]{coursclass}
+
+\setlength{\columnsep}{1.2cm}
+
+\begin{document}
+
+\newcommand{\Cours}{
+	\begin{definition}[Médiane, quartiles]
+		Si on a une série de valeurs $x₁,⋯,xₙ$ rangées dans l'ordre croissant, alors
+		\begin{itemize}
+			\item La \correctionDots{médiane} est la valeur telle que $50\%$ des valeurs sont supérieures ou égales, et $50\%$ des valeurs sont inférieures ou égales.
+			\item Le \correctionDots{1\textsuperscript{er} quartile $Q₁$} est la plus petite valeur de la série telle qu'au moins $25\%$ des valeurs lui sont inférieures ou égales.
+			\item Le \correctionDots{3\textsuperscript{e} quartile $Q₃$} est la plus petite valeur de la série telle qu'au moins $75\%$ des valeurs lui sont inférieures ou égales.
+		\end{itemize}
+	\end{definition}
+
+	\begin{definition}[Écart interquartile]
+		L'écart interquartile est la valeur $Q₃ - Q₁$.
+	\end{definition}
+
+	\begin{exemple}
+		Si on a la série $5$ ; $12$ ; $12$ ; $14$ ; $16$ ; $21$ ; $22$ ; $23$, alors
+		\begin{itemize}
+			\item La médiane est \correctionOr{entre $14$ et $16$ : traditionnellement, on dira qu'elle vaut $15$.}{.....}
+			\item Le premier quartile est \correctionDots{$12$}, le troisième quartile est \correctionDots{$21$}.
+			\item L'écart interquartile est \correctionDots{$21 - 12 = 9$}.
+		\end{itemize}
+	\end{exemple}
+}
+
+\Cours
+
+\newpage
+
+\Cours
+
+\end{document}
