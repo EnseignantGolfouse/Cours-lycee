@@ -1,0 +1,63 @@
+\documentclass[
+	classe=$2^{de}$,
+	headerTitle=Activité
+]{exercice}
+
+\renewcommand{\arraystretch}{1.5}
+
+\title{Activité : lancé de dés}
+
+\begin{document}
+
+\maketitle
+
+On considère l'expérience aléatoire suivante : on lance deux dés équilibrés à 6 faces, et on additionne les deux faces obtenues.
+
+\begin{enumerate}
+	\item Voici les résultats obtenus en répétant l'expérience $20$ fois :
+
+	      $$ 6\ ;\ 7\ ;\ 2\ ;\ 7\ ;\ 11\ ;\ 10\ ;\ 4\ ;\ 8\ ;\ 6\ ;\ 11\ ;\ 6\ ;\ 8\ ;\ 10\ ;\ 6\ ;\ 6\ ;\ 9\ ;\ 8\ ;\ 5\ ;\ 8\ ;\ 8 $$
+
+	      Résumer ces données dans un tableau d'effectifs.
+
+		  \correctionOr{
+			\begin{tabular}{|l|*{11}{>{\centering}p{0.9cm}|}}
+				\hline
+				Résultat  & 2   & 3   & 4   & 5    & 6    & 7    & 8    & 9    & 10  & 11  & 12  \tabularnewline \hline
+				Effectifs & 1 & 0 & 1 & 1 & 5 & 2 & 5 & 1 & 2 & 2 & 0 \tabularnewline \hline
+			\end{tabular}
+		  }{}
+	\item Déterminer la moyenne et l'écart-type de cette série (au centième près). \correction{$7,3$ et $2,24$}
+	\item Voici les résultats obtenus en effectuant $10\ 000$ lancés :
+	      \begin{center}
+		      \begin{tabular}{|l|*{11}{>{\centering}p{0.9cm}|}}
+			      \hline
+			      Résultat  & 2   & 3   & 4   & 5    & 6    & 7    & 8    & 9    & 10  & 11  & 12  \tabularnewline \hline
+			      Effectifs & 261 & 565 & 804 & 1173 & 1351 & 1640 & 1421 & 1112 & 823 & 582 & 268 \tabularnewline \hline
+		      \end{tabular}
+	      \end{center}
+
+	      Donner la moyenne et l'écart-type de cette nouvelle série. \correction{$7,01$ et $2,41$}
+	\item Donner la médiane et les quartiles de cette série. \correction{$M = 7$, $Q₁ = 5$, $Q₃ = 9$}
+	\item Placer les données du tableau dans un diagramme en bâtons ci-dessous :
+	      \begin{center}
+		      \begin{tikzpicture}
+			      \draw[thick,->] (0,0) -- (14,0) node[below right] {Résultat};
+			      \draw[thick,->] (0,0) -- (0,11) node[above left] {Effectifs};
+			      \foreach \x in {2,...,12} {
+					      \draw[thick] (\x,0) -- ++(0,-0.2) node[below] {$\x$};
+				      }
+			      \foreach \y in {0,...,10} {
+					      \draw[thick] (0,\y) -- ++(-0.2,0) node[left] {$\pgfmathparse{int(\y*200)}\pgfmathresult$};
+				      }
+
+			      \ifdefined\makeCorrection
+				      \foreach \x/\y in {2/261,3/565,4/804,5/1173,6/1351,7/1640,8/1421,9/1112,10/823,11/582,12/268} {
+						      \draw[red] (\x-0.1,0) -- ++(0,\y / 200) -- ++(0.2,0) -- ++(0,-\y / 200);
+					      }
+			      \fi
+		      \end{tikzpicture}
+	      \end{center}
+\end{enumerate}
+
+\end{document}
