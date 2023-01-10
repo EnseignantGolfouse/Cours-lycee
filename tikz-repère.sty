@@ -1,0 +1,13 @@
+% !TeX program = lualatex
+
+% This is meant to be used with document class 'article' or 'beamer'.
+
+\ProvidesPackage{tikz-repère}
+
+\newcommand{\tikzRepere}[4]{
+	\draw[thin,gray] (#1-0.5,#3-0.5) grid (#2+0.5,#4+0.5);
+	\draw[thick,->] (#1-0.5,0) -- (#2+0.5,0);
+	\draw[thick,->] (0,#3-0.5) -- (0,#4+0.5);
+	\draw[thick] (1,0) -- ++(0,-0.2) node[below] {$1$};
+	\draw[thick] (0,1) -- ++(-0.2,0) node[left] {$1$};
+}

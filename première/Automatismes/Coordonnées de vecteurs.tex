@@ -1,0 +1,50 @@
+\documentclass{automatisme}
+
+\usepackage{tikz-repère}
+
+\begin{document}
+
+\begin{frame}
+	\uline{Donner les coordonnées des vecteurs suivants } :
+	\newcommand{\VecUx}{3}
+	\newcommand{\VecUy}{2}
+	\newcommand{\VecVx}{-1}
+	\newcommand{\VecVy}{4}
+	\newcommand{\PointAx}{-1}
+	\newcommand{\PointAy}{2}
+	\newcommand{\PointBx}{2}
+	\newcommand{\PointBy}{2}
+
+	\begin{center}
+		\begin{tikzpicture}[scale=0.6]
+			\tikzRepere{-3}{3}{-3}{3}
+
+			\draw[thick,purple,\myArrow] (-1,-2) -- node[below] {$\vec{u}$} ++(\VecUx,\VecUy);
+			\draw[thick,green,\myArrow] (-1,-1) -- node[below left] {$\vec{v}$} ++(\VecVx,\VecVy);
+			\node at (\PointAx,\PointAy) {$×$};
+			\node[above] at (\PointAx,\PointAy) {$A$};
+			\node at (\PointBx,\PointBy) {$×$};
+			\node[above] at (\PointBx,\PointBy) {$B$};
+		\end{tikzpicture}
+	\end{center}
+
+	\begin{multicols}{3}
+		\begin{itemize}
+			\item $\vec{u} = \begin{pmatrix}
+					      \correction{\VecUx} \\
+					      \correction{\VecUy}
+				      \end{pmatrix}$
+			\item $\vec{u} + \vec{v} = \begin{pmatrix}
+					      \correction{{\pgfmathparse{int(\VecUx + \VecVx)}\pgfmathresult}} \\
+					      \correction{{\pgfmathparse{int(\VecUy + \VecVy)}\pgfmathresult}}
+				      \end{pmatrix}$
+			\item $\vec{AB} = \begin{pmatrix}
+					      \correction{{\pgfmathparse{int(\PointBx - \PointAx)}\pgfmathresult}} \\
+					      \correction{{\pgfmathparse{int(\PointBy - \PointAy)}\pgfmathresult}}
+				      \end{pmatrix}$
+		\end{itemize}
+	\end{multicols}
+\end{frame}
+
+
+\end{document}
