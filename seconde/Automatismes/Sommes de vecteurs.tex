@@ -1,0 +1,35 @@
+\documentclass{automatisme}
+
+\usepackage{tikz-repère}
+
+\begin{document}
+
+\begin{frame}
+	\begin{center}
+		\newcounter{LetterCounter}
+		\setcounter{LetterCounter}{0}
+		\begin{tikzpicture}
+			\setcounter{LetterCounter}{0}
+			\foreach \y in {0,...,3} {
+					\foreach \x in {0,...,4} {
+							\stepcounter{LetterCounter}
+							\coordinate (\Alph{LetterCounter}) at (\x,\y);
+							\node at (\Alph{LetterCounter}) {×};
+							\node[above left] at (\Alph{LetterCounter}) {$\Alph{LetterCounter}$};
+						}
+				}
+		\end{tikzpicture}
+	\end{center}
+
+	Donner un représentant des vecteurs suivants :
+
+	\begin{itemize}
+		\item $\vec{AB} + \vec{BL}$ : \correction{$\vec{AL}$}
+		\item $\vec{FI} - \vec{SI}$ : \correction{$\vec{FS}$}
+		\item $\vec{CK} - 2\vec{JI}$ : \correction{$\vec{CM}$}
+		\item $2\vec{EH} + \dfrac{1}{3}\vec{QB}$ : \correction{$\vec{EF}$}
+	\end{itemize}
+\end{frame}
+
+
+\end{document}
