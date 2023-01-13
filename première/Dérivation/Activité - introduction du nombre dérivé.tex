@@ -1,0 +1,46 @@
+\documentclass[
+	classe=$1^{ere}STI2D$,
+	headerTitle=Activité,
+	landscape,
+	twocolumn,
+]{exercice}
+
+\usepackage{tikz-repère}
+
+\setlength{\columnsep}{1cm}
+
+\title{Activité : introduction du nombre dérivé}
+
+\begin{document}
+
+\newcommand{\Activite}{
+	\maketitle
+
+	On observe la distance parcourue par une voiture en accélération pendant les premières secondes après un démarrage. Celle-ci suit la fonction $d(t) = t²$ reproduite sur le graphique ci-dessous.
+
+	\begin{center}
+		\begin{tikzpicture}[scale=0.6]
+			\tikzRepere{0}{10}{-0.4}{10}[$1$][$10$][temps (en secondes)][distance (en mètres)]
+			\draw[red,thick,domain=0:10,variable=\x] plot({\x},{0.1*\x*\x}) node[right] {$d(t)$};
+		\end{tikzpicture}
+	\end{center}
+
+	\begin{enumerate}
+		\item Le trajet dure \correctionDots{$10$} secondes.
+		\item La distance parcourue est de \correctionDots{$100$} mètres.
+		\item Sur l'ensemble du trajet, la vitesse moyenne est de
+
+		      $\dfrac{\correctionDots{100}}{\correctionDots{10\ }} = \correctionDots{10 \text{ m/s}}$
+		\item La vitesse moyenne entre les secondes $0$ et $5$ est : $\dfrac{\correctionDots{25}}{\correctionDots{5\ }} = \correctionDots{5 \text{ m/s}}$
+		\item La vitesse moyenne entre les secondes $5$ et $10$ est : $\dfrac{\correctionDots{75}}{\correctionDots{5\ }} = \correctionDots{15 \text{ m/s}}$
+		\item La vitesse moyenne entre les secondes $1$ et $3$ est : $\dfrac{\correctionDots{8\ }}{\correctionDots{2\ }} = \correctionDots{4 \text{ m/s}}$
+	\end{enumerate}
+}
+
+\Activite
+
+\newpage
+
+\Activite
+
+\end{document}
