@@ -1,0 +1,61 @@
+\documentclass[
+	classe=$2^{de}$,
+	landscape,
+	twocolumn
+]{exercice}
+
+\usetikzlibrary{calc}
+
+\setlength{\columnsep}{1cm}
+
+\title{Exercice : calculs avec Pythagore}
+
+\begin{document}
+
+\newcommand{\Exercice}{
+	\maketitle
+
+	\begin{center}
+		\begin{tikzpicture}[scale=0.6]
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (3,0);
+			\coordinate (C) at (3,4);
+			\coordinate (D) at (-6.96,11.66);
+
+			\foreach \p/\dir in {A/below left,B/below right,C/above right,D/below left} {
+					\node[\dir] at (\p) {$\p$};
+				}
+
+			\draw (A) -- (B) -- (C) -- cycle
+			(C) -- (D) -- (A);
+			\draw (B) ++ (-0.4,0) -- ++(0,0.4) -- ++(0.4,0);
+			\draw (C) ++ (-0.3,-0.4) -- ++(-0.4,0.3) -- ++(0.3,0.4);
+			\draw[<->] (A) ++(0,-0.5) -- node[below] {$3$ cm} ++($(B) - (A)$);
+			\draw[<->] (B) ++(0.5,0) -- node[right] {$4$ cm} ++($(C) - (B)$);
+			\draw[<->] (C) ++(0.2,0.2) -- node[above right] {$12$ cm} ++($(D) - (C)$);
+		\end{tikzpicture}
+	\end{center}
+
+	\begin{enumerate}
+		\item Quelle est la longueur $AC$ ? \correction{$5$ cm}
+		\item Quelle est la longueur $AD$ ? \correction{$13$ cm}
+		\item Vérifier que $AC ≤ AB + BC$ et $AD ≤ AB + BC + CD$ \correction{OUI}
+		\item Montrer par le calcul que quels que soient les longueurs $AB$, $BC$ et $CD$, on a toujours
+
+		      $$ AC ≤ AB + BC $$
+
+		      et
+
+		      $$ AD ≤ AB + BC + CD $$
+
+		      \correction{En utilisant Pythagore et $\sqrt{a+b} ≤ \sqrt{a}+\sqrt{b}$ OU l'inégalité triangulaire}
+	\end{enumerate}
+}
+
+\Exercice
+
+\newpage
+
+\Exercice
+
+\end{document}
