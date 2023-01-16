@@ -1,0 +1,73 @@
+\documentclass[
+	classe=$2^{de}$,
+	headerTitle=Exercices,
+	landscape,
+	twocolumn
+]{exercice}
+
+\setlength{\columnsep}{1cm}
+
+\title{Exercice : étude d'une vente}
+
+
+\begin{document}
+
+\newcommand{\Vente}{
+	\maketitle
+
+	Une entreprise vend du grain à des agriculteurs. On cherche à faire une étude de son bénéfice quotidien. \medskip
+
+	\begin{minipage}{0.45\linewidth}
+		Si l'entreprise produit $x$ tonnes de grain, cela lui coûte
+
+		$$ C(x) = 50x + 500 € $$
+	\end{minipage}
+	\hfill\vline\hfill
+	\begin{minipage}{0.45\linewidth}
+		Si l'entreprise vend $x$ tonnes de grain, cela lui rapporte
+
+		$$ R(x) = 110x - x² € $$
+	\end{minipage} \bigskip
+
+	On suppose que tout ce qui est produit est vendu.
+
+	\begin{enumerate}
+		\item D'où peut venir le $+\ 500$ dans la formule de $C(x)$ ?
+
+		      \correction{Il peut par exemple venir du salaire des employés, ou de la maintenance d'une machine.}
+		\item Donner la formule du bénéfice $B(x)$ :
+
+		      $$ \correction{B(x) = -x² + 60x - 500} $$
+		\item On cherche à présent à savoir si l'entreprise réalise bel et bien un bénéfice.
+
+		      Si l'entreprise ne produit et ne vend pas de grain, quel est son bénéfice ? \correctionDots{$-100€$}
+		\item Si l'entreprise produit et vend $20$ tonnes de grain, quel est son bénéfice ? \correctionDots{$\phantom{-}300€$}
+
+		      Ainsi l'entreprise commence à faire un bénéfice entre \correctionDots{$0\phantom{2}$} et \correctionDots{$20$} tonnes.
+		\item Montrer que $B(x) = -(x - 10)(x - 50)$ :
+
+		      \ifdefined\makeCorrection
+			      {\color{red}
+				      \begin{align*}
+					      -(x - 10)(x - 50) & = -(x² - 10x - 50x + 500) \\
+					                        & = -x² + 60x - 500         \\
+					                        & = B(x)
+				      \end{align*}
+			      }
+		      \else
+			      \vspace{7em}
+		      \fi
+		\item Résoudre l'équation $x₁ - 10 = 0$ \correctionDots{$x₁ = 10$}
+
+		      Quelle est alors la valeur de $B(x₁)$ ? \correctionDots{$B(x₁) = 0€$}
+		\item À partir de combien de tonnes l'entreprise commence-t'elle à faire du bénéfice ? \correction{À partir de $10$ tonnes}
+	\end{enumerate}
+}
+
+\Vente
+
+\newpage
+
+\Vente
+
+\end{document}
