@@ -1,0 +1,73 @@
+:source-highlighter: coderay
+:classe: 2de
+:headerTitle: Informatique
+:icons: font
+
+
+== [underline]#Performances au handball#
+
+NOTE: Cette activité est une reproduction du TP 1 page 296 du manuel.
+
+
+Un joueur de handball a relevé le nombre de buts qu’il a marqués au cours des matchs du championnat :
+
+[.text-center]
+3 ; 7 ; 7 ; 9 ; 1 ; 0 ; 7 ; 9 ; 3 ; 2 ; 0 ; 9 ; 7 ; 10 ; 0 ; 2 ; 3 ; 4 ; 11 ; 11 ; 0 ; 3 ; 10 ; 7 ; 2
+
+. Pour déterminer la fréquence des matchs où il n'a pas marqué, il utilise la fonction `frequence` ci-dessous qui renvoie la fréquence de la valeur `a` dans la liste `L`.
++
+[source,python]
+--
+def frequence(a,L):
+    n = 0
+    for x in L:
+        if x==a:
+            n += 1
+    return n/len(L)
+--
+.. Que renvoie cette fonction pour `a = 0` et  `L = [3, 7, 7, 9, 1, 0, 7, 9, 3, 2, 0, 9, 7, 10, 0, 2, 3, 4, 11, 11, 0, 3, 10, 7, 2]` ?
+.. Que contient la variable `n` à la fin de la boucle `for` ?
+.. Que renvoie l’instruction `n/len(L)` ?
+.. Utiliser cette fonction pour compléter le tableau suivant.
++
+[cols="3,1,1,1,1,1,1,1,1,1"]
+|===
+|Nombre de buts
+|0
+|1
+|2
+|3
+|4
+|7
+|9
+|10
+|11
+
+|Fréquence
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|=== 
+. {sp}
+.. Pour déterminer le nombre total de buts marqués au cours du championnat, il utilise la fonction `Total` définie ci-dessous mais incomplète.
++
+[source,python,float="right",align="center"]
+--
+def Total(L):
+    N = 0
+    for x in L:
+        N = ...
+    return N
+--
++
+Compléter la ligne 4 et programmer cette fonction pour retrouver le nombre total de buts marqués par ce joueur au cours des matchs du championnat.
+.. Écrire une fonction qui renvoie la moyenne des nombres d’une liste.
++
+La programmer pour déterminer le nombre moyen de buts par match marqués par ce 
+joueur.

@@ -1,0 +1,61 @@
+:source-highlighter: coderay
+:classe: 2de
+:headerTitle: Informatique
+:icons: font
+
+= Listes
+
+Nous allons utiliser des [underline]#listes# en Python.
+
+En Python, une liste est définie en ouvrant des crochets `[]`, et en plaçant des éléments à l'intérieur, séparés par des virgules.
+
+[source,python]
+--
+maliste = [6, 9, 10, 5 + 2]
+--
+
+on peut accéder au éléments d'une liste en [underline]#indexant#:
+
+[source,python]
+--
+print(maliste[0]) # Affiche le premier élément de la liste
+--
+
+Rentrer le code ci-dessus dans l'interpréteur.
+
+. Afficher le 4ème élément.
+. Que se passe-t'il si on essaie d'afficher le 5ème élément de cette liste ?
+
+Il est possible d'obtenir la longeur d'une liste en utilisant la fonction `len`. On peut également obtenir tous les éléments de la liste l'un après l'autre, en utilisant une boucle `for ... in liste`.
+
+[source,python]
+--
+autreliste = [2, 5, 7, 11]
+for x in autreliste:
+    print(x)
+print("la longueur de autreliste est ", len(autreliste))
+--
+
+[start=3]
+. Qu'affiche la fonction ci-dessus ?
+
+Enfin, il est possible de générer les listes d'une autre manière, dite 'impérative'
+
+[source,python]
+--
+liste1 = [i for i in range(50)]
+liste2 = [2 * i for i in range(50)]
+--
+
+[start=4]
+. Que contient la liste `liste1` ?
+. Que contient la liste `liste2` ?
+. Compléter le code ci-dessous pour obtenir la somme de tous les éléments de la liste `liste1`:
++
+[source,python]
+--
+total = 0
+for x in ...:
+    ...
+print(total)
+--

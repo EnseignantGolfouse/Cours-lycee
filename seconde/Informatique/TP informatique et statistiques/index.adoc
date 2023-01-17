@@ -1,0 +1,14 @@
+:source-highlighter: coderay
+:classe: 2de
+:headerTitle: Informatique
+:icons: font
+
+= Python : liste et statistiques
+
+WARNING: Répondre aux questions dans son cahier !
+
+TIP: Lorsqu'il est demandé de compléter un morceau de code, il est souvent pratique d'utiliser le panneau de _gauche_ de Spyder. Tout ce qui y est écrit peut alors être lancé dans l'interpréteur (fenêtre de droite) en appuyant sur la touche `F5`.
+
+* Nous allons commencer par apprendre à utiliser les listes en Python: compléter les questions du fichier suivant : link:listes.html[listes].
+* Ensuite, nous allons faire une activité (complémentaire à celle vue en classe) sur les link:TP_3_page_297.html[lancés de dés].
+* Si tout le reste est fini, commencer la link:TP_1_page_296.html[dernière activité].

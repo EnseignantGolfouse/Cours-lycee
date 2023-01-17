@@ -1,0 +1,112 @@
+\documentclass[
+	classe=$2^{de}$,
+	headerTitle=Python
+]{informatique}
+
+\usepackage{awesomebox}
+
+\title{Python : listes et statistiques}
+
+\begin{document}
+
+\maketitle
+
+\warningbox{Répondre aux questions dans son cahier !}
+
+\tipbox{Lorsqu'il est demandé de compléter un morceau de code, il est souvent pratique d'utiliser le panneau de \textit{gauche} de Spyder. Tout ce qui y est écrit peut alors être lancé dans l'interpréteur (fenêtre de droite) en appuyant sur la touche \texttt{F5}.}
+
+\section{Listes}
+
+Nous allons utiliser des \uline{listes} en Python.
+
+En Python, une liste est définie en ouvrant des crochets \texttt{[]}, et en plaçant des éléments à l'intérieur, séparés par des virgules.
+
+\begin{lstlisting}
+maliste = [6, 9, 10, 5 + 2]
+\end{lstlisting}
+
+on peut accéder au éléments d'une liste en \uline{indexant}:
+
+\begin{lstlisting}
+print(maliste[0]) # Affiche le premier élément de la liste
+\end{lstlisting}
+
+Rentrer le code ci-dessus dans l'interpréteur.
+
+\begin{enumerate}
+	\item Afficher le 4ème élément.
+	\item Que se passe-t'il si on essaie d'afficher le 5ème élément de cette liste ?
+
+	      Il est possible d'obtenir la longueur d'une liste en utilisant la fonction \texttt{len}. On peut également obtenir tous les éléments de la liste l'un après l'autre, en utilisant une boucle \texttt{for ... in liste}.
+
+	      \begin{lstlisting}
+autreliste = [2, 5, 7, 11]
+for x in autreliste:
+    print(x)
+print("la longueur de autreliste est ", len(autreliste))
+\end{lstlisting}
+
+	\item Qu'affiche la fonction ci-dessus ?
+
+	      Enfin, il est possible de générer les listes d'une autre manière, dite 'impérative'
+
+	      \begin{lstlisting}
+liste1 = [i for i in range(50)]
+liste2 = [2 * i for i in range(50)]
+\end{lstlisting}
+
+	\item Que contient la liste \texttt{liste1} ?
+	\item Que contient la liste \texttt{liste2} ?
+	\item Compléter le code ci-dessous pour obtenir la somme de tous les éléments de la liste \texttt{liste1}:
+
+	      \begin{lstlisting}
+total = 0
+for x in ...:
+    ...
+print(total)
+\end{lstlisting}
+\end{enumerate}
+
+\newpage
+
+\section{Lancers de dés}
+
+\notebox{Cette activité est une reproduction du TP 3 page 297 du manuel.}
+
+\begin{enumerate}
+	\item \begin{enumerate}
+		      \item Reproduire la fonction ci-dessous puis la compléter pour qu’elle renvoie l’effectif d’une valeur d’une liste donnée.
+
+		            \begin{lstlisting}
+from random import randint
+import matplotlib.pyplot as plt
+
+
+def nombre_de(valeur, liste):
+	nb=0
+	for x in liste:
+		if x==...:
+			...
+	return nb
+\end{lstlisting}
+		      \item Que renvoie \texttt{nombre\_de(1, [2,1,4,3,1,3,6,1,7,12])} ?
+	      \end{enumerate}
+	\item On considère l'expérience aléatoire suivante : on lance deux dés équilibrés à six faces et on fait la somme des deux faces obtenues.
+
+	      Le programme suivant écrit à la suite de la fonction \texttt{nombre\_de}, permet de représenter par un nuage de points le nombre d’obtentions de chaque issue lorsqu’on répète 1 000 fois  l’expérience précédente.
+
+	      \begin{lstlisting}
+L = [randint(1,6)+randint(1,6) for i in range(1000)]
+for k in range(...,...):
+	plt.plot(k,nombre_de(k,L),'*')
+plt.show()
+\end{lstlisting}
+
+	      \begin{enumerate}
+		      \item Compléter ce programme et commenter le graphique obtenu.
+		      \item Modifier ce programme de façon à répéter 10 000 fois l'expérience aléatoire.
+		      \item Modifier ce programme pour qu’il calcule la moyenne des sommes obtenues après 10 000 lancers des deux dés.
+	      \end{enumerate}
+\end{enumerate}
+
+\end{document}
