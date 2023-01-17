@@ -1,0 +1,66 @@
+\documentclass[
+	classe=$1^{ere}STI2D$,
+	headerTitle=Cours\space Chapitre\space 5
+]{coursclass}
+
+\usepackage{tikz-repère}
+
+\title{Chapitre 5 : Dérivation}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{definition}[Taux d'accroissement]
+	Soit $f$ une fonction définie sur un intervalle $I$, $a$ un nombre dans $I$, et $h ≠ 0$, tel que $a + h ∈ I$.
+
+	Alors, le rapport
+	$$ τₐ(h) = \dfrac{f(a+h)-f(a)}{h} $$
+	est le \textbf{taux d'accroissement} de $f$ entre $a$ et $a + h$.
+\end{definition}
+
+\begin{exemple}
+	\begin{center}
+		\begin{tikzpicture}[scale=0.9]
+			\tikzRepere{0}{5}{-1}{5}
+
+			\draw[variable=\x,blue,thick,domain=0:5] plot({\x},{0.55*\x*\x - 3.55*\x + 5}) node[right] {$f$};
+		\end{tikzpicture}
+	\end{center}
+
+	Sur le graphique ci-dessus :
+	\begin{itemize}
+		\item $τ₀(1) = \dfrac{f(0 + 1) - f(0)}{1} = \dfrac{2 - 5}{1} = -3$
+		\item $τ₁(4) = \dfrac{f(1 + 4) - f(1)}{4} = \dfrac{1 - 2}{4} = -0,25$
+	\end{itemize}
+\end{exemple}
+\begin{exemple}
+	Si $f$ est la fonction telle que $f(x) = x²$, on peut calculer l'expression de $τₐ(h)$ :
+
+	\begin{align*}
+		τₐ(h) & = \dfrac{f(a + h) - f(a)}{h}    \\
+		      & = \dfrac{(a + h)² - a²}{h}      \\
+		      & = \dfrac{a² + 2ah + h² - a²}{h} \\
+		      & = \dfrac{2ah + h²}{h}           \\
+		      & = 2a + h
+	\end{align*}
+\end{exemple}
+
+\begin{remarque}
+	Le taux d'accroissement de $f$ entre $a$ et $b$ correspond à la \textbf{pente} de la droite passant par $(a ; f(a))$ et $(b ; f(b))$.
+\end{remarque}
+
+\begin{definition}[Nombre dérivé]
+	Si le taux d'accroissement $τₐ(h)$ admet une limite lorsque $h$ tend vers $0$, on dit que $f$ est \textbf{dérivable} en $a$.
+
+	La limite est alors appelée le nombre dérivée de $f$ en $a$ : on note
+	$$ \lim_{h→0} \dfrac{f(a+h)-f(a)}{h} = f'(a) $$
+\end{definition}
+
+\begin{remarque}
+	Le nombre dérivé de $f$ en $a$ correspond à la \textbf{pente} de la droite
+\end{remarque}
+
+\end{document}
