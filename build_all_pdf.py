@@ -7,7 +7,7 @@ import sys
 import getopt
 import shutil
 from concurrent.futures import ThreadPoolExecutor
-from typing import Any, NoReturn, Tuple
+from typing import Any, Callable, NoReturn, Tuple
 from colorama import Fore
 
 
@@ -15,14 +15,49 @@ DEFAULT_ARTIFACTS_DIR: str = ".build"
 DEFAULT_EXCLUDE_PATHS: list[str] = ["./git submodules", "./.git"]
 
 
-def find_files_in(directory: str, extension: str, ignored_paths: list[str] = []) -> list[Tuple[str, str, str]]:
-    extension = "." + extension
+class Compilation:
+    path: str
+    input_extension: str
+    output_extension: str
+    output_dir: str
+    artifacts_dir: str
+    ignored_paths: list[str]
+    compilation_function: Callable[[
+        Tuple[str, str, str, str]], Tuple[str, Any | None]]
+
+    def __init__(self, input_extension: str, output_extension: str) -> None:
+        self.input_extension = input_extension
+        self.output_extension = output_extension
+
+
+def tex_compilation(path: str, artifacts_dir: str, ignored_paths: list[str]) -> Compilation:
+    this = Compilation("tex", "pdf")
+    this.output_dir = "pdf"
+    this.path = path
+    this.ignored_paths = ignored_paths
+    this.artifacts_dir = artifacts_dir
+    this.compilation_function = compile_tex_file
+    return this
+
+
+def asciidoctor_compilation(path: str, artifacts_dir: str, ignored_paths: list[str]) -> Compilation:
+    this = Compilation("adoc", "html")
+    this.output_dir = "html"
+    this.path = path
+    this.ignored_paths = ignored_paths
+    this.artifacts_dir = artifacts_dir
+    this.compilation_function = compile_adoc_file
+    return this
+
+
+def find_files_in(compilation: Compilation) -> list[Tuple[str, str, str]]:
+    extension = "." + compilation.input_extension
     normalized_ignored_paths: list[str] = []
     for path in DEFAULT_EXCLUDE_PATHS:
         normalized_ignored_paths.append(os.path.normpath(path))
-    for path in ignored_paths:
+    for path in compilation.ignored_paths:
         normalized_ignored_paths.append(os.path.normpath(path))
-    return find_files_recursive(directory, extension, normalized_ignored_paths)
+    return find_files_recursive(compilation.path, extension, normalized_ignored_paths)
 
 
 def find_files_recursive(directory: str, extension: str, ignored_paths: list[str]) -> list[Tuple[str, str, str]]:
@@ -42,14 +77,14 @@ def find_files_recursive(directory: str, extension: str, ignored_paths: list[str
         name: str = os.path.join(directory, item)
         if os.path.isfile(name):
             if name.endswith(extension):
-                result.append((directory, item, name[:-4]))
+                result.append((directory, item, name[:-len(extension)]))
         elif os.path.isdir(name):
             result.extend(find_files_recursive(
                 name, extension, ignored_paths))
     return result
 
 
-def compile_file(inputs: Tuple[str, str, str, str]) -> Tuple[str, Any | None]:
+def compile_tex_file(inputs: Tuple[str, str, str, str]) -> Tuple[str, Any | None]:
     """
     Returns `None` if no error happened.
     Else, returns the error message.
@@ -90,12 +125,50 @@ def compile_file(inputs: Tuple[str, str, str, str]) -> Tuple[str, Any | None]:
             return (returned_file_tex, None)
 
 
+def compile_adoc_file(inputs: Tuple[str, str, str, str]) -> Tuple[str, Any | None]:
+    """
+    Returns `None` if no error happened.
+    Else, returns the error message.
+    # Parameters
+    - `working_dir` is the absolute directory in which subprocesses will be executed.
+    - `build_dir` is the absolute directory in which to place intermediary build artifacts.
+    - `output_dir` is a directory, relative to `working_dir`, in which to place the resulting pdf.
+    - `input_file` is the path of the input file, relative to `working_dir`.   """
+    (working_dir, build_dir, output_dir, input_file) = inputs
+    returned_file_tex: str = os.path.join(working_dir, input_file)
+    working_dir: str = os.path.abspath(working_dir)
+    output_file: str = input_file[:-4] + "html"
+    error: Any | None = None
+    try:
+        subprocess.check_output(
+            args=[
+                "asciidoctor",
+                "--out-file",
+                os.path.join(build_dir, output_file),
+                input_file
+            ],
+            stderr=subprocess.STDOUT,
+            cwd=working_dir)
+        os.makedirs(os.path.join(working_dir, output_dir), exist_ok=True)
+        shutil.copyfile(os.path.join(build_dir, output_file),
+                        os.path.join(working_dir, output_dir, output_file))
+    except subprocess.CalledProcessError as process_error:
+        error = process_error.output.decode("utf-8")
+    except Exception as e:
+        raise e
+    finally:
+        if error != None:
+            return (returned_file_tex, error)
+        else:
+            return (returned_file_tex, None)
+
+
 file_number: int = 1
 total_ok: int = 0
 total_err: int = 0
 
 
-def compile_all(path: str, output_dir: str, jobs: int, ignored_paths: list[str]) -> None:
+def compile_all(compilation: Compilation, jobs: int) -> None:
     """
     Find and compile all input files in the current directory (and all its subdirectories).
 
@@ -112,7 +185,7 @@ def compile_all(path: str, output_dir: str, jobs: int, ignored_paths: list[str])
     os.environ["TEXINPUTS"] = "::" + package_dir
 
     input_files: list[Tuple[str, str, str]] = find_files_in(
-        path, "tex", ignored_paths)
+        compilation)
     total_files: int = len(input_files)
     failed_files: list = []
     file_number = 1
@@ -121,7 +194,7 @@ def compile_all(path: str, output_dir: str, jobs: int, ignored_paths: list[str])
 
     def executing_function(inputs: Tuple[str, str, str, str]):
         global file_number, total_ok, total_err
-        (file_tex, error) = compile_file(inputs)
+        (file_tex, error) = compilation.compilation_function(inputs)
         print(
             Fore.CYAN + f"{file_number}/{total_files} " + Fore.RESET
             + file_tex,
@@ -143,7 +216,7 @@ def compile_all(path: str, output_dir: str, jobs: int, ignored_paths: list[str])
                 os.path.join(build_dir, str(file_hash)))
             to_map.append((directory,
                            file_build_dir,
-                           output_dir,
+                           compilation.output_dir,
                            input_file))
 
         executor.map(executing_function, to_map)
@@ -162,12 +235,12 @@ def compile_all(path: str, output_dir: str, jobs: int, ignored_paths: list[str])
         print(Fore.GREEN, "No error detected !" + Fore.RESET)
 
 
-def clean(path: str, output_dir: str, input_extension: str, output_extension: str):
+def clean(compile_files: Compilation):
     """
     Find all input files in `path` (and all its subdirectories), and remove orphan pdfs in `output_dir`.
     """
     tex_files_dict: dict[str, list[str]] = {}
-    for (directory, tex_file, _) in find_files_in(path, input_extension):
+    for (directory, tex_file, _) in find_files_in(compile_files):
         if tex_files_dict.get(directory) == None:
             tex_files_dict[directory] = [tex_file]
         else:
@@ -175,12 +248,12 @@ def clean(path: str, output_dir: str, input_extension: str, output_extension: st
 
     total_removed: int = 0
     for directory in tex_files_dict:
-        out_dir: str = os.path.join(directory, output_dir)
+        out_dir: str = os.path.join(directory, compile_files.output_dir)
         input_files: list[str] = tex_files_dict[directory]
         if not os.path.exists(out_dir):
             continue
         for output_file in os.listdir(out_dir):
-            if not output_file.endswith("." + output_extension):
+            if not output_file.endswith("." + compile_files.output_extension):
                 continue
             should_remove: bool = True
             for tex_file in input_files:
@@ -200,33 +273,31 @@ def clean(path: str, output_dir: str, input_extension: str, output_extension: st
     print(f"Removed {total_removed} outdated files.")
 
 
-def clean_all(path: str, artifacts_dir: str, output_dir: str) -> None:
+def clean_all(compile_files: Compilation) -> None:
     """
     Remove all intermediate and final objects generated by this binary.
 
-    - removes the `artifacts_dir` (relative to the current directory).
-    - removes the `output_dir` (relative to the input files).
+    - removes the `compile_files.artifacts_dir` (relative to the current directory).
+    - removes the `compile_files.output_dir` (relative to the input files).
     """
-    tex_files: list = find_files_in(path, "tex")
+    tex_files: list = find_files_in(compile_files)
     root_dir: str = os.path.abspath(".")
-    build_dir: str = os.path.join(root_dir, artifacts_dir)
+    build_dir: str = os.path.join(root_dir, compile_files.artifacts_dir)
     if os.path.exists(build_dir):
         print("removing ", build_dir)
         shutil.rmtree(build_dir, ignore_errors=True)
-    for (directory, file_tex, _) in tex_files:
-        pdf_dir: str = os.path.join(directory, output_dir)
-        if os.path.exists(pdf_dir):
-            print("removing ", pdf_dir)
-            shutil.rmtree(pdf_dir, ignore_errors=True)
+    for (directory, _, _) in tex_files:
+        output_dir: str = os.path.join(directory, compile_files.output_dir)
+        if os.path.exists(output_dir):
+            print("removing ", output_dir)
+            shutil.rmtree(output_dir, ignore_errors=True)
 
 
 def adjust_lua_path() -> None:
     env_var_lua_path: str | None = os.getenv("LUA_PATH")
-    lua_path: str = ""
     if env_var_lua_path != None:
-        lua_path = env_var_lua_path
         new_path: str = os.path.abspath(".") + "/scripts_lua/?.lua"
-        os.environ["LUA_PATH"] = new_path + ";" + lua_path
+        os.environ["LUA_PATH"] = new_path + ";" + env_var_lua_path
 
 
 def check_executables() -> None:
@@ -234,7 +305,7 @@ def check_executables() -> None:
     Check that all used executables exist.
     """
     # executables run by the subprocess.check_output function
-    used_cmd: list[str] = ["latexmk", "lualatex"]
+    used_cmd: list[str] = ["latexmk", "lualatex", "asciidoctor"]
     for cmd in used_cmd:
         if shutil.which(cmd) == None:
             print(
@@ -282,7 +353,6 @@ def main(script_args: list[str]) -> None:
             print_help(0)
         elif opt in ("-p", "--path"):
             path = arg
-            DEFAULT_EXCLUDE_PATHS = []
         elif opt in ("-i", "--ignore"):
             ignored.append(arg)
         elif opt in ("-j", "--jobs"):
@@ -291,23 +361,29 @@ def main(script_args: list[str]) -> None:
             cleaning_level = 1
         elif opt in ("--clean-all"):
             cleaning_level = 2
+    compile_tex_files: Compilation = tex_compilation(
+        path, DEFAULT_ARTIFACTS_DIR, ignored)
+    compile_adoc_files: Compilation = asciidoctor_compilation(
+        path, DEFAULT_ARTIFACTS_DIR, ignored)
     if cleaning_level == 1:
-        clean(path, "pdf", "tex", "pdf")
+        clean(compile_tex_files)
+        clean(compile_adoc_files)
     elif cleaning_level == 2:
         confirm: bool = False
         full_path: str = os.path.abspath(path)
         print(
             f"This will remove ALL pdf files in {full_path}: continue ? (Y/N)")
-        user_input = input()
+        user_input: str = input()
         if user_input == "Y" or user_input == "y":
             confirm = True
         if confirm:
-            clean_all(path, DEFAULT_ARTIFACTS_DIR, "pdf")
+            clean_all(compile_tex_files)
+            clean_all(compile_adoc_files)
         else:
             print("aborting clean.")
     else:
-        compile_all(path,
-                    "pdf", number_of_cpus, ignored)
+        compile_all(compile_adoc_files, number_of_cpus)
+        compile_all(compile_tex_files, number_of_cpus)
 
 
 if __name__ == "__main__":
