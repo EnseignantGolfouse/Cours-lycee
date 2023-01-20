@@ -60,7 +60,41 @@
 \end{definition}
 
 \begin{remarque}
-	Le nombre dérivé de $f$ en $a$ correspond à la \textbf{pente} de la droite
+	Le nombre dérivé de $f$ en $a$ correspond à la \textbf{pente} de la droite \textit{tangente} à la courbe de $f$ au point $a$.
 \end{remarque}
+
+\begin{exemple}
+	Soit $f$ la fonction telle que $f(x) = 0,1x³ - 0,3x² - 0,4x + 2$.
+
+	\begin{itemize}
+		\item \uline{Graphiquement :}
+
+		      \begin{center}
+			      \begin{tikzpicture}
+				      \tikzRepere{-3}{5}{-2}{5}
+
+				      \draw[red,thick,domain=-3:5] plot({\x},{0.1*\x*\x*\x - 0.3*\x*\x - 0.4*\x + 2}) node[right] {$f$};
+			      \end{tikzpicture}
+		      \end{center}
+
+		      On peut déterminer graphiquement la pente de la tangente, et obtenir ainsi le nombre dérivé :
+		      \begin{multicols}{3}
+			      \begin{itemize}
+				      \item $f'(-2) = 2$
+				      \item $f'(1) = 0,7$
+				      \item $f'(4) = 2$
+			      \end{itemize}
+		      \end{multicols}
+		\item \uline{Par le calcul :}
+
+		      On admet que pour tout $h ≠ 0$, on a
+
+		      $$ τ₂(h) = -0,4 + 0,3h + 0,1h² $$
+
+			  Alors $f$ est dérivable en $2$, car $τ₂(h)$ admet une limite lorsque $h$ tend vers $0$,
+
+		      Et $f'(2) = \lim_{h→0}(-0,4 + 0,3h + 0,1h²) = -0,4$.
+	\end{itemize}
+\end{exemple}
 
 \end{document}

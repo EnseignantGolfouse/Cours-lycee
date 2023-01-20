@@ -1,0 +1,62 @@
+\documentclass[
+	classe=$1^{ere}STI2D$,
+	headerTitle=Exercices,
+	landscape,
+	twocolumn
+]{exercice}
+
+\usepackage{tikz-repère}
+
+\setlength{\columnsep}{1cm}
+
+\title{Exercices : nombre dérivé}
+
+\begin{document}
+
+\newcommand{\NombreDerive}{
+\maketitle
+
+\begin{exercice}\ 
+
+	\begin{center}
+		\begin{tikzpicture}
+			\tikzRepere{-5}{4}{-3}{4}
+
+			\draw[red,thick,domain=-3.5:4] plot({\x},{\x}) node[right] {$f$};
+			\draw[blue,thick,domain=-5:4] plot({\x},{-0.25*\x*\x - 0.5*\x + 3}) node[right] {$g$};
+		\end{tikzpicture}\vspace{1em}
+
+		Déterminer graphiquement les nombres dérivés suivants :
+
+		\begin{multicols}{3}
+			\begin{itemize}
+				\setlength{\itemsep}{1em}
+				\item $f'(-1) = \correctionOr{1}{.....}$
+				\item $g'(-2) = \correctionOr{0,5}{.....}$
+				\item $f'(0) = \correctionOr{1}{.....}$
+				\item $g'(0) = \correctionOr{-0,5}{.....}$
+				\item $f'(3) = \correctionOr{1}{.....}$
+				\item $g'(2) = \correctionOr{-1,5}{.....}$
+			\end{itemize}
+		\end{multicols}
+	\end{center}
+\end{exercice}
+
+\begin{exercice}
+	Soit $f$ la fonction $f(x) = x² + 3$.
+
+	\begin{enumerate}
+		\item Montrer que $f$ est dérivable en $2$.
+		\item Calculer $f'(2)$.
+		\item Montrer que pour n'importe quel nombre réel $x$, $f$ est dérivable en $x$.
+	\end{enumerate}
+\end{exercice}
+}
+
+\NombreDerive
+
+\newpage\setcounter{exercice}{0}
+
+\NombreDerive
+
+\end{document}

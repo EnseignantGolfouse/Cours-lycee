@@ -1,0 +1,50 @@
+\documentclass[
+	noheader,
+	twocolumn,
+	landscape
+]{coursclass}
+
+\usepackage{tikz-repère}
+
+\setlength{\columnsep}{1cm}
+
+\begin{document}
+
+\newcommand{\Exemple}{
+	\begin{exemple}
+		Soit $f$ la fonction telle que $f(x) = 0,1x³ - 0,3x² - 0,4x + 2$.
+
+		\begin{itemize}
+			\item \uline{Graphiquement :}
+
+			      \begin{center}
+				      \begin{tikzpicture}
+					      \tikzRepere{-3}{5}{-2}{5}
+
+					      \draw[red,thick,domain=-3:5] plot({\x},{0.1*\x*\x*\x - 0.3*\x*\x - 0.4*\x + 2}) node[right] {$f$};
+				      \end{tikzpicture}
+			      \end{center}
+
+			      On peut déterminer graphiquement la pente de la tangente, et obtenir ainsi le nombre dérivé :\vspace{1em}
+
+				  $f'(-2) = .....$\hfill$f'(1) = .....$\hfill$f'(4) = .....$
+			\item \uline{Par le calcul :}
+
+			      On admet que pour tout $h ≠ 0$, on a
+
+			      $$ τ₂(h) = -0,4 + 0,3h + 0,1h² $$
+
+				  Alors $f$ est dérivable en $2$, car .................................... \vspace{0.7em}
+
+			      Et $f'(2) = \lim_{h→0}(............................) = .....$.
+		\end{itemize}
+	\end{exemple}
+}
+
+\Exemple
+
+\newpage
+
+\Exemple
+
+\end{document}
