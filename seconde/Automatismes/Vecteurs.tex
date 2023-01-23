@@ -1,0 +1,34 @@
+\documentclass{automatisme}
+
+\usepackage{tikz-repère}
+
+\begin{document}
+
+\begin{frame}
+	\begin{center}
+		\newcounter{LetterCounter}
+		\setcounter{LetterCounter}{0}
+		\begin{tikzpicture}
+			\setcounter{LetterCounter}{0}
+			\foreach \y in {0,...,3} {
+					\foreach \x in {0,...,4} {
+							\stepcounter{LetterCounter}
+							\coordinate (\Alph{LetterCounter}) at (\x,\y);
+							\node at (\Alph{LetterCounter}) {×};
+							\node[above left] at (\Alph{LetterCounter}) {$\Alph{LetterCounter}$};
+						}
+				}
+		\end{tikzpicture}
+	\end{center}
+
+	Sur la figure ci-dessus, nommer :
+
+	\begin{itemize}
+		\item Deux vecteurs égaux : \correction{$\vec{AB}$ et $\vec{FG}$}
+		\item Deux vecteurs opposés : \correction{$\vec{KM}$ et $\vec{RP}$}
+		\item Un vecteur égal à $3\vec{HI}-2\vec{JO}$ : \correction{$\vec{KD}$}
+	\end{itemize}
+\end{frame}
+
+
+\end{document}

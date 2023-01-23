@@ -1,0 +1,44 @@
+\documentclass[noheader]{coursclass}
+
+\newgeometry{margin=0.7cm}
+
+\begin{document}
+
+\newcommand{\Technique}{
+	\begin{greybox}[frametitle={Techniques de factorisation}]
+		\begin{itemize}
+			\item Si il n'y a pas de terme constant, on peut factoriser par $x$.
+			\item Sinon, l'expression à factoriser est sous la forme $ax² + bx + c$. On s'intéresse alors aux termes $ax²$ et $c$ :
+			      \begin{itemize}
+				      \item On écrit $ax² = (\sqrt{a}x)$, et $c = \sqrt{c}$.
+				      \item Si $b > 0$, on essaie de factoriser en $(\sqrt{a}x + c)²$.
+				      \item Si $b < 0$, on essaie de factoriser en $(\sqrt{a}x - c)²$.
+				      \item Si $b = 0$, on essaie de factoriser en $(\sqrt{a}x + c)(\sqrt{a}x - c)$.
+			      \end{itemize}
+		\end{itemize}
+	\end{greybox}
+
+	\begin{exemple}
+		\begin{itemize}
+			\item On veut factoriser $2x² - 3x$. On remarque qu'il n'y a pas de terme constant, donc
+			      $$2x² - 3x = \correctionDots{x(2x - 3)}$$
+			\item On veut factoriser $9x² + 30x + 25$. On pose $9x² = (\correctionDots{3x})²$ et $25 = \correctionDots{5}²$. De plus $b \correctionDots{>} 0$, donc
+			      $$ 9x² + 30x + 25 = \correctionDots{(3x + 5)²} $$
+			      On peut vérifier que c'est vrai en développant la partie de droite.
+			\item On veut factoriser $100x² - 4$. On pose $100x² = (\correctionDots{10x})²$ et $4 = \correctionDots{2}²$. De plus $b \correctionDots{=} 0$, donc
+			      $$ 100x² - 4 = \correctionDots{(10x + 2)(10x - 2)} $$
+			      On peut vérifier que c'est vrai en développant la partie de droite.
+		\end{itemize}
+	\end{exemple}
+}
+
+\Technique
+
+\vfill
+
+\Technique
+
+
+
+
+\end{document}

@@ -2,6 +2,8 @@
 	classe=$2^{de}$
 ]{coursclass}
 
+\usepackage{hyperref}
+
 \title{Chapitre 5 : Règles de calcul (partie 2)}
 \author{}
 \date{}
@@ -64,7 +66,7 @@
 	\end{itemize}
 \end{greybox}
 
-\begin{propriete}[Produit nul]
+\begin{propriete}[Produit nul] \label{propriete:Produit nul}
 	Si un produit est nul, alors au moins un des facteurs est nul.
 
 	\begin{center}
@@ -80,6 +82,36 @@
 		\item Si $x - 3 = 0$, alors $x = 3$.
 		\item Si $2x + 4 = 0$, alors $x = -2$.
 		\item L'ensemble de solutions de cette équation est donc $\{-2 ; 3\}$.
+	\end{itemize}
+\end{exemple}
+
+\begin{propriete}[Résolution par factorisation]
+	Si on a une équation de la forme $ax² + bx + c = 0$, on peut \textit{parfois} la résoudre en \textbf{factorisant}, et en utilisant la propriété du \hyperref[propriete:Produit nul]{produit nul}.
+\end{propriete}
+
+\begin{greybox}[frametitle={Techniques de factorisation}]
+	\begin{itemize}
+		\item Si il n'y a pas de terme constant, on peut factoriser par $x$.
+		\item Sinon, l'expression à factoriser est sous la forme $ax² + bx + c$. On s'intéresse alors aux termes $ax²$ et $c$ :
+		      \begin{itemize}
+			      \item On écrit $ax² = (\sqrt{a}x)$, et $c = \sqrt{c}$.
+			      \item Si $b > 0$, on essaie de factoriser en $(\sqrt{a}x + c)²$.
+			      \item Si $b < 0$, on essaie de factoriser en $(\sqrt{a}x - c)²$.
+			      \item Si $b = 0$, on essaie de factoriser en $(\sqrt{a}x + c)(\sqrt{a}x - c)$.
+		      \end{itemize}
+	\end{itemize}
+\end{greybox}
+
+\begin{exemple}
+	\begin{itemize}
+		\item On veut factoriser $2x² - 3x$. On remarque qu'il n'y a pas de terme constant, donc
+		      $$2x² - 3x = x(2x - 3)$$
+		\item On veut factoriser $9x² + 30x + 25$. On pose $9x² = (3x)²$ et $25 = 5²$. De plus $b > 0$, donc
+		      $$9x² + 30x + 25 = (3x + 5)²$$
+		      On peut vérifier que c'est vrai en développant la partie de droite.
+		\item On veut factoriser $100x² - 4$. On pose $100x² = (10x)²$ et $4 = 2²$. De plus $b = 0$, donc
+		      $$100x² - 4 = (10x + 2)(10x - 2)$$
+		      On peut vérifier que c'est vrai en développant la partie de droite.
 	\end{itemize}
 \end{exemple}
 
