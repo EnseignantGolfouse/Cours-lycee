@@ -1,0 +1,34 @@
+\documentclass{automatisme}
+
+\usepackage{tikz-repère}
+
+\begin{document}
+
+\begin{frame}
+	\begin{center}
+		\begin{tikzpicture}[scale=0.7]
+			\tikzRepere{-3}{3}{-3}{3}
+
+			\coordinate (A) at (1,1);
+			\coordinate (B) at (3,-2);
+			\coordinate (C) at (-2,1);
+			\coordinate (D) at (-1,-1);
+
+			\foreach \p in {A,B,C,D} {
+					\node at (\p) {×};
+					\node[below left] at (\p) {$\p$};
+				}
+		\end{tikzpicture}
+	\end{center}
+
+	Donner les coordonnées des vecteurs suivants :
+
+	\begin{itemize}
+		\setlength{\itemsep}{1em}
+		\item $\vec{AB} =$
+		\item $\vec{AC} =$
+		\item $\vec{DC} + \vec{CB} =$
+	\end{itemize}
+\end{frame}
+
+\end{document}

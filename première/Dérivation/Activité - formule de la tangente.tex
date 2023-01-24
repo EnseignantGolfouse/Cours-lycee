@@ -1,0 +1,63 @@
+\documentclass[
+	classe=$1^{ere}STI2D$,
+	headerTitle=Activité
+]{exercice}
+
+\title{Activité : formule de la tangente}
+
+\definecolor{mygreen}{RGB}{0, 170, 40}
+
+\newcommand{\funcFCoefficientA}{0.0}
+\newcommand{\funcFCoefficientB}{-0.3}
+\newcommand{\funcFCoefficientC}{2.3}
+\newcommand{\funcFCoefficientD}{0}
+\newcommand{\funcF}[1]{(\funcFCoefficientA)*#1*#1*#1 + (\funcFCoefficientB)*#1*#1 + (\funcFCoefficientC)*#1 + (\funcFCoefficientD)}
+\newcommand{\funcPrimeF}[1]{3*(\funcFCoefficientA)*#1*#1 + 2*(\funcFCoefficientB)*#1 + (\funcFCoefficientC)}
+
+\newcommand{\tangenteEnA}[2]{(\funcPrimeF{#1})*#2 + (\funcF{#1}) - #1*(\funcPrimeF{#1})}
+
+\newcommand{\PointTangent}{4}
+\newcommand{\XDebut}{0}
+\newcommand{\XFin}{8}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[mygreen,thick] (\XDebut,-1) -- ++(0,8);
+		\draw[mygreen,thick] (\XFin,-1) -- ++(0,8);
+		\draw[mygreen,thick,domain=\XDebut:\XFin] plot({\x},{\funcF{\x}});
+		\pgfmathsetmacro{\tangenteEnZero}{\tangenteEnA{\PointTangent}{\XDebut}}
+		\pgfmathsetmacro{\tangenteEnCinq}{\tangenteEnA{\PointTangent}{\XFin}}
+		\draw[red,thick] (\XDebut,\tangenteEnZero) -- node[above] {passerelle} (\XFin,\tangenteEnCinq);
+		\draw[->] (\XDebut-1,-1.8) -- (\XFin + 1,-1.8);
+		\draw (\XDebut,-1.8) -- ++(0,-0.2) node[below] {$0$};
+		\draw (\XFin,-1.8) -- ++(0,-0.2) node[below] {$80$ m};
+		\node[left] at (\XDebut,6) {paroi 1};
+		\node[right] at (\XFin,6) {paroi 2};
+	\end{tikzpicture}
+\end{center}
+
+Dans un ravin, on cherche à relier les deux parois par une passerelle. Au milieu du ravin, il y a une colline : on souhaite s'en servir comme support pour le pont. On va donc déterminer à quelle hauteurs se trouvent les points de départ et d'arrivée du pont. \bigskip
+
+On sait que la surface de la colline est définie par la fonction $f(x) = -3x² + 5x + 2$.
+
+\begin{enumerate}
+	\item On admet que le pont touche la colline au point d'abscisse $40$.
+
+	      Quelle est alors la pente du pont ?
+	\item On va maintenant décrire le pont comme une nouvelle fonction, $g$.
+
+	      Cette fonction est-elle constante ? Affine ? Du second degré ? Trigonométrique ?
+
+	      Écrire alors l'expression de cette fonction (on pourra utiliser des lettres $a$, $b$, ... pour les paramètre inconnus).
+	\item Donner la valeur de $g(40)$.
+	\item Trouver alors l'expression complète de $g$.
+
+	      En déduire la hauteur du pont sur chaque paroi.
+	\item Qu'en est-il si le pont touche la colline au point d'abscisse $50$ ?
+\end{enumerate}
+
+\end{document}
