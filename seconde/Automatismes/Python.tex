@@ -1,0 +1,38 @@
+\documentclass{automatisme}
+
+\usepackage{listings}
+
+\lstset{ % General setup for the package
+	language=Python,
+	basicstyle=\ttfamily,
+	frame=tblr,
+	tabsize=4,
+	showstringspaces=false,
+	showtabs=false,
+	commentstyle=\color{gray},
+	keywordstyle=\bf\color{purple},
+	stringstyle=\color{OliveGreen}
+}
+
+\begin{document}
+
+\defverbatim[colored]\makeset{
+	\begin{lstlisting}
+a = 2
+print(a + 3)
+
+b = 0
+l = [4, 5, 8]
+for i in l:
+    b = b + i
+	print(b)
+\end{lstlisting}
+}
+\begin{frame}
+	Que va afficher le code Python suivant ?
+	\begin{center}
+		\makeset
+	\end{center}
+\end{frame}
+
+\end{document}
