@@ -14,43 +14,43 @@
 \begin{document}
 
 \newcommand{\Activite}{
-\maketitle
+	\maketitle
 
-\begin{center}
-	\vspace{0.5cm}
-	\begin{tikzpicture}
-		\coordinate (A) at (0,0);
-		\coordinate (M) at (2,-1);
-		\coordinate (B) at (4,-2);
-		\coordinate (C) at (-2,-3);
+	\begin{center}
+		\vspace{0.5cm}
+		\begin{tikzpicture}
+			\coordinate (A) at (0,0);
+			\coordinate (M) at (2,-1);
+			\coordinate (B) at (4,-2);
+			\coordinate (C) at (-2,-3);
 
-		\node[above] at (A) {A};
-		\node[above] at (B) {B};
-		\node[left] at (C) {C};
-		\node[above right] at (M) {M};
-		\draw (M) ++(0.1,0.2) -- ++(-0.2,-0.4);
-		\node at (C) {×};
-		\draw (A) -- (B);
-	\end{tikzpicture}
-	\vspace{0.5cm}
+			\node[above] at (A) {A};
+			\node[above] at (B) {B};
+			\node[left] at (C) {C};
+			\node[above right] at (M) {M};
+			\draw (M) ++(0.1,0.2) -- ++(-0.2,-0.4);
+			\node at (C) {×};
+			\draw (A) -- (B);
+		\end{tikzpicture}
+		\vspace{0.5cm}
 
-	On veut montrer que \squared{$\widevec{CA} + \widevec{CB} = 2\widevec{CM}$}.
-\end{center}
+		On veut montrer que \squared{$\vec{CA} + \vec{CB} = 2\vec{CM}$}.
+	\end{center}
 
-\begin{tcolorbox}
-	\uline{Remarque} : on pourra se servir de la figure ci-dessus pour faire un schéma : en revanche, il n'est pas nécéssaire de faire une figure exacte, ou de mesurer des longueurs pour compléter cette activité.
-\end{tcolorbox}
+	\begin{tcolorbox}
+		\uline{Remarque} : on pourra se servir de la figure ci-dessus pour faire un schéma : en revanche, il n'est pas nécéssaire de faire une figure exacte, ou de mesurer des longueurs pour compléter cette activité.
+	\end{tcolorbox}
 
 
-\begin{enumerate}
-	\item Soit $D$ l'image du point $A$ par le vecteur $\widevec{CB}$.
+	\begin{enumerate}
+		\item Soit $D$ l'image du point $A$ par le vecteur $\vec{CB}$.
 
-	      Montrer alors que $ADBC$ est un parallélogramme. \vspace{3em}
-	\item Quelle propriété ont les diagonales d'un parallélogramme ? \vspace{1em}
+		      Montrer alors que $ADBC$ est un parallélogramme. \vspace{3em}
+		\item Quelle propriété ont les diagonales d'un parallélogramme ? \vspace{1em}
 
-	      En déduire que $\widevec{CD} = 2\widevec{CM}$. \vspace{1em}
-	\item Montrer alors que $\widevec{CA} + \widevec{CB} = 2\widevec{CM}$.
-\end{enumerate}
+		      En déduire que $\vec{CD} = 2\vec{CM}$. \vspace{1em}
+		\item Montrer alors que $\vec{CA} + \vec{CB} = 2\vec{CM}$.
+	\end{enumerate}
 }
 
 \Activite
