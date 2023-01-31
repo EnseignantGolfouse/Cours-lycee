@@ -1,0 +1,45 @@
+\documentclass[
+	classe=$1^{ere}STI2D$,
+	twocolumn,
+	landscape
+]{coursclass}
+
+\usepackage{tikz-repère}
+
+\setlength{\columnsep}{1cm}
+
+\begin{document}
+
+\newcommand{\Exemple}{
+	\begin{exemple}
+		La courbe ci-dessous est la courbe de la fonction $f(x) = \dfrac{x²}{3}$.
+
+		\begin{center}
+
+			\begin{tikzpicture}
+				\tikzRepere{-2.5}{3.5}{-3.5}{5.5}
+				\draw[red,thick,domain=-3:4] plot({\x},{1/3*\x*\x}) node[right] {$𝒞_f$};
+				\draw[blue,thick,domain=-0.5:4] plot({\x},{2*\x - 3}) node[midway,xshift=2cm,yshift=-1.2cm] {tangente};
+			\end{tikzpicture}
+		\end{center}
+
+		On a alors :
+
+		\begin{itemize}
+			\item $f'(3) = \correctionDots{2\phantom{-}}$
+			\item $f(3) - 3 × f'(3) = \correctionDots{-3}$
+		\end{itemize}
+
+		Ainsi l'équation de la tangente à la courbe en $3$ est
+
+		$$ y = \correctionDots{2} × x - \correctionDots{3} $$
+	\end{exemple}
+}
+
+\Exemple
+
+\newpage
+
+\Exemple
+
+\end{document}
