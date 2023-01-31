@@ -1,0 +1,33 @@
+\documentclass{beamer}
+\usepackage{préambule}
+
+\renewcommand{\arraystretch}{1.4}
+
+\begin{document}
+
+\begin{frame}
+	Deux bibliothèques vendent des livres. Elles ont compilé les prix de leur livres dans le tableau suivant :
+
+
+	\begin{center}
+		\begin{tabular}{|l|c|c|c|c|}
+			\hline
+			Prix                             & $5$€  & $7$€  & $10$€ & $16$€ \\ \hline
+			Effectifs dans la bibliothèque 1 & $58$  & $213$ & $29$  & $165$ \\ \hline
+			Effectifs dans la bibliothèque 2 & $197$ & $76$  & $110$ & $42$  \\ \hline
+		\end{tabular}
+	\end{center}
+
+	\begin{enumerate}
+		\item Reproduire le tableau.
+		\item Combien de livres à $7$€ la bibliothèque $1$ vend-elle ? \correction{$213$}
+		\item Combien de livres au total sont vendu dans chaque bibliothèque ?
+		      \correctionOr{$465$ et $425$}{}
+		\item Dans quelle bibliothèque le prix moyen est-il le moins élevé ?
+		      \correctionOr{$10,1$ et $7,7$}{}
+		\item Déterminer l'écart-type des prix pour chaque bibliothèque, au centime près.
+		      \correctionOr{$4,47$€ et $3,41$€}{}
+	\end{enumerate}
+\end{frame}
+
+\end{document}
