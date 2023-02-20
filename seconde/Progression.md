@@ -8,15 +8,32 @@
 
 ## 2) Ensembles de nombres
 
+- Voir les ensembles usuels.
+- Appartenance, intersection, union
+
 ## 3) Vecteurs: généralités
+
+- Représentation des vecteurs par la direction/sens/norme (pas de coordonnées).
+- Somme de vecteurs, produit par un réel.
+- Relation de Chasles.
 
 ## 4) Statistiques descriptives
 
+- Moyenne
+- Grande nouveauté pour eux : l'écart-type
+
 ## 5) Règles et outils de calcul (partie 2)
+
+- Racine carré
+- Les trois identités remarquables (seule (a+b)(a-b) est au programme de collège).
 
 ## 6) Vecteurs dans un repère
 
+- Vecteurs par les coordonnées.
+
 ## 7) Généralités sur les fonctions
+
+- Fonctions usuelles.
 
 ## 8) Statistiques et évolutions
 

@@ -1,0 +1,50 @@
+\documentclass[
+	noheader
+]{coursclass}
+
+\usepackage{tikz-repère}
+\usetikzlibrary{calc}
+
+\begin{document}
+
+\newcommand{\Exemple}{
+	\begin{exemple}
+		\begin{center}
+			\begin{tikzpicture}[scale=0.9]
+				\coordinate (StartU) at (1,2);
+				\coordinate (StartV) at (-1,1);
+				\coordinate (Ux) at (2,0);
+				\coordinate (Uy) at (0,-1);
+				\coordinate (Vx) at (-3,0);
+				\coordinate (Vy) at (0,2);
+
+				\tikzRepere{-4.5}{3.5}{-0.4}{3.5}[][]
+				\node[below left] at (0,0) {$O$};
+				\draw[ultra thick,\myArrow] (0,0) -- node[below] {$\vec{i}$} ++(1,0);
+				\draw[ultra thick,\myArrow] (0,0) -- node[left] {$\vec{j}$} ++(0,1);
+
+				\draw[very thick,blue,\myArrow] (StartU) -- node[below left] {$\vec{u}$} ++($(Ux) + (Uy)$);
+				\draw[dashed,red,\myArrow] (StartU) -- ++(Ux);
+				\draw[dashed,red,\myArrow] ($(StartU) + (Ux)$) -- ++(Uy);
+
+				\draw[very thick,blue,\myArrow] (StartV) -- node[above right] {$\vec{v}$} ++($(Vx) + (Vy)$);
+				\draw[dashed,red,\myArrow] (StartV) -- ++(Vx);
+				\draw[dashed,red,\myArrow] ($(StartV) + (Vx)$) -- ++(Vy);
+			\end{tikzpicture}
+		\end{center} \medskip
+
+		Dans le repère ci-dessus, on a
+		\begin{itemize}
+			\item $\vec{u} = \correction{2\vec{i} - \vec{j}}$, donc $\vec{u}\begin{pmatrix} \correction{2} \\ \correction{-1} \end{pmatrix}$ dans la base $(\vec{i},\vec{j})$.
+			\item $\vec{v} = \correction{-3\vec{i} + 2\vec{j}}$, donc $\vec{v}\begin{pmatrix} \correction{-3} \\ \correction{2} \end{pmatrix}$ dans la base $(\vec{i},\vec{j})$.
+		\end{itemize}
+	\end{exemple}
+}
+
+\Exemple
+
+\Exemple
+
+\Exemple
+
+\end{document}
