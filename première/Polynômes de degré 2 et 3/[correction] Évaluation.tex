@@ -1,3 +1,297 @@
-% !TEX root = ./[correction] Évaluation.tex
+\documentclass[
+	classe=$1^{ere}STI2D$,
+	headerTitle=Évaluation\space Chapitre\space 4
+]{évaluation}
+
+\usepackage{tikz-repère}
+\usepackage{tkz-tab}
+\usepackage{tcolorbox}
+
+\renewcommand{\arraystretch}{1.4}
+
+\date{3 février 2023}
+
 \newcommand{\makeCorrection}{}
-\input{Évaluation.tex}
+\begin{document}
+
+\title{Évaluation (Sujet A) : polynômes de degré 2 et 3}
+\maketitle
+
+\begin{exercice}
+	\begin{enumerate}
+		\item $a = 2$, $b = -6$, $c = 1$.
+
+		      On a $-\frac{b}{2a} = 1,5$, donc les coordonnées du sommet sont $(1,5 ; f(1,5)) = (1,5 ; -3,5)$.
+		\item $a = 14$, $b = 1$, $c = -7$.
+
+		      On a $-\frac{b}{2a} = -\frac{1}{28}$, donc les coordonnées du sommet sont $(-\frac{1}{28} ; f(-\frac{1}{28})) ≈ (-0.036 ; -7.018)$.
+		\item $a = 2$, $b = 0$, $c = 1$.
+
+		      On a $-\frac{b}{2a} = 0$, donc les coordonnées du sommet sont $(0 ; f(0)) = (0 ; 1)$.
+	\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+	Pour chaque courbe ci-dessous, donner les coordonnées du sommet, les racines si elles existent, et le signe de $a$ :
+	\begin{center}
+		\begin{tabular}{|*{4}{>{\centering}p{4cm}|}}
+			\hline
+			A & B                                                                                                   & C & D \tabularnewline \hline
+			\begin{tikzpicture}[scale=0.45]
+				\tikzRepere{-3.5}{3.5}{-5.5}{5.5}
+				\draw[blue,very thick,domain=-2.74:4] plot({\x},{0.5*\x*\x - 1.5*\x - 1.875}) node[above left] {$𝒞_f$};
+			\end{tikzpicture}
+			  & \begin{tikzpicture}[scale=0.45]
+				    \tikzRepere{-3.5}{3.5}{-5.5}{5.5}
+				    \draw[blue,very thick,domain=-4:3.9] plot({\x},{-2/9*\x*\x - 2/3*\x}) node[above] {$𝒞_f$};
+			    \end{tikzpicture}
+			  & \begin{tikzpicture}[scale=0.45]
+				    \tikzRepere{-3.5}{3.5}{-5.5}{5.5}
+				    \draw[blue,very thick,domain=-0.45:4] plot({\x},{\x*\x - 4*\x + 4}) node[left] {$𝒞_f$};
+			    \end{tikzpicture}
+			  & \begin{tikzpicture}[scale=0.45]
+				    \tikzRepere{-3.5}{3.5}{-5.5}{5.5}
+				    \draw[blue,very thick,domain=0.58:3.41] plot({\x},{2*\x*\x - 8*\x + 10}) node[below right] {$𝒞_f$};
+			    \end{tikzpicture}
+			\tabularnewline \hline
+			$S(\correctionOr{0,5}{\hspace{2em}};\correctionOr{-3}{\hspace{2em}})$
+			  & $S(\correctionOr{-1,5}{\hspace{2em}};\correctionOr{0,5}{\hspace{2em}})$
+			  & $S(\correctionOr{2}{\hspace{2em}};\correctionOr{0}{\hspace{2em}})$
+			  & $S(\correctionOr{2}{\hspace{2em}};\correctionOr{2}{\hspace{2em}})$
+			\tabularnewline \hline
+			Racines : \correction{$-1$ et $4$}
+			  & Racines : \correction{$-3$ et $0$}
+			  & Racines : \correction{$2$}
+			  & Racines : \correction{Aucune}
+			\tabularnewline \hline
+			Signe de $a$ : $a$ \correctionDots{$>$} $0$
+			  & Signe de $a$ : $a$ \correctionDots{$<$} $0$
+			  & Signe de $a$ : $a$ \correctionDots{$>$} $0$
+			  & Signe de $a$ : $a$ \correctionDots{$>$} $0$
+			\tabularnewline \hline
+		\end{tabular}
+	\end{center}
+\end{exercice}
+
+\begin{exercice}
+	\begin{enumerate}
+		\item $a = 1$, $b = 1$, $c = -6$.
+		\item Les bras de la fonction sont orientés vers le haut, car $a > 0$.
+		\item On a $-\frac{b}{2a} = -0,5$. Ainsi les coordonnées du sommet de la courbe de $f$ sont $(-0,5 ; f(-0,5)) = (-0,5 ; -6,25)$.
+		\item    \begin{tikzpicture}[scale=0.7]
+				      \tikzRepere{-4.5}{2.5}{-3.5}{6.5}[1][2]
+				      \draw[domain=-5:3,blue,thick] plot({\x},{(\x*\x + \x - 6)*0.5});
+			      \end{tikzpicture}
+		\item Les racines de $f$ sont $-3$ et $2$, donc $f(x) = (x + 3)(x - 2)$.
+	\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+	\begin{enumerate}
+		\item $(x - 5)(x + 7) = 0$
+
+		      On a donc
+
+		      $x - 5 = 0$, soit $x = 5$
+
+		      OU $x + 7 = 0$, soit $x = -7$. \medskip
+
+		      L'ensemble des solutions est donc $\{-7;5\}$.
+		\item $5x(2x - 10) = 0$
+
+		      On a donc
+
+		      $5x = 0$, soit $x = 0$
+
+		      OU $2x - 10 = 0$, soit $x = 5$. \medskip
+
+		      L'ensemble des solutions est donc $\{0;5\}$.
+		\item $(6x + 2)² = 100$
+
+		      On a donc
+
+		      $6x + 2 = 10$, soit $x = \frac{4}{3}$
+
+		      OU $6x + 2 = -10$, soit $x = -2$. \medskip
+
+		      L'ensemble des solutions est donc $\{-2;\frac{4}{3}\}$.
+		\item $2x(4x - 7) + 6(4x - 7) = 0$
+
+		      Si on factorise, on obtient $(2x + 6)(4x - 7) = 0$
+
+		      On a donc
+
+		      $2x + 6 = 0$, soit $x = -3$
+
+		      OU $4x - 7 = 0$, soit $x = \frac{7}{4}$. \medskip
+
+		      L'ensemble des solutions est donc $\{-3;\frac{7}{4}\}$.
+	\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+	Soit $g$ une fonction définie par $g(x) = 3x² + 8x - 35$.
+	\begin{enumerate}
+		\item On va développer :
+
+		      \begin{align*}
+			      (3x - 7)(x + 5) & = 3x² - 7x + 15x - 35 \\
+			                      & = 3x² + 8x - 35
+			                      & = g(x)
+		      \end{align*}
+		\item Les racines de cette fonction sont donc obtenu en résolvant $3x - 7 = 0$ et $x + 5 = 0$. Ce sont donc $\frac{7}{3}$ et $-5$.
+		\item $a > 0$, donc les bras de la courbe de la fonction sont orientés vers le haut.
+		\item On a $-\frac{b}{2a} = -\frac{8}{2×3} = -\frac{4}{3}$. Les coordonnées du sommet sont donc
+		
+		$(-\frac{4}{3} ; f(-\frac{4}{3})) = (-\frac{4}{3} ; -\dfrac{121}{3})$
+		\item \begin{tikzpicture}
+			\tkzTabInit{$x$ / 1 , $g(x)$ / 2}{$-∞$, $-\frac{4}{3}$, $+∞$}
+				\tkzTabVar{+/ $+∞$, -/ $-\dfrac{121}{3}$, +/ $+∞$}
+		\end{tikzpicture}
+	\end{enumerate}
+\end{exercice}
+
+%==============================================
+%================ SUJET B =====================
+%==============================================
+\newpage
+\setcounter{exercice}{1}
+
+\title{Évaluation (Sujet B) : polynômes de degré 2 et 3}
+\maketitle
+
+\begin{exercice}
+	\begin{enumerate}
+		\item $a = 5$, $b = -16$, $c = 2$.
+
+		      On a $-\frac{b}{2a} = 1,6$, donc les coordonnées du sommet sont $(1,6 ; f(1,6)) = (1,6; -10,8)$.
+		\item $a = 13$, $b = 1$, $c = -3$.
+
+		      On a $-\frac{b}{2a} = -\frac{1}{26}$, donc les coordonnées du sommet sont $(-\frac{1}{26} ; f(-\frac{1}{26})) ≈ (-0.038 ; -3.019)$.
+		\item $a = 2$, $b = 0$, $c = -1$.
+
+		      On a $-\frac{b}{2a} = 0$, donc les coordonnées du sommet sont $(0 ; f(0)) = (0 ; -1)$.
+	\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+	Pour chaque courbe ci-dessous, donner les coordonnées du sommet, les racines si elles existent, et le signe de $a$ :
+	\begin{center}
+		\begin{tabular}{|*{4}{>{\centering}p{4cm}|}}
+			\hline
+			A & B                                                                                                   & C & D \tabularnewline \hline
+			\begin{tikzpicture}[scale=0.45]
+				\tikzRepere{-3.5}{3.5}{-5.5}{5.5}
+				\draw[blue,very thick,domain=-3:4] plot({\x},{0.5*\x*\x - \x - 1.5}) node[above left] {$𝒞_f$};
+			\end{tikzpicture}
+			  & \begin{tikzpicture}[scale=0.45]
+				    \tikzRepere{-3.5}{3.5}{-5.5}{5.5}
+				    \draw[blue,very thick,domain=-3.9:4] plot({\x},{-2/9*\x*\x + 2/3*\x}) node[left] {$𝒞_f$};
+			    \end{tikzpicture}
+			  & \begin{tikzpicture}[scale=0.45]
+				    \tikzRepere{-3.5}{3.5}{-5.5}{5.5}
+				    \draw[blue,very thick,domain=-3.45:1.45] plot({\x},{\x*\x + 2*\x + 1}) node[left] {$𝒞_f$};
+			    \end{tikzpicture}
+			  & \begin{tikzpicture}[scale=0.45]
+				    \tikzRepere{-3.5}{3.5}{-5.5}{5.5}
+				    \draw[blue,very thick,domain=0.58:3.41] plot({\x},{2*\x*\x - 8*\x + 10}) node[below right] {$𝒞_f$};
+			    \end{tikzpicture}
+			\tabularnewline \hline
+			$S(\correctionOr{1}{\hspace{2em}};\correctionOr{-2}{\hspace{2em}})$
+			  & $S(\correctionOr{1,5}{\hspace{2em}};\correctionOr{0,5}{\hspace{2em}})$
+			  & $S(\correctionOr{-1}{\hspace{2em}};\correctionOr{0}{\hspace{2em}})$
+			  & $S(\correctionOr{2}{\hspace{2em}};\correctionOr{2}{\hspace{2em}})$
+			\tabularnewline \hline
+			Racines : \correction{$-1$ et $3$}
+			  & Racines : \correction{$0$ et $3$}
+			  & Racines : \correction{$-1$}
+			  & Racines : \correction{Aucune}
+			\tabularnewline \hline
+			Signe de $a$ : $a$ \correctionDots{$>$} $0$
+			  & Signe de $a$ : $a$ \correctionDots{$<$} $0$
+			  & Signe de $a$ : $a$ \correctionDots{$>$} $0$
+			  & Signe de $a$ : $a$ \correctionDots{$>$} $0$
+			\tabularnewline \hline
+		\end{tabular}
+	\end{center}
+\end{exercice}
+
+\begin{exercice}
+	\begin{enumerate}
+		\item $a = 1$, $b = -2$, $c = -3$.
+		\item Les bras de la fonction sont orientés vers le haut, car $a > 0$.
+		\item On a $-\frac{b}{2a} = 1$. Ainsi les coordonnées du sommet de la courbe de $f$ sont $(1 ; f(1)) = (1 ; -4)$.
+		\item    \begin{tikzpicture}[scale=0.7]
+				      \tikzRepere{-2.5}{4.5}{-2.5}{6.5}[1][2]
+				      \draw[domain=-3:5,blue,thick] plot({\x},{(\x*\x - 2*\x - 3)*0.5});
+			      \end{tikzpicture}
+		\item Les racines de $f$ sont $-1$ et $3$, donc $f(x) = (x + 1)(x - 3)$.
+	\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+	\begin{enumerate}
+		\item $(x - 8)(x + 3) = 0$
+
+		      On a donc
+
+		      $x - 8 = 0$, soit $x = 8$
+
+		      OU $x + 3 = 0$, soit $x = -3$. \medskip
+
+		      L'ensemble des solutions est donc $\{-3;8\}$.
+		\item $4x(3x - 10) = 0$
+
+		      On a donc
+
+		      $4x = 0$, soit $x = 0$
+
+		      OU $3x - 10 = 0$, soit $x = \frac{10}{3}$. \medskip
+
+		      L'ensemble des solutions est donc $\{0;\frac{10}{3}\}$.
+		\item $(7x + 3)² = 100$
+
+		      On a donc
+
+		      $7x + 3 = 10$, soit $x = 1$
+
+		      OU $7x + 3 = -10$, soit $x = -\frac{13}{7}$. \medskip
+
+		      L'ensemble des solutions est donc $\{-\frac{13}{7} ; 1\}$.
+		\item $5x(3x - 11) + 9(3x - 11) = 0$
+
+		      Si on factorise, on obtient $(5x + 9)(3x - 11) = 0$
+
+		      On a donc
+
+		      $5x + 9 = 0$, soit $x = -1,8$
+
+		      OU $3x - 11 = 0$, soit $x = \frac{11}{3}$. \medskip
+
+		      L'ensemble des solutions est donc $\{-1,8;\frac{11}{3}\}$.
+	\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+	Soit $g$ une fonction définie par $g(x) = 2x² + 10x - 48$.
+	\begin{enumerate}
+		\item On va développer :
+
+		      \begin{align*}
+			      (2x - 6)(x + 8) & = 2x² - 6x + 16x - 48 \\
+			                      & = 2x² + 10x - 48
+			                      & = g(x)
+		      \end{align*}
+		\item Les racines de cette fonction sont donc obtenues en résolvant $2x - 6 = 0$ et $x + 8 = 0$. Ce sont donc $3$ et $-8$.
+		\item $a > 0$, donc les bras de la courbe de la fonction sont orientés vers le haut.
+		\item On a $-\frac{b}{2a} = -\frac{10}{2×2} = -2,5$. Les coordonnées du sommet sont donc
+		
+		$(-2,5 ; f(-2,5)) = (-2,5 ; -60,5)$
+		\item \begin{tikzpicture}
+			\tkzTabInit{$x$ / 1 , $g(x)$ / 2}{$-∞$, $-2{,}5$, $+∞$}
+				\tkzTabVar{+/ $+∞$, -/ $-60{,}5$, +/ $+∞$}
+		\end{tikzpicture}
+	\end{enumerate}
+\end{exercice}
+
+\end{document}
