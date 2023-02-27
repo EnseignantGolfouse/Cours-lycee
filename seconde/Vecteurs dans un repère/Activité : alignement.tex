@@ -1,0 +1,72 @@
+\documentclass[
+	classe=$2^{de}$,
+	headerTitle=Activité
+]{exercice}
+
+\usetikzlibrary{calc}
+
+\title{Activité : alignement d'une plateforme}
+
+\begin{document}
+
+\maketitle
+
+Une artisane veut créer une table miniature parfaitement plate.
+
+On modélise le problème par le schéma suivant :
+
+\begin{center}
+	\begin{tikzpicture}[scale=0.45]
+		\coordinate (O) at (0,0);
+		\coordinate (VecI) at (1,0);
+		\coordinate (VecJ) at (0,1);
+
+		\coordinate (A) at (5,0);
+		\coordinate (B) at ($(A) + (7,0)$);
+		\coordinate (H) at ($(A)!0.5!(B)$);
+		\coordinate (M) at ($(H) + (0,12)$);
+		\coordinate (C) at ($(A) + (-1.2,12)$);
+		\coordinate (D) at ($(B) + (1.3,12)$);
+
+		\node[below left] at (O) {$O$};
+		\draw[->] (O) -- node[below] {$\vec{i}$} ++(VecI);
+		\draw[->] (O) -- node[left] {$\vec{j}$} ++(VecJ);
+
+		\draw (A) node[below] {$A$} -- (B) node[below] {$B$}
+		(H) node[below] {$H$} -- (M) node[above] {$M$}
+		(C) node[above] {$C$} -- (D) node[above] {$D$};
+	\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}
+	\item On considère que la distance $AB$ est de $7$cm.
+
+	      Sachant que $AB$ est posé contre le sol, quelles sont alors les coordonnées du vecteur $\vec{AB}$ ?
+	\item On suppose que le point $H$ est situé au milieu du segment $[AB]$.
+
+	      Quelles sont les coordonnées de $\vec{AH}$ ?
+
+	\item On suppose que :
+	      \begin{itemize}
+		      \item $\vec{AC} = \begin{pmatrix}
+				            -1,2 \\ 11,95
+			            \end{pmatrix}$
+		      \item $\vec{BD} = \begin{pmatrix}
+				            1,3 \\ 12,05
+			            \end{pmatrix}$
+	      \end{itemize}
+	      Exprimer le vecteur $\vec{CD}$ à l'aide des vecteurs $\vec{AC}$, $\vec{AB}$ et $\vec{BD}$.
+
+	      Calculer alors les coordonnées du vecteur $\vec{CD}$.
+
+	      \correctionOr{$\vec{CD} = -\vec{AC} + \vec{AB} + \vec{BD} = \begin{pmatrix}
+				      1,2 + 7 + 1,3 \\ -11,95 + 0 + 12,05
+			      \end{pmatrix} = \begin{pmatrix}
+				      9,5 \\ 0,1
+			      \end{pmatrix}$}{}
+	\item La table est-elle parfaitement plate ?
+\end{enumerate}
+
+% TODO: faire plus !!!
+
+\end{document}
