@@ -174,4 +174,26 @@
 	Soit $\vec{u}\begin{pmatrix} -2 \\ 5 \end{pmatrix}$. Alors le vecteur $-3\vec{u}$ a pour coordonnées $\begin{pmatrix} -3 × (-2) \\ -3 × 5 \end{pmatrix} = \begin{pmatrix} 6 \\ -15 \end{pmatrix}$.
 \end{exemple}
 
+\begin{definition}[Colinéarité]
+	Si deux vecteurs ont la même direction, on dit qu'ils sont \textbf{colinéaires}.
+\end{definition}
+
+\begin{propriete}[Colinéarité]
+	Si $\vec{u}\begin{pmatrix} x \\ y \end{pmatrix}$ et $\vec{v}\begin{pmatrix} x' \\ y' \end{pmatrix}$, alors $\vec{u}$ et $\vec{v}$ sont colinéaires si, de manière équivalente, on a : \medskip
+
+	\begin{minipage}{0.7\textwidth}
+		\begin{itemize}
+			\item $\vec{u} = k\vec{v}$, avec $k$ un nombre réel ;
+			\item Les coordonnées de $\vec{u}$ et $\vec{v}$ sont proportionnelles ;
+			\item $x × y' = x' × y$
+		\end{itemize}
+	\end{minipage}
+	\begin{minipage}{0.25\textwidth}
+		\begin{tikzpicture}
+			\draw[->] (0,1) -- node[above] {$\vec{u}$} ++(2,1);
+			\draw[->] (0,0) -- node[above] {$\vec{v}$} ++(3,1.5);
+		\end{tikzpicture}
+	\end{minipage}
+\end{propriete}
+
 \end{document}
