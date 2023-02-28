@@ -1,0 +1,86 @@
+\documentclass[
+	classe=$1^{ere}STI2D$,
+	landscape,
+	twocolumn
+]{exercice}
+
+\usepackage{tikz-repère}
+\usepackage{tcolorbox}
+
+\setlength{\columnsep}{1cm}
+
+\title{Exercice : représentation de suites}
+
+\begin{document}
+
+\maketitle
+
+\begin{exercice}
+	On se donne deux suites arithmétiques :
+	\begin{itemize}
+		\item La suite $u$ de raison $1,5$, telle que $u₀ = -1$.
+		\item La suite $v$ de raison $0,8$, telle que $v₀ = 2,5$.
+	\end{itemize}
+
+	Représenter les 7 premières valeurs de ces suites dans le repère ci-dessous :
+	\begin{center}
+		\begin{tikzpicture}
+			\tikzRepere{0}{6}{-1}{10}[1][1]
+			\ifdefined\makeCorrection
+				\foreach \n in {0,...,6} {
+						\node[red] at (\n,1.5*\n-1) {×};
+						\node[red,above right] at (\n,1.5*\n-1) {$u_{\n}$};
+						\node[red] at (\n,0.8*\n+2.5) {×};
+						\node[red,above left] at (\n,0.8*\n+2.5) {$v_{\n}$};
+					}
+			\fi
+			\foreach \n in {2,...,6} {
+					\draw[thick] (\n,0) -- ++(0,-0.2) node[below] {$\n$};
+				}
+			\foreach \y in {2,...,10} {
+					\draw[thick] (0,\y) -- ++(-0.2,0) node[left] {$\y$};
+				}
+		\end{tikzpicture}
+	\end{center}
+
+	Que peut-on dire des points correspondant à chaque suite ?
+\end{exercice}
+
+\newpage
+
+\begin{tcolorbox}
+	Cette représentation graphique est appelée un \textbf{nuage de points}.
+\end{tcolorbox}
+
+\begin{exercice}
+	On se donne deux suites géométriques :
+	\begin{itemize}
+		\item La suite $u$ de raison $1,6$, telle que $u₀ = 0,5$.
+		\item La suite $v$ de raison $0,7$, telle que $v₀ = 8$.
+	\end{itemize}
+
+	Représenter les 7 premières valeurs de ces suites dans le repère ci-dessous :
+	\begin{center}
+		\begin{tikzpicture}
+			\tikzRepere{0}{6}{-1}{10}[1][1]
+			\ifdefined\makeCorrection
+				\foreach \n in {0,...,6} {
+						\node[red] at (\n,0.5*1.6^\n) {×};
+						\node[red,above left] at (\n,0.5*1.6^\n) {$u_{\n}$};
+						\node[red] at (\n,8*0.7^\n) {×};
+						\node[red,above left] at (\n,8*0.7^\n) {$v_{\n}$};
+					}
+			\fi
+			\foreach \n in {2,...,6} {
+					\draw[thick] (\n,0) -- ++(0,-0.2) node[below] {$\n$};
+				}
+			\foreach \y in {2,...,10} {
+					\draw[thick] (0,\y) -- ++(-0.2,0) node[left] {$\y$};
+				}
+		\end{tikzpicture}
+	\end{center}
+
+	Que peut-on dire des points correspondant à chaque suite ?
+\end{exercice}
+
+\end{document}
