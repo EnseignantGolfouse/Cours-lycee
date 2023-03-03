@@ -1,0 +1,144 @@
+\documentclass[
+	classe=$1^{ere}STI2D$,
+	landscape,
+	twocolumn,
+]{évaluation}
+
+\usepackage{tikz-repère}
+
+\setlength{\columnsep}{1cm}
+
+\begin{document}
+
+\date{3 mars 2023}
+
+\title{Interrogation : dérivées (sujet A)}
+\maketitle
+
+\begin{luacode}
+	A = -0.25
+	B = 1
+	C = 3
+
+	function print_f()
+	tex.print(A)
+	tex.print("*\\x*\\x + ")
+	tex.print(B)
+	tex.print("*\\x + ")
+	tex.print(C)
+	end
+
+	function tangente_en(x)
+	local f_x = A * x * x + B * x + C
+	local f_prime_x = 2 * A * x + B
+	tex.print(f_prime_x)
+	tex.print("*\\x + ")
+	tex.print(f_x - x * f_prime_x)
+	end
+\end{luacode}
+
+\begin{exercice}
+	\begin{center}
+		\begin{tikzpicture}[scale=0.7]
+			\tikzRepere{-4.5}{4.5}{-3.5}{4.5}
+
+			\clip (-5,-4) rectangle (5,5);
+			\draw[domain=-5:5,purple,thick] plot({\x},{\directlua{print_f()}}) node[right] {$𝒞_f$};
+
+			\draw[domain=-5:5,green,ultra thick] plot({\x},{\directlua{tangente_en(2)}});
+			\draw[domain=-5:5,green,ultra thick] plot({\x},{\directlua{tangente_en(0)}});
+		\end{tikzpicture}
+	\end{center}
+
+	Sur le graphe ci-dessus, lire les valeurs de $f'(0) \correctionOr{{\color{red}= 1}}{}$ et $f'(2) \correctionOr{{\color{red}= 0}}{}$.
+\end{exercice}
+
+\begin{exercice}\
+	Soit $f$ la fonction telle que $f(x) = 2x² - 3$.
+
+	\begin{enumerate}
+		\item Calculer $f'(1)$, en détaillant les calculs.
+
+		      \correctionOr{{\color{red}\begin{align*}
+						      f'(1) & = \lim_{h→0}\dfrac{f(1+h) - f(1)}{h}              \\
+						            & = \lim_{h→0}\dfrac{2(1 + h)² - 3 - (2×1² - 3)}{h} \\
+						            & = \lim_{h→0}\dfrac{2(1 + 2h + h²) - 3 + 1}{h}     \\
+						            & = \lim_{h→0}\dfrac{2 + 4h + 2h² - 2}{h}           \\
+						            & = \lim_{h→0}\dfrac{2h² + 4h}{h}                   \\
+						            & = \lim_{h→0}2h + 4                                \\
+						            & = 4                                               \\
+					      \end{align*}}}{}
+		\item Quelle est alors l'expression de la tangente à la courbe de $f$ au point d'abscisse $1$ ?
+
+		      \correctionOr{{\color{red}
+					      Ainsi l'expression de la tangente au point d'abscisse $1$ est
+
+					      $$ y = f'(1)x + f(1) - 1 × f'(1) $$
+
+					      Soit
+
+					      $$ y = 4x - 5 $$
+				      }}{}
+	\end{enumerate}
+\end{exercice}
+
+%=================================================
+%==================== SUJET B ====================
+%=================================================
+\newpage
+\setcounter{exercice}{1}
+
+\title{Interrogation : dérivées (sujet B)}
+\maketitle
+
+\begin{luacode}
+	A = -0.25
+	B = 0
+	C = 3
+\end{luacode}
+
+\begin{exercice}
+	\begin{center}
+		\begin{tikzpicture}[scale=0.7]
+			\tikzRepere{-4.5}{4.5}{-3.5}{4.5}
+
+			\clip (-5,-4) rectangle (5,5);
+			\draw[domain=-5:5,purple,thick] plot({\x},{\directlua{print_f()}}) node[right] {$𝒞_f$};
+
+			\draw[domain=-5:5,green,ultra thick] plot({\x},{\directlua{tangente_en(2)}});
+			\draw[domain=-5:5,green,ultra thick] plot({\x},{\directlua{tangente_en(0)}});
+		\end{tikzpicture}
+	\end{center}
+
+	Sur le graphe ci-dessus, lire les valeurs de $f'(0) \correctionOr{{\color{red}= 0}}{}$ et $f'(2) \correctionOr{{\color{red}= -1}}{}$.
+\end{exercice}
+
+\begin{exercice}\
+	Soit $f$ la fonction telle que $f(x) = 3x² - 2$.
+
+	\begin{enumerate}
+		\item Calculer $f'(1)$, en détaillant les calculs.
+		      \correctionOr{{\color{red}\begin{align*}
+						      f'(1) & = \lim_{h→0}\dfrac{f(1+h) - f(1)}{h}              \\
+						            & = \lim_{h→0}\dfrac{3(1 + h)² - 2 - (3×1² - 2)}{h} \\
+						            & = \lim_{h→0}\dfrac{3(1 + 2h + h²) - 2 - 1}{h}     \\
+						            & = \lim_{h→0}\dfrac{3 + 6h + 3h² - 3}{h}           \\
+						            & = \lim_{h→0}\dfrac{3h² + 6h}{h}                   \\
+						            & = \lim_{h→0}3h + 6                                \\
+						            & = 6                                               \\
+					      \end{align*}}}{}
+		\item Quelle est alors l'expression de la tangente à la courbe de $f$ au point d'abscisse $1$ ?
+
+		      \correctionOr{{\color{red}
+					      Ainsi l'expression de la tangente au point d'abscisse $1$ est
+
+					      $$ y = f'(1)x + f(1) - 1 × f'(1) $$
+
+					      Soit
+
+					      $$ y = 6x - 5 $$
+				      }}{}
+	\end{enumerate}
+\end{exercice}
+
+\end{document}
