@@ -1,0 +1,103 @@
+\documentclass[
+	classe=$2^{de}$,
+	landscape,
+	twocolumn,
+]{évaluation}
+
+\usepackage{tikz-repère}
+
+\setlength{\columnsep}{1cm}
+
+\begin{document}
+
+\date{3 mars 2023}
+
+\title{Interrogation : coordonnées de vecteurs\\ (sujet A)}
+\maketitle
+
+\begin{exercice}\
+
+	\begin{center}
+		\begin{tikzpicture}[scale=0.8]
+			\tikzRepere{-4.5}{4.5}{-3.5}{3.5}[][]
+			\node[below left] at (0,0) {$O$};
+			\draw[->] (0,0) -- node[below] {$\vec{i}$} (1,0);
+			\draw[->] (0,0) -- node[left] {$\vec{j}$} (0,1);
+
+			\draw[->,very thick] (-4,-2) -- node[above] {$\vec{u}$} ++(3,1);
+			\draw[->,very thick] (1,3) -- node[above right] {$\vec{v}$} ++(2,-4);
+			\draw[->,very thick] (2,-3) -- node[above right] {$\vec{w}$} ++(-1,2);
+		\end{tikzpicture}
+	\end{center}
+	Donner les coordonnées des vecteurs suivants dans la base orthonormée ci-dessus :
+	\begin{multicols}{2}
+		\begin{enumerate}
+			\setlength{\itemsep}{0.5em}
+			\item $\vec{u}\begin{pmatrix}\correction{\ 3\ \ } \\ \correction{1}\end{pmatrix}$
+			\item $\vec{v}\begin{pmatrix}\correction{\ 2\ \ } \\ \correction{-4}\end{pmatrix}$
+			\item $\vec{u} + \vec{v}\begin{pmatrix}\correction{\ 5\ \ } \\ \correction{-3}\end{pmatrix}$
+			\item $\vec{v} + \vec{w}\begin{pmatrix}\correction{\ 1\ \ } \\ \correction{-2}\end{pmatrix}$
+		\end{enumerate}
+	\end{multicols}
+\end{exercice}
+
+\begin{exercice}\
+	On donne les points $A(2; 1)$, $B(4; 6)$, $C(-3; -2)$ et $D(0; 6)$.
+
+	Calculer les coordonnées des vecteurs :
+	\begin{enumerate}
+		\setlength{\itemsep}{0.5em}
+		\item $\vec{AB}\correction{\begin{pmatrix}2 \\ 5\end{pmatrix}}$
+		\item $\vec{BC}\correction{\begin{pmatrix}-7 \\ -8\end{pmatrix}}$
+		\item $\vec{AB} + \vec{CD}\correction{\begin{pmatrix}5 \\ 13\end{pmatrix}}$
+	\end{enumerate}
+\end{exercice}
+
+%=================================================
+%================== SUJET B ======================
+%=================================================
+\setcounter{exercice}{1}
+\newpage
+
+\title{Interrogation : coordonnées de vecteurs\\ (sujet B)}
+\maketitle
+
+\begin{exercice}\
+
+	\begin{center}
+		\begin{tikzpicture}[scale=0.8]
+			\tikzRepere{-4.5}{4.5}{-3.5}{3.5}[][]
+			\node[below left] at (0,0) {$O$};
+			\draw[->] (0,0) -- node[below] {$\vec{i}$} (1,0);
+			\draw[->] (0,0) -- node[left] {$\vec{j}$} (0,1);
+
+			\draw[->,very thick] (-4,-3) -- node[above] {$\vec{u}$} ++(3,2);
+			\draw[->,very thick] (2,2) -- node[above right] {$\vec{v}$} ++(2,-4);
+			\draw[->,very thick] (2,-3) -- node[above right] {$\vec{w}$} ++(-1,2);
+		\end{tikzpicture}
+	\end{center}
+	Donner les coordonnées des vecteurs suivants dans la base orthonormée ci-dessus :
+	\begin{multicols}{2}
+		\begin{enumerate}
+			\setlength{\itemsep}{0.5em}
+			\item $\vec{u}\begin{pmatrix}\correction{\ 3\ \ } \\ \correction{2}\end{pmatrix}$
+			\item $\vec{v}\begin{pmatrix}\correction{\ 2\ \ } \\ \correction{-4}\end{pmatrix}$
+			\item $\vec{u} + \vec{v}\begin{pmatrix}\correction{\ 5\ \ } \\ \correction{-2}\end{pmatrix}$
+			\item $\vec{v} + \vec{w}\begin{pmatrix}\correction{\ 1\ \ } \\ \correction{-2}\end{pmatrix}$
+		\end{enumerate}
+	\end{multicols}
+\end{exercice}
+
+\begin{exercice}\
+	On donne les points $A(3; 1)$, $B(4; 5)$, $C(-2; -1)$ et $D(4; 0)$.
+
+	Calculer les coordonnées des vecteurs :
+	\begin{enumerate}
+		\setlength{\itemsep}{0.5em}
+		\item $\vec{AB}\correction{\begin{pmatrix}1 \\ 4\end{pmatrix}}$
+		\item $\vec{BC}\correction{\begin{pmatrix}-6 \\ -6\end{pmatrix}}$
+		\item $\vec{AB} + \vec{CD}\correction{\begin{pmatrix}7 \\ 5\end{pmatrix}}$
+	\end{enumerate}
+\end{exercice}
+
+\end{document}
