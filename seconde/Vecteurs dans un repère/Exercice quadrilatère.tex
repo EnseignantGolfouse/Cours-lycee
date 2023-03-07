@@ -1,0 +1,76 @@
+\documentclass{exercice}
+
+\usepackage{tikz-repère}
+\usetikzlibrary{calc}
+
+\newcommand{\makeCorrection}{}
+\begin{document}
+
+Projection sur une droite ? Eg dans un logiciel GPS.
+
+\begin{center}
+	\begin{tikzpicture}[scale=0.7]
+		\tikzRepere{-6}{6}{-4}{4}[][]
+		\node[below left] at (0,0) {$O$};
+
+		\coordinate (A) at (1,1);
+		\coordinate (B) at ($(A) + (1,2)$);
+		\coordinate (B') at ($(A) + (-2,1)$);
+		\coordinate (C) at (-3,-1);
+		\coordinate (D) at ($(C) + (2,-3)$);
+		\coordinate (D') at ($(C) + (-3,-2)$);
+
+		\node at (A) {×};
+		\node[below] at (A) {$A$};
+		\node at (C) {×};
+		\node[above left] at (C) {$C$};
+
+		\ifdefined\makeCorrection
+			\draw[red,\myArrow] (A) -- (B) node[right] {$B$};
+			\draw[red,\myArrow] (C) -- (D) node[right] {$D$};
+			\draw[red,\myArrow] (A) -- (B') node[above] {$B'$};
+			\draw[red,\myArrow] (C) -- (D') node[above] {$D'$};
+		\fi
+	\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}
+	\item Placer les points $B$ et $D$ tels que $\vec{AB}\begin{pmatrix}1 \\ 2\end{pmatrix}$ et $\vec{CD}\begin{pmatrix}2 \\ -3\end{pmatrix}$.
+	\item Construire :
+
+	      \begin{itemize}
+		      \item Un vecteur $\vec{AB'}$, tel que $∥\vec{AB}∥ = ∥\vec{AB'}∥$ et la droite $(AB)$ est perpendiculaire à $(AB')$.
+		      \item Un vecteur $\vec{CD'}$, tel que $∥\vec{CD}∥ = ∥\vec{CD'}∥$ et la droite $(CD)$ est perpendiculaire à $(CD')$.
+	      \end{itemize}
+	\item Quels sont alors les coordonnées de $\vec{AB'}$ et $\vec{CD'}$ ? $\vec{AB'}\begin{pmatrix}\correctionOr{\color{red}-2}{\phantom{333}} \\ \correctionOr{\color{red}1}{\phantom{333}}\end{pmatrix}$ $\vec{CD'}\begin{pmatrix}\correctionOr{\color{red}-3}{\phantom{333}} \\ \correctionOr{\color{red}-2}{\phantom{333}}\end{pmatrix}$
+
+	      Que remarque-t'on par rapport aux coordonnées de $\vec{AB}$ et $\vec{CD}$ ?
+
+	      \correction{Les coordonnées horizontales et verticales sont échangées, et l'une d'entre elles est l'opposé.}
+\end{enumerate}
+
+\begin{center}
+	\begin{tikzpicture}[scale=0.7]
+		\tikzRepere{-6}{6}{-4}{4}[][]
+		\node[below left] at (0,0) {$O$};
+
+		\coordinate (A) at (-3,1);
+		\coordinate (B) at (2,-3);
+		\coordinate (P) at (1,4);
+
+		\node at (A) {×};
+		\node[below] at (A) {$A$};
+		\node at (B) {×};
+		\node[below] at (B) {$C$};
+
+		\ifdefined\makeCorrection
+			\draw[red,\myArrow] (A) -- (B) node[right] {$B$};
+			\draw[red,\myArrow] (C) -- (D) node[right] {$D$};
+			\draw[red,\myArrow] (A) -- (B') node[above] {$B'$};
+			\draw[red,\myArrow] (C) -- (D') node[above] {$D'$};
+		\fi
+	\end{tikzpicture}
+\end{center}
+
+
+\end{document}
