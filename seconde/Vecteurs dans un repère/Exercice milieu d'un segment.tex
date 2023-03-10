@@ -1,0 +1,64 @@
+\documentclass[
+	classe=$2^{de}$,
+	landscape,
+	twocolumn,
+]{exercice}
+
+\usepackage{tikz-repère}
+\usetikzlibrary{calc}
+
+\setlength{\columnsep}{1cm}
+
+\begin{document}
+
+\newcommand{\Exercice}{
+\begin{center}
+	\begin{tikzpicture}[scale=0.7]
+		\tikzRepere{-5.5}{5.5}{-5.5}{5.5}[][]
+		\node[below left] at (0,0) {$O$};
+		\coordinate (A) at (-2,0.5);
+		\coordinate (B) at (4,1);
+		\coordinate (C) at (-4.5,-3);
+		\coordinate (D) at (-3,3);
+
+		\foreach \p in {A,B,C,D} {
+				\node at (\p) {×};
+				\node[below left] at (\p) {$\p$};
+			}
+
+		\ifdefined\makeCorrection
+			\coordinate (E) at ($(A) + (-1, -4.5)$);
+			\coordinate (F) at ($(B) + (-1, -4.5)$);
+			\coordinate (M1) at ($(A)!0.5!(B)$);
+			\coordinate (M2) at ($(C)!0.5!(D)$);
+			\coordinate (M3) at ($(A)!0.5!(F)$);
+
+			\foreach \p in {E,F,M1,M2,M3} {
+					\node[red] at (\p) {×};
+					\node[red,below left] at (\p) {$\p$};
+				}
+		\fi
+	\end{tikzpicture}
+\end{center}
+
+\begin{itemize}
+	\item Lire les coordonnées des points $A(\correction{-2};\correction{0,5})$, $B(\correction{\phantom{0,}4};\correction{\phantom{0,}1})$, 
+	
+	$C(\correction{-4,5};\correction{-3})$ et $D(\correction{-3};\correction{\phantom{0,}3})$.
+	\item Par le calcul, déterminer le milieu du segment $[AB]$ :
+
+	      \correction{$\left(\dfrac{-2 + 4}{2};\dfrac{0,5 + 1}{2}\right) = (1 ; 0,75)$}
+	\item Par le calcul, déterminer le milieu du segment $[CD]$ :
+
+	      \correction{$\left(\dfrac{-4,5 + (-3)}{2};\dfrac{-3 + 3}{2}\right) = (-3,75 ; 0)$}
+	\item Placer les points $E$ et $F$, tels que $\vec{AE} = \vec{BF} = \begin{pmatrix}-1 \\ -4,5\end{pmatrix}$.
+	\item Déterminer les coordonnées du centre du parallélogramme $AEFB$.
+\end{itemize}
+}
+
+\Exercice
+
+\newpage
+\Exercice
+
+\end{document}

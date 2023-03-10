@@ -33,13 +33,19 @@
 
 ## 7) Généralités sur les fonctions
 
-- Fonctions usuelles.
+- Notion de fonction, calculs d’images et d’antécédents, domaine définition.
+- Représentation graphique, lecture d’images et d’antécédents.
+- Variations (croissance et décroissance). Tableau de variations.
+- Fonctions usuelles: fonction affine / carrée / cube / racine carrée / inverse.
 
 ## 8) Statistiques et évolutions
 
 ## 9) Géométrie classique
 
 ## 10) Compléments sur les fonctions
+
+- Tableaux de signes (+ fonctions usuelles)
+- Parité et symétries. Points d’intersection et position relative de courbes : lecture graphique et résolution d’équations et d’inéquations.
 
 ## 11) Probabilités
 
