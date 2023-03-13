@@ -1,0 +1,88 @@
+\documentclass[
+	classe=$2^{de}$
+]{informatique}
+
+\usepackage{hyperref}
+\usepackage{tcolorbox}
+\hypersetup{
+    colorlinks=true,
+    urlcolor=blue,
+    pdftitle={Activité : Carré bordé dans Geogebra},
+}
+
+\newcommand{\Point}[3]{#1(\correctionOr{{\color{red}#2}}{\phantom{3333}};\correctionOr{{\color{red}#3}}{\phantom{3333}})}
+
+\title{Activité : Carré bordé dans Geogebra}
+
+\begin{document}
+
+\maketitle
+
+\section*{Un carré bordé}
+
+À partir d'un carré $ABCD$ dont le côté mesure $1$, on construit un quadrilatère $EFGH$ de la façon suivante :
+
+On choisit un nombre réel $a$ positif, puis on place les points $E$, $F$, $G$ et $H$ définis par les relations :
+
+\begin{align*}
+	\vec{BE} & = a\vec{AB} & \vec{CF} & = a\vec{BC} & \vec{DG} & = a\vec{CD} & \vec{AH} & = a\vec{DA}
+\end{align*}
+
+On s'intéresse à la nature du quadrilatère $EFGH$.
+
+\begin{enumerate}
+	\item \begin{enumerate}
+		      \item Dans Geogebra, tracer le carré $ABCD$ puis, à l'aide d'un curseur $a$, les points $E$, $F$, $G$ et $H$.
+
+		            \begin{tcolorbox}
+			            \uline{AIDE} : Voir la vidéo suivante : \url{https://lycee.hachette-education.com/Barbazo/2de/#chapitre_7_p210_TP3_tutoriel_logiciel_de_geometriemp4}
+		            \end{tcolorbox}
+		      \item Faire varier le curseur et conjecturer la nature du quadrilatère $EFGH$.
+
+		            \correction{Il semble que $EFGH$ soit un carré.}
+	      \end{enumerate}
+	\item On considère le repère $(A ; \vec{AB}; \vec{AD})$.
+
+	      \begin{enumerate}
+		      \item Justifier que ce repère est un repère orthonormé.
+
+		            \correction{$ABCD$ est un carré, donc on a $AB = AD$ et l'angle $ABD$ est droit : donc ce repère est orthonormé.}
+		      \item À l'aide des relations vectorielles définissant les points $E$, $F$, $G$ et $H$, déterminer, dans ce repère, les coordonnées de chacun de ces quatres points.
+
+		            \begin{center}
+			            \begin{multicols}{2}
+				            $\Point{E}{1+a}{0}$
+
+				            $\Point{G}{-a}{1}$
+
+				            \columnbreak
+
+				            $\Point{F}{1}{1+a}$
+
+				            $\Point{H}{0}{-a}$
+			            \end{multicols}
+		            \end{center}
+		      \item Calculer les longueurs $EF$, $FG$, $GH$ et $HE$.
+
+		            $EF = \correction{\sqrt{a² + (1 + a)²}}$ \medskip
+
+		            $FG = \correction{\sqrt{(1 + a)² + a²} }$ \medskip
+
+		            $GH = \correction{\sqrt{a² + (1 + a)²}}$ \medskip
+
+		            $HE = \correction{\sqrt{(1 + a)² + a²}}$ \medskip
+		      \item Valider ou invalider la conjecture faite à la question $1$.
+
+		            \correction{Toutes ces longueurs sont égales : il suffit donc de montrer qu'un des angles est droit.}
+
+		            \correction{Pour ce faire, on va utiliser la réciproque du théorème de Pythagore : ici on a}
+
+		            \correction{$EF² = a² + (1 + a²)$, $HE² = (1+a)² + a²$ et $HF² = 1² + (1 + 2a)²$}
+
+		            \correction{Ainsi $EF² + HE² = 2a² + 2(1 + 2a + a²) = 4a² + 4a + 2$, et $HF² = 1 + 1 + 4a + 4a² = EF² + HE²$.}
+
+		            \correction{Donc l'angle $FEH$ est droit, et donc $EFGH$ est un carré.}
+	      \end{enumerate}
+\end{enumerate}
+
+\end{document}

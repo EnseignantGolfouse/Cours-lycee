@@ -1,0 +1,57 @@
+\documentclass[noheader]{coursclass}
+
+\usetikzlibrary{automata,calc,positioning}
+
+\begin{document}
+\newgeometry{margin=0.7cm}
+
+\newcommand{\Definitions}{
+	\begin{definition}[Fonction, image, antécédent]
+		Une \textbf{fonction} est un procédé qui à un nombre réel $x$ associe un unique nombre réel $f(x)$.
+
+		\begin{minipage}{0.65\textwidth}
+			\begin{itemize}
+				\item $f(x)$ est \textbf{L'image} de $x$ par la fonction $f$. On représente une image par la lettre $y$, et on écrit alors
+
+				      $$ f(x) = y $$
+				\item $x$ est \textbf{UN antécédent} de $y$.
+			\end{itemize}
+		\end{minipage}
+		\begin{minipage}{0.3\textwidth}
+			\hspace{2em}
+			\begin{tikzpicture}
+				\node (X) {$x$};
+				\node (F) [right=of X] {};
+				\node (Y) [right=of F] {$f(x)$};
+				\path[\myArrow] (X) edge node[above] {$f$} (Y);
+			\end{tikzpicture}
+		\end{minipage}
+	\end{definition}
+
+	\begin{remarque}
+		\begin{itemize}
+			\item Il n'y a \uline{qu'une seule image} pour un nombre donné.
+			\item Il peut y avoir \uline{plusieurs antécédents} pour un nombre donné.
+		\end{itemize}
+	\end{remarque}
+
+	\begin{definition}[Calcul d'image]
+		Si on a une expression \textbf{algébrique} de la fonction $f$, on peut calculer l'image d'un nombre en remplaçant $x$ par ce nombre dans l'expression de la fonction.
+	\end{definition}
+
+	\begin{exemple}
+		Si $f$ est la fonction qui à $x$ associe $3x + 2$ :
+		\begin{itemize}
+			\item $f(2) = 3×2 + 2 = 8$
+			\item \squared{Attention} : si on remplace $x$ par une expression complexe, il faut ajouter des parenthèses. Par exemple, $f(1 + 3) = 3×(1 + 3) + 2 = 3×4 + 2 = 14$
+		\end{itemize}
+	\end{exemple}
+}
+
+\Definitions
+
+\vfill
+
+\Definitions
+
+\end{document}

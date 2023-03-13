@@ -1,0 +1,47 @@
+\documentclass{automatisme}
+
+\usepackage{tcolorbox}
+\usetikzlibrary{automata,calc,positioning}
+
+\begin{document}
+
+\begin{frame}
+	Une fonction $f$ est un procédé qui à un nombre réel $x$ associe un unique nombre réel $f(x)$. On dit que $x$ est la \textbf{variable}.
+
+	\begin{center}
+		\begin{tikzpicture}
+			\coordinate (X) at (0,0);
+			\coordinate (Y) at (3,0);
+			\foreach \x/\y in {-1/2,2/3,3/-1,4/0,{6,2}/3} {
+					\node (X) at ($(X) + (0,-1)$) {$\x$};
+					\node (Y) at ($(Y) + (0,-1)$) {$\y$};
+					\path[\myArrow] (X) edge node[above] {$f$} (Y);
+					\node at ($(Y) + (2,0)$) {$f(\x) = \y$};
+				}
+
+			\node at ($(X) + (0,-1)$) {antécédents};
+			\node at ($(Y) + (0,-1)$) {images};
+		\end{tikzpicture}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	$f(x)$ est \textbf{L'image} de $x$ par la fonction $f$. On représente une image par la lettre $y$, et on écrit alors
+
+	$$ f(x) = y $$
+
+	Dans ce cas, $x$ est \textbf{UN antécédent} de $y$.
+
+	\begin{tcolorbox}
+		\begin{itemize}
+			\item Il n'y a \uline{qu'une seule image} pour un nombre donné.
+			\item Il peut y avoir \uline{plusieurs antécédents} pour un nombre donné.
+		\end{itemize}
+	\end{tcolorbox}
+\end{frame}
+
+\begin{frame}
+	% TODO: différentes représentations de fonctions
+\end{frame}
+
+\end{document}
