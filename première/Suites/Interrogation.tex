@@ -1,0 +1,119 @@
+\documentclass[
+	classe=$1^{ere}STI2D$,
+	landscape,
+	twocolumn
+]{évaluation}
+
+\usepackage{tikz-repère}
+\usetikzlibrary{calc}
+
+\begin{luacode}
+function suite_geometrique(init, raison, n)
+	v = init
+	while n ~= 0 do
+		v = v * raison
+		n = n - 1
+	end
+	return v
+end
+\end{luacode}
+
+\setlength{\columnsep}{1cm}
+\newdimen\mydim
+\newcommand\gety[1]{
+    \pgfextracty\mydim{\pgfpointanchor{#1}{center}}
+}
+
+\begin{document}
+
+\title{Interrogation : suites (sujet A)}
+\maketitle
+
+\begin{exercice}
+	Soit $u$ la suite telle que $u₀ = 0$, et $u_{n+1} = 2uₙ - 3$.
+
+	\begin{enumerate}
+		\item La suite est-elle définie explicitement ou par récurrence ?
+		\item Donner les termes d'indice $1$ à $4$ de cette suite.
+	\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+	Soit $v$ une suite géométrique de raison $1{,}2$\ , et de premier terme $v₀ = 2$.
+
+	\begin{enumerate}
+		\item Calculer les termes d'indice $1$ à $4$ de cette suite.
+		\item Représenter la suite $v$ dans le repère ci-dessous :
+		      \begin{center}
+			      \begin{tikzpicture}[scale=0.9]
+				      \tikzRepere{0}{4}{0}{5}[]
+				      \foreach \i in {0,...,4} {
+						      \node[below] at (\i,-0.2) {$\i$};
+						      \ifdefined\makeCorrection
+							      \coordinate (V) at (\i,\directlua{tex.print(suite_geometrique(2, 1.2,\i))});
+							      \node[red] at (V) {×};
+							      \node[red,below left] at (V) {$v_{\i}$};
+						      \fi
+					      }
+			      \end{tikzpicture}
+		      \end{center}
+	\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+	Soit $w$ une suite arithmétique de raison $3$ et de premier terme $w₀ = -1$.
+	\begin{enumerate}
+		\item Donner une formule explicite pour $w$.
+		\item Donner le terme d'indice $90$ de $w$.
+	\end{enumerate}
+\end{exercice}
+
+%=================================================
+%=================================================
+%=================================================
+\newpage
+\setcounter{exercice}{1}
+
+\title{Interrogation : suites (sujet B)}
+\maketitle
+
+\begin{exercice}
+	Soit $u$ la suite telle que $u₀ = 0$, et $u_{n+1} = 3uₙ - 2$.
+
+	\begin{enumerate}
+		\item La suite est-elle définie explicitement ou par récurrence ?
+		\item Donner les termes d'indice $1$ à $4$ de cette suite.
+	\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+	Soit $v$ une suite géométrique de raison $1{,}5$\ , et de premier terme $v₀ = 1$.
+
+	\begin{enumerate}
+		\item Calculer les termes d'indice $1$ à $4$ de cette suite.
+		\item Représenter la suite $v$ dans le repère ci-dessous :
+		      \begin{center}
+			      \begin{tikzpicture}[scale=0.9]
+				      \tikzRepere{0}{4}{0}{5}[]
+				      \foreach \i in {0,...,4} {
+						      \node[below] at (\i,-0.2) {$\i$};
+						      \ifdefined\makeCorrection
+							      \coordinate (V) at (\i,\directlua{tex.print(suite_geometrique(1, 1.5, \i))});
+							      \node[red] at (V) {×};
+							      \node[red,below left] at (V) {$v_{\i}$};
+						      \fi
+					      }
+			      \end{tikzpicture}
+		      \end{center}
+	\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+	Soit $w$ une suite arithmétique de raison $4$ et de premier terme $w₀ = -2$.
+	\begin{enumerate}
+		\item Donner une formule explicite pour $w$.
+		\item Donner le terme d'indice $90$ de $w$.
+	\end{enumerate}
+\end{exercice}
+
+\end{document}

@@ -1,0 +1,86 @@
+\documentclass[
+	classe=$1^{ere}STI2D$,
+]{exercice}
+
+\title{Reconnaître des suites arithmétiques et géométriques}
+
+\begin{document}
+
+\maketitle
+
+\begin{exercice}
+	\begin{enumerate}
+		\item On donne les deux premiers termes d'une suite arithmétique $u$ ci dessous :
+		      $$ u₀ = 11\ ;\ u₁ = 25\ ;\ u₂ = \correctionDots{39} $$
+
+		      Quelle est le prochain terme de la suite ?
+
+		      Quelle est alors la raison de cette suite ? $r = \correctionDots{14}$
+		\item On donne les deux premiers termes d'une suite géométrique $v$ ci dessous :
+		      $$ u₀ = 3\ ;\ u₁ = 18\ ;\ u₂ = \correctionDots{108} $$
+
+		      Quelle est le prochain terme de la suite ?
+
+		      Quelle est alors la raison de cette suite ? $r = \correctionDots{6\ }$
+		\item On en déduit les propriétés ci-dessous :
+
+		      \begin{itemize}
+			      \item Pour trouver la raison d'une suite arithmétique, on \correctionDots{fait la différence entre} deux termes successifs.
+			      \item Pour trouver la raison d'une suite géométrique, on \correctionDots{fait le rapport entre} deux termes successifs.
+		      \end{itemize}
+	\end{enumerate}
+\end{exercice}
+
+\begin{exercice}\
+
+	\begin{enumerate}
+		\item Dans une suite arithmétique, la \correctionOr{différence}{.........................} entre deux termes est constante.
+		\item Dans une suite géométrique, le \correctionOr{rapport}{.........................} entre deux termes est constant.
+	\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+
+	Pour chacune des suites ci-dessous :
+	\begin{itemize}
+		\item Donner l'expression de $u_{n+1} - uₙ$ et $\dfrac{u_{n+1}}{uₙ}$ en fonction de $n$, en la simplifiant au maximum.
+		\item Dire alors si la suite est arithmétique, géométrique (ainsi que sa raison), ou ni l'un ni l'autre.
+	\end{itemize}
+
+	\begin{multicols}{2}
+		\begin{enumerate}[a.]
+			\item $uₙ = 2n$
+			\item $uₙ = 3ⁿ$
+			\item $uₙ = 6n² + 3n$
+			\item $uₙ = 5n + 6$
+		\end{enumerate}
+	\end{multicols}
+
+	\ifdefined\makeCorrection
+		\begin{enumerate}[a.]
+			\color{red}
+			\item $u_{n+1} - uₙ = 2(n + 1) - 2n = 2(n + 1 - n) = 2$.
+
+			      $\dfrac{u_{n+1}}{uₙ} = \dfrac{2(n + 1)}{2n} = \dfrac{n + 1}{n}$
+
+			      Donc $u$ est arithmétique de raison $2$.
+			\item $u_{n+1} - uₙ = 3^{n+1} - 3ⁿ = 3 × 3ⁿ - 3ⁿ = 2 × 3ⁿ$.
+
+			      $\dfrac{u_{n+1}}{uₙ} = \dfrac{3^{n+1}}{3ⁿ} = \dfrac{3 × 3ⁿ}{3ⁿ} = 3$
+
+			      Donc $u$ est géométrique de raison $3$.
+			\item $u_{n+1} - uₙ = 6(n+1)² + 3(n + 1) - (6n² + 3n) = 6(n² + 2n + 1) + 3n + 3 - 6n² - 3n = 12n + 9$.
+
+			      $\dfrac{u_{n+1}}{uₙ} = \dfrac{6(n+1)² + 3(n+1)}{6n² + 3n} = \dfrac{6n² + 15n + 9}{6n² + 3n}$
+
+			      Donc $u$ n'est ni arithmétique, ni géométrique.
+			\item $u_{n+1} - uₙ = 5(n + 1) + 6 - (5n + 6) = 5n + 5 + 6 - 5n - 6 = 5$.
+
+			      $\dfrac{u_{n+1}}{uₙ} = \dfrac{5(n + 1) + 6}{5n + 6} = \dfrac{5n + 11}{5n + 6}$
+
+			      Donc $u$ est arithmétique de raison $5$.
+		\end{enumerate}
+	\fi
+\end{exercice}
+
+\end{document}

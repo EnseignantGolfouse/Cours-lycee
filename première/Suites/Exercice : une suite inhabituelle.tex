@@ -1,0 +1,37 @@
+\documentclass{automatisme}
+
+\begin{luacode}
+function suite_w(n)
+	local w = 1
+	local k = 0
+	while k ~= n do
+		w = ((k + 2) * w + 1) / (k + 1)
+		k = k + 1
+	end
+	return w
+end
+\end{luacode}
+
+\begin{document}
+
+\begin{frame}
+	{\Large\uline{Exercice}}
+
+	On définit la suite $w$ par $w₀ = 1$ et $w_{n+1} = \dfrac{(n + 2) × wₙ + 1}{n + 1}$.
+
+	\begin{enumerate}
+		\item Calculer les termes d'indices $1$ à $4$ de la suite :
+		      \begin{multicols}{2}
+			      \begin{itemize}
+				      \setlength{\itemsep}{0.7em}
+				      \item[] $w₁ = \correction{\directlua{tex.print(suite_w(1))}}$
+				      \item[] $w₂ = \correction{\directlua{tex.print(suite_w(2))}}$
+				      \item[] $w₃ = \correction{\directlua{tex.print(suite_w(3))}}$
+				      \item[] $w₄ = \correction{\directlua{tex.print(suite_w(4))}}$
+			      \end{itemize}
+		      \end{multicols}
+		\item Conjecturer une formule explicite pour $w$.
+	\end{enumerate}
+\end{frame}
+
+\end{document}

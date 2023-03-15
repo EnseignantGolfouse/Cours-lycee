@@ -1,12 +1,13 @@
 \documentclass{automatisme}
 
+\usepackage{tikz-repère}
 \usepackage{tcolorbox}
 \usetikzlibrary{automata,calc,positioning}
 
 \begin{document}
 
 \begin{frame}
-	Une fonction $f$ est un procédé qui à un nombre réel $x$ associe un unique nombre réel $f(x)$. On dit que $x$ est la \textbf{variable}.
+	Une fonction $f$ est un procédé qui à un nombre réel $x$ associe un unique nombre réel $f(x)$.
 
 	\begin{center}
 		\begin{tikzpicture}
@@ -32,6 +33,8 @@
 
 	Dans ce cas, $x$ est \textbf{UN antécédent} de $y$.
 
+	\pause
+
 	\begin{tcolorbox}
 		\begin{itemize}
 			\item Il n'y a \uline{qu'une seule image} pour un nombre donné.
@@ -41,7 +44,25 @@
 \end{frame}
 
 \begin{frame}
-	% TODO: différentes représentations de fonctions
+	Deux principales manières de représenter une fonction : \bigskip
+
+	\begin{minipage}{0.47\textwidth}
+		\begin{center}
+			Algébriquement :
+
+			$$ f(x) = \dfrac{1}{2}x - 1 $$
+		\end{center}
+	\end{minipage}
+	\begin{minipage}{0.47\textwidth}
+		\begin{center}
+			Graphiquement :
+
+			\begin{tikzpicture}[scale=0.7]
+				\tikzRepere{-3}{3}{-3}{3}
+				\draw[very thick,red,domain=-3:3] plot({\x},{0.5*\x - 1}) node[right] {$𝒞_f$};
+			\end{tikzpicture}
+		\end{center}
+	\end{minipage}
 \end{frame}
 
 \end{document}

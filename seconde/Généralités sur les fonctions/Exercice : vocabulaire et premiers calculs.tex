@@ -2,13 +2,37 @@
 	classe=$2^{de}$
 ]{exercice}
 
+\usepackage{tikz-repère}
+
 \title{Exercices : vocabulaire et premiers calculs}
 
 \begin{document}
 
 \maketitle
 
+\begin{exercice}\
+
+	\begin{center}
+		\begin{tikzpicture}
+			\tikzRepere{-4}{4}{-4}{4}
+			\draw[domain=-3.5:3.2,very thick,red] plot({\x},{0.275*\x*\x*\x + 0.05*\x*\x - 1.775*\x + 0.45}) node[right] {$𝒞_f$};
+		\end{tikzpicture}
+	\end{center}
+	Sur le graphique ci-dessus, donner :
+	\begin{enumerate}
+		\item L'image de $1$ par la fonction $f$ :
+		\item L'image de $-2$ par la fonction $f$ :
+		\item Les antécédents de $2$ par la fonction $f$ :
+		\item Les antécédents de $3$ par la fonction $f$ :
+	\end{enumerate}
+\end{exercice}
+
 \begin{exercice}
+	\begin{enumerate}
+		\item Soit $f$ la fonction telle que $f(x) = 3x + 1$.
+
+		      Calculer $f(2)$, $f(-5)$ et $f(0)$.
+	\end{enumerate}
 \end{exercice}
 
 \end{document}
