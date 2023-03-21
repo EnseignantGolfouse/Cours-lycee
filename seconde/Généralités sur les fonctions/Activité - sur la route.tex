@@ -1,0 +1,62 @@
+\documentclass[
+	classe=$2^{de}$,
+	headerTitle=Activité,
+	landscape,
+	twocolumn
+]{exercice}
+
+\usepackage{tcolorbox}
+
+\setlength{\columnsep}{1cm}
+\renewcommand{\arraystretch}{1.3}
+\newcommand{\CalculF}[1]{\directlua{tex.print(100*#1+70)}}
+\newcommand{\CalculG}[1]{\directlua{tex.print(118*#1+25)}}
+
+\title{Activité : sur la route}
+
+\begin{document}
+
+\newcommand{\Activite}{
+	\maketitle
+
+	\begin{tcolorbox}
+		On mesure les positions de deux voitures sur une route :
+		\begin{itemize}
+			\item La première part au kilomètre $70$, et roule à $100$km/h.
+			\item La deuxième part au kilomètre $25$, et roule à $118$km/h.
+		\end{itemize}
+	\end{tcolorbox}
+
+	\begin{enumerate}
+		\item Quelle est la position de chaque voiture :
+		      \begin{itemize}
+			      \item Au bout d'une heure ? \correction{$170$km et $143$km}
+			      \item Au bout de deux heures ? \correction{$270$km et $261$km}
+		      \end{itemize}
+		\item Au bout d'un nombre variable $t$ d'heures, quelle sera la position de la première voiture ?
+
+		      Écrire alors l'expression d'une fonction $f$, qui donne la position de la voiture en fonction du temps $t$ écoulé. \correction{$f(t) = 70 + 100t$}
+		\item Trouver de même une fonction $g$ qui donne la position de la deuxième voiture en fonction du temps $t$ écoulé. \correction{$f(t) = 25 + 118t$}
+		\item Remplir alors le tableau suivant avec les valeurs de $f(t)$ et $g(t)$, pour les valeurs de $t$ demandées :
+		      \begin{center}
+			      \begin{tabular}{|l|*{5}{>{\centering}p{1cm}|}}
+				      \hline
+				      $t$ (en heures)        & 0                        & 1                        & 2                        & 3                        & 4 \tabularnewline \hline
+				      $f(t)$ (en kilomètres) & \correction{\CalculF{0}} & \correction{\CalculF{1}} & \correction{\CalculF{2}} & \correction{\CalculF{3}} & \correction{\CalculF{4}} \tabularnewline \hline
+				      $g(t)$ (en kilomètres) & \correction{\CalculG{0}} & \correction{\CalculG{1}} & \correction{\CalculG{2}} & \correction{\CalculG{3}} & \correction{\CalculG{4}} \tabularnewline \hline
+			      \end{tabular}
+		      \end{center}
+		\item À l'aide de ce tableau, établir une fourchette du moment où les deux voitures sont au même niveau. \correction{Entre l'heure $2$ et $3$.}
+		\item On suppose que les voitures s'arrêtent après $5$ heures de route.
+
+		      Quel est alors de domaine de définition de ces fonctions ?
+	\end{enumerate}
+}
+
+\Activite
+
+\newpage
+
+\Activite
+
+\end{document}
