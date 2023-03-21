@@ -2,6 +2,19 @@
 	classe=$1^{ere}STI2D$
 ]{coursclass}
 
+\usepackage{tikz-repère}
+
+\begin{luacode}
+function suite_geom(init, raison, n)
+	x = init
+	while n ~= 0 do
+		n = n - 1
+		x = x * raison
+	end
+	tex.print(x)
+end
+\end{luacode}
+
 \title{Chapitre 6 : Suites numériques}
 \author{}
 \date{}
@@ -98,7 +111,45 @@
 \end{propriete}
 
 \begin{exemple}
-	
+	\begin{minipage}{0.47\textwidth}
+		\begin{tikzpicture}[scale=0.8]
+			\tikzRepere{0}{6}{0}{10}[][]
+			\foreach \x in {0,...,6} {
+					\coordinate (P) at (\x,7 - 0.5*\x);
+					\node at (P) {×};
+					\node[below left] at (P) {$u_{\x}$};
+				}
+		\end{tikzpicture}
+	\end{minipage}
+	\begin{minipage}{0.47\textwidth}
+		\begin{tikzpicture}[scale=0.8]
+			\tikzRepere{0}{6}{0}{10}[][]
+			\foreach \x in {0,...,6} {
+					\coordinate (P) at (\x,\directlua{suite_geom(1,1.45,\x)});
+					\node at (P) {×};
+					\node[below left] at (P) {$v_{\x}$};
+				}
+		\end{tikzpicture}
+	\end{minipage}
+
+	La suite $u$ est arithmétique, tandis que la suite $v$ est géométrique.
 \end{exemple}
+
+\begin{propriete}[Sens de variation]
+	\begin{itemize}
+		\item Si une suite est arithmétique de raison $r$, alors
+		      \begin{itemize}
+			      \item Si $r > 0$, la suite est \textbf{croissante}.
+			      \item Si $r = 0$, la suite est \textbf{constante}.
+			      \item Si $r < 0$, la suite est \textbf{décroissante}.
+		      \end{itemize}
+		\item Si une suite est géométrique de raison $r$, alors
+		      \begin{itemize}
+			      \item Si $r > 1$, la suite est \textbf{croissante}.
+			      \item Si $r = 1$, la suite est \textbf{constante}.
+			      \item Si $r < 1$, la suite est \textbf{décroissante}.
+		      \end{itemize}
+	\end{itemize}
+\end{propriete}
 
 \end{document}

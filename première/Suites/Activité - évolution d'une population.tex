@@ -1,0 +1,71 @@
+\documentclass[
+	classe=$1^{ere}STI2D$,
+	headerTitle=Activité
+]{exercice}
+
+\usepackage{tcolorbox}
+
+\makeatletter
+\newcommand \Dotfill {\leavevmode \cleaders \hb@xt@ .3em{\hss .\hss }\hfill \kern \z@}
+\makeatother
+\newcommand\reponse[1][]{\ifthenelse{\equal{#1}{}}{
+	\Dotfill
+}{
+	\makebox[#1]{\Dotfill}
+}}
+\renewcommand{\baselinestretch}{1.15}
+
+\title{Activité : Évolution d'une population}
+
+\begin{document}
+
+\maketitle
+
+On considère une population de truites dans un lac. Chaque année, les truites se reproduisent et augmentent leur population de $15$\%.
+
+\begin{enumerate}
+	\item Si aucun autre facteur n'influence le nombre de truite, celui-ci va-t'il augmenter ou diminuer ? \medskip
+
+	      \correctionOr{{\color{red}Le nombre va augmenter, car la reproduction des truites augmente la population.}}{\reponse}
+
+	      Donner la variation du nombre de truites au bout de $4$ ans en pourcentage, au dixième de pourcentage près : \correctionDots{$74,9$\%}
+
+	\item On suppose que le nombre initial de truites est de $10\ 000$. Donner alors une définition de la suite $uₙ$ qui décrit le nombre de truites au bout de $n$ années :
+	      \begin{align*}
+		      u₀      & = \correctionOr{{\color{red}10\ 000}}{\reponse[4em]}   \\
+		      u_{n+1} & = \correctionOr{{\color{red}1,15 × uₙ}}{\reponse[4em]}
+	      \end{align*}
+	\item On suppose maintenant que chaque année, $10\%$ des truites sont pêchées par des humains.
+
+	      Quelle est alors en pourcentage l'évolution du nombre de truites d'année en année ? \medskip
+
+	      \correctionOr{{\color{red}$1,14 × 0,9 = 1,035$. Le nombre de truites augmente donc de $3,5$\% par an.}}{\reponse} \medskip
+
+	      La population de truites augmente-elle toujours ? Oui / \correctionOr{\sout{Non}}{Non}
+
+	      Donner alors la nouvelle expression de la suite :
+
+	      \begin{align*}
+		      u₀      & = \correctionOr{{\color{red}10\ 000}}{\reponse[4em]}    \\
+		      u_{n+1} & = \correctionOr{{\color{red}1,035 × uₙ}}{\reponse[4em]}
+	      \end{align*}
+	\item Si la proportion de truites pêchées passe à $14$\%, quelle est alors en pourcentage l'évolution du nombre de truites ? \medskip
+
+	      \correctionOr{{\color{red}$1,15 × 0,86 = 0,989$. Le nombre de truites diminue donc de $1,1$\% par an.}}{\reponse} \medskip
+
+	      La population de truites augmente-elle toujours ? \correctionOr{\sout{Oui}}{Oui} / Non
+
+	      Donner alors la nouvelle expression de la suite :
+
+	      \begin{align*}
+		      u₀      & = \correctionOr{{\color{red}10\ 000}}{\reponse[4em]}    \\
+		      u_{n+1} & = \correctionOr{{\color{red}0,989 × uₙ}}{\reponse[4em]}
+	      \end{align*}
+	\item On suppose maintenant que la quantité de truites pêchées est fixe.
+	
+	Si cette quantité est de $1100$ truites par an, calculer la population de truites sur les quatres premières années : $u₀ = 10\ 000$, $u₁ = \correctionDots{10\ 400}$, $u₂ = \correctionDots{10\ 860}$, $u₃ = \correctionDots{11\ 389}$.
+
+	Quel semble être le sens de variation de la cette suite ? \correctionDots{La suite semble croissante}
+\end{enumerate}
+
+\end{document}

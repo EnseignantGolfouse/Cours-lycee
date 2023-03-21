@@ -1,0 +1,190 @@
+\documentclass[
+	classe=$1^{ere}STI2D$
+]{exercice}
+
+\usepackage{tikz-repère}
+
+\begin{luacode}
+function SUITE(init, next)
+	local f = function(n)
+		local x = init
+		while n ~= 0 do
+			x = next(x)
+			n = n - 1
+		end
+		return x
+	end
+	return f
+end
+
+function PRINT_NUMBER(x, precision)
+	local n = math.floor(x)
+	tex.print(n)
+	if n ~= x then
+		local frac = x - n
+		tex.print(",")
+		local puissance = 1
+		while precision ~= 0 do
+			puissance = puissance * 10
+			precision = precision - 1
+		end
+		tex.print(math.floor(frac*puissance))
+	end
+end
+\end{luacode}
+
+\renewcommand{\arraystretch}{1.4}
+\newcommand{\SalaireA}[1]{
+	\directlua{PRINT_NUMBER(SUITE(21150, function(x) return x + 721 end)(#1-1), 2)}
+}
+\newcommand{\SalaireB}[1]{
+	\directlua{PRINT_NUMBER(SUITE(20000, function(x) return x * 1.05 end)(#1-1), 2)}
+}
+\newcommand{\SalaireC}[1]{
+	\directlua{PRINT_NUMBER(SUITE(2050, function(x) return x * 1.1 - 60 end)(#1-1), 2)}
+}
+\newcommand{\SalaireD}[1]{
+	\directlua{tex.print(SUITE(1700, function(x) return x + 50 end)(#1-1))}
+}
+\newcommand{\SalaireE}[1]{
+	\directlua{tex.print(SUITE(4000, function(x) return x * 0.95 end)(#1-1))}
+}
+
+\title{Activité : calculs de salaires}
+
+\begin{document}
+
+\maketitle
+
+Anne et Brahim sont employés chacun dans une entreprise différente. On a répertorié dans le tableau suivant les salaires annuels de leurs 4 premières années :
+
+\begin{center}
+	\begin{tabular}{|l|*{4}{>{\centering}p{1.7cm}|}}
+		\hline
+		Année  & $1$             & $2$             & $3$             & $4$ \tabularnewline \hline
+		Anne   & $\SalaireA{1}$€ & $\SalaireA{2}$€ & $\SalaireA{3}$€ & $\SalaireA{4}$€ \tabularnewline \hline
+		Brahim & $\SalaireB{1}$€ & $\SalaireB{2}$€ & $\SalaireB{3}$€ & $\SalaireB{4}$€ \tabularnewline \hline
+	\end{tabular}
+\end{center}
+
+Pour chacun d'entre eux :
+\begin{enumerate}
+	\item Donner la différence et le quotient des salaires de deux années successives :
+
+	      \begin{minipage}{0.47\textwidth}
+		      \begin{tabular}{|l|*{3}{>{\centering}p{1.7cm}|}}
+			      \hline
+			             & Année $2$ - Année $1$ & Année $3$ - Année $2$ & Année $4$ - Année $3$            \tabularnewline \hline
+			      Anne   & \correction{$1$€}     & \correction{$1$€}     & \correction{$1$€} \tabularnewline \hline
+			      Brahim & \correction{$1$€}     & \correction{$1$€}     & \correction{$1$€} \tabularnewline \hline
+		      \end{tabular}
+	      \end{minipage}
+	      \begin{minipage}{0.47\textwidth}
+		      \renewcommand{\arraystretch}{1.6}
+		      \begin{tabular}{|l|*{3}{>{\centering}p{1.8cm}|}}
+			      \hline
+			             & $\dfrac{\text{Année} 2}{\text{Année 1}}$ & $\dfrac{\text{Année} 3}{\text{Année 2}}$ & $\dfrac{\text{Année} 4}{\text{Année 3}}$            \tabularnewline \hline
+			      Anne   & \correction{$1$€}                        & \correction{$1$€}                        & \correction{$1$€}\tabularnewline \hline
+			      Brahim & \correction{$1$€}                        & \correction{$1$€}                        & \correction{$1$€} \tabularnewline \hline
+		      \end{tabular}
+		      \renewcommand{\arraystretch}{1.4}
+	      \end{minipage} \medskip
+	\item Que remarque-t'on ?
+	\item À quel type de suite ces salaires semble-t'ils correspondre ?
+	\item En déduire leurs salaires lors de leur cinquième et sixième année.
+
+	      %   \vspace{2em}
+	      %   \uline{\textbf{BONUS}} : Déterminer une formulation de la suite correspondant au salaire de Calvin, dont les 4 premières années sont répertoriés ci-dessous :
+
+	      %   \begin{center}
+	      %       \begin{tabular}{|l|*{4}{>{\centering}p{1.7cm}|}}
+	      % 	      \hline
+	      % 	      Année  & $1$             & $2$             & $3$             & $4$ \tabularnewline \hline
+	      % 	      Calvin & $\SalaireC{1}$€ & $\SalaireC{2}$€ & $\SalaireC{3}$€ & $\SalaireC{4}$€ \tabularnewline \hline
+	      %       \end{tabular}
+	      %   \end{center}
+	\item Dans le repère ci-dessous, on a représenté les salaires de Dali et Elise.
+
+	      \begin{minipage}{0.47\textwidth}
+		      \pgfmathsetmacro\YNombre{10}
+		      \pgfmathsetmacro\MaYScale{50}
+		      \pgfmathsetmacro\YUn{1600}
+
+		      \pgfmathsetmacro\YDeux{int(\YUn + \MaYScale)}
+		      \pgfmathsetmacro\YFin{int(\YUn + \YNombre*\MaYScale)}
+		      \begin{tikzpicture}[scale=0.8]
+			      \tikzRepere{0}{7}{0}{\YNombre}[][]
+			      \foreach \y in {\YUn,\YDeux,...,\YFin} {
+					      \node[left] at (-0.2,\y/\MaYScale - \YUn/\MaYScale) {$\y$€};
+				      }
+			      \foreach \x in {1,...,8} {
+					      \node[below] at (\x-1,-0.2) {$\x$};
+					      \node[thick,blue] at (\x-1,\SalaireD{\x}/\MaYScale-\YUn/\MaYScale) {×};
+				      }
+			      \node[below] at (3,-1) {Salaire de Dali};
+		      \end{tikzpicture}
+	      \end{minipage}
+	      \begin{minipage}{0.47\textwidth}
+		      \pgfmathsetmacro\YNombre{15}
+		      \pgfmathsetmacro\MaYScale{100}
+		      \pgfmathsetmacro\YUn{2500}
+
+		      \pgfmathsetmacro\YDeux{int(\YUn + \MaYScale)}
+		      \pgfmathsetmacro\YFin{int(\YUn + \YNombre*\MaYScale)}
+		      \begin{tikzpicture}[scale=0.8]
+			      \tikzRepere{0}{7}{0}{\YNombre}[][]
+			      \foreach \y in {\YUn,\YDeux,...,\YFin} {
+					      \node[left] at (-0.2,\y/\MaYScale - \YUn/\MaYScale) {$\y$€};
+				      }
+			      \foreach \x in {1,...,8} {
+					      \node[below] at (\x-1,-0.2) {$\x$};
+					      \node[thick,blue] at (\x-1,\SalaireE{\x}/\MaYScale-\YUn/\MaYScale) {×};
+				      }
+			      \node[below] at (3,-1) {Salaire d'Elise};
+		      \end{tikzpicture}
+	      \end{minipage}
+
+	      À quel type de suite semblent correspondre chacun de ces salaires ?
+
+	      Donner alors leurs salaires pour les années $9$ et $10$.
+\end{enumerate}
+
+\ifdefined\makeCorrection
+	\color{red}
+
+	\begin{enumerate}
+		\item Anne gagne chaque année une augmentation fixe de $721$€
+
+		      Brahim gagne chaque année une augmentation de $3,3$\%.
+		\item $aₙ = 2115 + 72(n-1)$
+
+		      $bₙ = 2000 × 1,033^{n-1}$
+		\item $a_{15} = 3123$€
+
+		      $b_{15} = 3150,90$€
+
+
+		      \uline{\textbf{BONUS}} :
+
+		      On cherche $a$ et $b$ tels que $u_{n+1} = a×uₙ + b$.
+
+		      Alors on a :
+		      \begin{itemize}
+			      \item $u₂ = a×u₁ + b$
+			      \item $u₃ = a×u₂ + b$
+		      \end{itemize}
+		      Donc $u₂ - u₃ = a(u₁ - u₂)$, soit $a = \dfrac{u₂ - u₃}{u₁ - u₂}$
+
+		      Et donc $b = u₂ - u₁ × \dfrac{u₂ - u₃}{u₁ - u₂}$.
+
+		      Ici on a alors $a = \dfrac{2195 - 2354,5}{2050 - 2195} = 1,1$, et $b = 2195 - 2050 × 1,1 = -60$.
+
+		      Soit $u_{n+1} = 1,1×uₙ - 60$.
+		\item arithmétique : $dₙ = 1650 + 50n$
+
+		      géométrique : $eₙ = 4000 × 0,95^{n - 1}$
+	\end{enumerate}
+\fi
+
+
+\end{document}
