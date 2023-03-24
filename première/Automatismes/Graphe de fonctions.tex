@@ -1,0 +1,25 @@
+\documentclass{automatisme}
+
+\usepackage{tikz-repère}
+
+\begin{document}
+
+\begin{frame}
+	\begin{center}
+		\begin{tikzpicture}[scale=0.7]
+			\tikzRepere{-4}{4}{-3}{4}
+
+			\draw[very thick,blue,domain=-4:4] plot({\x},{2/3*\x}) node[right] {$𝒞_f$};
+			\draw[very thick,red,domain=-4:3.7] plot({\x},{0.1*(\x + 3)*\x*(\x - 2)}) node[right] {$𝒞_g$};
+		\end{tikzpicture}
+	\end{center}
+
+	Sur le graphe ci-dessus :
+	\begin{itemize}
+		\item Quelle est l'image de $-3$ par la fonction $f$ ?
+		\item Quelle sont les antécédents de $0$ par la fonction $g$ ?
+		\item Quelle est la pente de la fonction $f$ ?
+	\end{itemize}
+\end{frame}
+
+\end{document}
