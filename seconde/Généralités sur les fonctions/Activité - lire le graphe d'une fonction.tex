@@ -1,0 +1,133 @@
+\documentclass[
+	classe=$2^{de}$,
+	headerTitle=Activité
+]{exercice}
+
+\usepackage{tikz-repère}
+\usepackage{tcolorbox}
+
+\begin{luacode}
+PART1 = 5
+PART2 = 10
+
+-- 25a + 5b = 3
+local part1_a = 0.1
+local part1_b = 0.1
+local part2_b = 2*PART1*part1_a + part1_b
+local part2_c = (part1_a*PART1*PART1+part1_b*PART1) - PART1 * part2_b
+local part3_b = (10 - part2_c - (PART2/2 + 72/PART2)*part2_b) / (12 - PART2/2 - 72/PART2)
+local part3_c = (PART2/2)*(part2_b - part3_b) + part2_c
+local part3_a = (part2_b - part3_b) / (2*PART2)
+-- Equations : f(x) = ax² + bx + c
+-- données : g(x) = Bx + C
+-- f'(PART2) = g'(PART2), f(PART2) = g(PART2), f(12) = 10
+-- 2*PART2*a + b = B
+-- PART2*PART2*a + PART2*b + c = PART2*B + C
+-- 144a + 12b + c = 10
+
+-- a = (B - b) / (2*PART2)
+-- (PART2/2)b + c = (PART2/2)B + C   ⇒   c = (PART2/2)(B - b) + C
+-- 36/5(B - b) + 12b + c = 10
+
+-- (B - b)*72/PART2 + (12 - PART2/2)b + (PART2/2)B + C = 10
+-- 
+-- 72/PART2*B - 72/PART2*b + (12 - PART2/2)b + 5B + C = 10
+-- (12 - PART2/2 - 72/PART2)b = 10 - C - (PART2/2 + 72/PART2)B
+function P_less_5()
+	tex.print(part1_a)
+	tex.print("*\\x*\\x + ")
+	tex.print(part1_b)
+	tex.print("*\\x")
+end
+function P_more_5()
+	tex.print(part2_b)
+	tex.print("*\\x + ")
+	tex.print(part2_c)
+end
+function P_more_10()
+	tex.print(part3_a)
+	tex.print("*\\x*\\x + ")
+	tex.print(part3_b)
+	tex.print("*\\x + ")
+	tex.print(part3_c)
+end
+
+function P(x)
+	if x < 5 then
+		return part1_a*x*x + part1_b*x + part1_c
+	end
+	if x < 10 then
+		return part2_b*x + part2_c
+	end
+	return part3_a*x*x + part3_b*x + part3_c
+end
+\end{luacode}
+
+\title{Activité : Graphe d'une course}
+
+\begin{document}
+
+\maketitle
+
+Pour améliorer ses performances, un coureur a mesuré sa position à chaque instant lors d'un sprit sur $100$m.
+
+Il a ainsi noté sa position $P(t)$ en fonction du temps dans le graphe ci-dessous :
+
+\begin{center}
+	\begin{tikzpicture}
+		\tikzRepere{0.5}{12}{0.5}{10}[][][$t$ (en secondes)][position (en m)]
+		\node[below left] at (0,0) {$0$};
+		\foreach \x in {1,...,11} {
+				\draw[thick] (\x,0) -- ++(0,-0.2) node[below] {$\x$};
+			}
+		\foreach \y in {1,...,10} {
+				\draw[thick] (0,\y) -- ++(-0.2,0) node[left] {\pgfmathparse{int(10*\y)}$\pgfmathresult$};
+			}
+
+		\draw[domain=0:\directlua{tex.print(PART1)},thick,blue] plot({\x},{\directlua{P_less_5()}});
+		\draw[domain=\directlua{tex.print(PART1)}:\directlua{tex.print(PART2)},thick,blue] plot({\x},{\directlua{P_more_5()}});
+		\draw[domain=\directlua{tex.print(PART2)}:12,thick,blue] plot({\x},{\directlua{P_more_10()}});
+	\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}
+	\item Sachant qu'il a mis $12$ secondes pour compléter le 100m, quel est le domaine de définition de la fonction $P$ ?
+
+	      \correctionDots{$\intervalle{[}{0}{12}{]}$}
+
+	      \begin{tcolorbox}
+		      \textbf{\uline{Rappel : lecture d'un graphe}}
+
+		      Pour lire l'image de $x$ par une fonction représentée sur un graphe :
+
+		      \begin{minipage}{0.5\textwidth}
+			      \begin{itemize}
+				      \item On repère la position de $x$ sur l'axe des \textbf{abscisses}.
+				      \item On trouve le point de la courbe en traçant une droite perpendiculaire à l'axe des abscisses.
+				      \item On trouve l'ordonnée correspondante (notée $y$ ici).
+			      \end{itemize}
+		      \end{minipage}\hspace{0.1\textwidth}
+		      \begin{minipage}{0.35\textwidth}
+			      \begin{tikzpicture}[scale=0.6]
+				      \tikzRepere{-3}{3}{-3}{3}[][]
+				      \draw[very thick,blue,domain=-3:3] plot({\x},{0.5*\x*\x - 2});
+				      \pgfmathsetmacro\PositionX{1}
+				      \pgfmathsetmacro\PositionY{0.5*\PositionX*\PositionX - 2}
+				      \draw[very thick,red,dashed] (\PositionX,0) node[above] {$x$} -- ++(0,\PositionY) node {$⋅$} -- ++(-\PositionX,0) node[left] {$y$};
+			      \end{tikzpicture}
+		      \end{minipage}
+	      \end{tcolorbox}
+	\item Lire l'image de $4$ sur le graphe : \correctionDots{$20$}
+
+	      Compléter alors la phrase suivante :
+
+	      « Au bout de $\correctionDots{4\phantom{0}}$ secondes, le coureur a parcouru $\correctionDots{20}$ mètres »
+	\item Lire de même l'image de $10$ sur le graphe : \correctionDots{$85$}
+	\item Au bout de combien de temps le coureur a-t'il parcouru $50$m ? \correctionDots{$6,75$}
+
+	      On dit alors que \correctionDots{$6,75$} est un antécédent de \correctionDots{$50$}.
+	\item Lire un antécédent de $80$ sur le graphe : \correctionDots{$9,5$}
+	\item Comment interpréter les parties courbées du graphe de la fonction ?
+\end{enumerate}
+
+\end{document}
