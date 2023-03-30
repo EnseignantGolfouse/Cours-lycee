@@ -1,0 +1,72 @@
+\documentclass[
+	classe=$2^{de}$
+]{exercice}
+
+\usepackage{tikz-repère}
+
+\newcommand{\FonctionF}[1]{
+	(#1*#1 - 16*#1 + 140) / 10
+}
+\newcommand{\CalculF}[1]{
+	\pgfmathparse{(#1*#1 - 16*#1 + 140) / 10}
+	\pgfmathresult
+}
+\renewcommand{\arraystretch}{1.4}
+
+\title{Activité : représentation d'une réduction}
+
+\begin{document}
+
+\maketitle
+
+Un magasin propose une réduction si on achète un lot de savons.
+
+Si on achète $n$ savons, le prix individuel d'un savon est donné par la fonction $f$ telle que
+
+$$f(n) = \dfrac{1}{10}(x² - 16x + 140)$$
+
+\begin{enumerate}
+	\item Combien coûte l'achat d'un savon seul ? \correction{$f(1) = \CalculF{1}$}
+	\item Calculer le prix individuel lorsqu'on achète deux savons, et vérifier qu'on bénéficie bien d'une réduction. \correction{$f(2) = \CalculF{2}$}
+	\item Un employé du magasin affirme qu'il y a un problème avec la réduction : on va donc essayer de le vérifier en calculant le prix individuel pour un achat allant de $1$ à $7$ savons.
+
+	      Remplir alors le tableau suivant :
+	      \begin{center}
+		      \begin{tabular}{|l|*{7}{>{\centering}p{1cm}|}}
+			      \hline
+			      Nombre de savons & 1                        & 2                        & 3                 & 4                        & 5                        & 6                        & 7 \tabularnewline \hline
+			      Prix individuel  & \correction{\CalculF{1}} & \correction{\CalculF{2}} & \correction{10.1} & \correction{\CalculF{4}} & \correction{\CalculF{5}} & \correction{\CalculF{6}} & \correction{\CalculF{7}} \tabularnewline \hline
+		      \end{tabular}
+	      \end{center}
+	      À-t'on toujours une réduction ?
+	\item Face à son insistance, on décide de visualiser la situation avec un graphe :
+
+	      \begin{center}
+		      \begin{tikzpicture}
+			      \tikzRepere{0}{11}{0}{8}[][][$n$][prix (en €)]
+			      \foreach \n in {1,...,10} {
+					      \draw (\n,0) -- ++(0,-0.2) node[below] {$\n$};
+				      }
+			      \foreach \y in {1,...,8} {
+					      \draw (0,\y) -- ++(-0.2,0) node[left] {$\pgfmathparse{int(\y+6)}\pgfmathresult$};
+				      }
+
+			      \ifdefined\makeCorrection
+				      \foreach \x in {0,...,10} {
+						      \pgfmathsetmacro\y{(\x*\x - 16*\x + 140) / 10 - 6}
+						      \node[red] at (\x,\y) {×};
+					      }
+				      \draw[very thick,red,domain=0:10] plot({\x},{\FonctionF{\x} - 6});
+			      \fi
+		      \end{tikzpicture}
+	      \end{center}
+
+	      Dans le repère suivant, placer les points $(n ; f(n))$ pour $n$ allant de $1$ à $10$. Relier ensuite ces points pour former le graphe de la fonction $f$.
+
+	      Que remarque-t'on ?
+	\item Calculer le prix individuel d'un savon si on achète un lot de $40$ savons. \correction{$f(40) = \CalculF{40}$}
+
+	      La formule proposée dans l'énoncé parait-elle raisonnable ?
+\end{enumerate}
+
+\end{document}
