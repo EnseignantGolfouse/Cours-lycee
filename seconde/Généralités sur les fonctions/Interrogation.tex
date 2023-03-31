@@ -1,0 +1,94 @@
+\documentclass[
+	classe=$2^{de}$,
+	landscape,
+	twocolumn
+]{évaluation}
+
+\usepackage{tikz-repère}
+
+\setlength{\columnsep}{1cm}
+\newcommand{\computeF}{}
+\newcommand{\reponseDots}{......}
+
+\date{31 mars 2023}
+
+\begin{document}
+
+\title{Interrogation : fonctions (sujet A)}
+\maketitle
+
+\begin{exercice}
+	Soit $f$ la fonction telle que $f(x) = \dfrac{1}{2}x × (x - 1)$.
+	\renewcommand{\computeF}[1]{
+		\pgfmathparse{int(0.5*#1*(#1 - 1))}\pgfmathresult
+	}
+
+	\begin{enumerate}
+		\item Calculer $f(1)$.
+		\item Remplir alors la phrase suivante :
+
+		      $\correctionOr{\computeF{1}}{\reponseDots}$ est l'image de $\correctionOr{1}{\reponseDots}$ par $f$.
+		\item Calculer $f(-2)$ et $f(3)$.
+		\item Remplir alors la phrase suivante :
+
+		      $\correctionOr{-2}{\reponseDots}$ et $\correctionOr{3}{\reponseDots}$ sont des antécédents de $\correctionOr{\computeF{3}}{\reponseDots}$ par $f$.
+	\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+	\begin{center}
+		\begin{tikzpicture}[scale=0.8]
+			\tikzRepere{-5}{5}{-3}{3}
+			\draw[very thick,blue,domain=-5:5] plot({\x}, {2*cos((3.1415*(\x+1)/4) r)}) node[right] {$f$};
+		\end{tikzpicture}
+	\end{center}
+	Sur le graphe ci-dessus, lire :
+	\begin{itemize}
+		\item $f(-3) = \correctionOr{0}{\reponseDots}$
+		\item $f(-1) = \correctionOr{2}{\reponseDots}$
+		\item $f(1) = \correctionOr{0}{\reponseDots}$
+	\end{itemize}
+\end{exercice}
+
+%================================================
+%================== SUJET B =====================
+%================================================
+\newpage
+\setcounter{exercice}{1}
+\title{Interrogation : fonctions (sujet B)}
+\maketitle
+
+\begin{exercice}
+	Soit $f$ la fonction telle que $f(x) = \dfrac{1}{2}x × (x - 3)$.
+	\renewcommand{\computeF}[1]{
+		\pgfmathparse{int(#1*(#1 - 2))}\pgfmathresult
+	}
+
+	\begin{enumerate}
+		\item Calculer $f(2)$.
+		\item Remplir alors la phrase suivante :
+
+		      $\correctionOr{\computeF{2}}{\reponseDots}$ est l'image de $\correctionOr{2}{\reponseDots}$ par $f$.
+		\item Calculer $f(-1)$ et $f(4)$.
+		\item Remplir alors la phrase suivante :
+
+		      $\correctionOr{-1}{\reponseDots}$ et $\correctionOr{4}{\reponseDots}$ sont des antécédents de $\correctionOr{\computeF{4}}{\reponseDots}$ par $f$.
+	\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+	\begin{center}
+		\begin{tikzpicture}[scale=0.8]
+			\tikzRepere{-5}{5}{-3}{3}
+			\draw[very thick,blue,domain=-5:5] plot({\x}, {2*sin((3.1415*(\x+1)/4) r)}) node[right] {$f$};
+		\end{tikzpicture}
+	\end{center}
+	Sur le graphe ci-dessus, lire :
+	\begin{itemize}
+		\item $f(-3) = \correctionOr{-2}{\reponseDots}$
+		\item $f(-1) = \correctionOr{0}{\reponseDots}$
+		\item $f(1) = \correctionOr{2}{\reponseDots}$
+	\end{itemize}
+\end{exercice}
+
+\end{document}
