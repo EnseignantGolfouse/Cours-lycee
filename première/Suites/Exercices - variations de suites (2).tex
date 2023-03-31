@@ -1,0 +1,64 @@
+\documentclass[
+	classe=$1^{ere}STI2D$,
+	landscape,
+	twocolumn
+]{exercice}
+
+\usepackage{tikz-repère}
+\usepackage{tcolorbox}
+
+\setlength{\columnsep}{1cm}
+
+\title{Exercices : variations de suites}
+
+\begin{document}
+
+\newcommand{\Exercice}{
+	\maketitle
+
+	\begin{exercice}
+		Une entreprise cherche à vendre des savons. Elle souhaite savoir quel type de réduction elle peut proposer en cas de large achat.
+
+		Elle décide donc qu'en cas de vente de $n$ savons, le prix individuel sera de $uₙ = 5\dfrac{n}{n + a}$€, où $a$ est un paramètre qui reste à déterminer. \medskip
+
+		\begin{enumerate}
+			\item Si $a = 0$, que remarque-t'on à propos de $uₙ$ ?
+			\item Compléter : Le fait d'offrir une réduction signifie que la suite $u$ est \correctionDots{décroissante}
+			\item Si $a = 2$, calculer le prix individuel lors de la vente de $1$, $2$ et $3$ savons. \correction{$u₁ = \frac{5}{3}, u₂ = \frac{5}{2}, u₃ = 3$}
+
+			      Pourquoi le choix $a = 2$ ne peut alors pas convenir ? \correction{car $u$ est alors croissante} \bigskip
+
+			      On suppose à présent que, pour avoir une réduction, il est nécessaire de choisir $a < 0$.
+			\item Si $a = -1,5$, calculer $u₁$. Que remarque-t'on ? \correction{$u₁ = -10$€ : c'est impossible !}
+
+			      On doit donc choisir $a > \correctionDots{-1}$.
+			\item L'entreprise souhaite de plus que la vente d'un seul savon revienne à un prix individuel $50\%$ plus élevé qu'en cas d'achat de $2$ savon.
+
+			      Exprimer cette contrainte par une équation, et la résoudre pour trouver la valeur de $a$.
+
+			      \ifdefined\makeCorrection
+				      {\color{red}
+					      L'équation est
+
+					      \begin{align*}
+						      5\dfrac{1}{1 + a} & = 1,5 × 5 \dfrac{2}{2 + a}1 \\
+						      2 + a             & = 1,5 × 2 × (1 + a)         \\
+						      2 + a             & = 3 + 3a                    \\
+						      -1                & = 2a                        \\
+						      a                 & = -0,5
+					      \end{align*}
+				      }
+			      \fi
+		\end{enumerate}
+	\end{exercice}
+}
+
+\setcounter{exercice}{1}
+\Exercice
+
+\newpage
+
+\setcounter{exercice}{1}
+\Exercice
+
+\end{document}

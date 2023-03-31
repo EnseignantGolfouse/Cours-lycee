@@ -1,0 +1,84 @@
+\documentclass[
+	classe=$1^{ere}STI2D$
+]{exercice}
+
+\usepackage{tikz-repère}
+\usepackage{tcolorbox}
+
+\begin{luacode}
+LOSS = 0.2
+INITIAL_T = 320
+ROOM_T = 293
+A = 10
+function temperature(n)
+	local T = INITIAL_T
+	while n ~= 0 do
+		T = T * (1 + 0.3 * A / 100) * (1 - LOSS) + LOSS * ROOM_T
+		n = n - 1
+	end
+	return T
+end
+\end{luacode}
+
+\title{Exercices : variations de suites}
+
+\begin{document}
+
+\maketitle
+
+\begin{exercice}\
+
+	\begin{tcolorbox}
+		Le Kelvin, de symbole $K$, est une mesure de la température. On l'obtient à partir des degrés Celsius en ajoutant $273,15$.
+	\end{tcolorbox}
+	Pour dégager de l'énergie, un réacteur nucléaire doit faire chauffer une barre de matériaux radioactif, généralement de l'uranium.
+
+	Pour une barre de $a$cm de longueur, on admet les propriétés suivantes :
+	\begin{itemize}
+		\item La température initiale de la barre est de $320K$ ;
+		\item Chaque seconde, la température de la barre augmente de $0,3a\%$ ;
+		\item puis, si la barre est à $x$ degrés, elle perd $0,2 × (x - 293K)$ de température.
+	\end{itemize}
+
+	On cherche donc à savoir quelle serait la taille idéale d'une barre d'uranium.
+
+	\begin{enumerate}
+		\item Si la barre fait $5$m de longueur, calculer la température de la barre après $2$ secondes : \correctionOr{$1455,8K$}{................}
+		\item On appelle $T$ la suite qui décrit la température de la barre : au bout de $n$ secondes, la température de la barre est $Tₙ$.
+
+		      Écrire alors une définition de la suite $T$ :
+		      \begin{itemize}
+			      \item $T₀ = \correctionDots{320}$
+			      \item $T_{n+1} = \correctionDots{Tₙ × (1 + a/100) × 0,8 + 58,6}$
+		      \end{itemize}
+		\item Si la barre fait $10$cm, noter l'évolution de la température sur le repère suivant :
+		      \begin{center}
+			      \begin{tikzpicture}[scale=0.7]
+				      \tikzRepere{0}{11}{0}{7.4}[][][$n$][température ($K$)]
+				      \foreach \n in {1,...,10} {
+						      \draw (\n,0) -- ++(0,-0.2) node[below] {$\n$};
+					      }
+				      \foreach \n/\t in {0/320,1/322,2/324,3/326,4/328,5/330,6/332,7/334} {
+						      \draw (0,\n) -- ++(-0.2,0) node [left] {$\t$};
+					      }
+
+				      \ifdefined\makeCorrection
+					      \directlua{A = 10}
+					      \foreach \n in {0,...,10} {
+							      \pgfmathsetmacro\T{\directlua{tex.print(temperature(\n))}}
+							      \coordinate (Un) at (\n,\T / 2 - 320 / 2);
+							      \node[red] at (Un) {×};
+						      }
+				      \fi
+			      \end{tikzpicture}
+		      \end{center}
+		\item Montrer que cette suite n'est ni arithmétique ni géométrique.
+		\item À l'aide de la calculatrice, faire une hypothèse sur la température maximale atteinte dans le cas $a = 10$cm. \correction{$332,95K = 39,8°C$}
+		\item Pour quelle longueur de la barre la température reste-elle toujours à $320K$ ? (indice : écrire l'équation obtenue sachant que $T₀ = T₁$)
+
+		      Ainsi la température augmente si \correctionDots{$a > 7,03125$}
+		\item Quelle doit être la longueur de la barre pour que la température maximale atteinte soit $1000K$ ?
+	\end{enumerate}
+\end{exercice}
+
+\end{document}
