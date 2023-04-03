@@ -1,0 +1,144 @@
+\documentclass[
+	classe=$1^{ere}STI2D$
+]{exercice}
+
+\title{Exercices : suites}
+
+\begin{document}
+
+\maketitle
+
+\begin{exercice}
+	Soit $u$ une suite géométrique de raison $q > 0$, telle que $u₁ = 4$ et $u₂ = 20$.
+
+	\begin{enumerate}
+		\item Calculer sa raison $q$.
+		\item Calculer $u₀$.
+	\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+	Soit $v$ une suite arithmétique de raison $r$, telle que $v₁ = 31$ et $v₃ = 39$.
+
+	\begin{enumerate}
+		\item Calculer sa raison $r$.
+		\item Calculer $v₀$.
+	\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+	Soit $r$ une suite géométrique de raison $q = 2$ et de premier terme $r₁ = 0,01$.
+
+	\begin{enumerate}
+		\item Donner le sens de variation de $r$.
+		\item Calculer $r₇$.
+		\item Donner l'indice du premier terme supérieur à $10$.
+	\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+	Soit $u$ la suite définie par $u₀ = 3$ et $u_{n+1} = 3uₙ - 4$.
+
+	\begin{enumerate}
+		\item Calculer puis représenter les $4$ premiers termes de cette suite.
+
+		      \correctionOr{{\color{red}
+					      \begin{multicols}{4}
+						      \begin{itemize}
+							      \item $u₀ = 3$
+							      \item $u₁ = 5$
+							      \item $u₂ = 11$
+							      \item $u₃ = 29$
+						      \end{itemize}
+					      \end{multicols}
+				      }}{}
+		\item Quel semble être le sens de variations de $u$ ?
+
+		      \correctionOr{{\color{red}Elle semble être décroissante.}}{}
+		\item Montrer que $u$ n'est ni arithmétique, ni géométrique.
+		\item On définit la suite $v$ telle que pour tout $n ≥ 0$, $vₙ = uₙ - 2$.
+		      \begin{enumerate}
+			      \item Calculer $v₀$, $v₁$, $v₂$ et $v₃$.
+
+			            \correctionOr{{\color{red}
+						            \begin{multicols}{4}
+							            \begin{itemize}
+								            \item $v₀ = 1$
+								            \item $v₁ = 3$
+								            \item $v₂ = 9$
+								            \item $v₃ = 27$
+							            \end{itemize}
+						            \end{multicols}
+					            }}{}
+			      \item Quelle semble être la nature de la suite $v$ ?
+
+			            \correctionOr{{\color{red}Elle semble être géométrique de raison $3$}}{}
+			      \item Le démontrer en calculant $\dfrac{v_{n+1}}{vₙ}$.
+
+			            \correctionOr{{\color{red}
+						            \begin{align*}
+							            \dfrac{v_{n+1}}{vₙ} & = \dfrac{u_{n+1} - 2}{uₙ - 2} \\
+							                                & = \dfrac{3uₙ - 6}{uₙ - 2}     \\
+							                                & = 3\dfrac{uₙ - 2}{uₙ - 2}     \\
+							                                & = 3                           \\
+						            \end{align*}
+
+						            Donc $v$ est géométrique de raison $3$.
+					            }}{}
+		      \end{enumerate}
+	\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+	Soit $u$ la suite définie par $u₀ = 1$ et $u_{n+1} = \dfrac{9}{6 - uₙ}$.
+
+	On admet que pour tout $n$, $uₙ ≠ 6$ et donc $uₙ$ est bien défini.
+	\begin{enumerate}
+		\item Vérifier que $u$ n'est ni arithmétique, ni géométrique.
+
+		      \correctionOr{{\color{red}
+					      \begin{multicols}{3}
+						      \begin{itemize}
+							      \item $u₀ = 1$
+							      \item $u₁ = 9/5$
+							      \item $u₂ = 45/21$
+						      \end{itemize}
+					      \end{multicols}
+				      }}{}
+		\item On définit la suite $v$ telle que pour tout $n ≥ 0$, $vₙ = \dfrac{1}{uₙ - 3}$.
+		      \begin{enumerate}
+			      \item Calculer $v₀$, $v₁$ et $v₂$.
+
+			            \correctionOr{{\color{red}
+						            \begin{multicols}{3}
+							            \begin{itemize}
+								            \item $v₀ = -1/2 = -9/18$
+								            \item $v₁ = -5/6 = -15/18$
+								            \item $v₂ = -21/18$
+							            \end{itemize}
+						            \end{multicols}
+					            }}{}
+			      \item Quelle semble être la nature de la suite $v$ ?
+
+
+			            \correctionOr{{\color{red}Elle semble être arithmétique de raison $6/18 = 1/3$}}{}
+			      \item Le démontrer en calculant $v_{n+1} - vₙ$.
+
+			            \correctionOr{{\color{red}
+						            \begin{align*}
+							            v_{n+1} - vₙ & = \dfrac{1}{u_{n+1} - 3} - \dfrac{1}{uₙ - 3}                                \\
+							                         & = \dfrac{1}{\frac{9}{6 - uₙ} - \frac{18 - 3uₙ}{6 - uₙ}} - \dfrac{1}{uₙ - 3} \\
+							                         & = \dfrac{1}{\frac{3uₙ - 9}{6 - uₙ}} - \dfrac{1}{uₙ - 3}                     \\
+							                         & = \dfrac{\frac{1}{3}(6 - uₙ)}{uₙ - 3} - \dfrac{1}{uₙ - 3}                   \\
+							                         & = \dfrac{2 - 1 - \frac{uₙ}{3}}{uₙ - 3}                                      \\
+							                         & = \dfrac{1}{3}×\dfrac{uₙ - 3}{uₙ - 3}                                        \\
+							                         & = \dfrac{1}{3}                                                              \\
+						            \end{align*}
+
+						            Donc $v$ est arithmétique de raison $1/3$.
+					            }}{}
+		      \end{enumerate}
+	\end{enumerate}
+\end{exercice}
+
+\end{document}
