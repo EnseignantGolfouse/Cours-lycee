@@ -1,0 +1,50 @@
+\documentclass{automatisme}
+
+\usepackage{tikz-repère}
+
+\newcommand{\myMakeFonction}[7]{
+	\begin{tikzpicture}[scale=0.45]
+		\tikzRepere{#1}{#2}{#3}{#4}
+		\node[right,blue] at (#2,#5*#2 + #6) {#7};
+		\clip (#1,#3) rectangle (#2,#4);
+		\draw[domain=#1:#2,very thick,blue] plot({\x},{#5*\x + #6});
+	\end{tikzpicture}
+}
+
+\begin{document}
+
+\begin{frame}
+	Pour chaque fonction ci-dessous, dire s'il s'agit d'une fonction affine, linéaire ou constante, et donner ses paramètres :
+
+	\begin{multicols}{2}
+		\myMakeFonction{-3}{3}{-2}{4}{1}{1}{$f_1$}\vspace{1em}
+
+		\myMakeFonction{-3}{3}{-3}{3}{0.5}{0}{$f_2$}
+
+		\begin{tikzpicture}[scale=0.45]
+			\tikzRepere{-3}{3}{-4}{2}
+			\node[right,blue] at (1.5,-2*1.5 - 1) {$f_3$};
+			\clip (-3,-4) rectangle (3,2);
+			\draw[domain=-3:3,very thick,blue] plot({\x},{-2*\x - 1});
+		\end{tikzpicture}\vspace{1em}
+
+		\myMakeFonction{-3}{3}{-3}{3}{0}{-2}{$f_4$}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}
+	% Modéliser
+	On considère une voiture avançant sur la route à $70$km/h.
+
+	À midi, le conducteur appuie sur l'accélérateur, ce qui fait accélérer la voiture de $3$km/h par seconde.
+
+	Soit $v$ la fonction modélisant la vitesse de la voiture : $v(t)$ est la vitesse de la voiture à midi + $t$ secondes.
+
+	\begin{enumerate}
+		\item Quelle est l'expression de $v(t)$ ?
+		\item Si il continue d'accélérer ainsi, quelle sera la vitesse du conducteur au bout de $2$ minutes ?
+		\item Au bout de combien de seconde le conducteur doit-il arrêter d'accélérer pour atteindre $120$km/h ?
+	\end{enumerate}
+\end{frame}
+
+\end{document}

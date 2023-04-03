@@ -1,0 +1,112 @@
+\documentclass[
+	classe=$2^{de}$,
+]{exercice}
+
+\usepackage{tikz-repère}
+\usepackage{tcolorbox}
+
+\title{Activité : variations}
+
+\renewcommand{\arraystretch}{1.3}
+
+\begin{luacode}
+	DOULEURS = {5, 4.3, 2.2, 2, 2.5, 2.7, 3.4, 3.7, 6.8, 5.4, 5.1, 4.6, 4, 3.7}
+	DOULEUR_NB = 0
+	for _i in pairs(DOULEURS) do
+		DOULEUR_NB = DOULEUR_NB + 1
+	end
+
+	function NUMBER_FORMAT(x)
+		local a = math.floor(x)
+		local b = x - a
+		if b > 0.001 then
+			while b < 1 do
+				b = b * 10
+			end
+		end
+		if b < 1 then
+			return tostring(a)
+		else
+			return tostring(a) .. "," .. tostring(math.floor(b))
+		end
+	end
+
+	function PRINT_TABLEAU_LIGNE1()
+		local ligne1 = "Jour"
+		for i,v in ipairs(DOULEURS) do
+			ligne1 = ligne1 .. " & " .. tostring(i)
+		end
+		tex.print(ligne1)
+	end
+
+	function PRINT_TABLEAU_LIGNE2()
+		local ligne2 = "Moyenne"
+		for i,v in ipairs(DOULEURS) do
+			ligne2 = ligne2 .. " & " .. NUMBER_FORMAT(v)
+		end
+		tex.print(ligne2)
+	end
+\end{luacode}
+
+\begin{document}
+
+\maketitle
+
+\begin{tcolorbox}
+	Un scientifique veut évaluer l'efficacité de son nouveau traitement contre les douleurs chronique. Il fait donc une étude sur une centaine de patients, et leur demande chaque jour de noter leur douleur ressentie, sur une échelle de $1$ à $10$.
+
+	On a noté dans le tableau suivant la moyenne des douleurs ressenties chaque jour :
+
+	\begin{center}
+		\begin{tabular}{|l|*{\directlua{tex.print(DOULEUR_NB)}}{>{\centering}p{0.5cm}|}}
+			\hline
+			\directlua{PRINT_TABLEAU_LIGNE1()} \tabularnewline\hline
+			\directlua{PRINT_TABLEAU_LIGNE2()}  \tabularnewline\hline
+		\end{tabular}
+	\end{center}
+\end{tcolorbox}
+
+\begin{enumerate}
+	\item Le scientifique affirme que la douleur des patient à en moyenne baissé depuis le début de l'expérience : a-t'il raison ? \correction{Oui}
+
+	      Si oui, de combien la douleur moyenne a-t'elle baissé ? \correction{de $1,3$}
+	\item Que peut-on observer entre les jours $8$ et $9$ ? \correction{La douleur a soudainement augmenté}
+	\item On va chercher à visualiser la variation de la douleur des patients dans le temps.
+
+	      On définit $f$ comme étant la fonction qui donne la douleur moyenne des patients en fonction du jour $j$.
+
+	      Tracer le graphe de $f$ dans le repère suivant :
+
+	      \begin{center}
+		      \begin{tikzpicture}[scale=0.8]
+			      \tikzRepere{0}{14}{0}{10}[][][\hspace{2em}Jour][Douleur]
+			      \foreach \x in {1,...,14} {
+					      \draw[thick] (\x,0) -- ++(0,-0.2) node[below] {$\x$};
+				      }
+			      \foreach \y in {1,...,10} {
+					      \draw[thick] (0,\y) -- ++(-0.2,0) node[left] {$\y$};
+				      }
+
+			      \ifdefined\makeCorrection
+				      \foreach \x in {1,...,14} {
+						      \node[red] at (\x,\directlua{tex.print(DOULEURS[\x])}) {×};
+					      }
+			      \fi
+		      \end{tikzpicture}
+	      \end{center}
+	\item Compléter alors les phrases suivantes :
+
+	      \newcommand{\MyDotsA}{................}
+	      \newcommand{\MyDotsB}{......}
+	      \begin{itemize}
+		      \setlength{\itemsep}{0.5em}
+		      \item[] La douleur des patient a \correctionOr{baissé}{\MyDotsA} entre les jours \correctionOr{1}{\MyDotsB} et \correctionOr{4}{\MyDotsB} ;
+		      \item[] La douleur des patient a \correctionOr{augmenté}{\MyDotsA} entre les jours \correctionOr{4}{\MyDotsB} et \correctionOr{9}{\MyDotsB} ;
+		      \item[] La douleur des patient a \correctionOr{diminué}{\MyDotsA} entre les jours \correctionOr{9}{\MyDotsB} et \correctionOr{14}{\MyDotsB} ;
+	      \end{itemize}
+	\item Peut-on faire une conclusion définitive sur l'efficacité du médicament ?
+
+	      \correctionOr{{\color{red}Non: il a même augmenté la douleur ressentie pendant un temps !}}{}
+\end{enumerate}
+
+\end{document}

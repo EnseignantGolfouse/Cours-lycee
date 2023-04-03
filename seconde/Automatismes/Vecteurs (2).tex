@@ -1,0 +1,33 @@
+\documentclass{automatisme}
+
+\usepackage{tikz-repère}
+
+\begin{document}
+
+\begin{frame}
+	\begin{center}
+		\begin{tikzpicture}[scale=0.6]
+			\tikzRepere{-5}{5}{-5}{5}[][]
+			\coordinate (A) at (2,1);
+			\coordinate (B) at (1,4);
+			\coordinate (C) at (0,-3);
+			\coordinate (D) at (-4,3);
+
+			\foreach \p in {A,...,D} {
+					\node at (\p) {×};
+					\node[above right] at (\p) {$\p$};
+				}
+		\end{tikzpicture}
+	\end{center}
+
+	Donner les coordonnées des vecteurs :
+	\begin{multicols}{3}
+		\begin{itemize}
+			\item[] $\vec{AB}\begin{pmatrix}\correction{-1} \\ \correction{3}\end{pmatrix}$
+			\item[] $\vec{DB} + \vec{CA}\begin{pmatrix}\correction{7} \\ \correction{5}\end{pmatrix}$
+			\item[] $\dfrac{1}{2}\vec{AD} - \vec{BD}\begin{pmatrix}\correction{2} \\ \correction{2}\end{pmatrix}$
+		\end{itemize}
+	\end{multicols}
+\end{frame}
+
+\end{document}
