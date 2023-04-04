@@ -1,0 +1,41 @@
+\documentclass{automatisme}
+
+\begin{document}
+
+\begin{frame}
+	Soit $u$ une suite définie par
+	\begin{itemize}
+		\item $u₀ = 1$
+		\item $u_{n+1} = 3u_n - 2n$
+	\end{itemize}
+	\begin{enumerate}
+		\item La suite $u$ est-elle définie explicitement ou par récurrence ?
+		\item Calculer $u₁$, $u₂$ et $u₃$.
+		\item La suite $u$ est-elle arithmétique ? Géométrique ?
+		\item On définit la suite $v$ telle que pour tout $n ≥ 0$, $vₙ = uₙ - n - 0,5$.
+
+		      Calculer $v₀$, $v₁$, $v₂$ et $v₃$.
+		\item Montrer que $v$ est une suite géométrique, dont on précisera la raison.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	CORRECTION
+
+	\begin{enumerate}
+		\item Par récurrence.
+		\item $u₁ = 3$, $u₂ = 7$ et $u₃ = 17$.
+		\item Ni l'un ni l'autre.
+		\item $v₀ = 0,5$, $v₁ = 1,5$, $v₂ = 4,5$ et $v₃ = 13,5$.
+		\item \begin{align*}
+			      \dfrac{v_{n+1}}{v_n} & = \dfrac{u_{n+1} - n - 1 - 0,5}{u_n - n - 0,5} \\
+			                           & = \dfrac{3u_n - 2n - n - 1,5}{u_n - n - 0,5}   \\
+			                           & = \dfrac{3u_n - 3n - 1,5}{u_n - n - 0,5}       \\
+			                           & = 3\dfrac{u_n - n - 0,5}{u_n - n - 0,5}        \\
+			                           & = 3                                            \\
+		      \end{align*}
+		      Donc $v$ est géométrique de raison $3$.
+	\end{enumerate}
+\end{frame}
+
+\end{document}
