@@ -1,0 +1,288 @@
+\documentclass[
+	classe=$1^{ere}STI2D$
+]{évaluation}
+
+\usepackage{tikz-repère}
+\usepackage{tcolorbox}
+
+\begin{luacode}
+function SUITE(init, rec)
+	local f = function (n)
+		local x = init
+		while n ~= 0 do
+			x = rec(x)
+			n = n - 1
+		end
+		return x
+	end
+	return f
+end
+\end{luacode}
+
+\date{7 avril 2023}
+
+\begin{document}
+
+\title{Évaluation : suites (Sujet A)}
+\maketitle
+
+\begin{tcolorbox}
+	Tous les exercices sont à faire sur une feuille à part.
+
+	La calculatrice est autorisée.
+
+	Le barème est donné à titre indicatif.
+\end{tcolorbox}
+
+\begin{exercice}[4]
+	Pour chaque suite ci-dessous, dire si la suite est définie explicitement ou par récurrence, et si elle est arithmétique, géométrique ou ni l'un ni l'autre :
+	\begin{multicols}{2}
+		\begin{enumerate}[a)]
+			\item $a₀ = 1$, $a_{n+1} = 5 × a_n$
+			\item $b₀ = -15$, $b_{n+1} = b_n - 3$
+			      \columnbreak
+			\item pour $n > 0$, $cₙ = 2n + 1$
+			\item $d₀ = 6$, $d_{n+1} = \dfrac{d_n - 3}{n + 4}$
+		\end{enumerate}
+	\end{multicols}
+\end{exercice}
+
+\begin{exercice}[7]
+	Soit $u$ la suite définie par $u₀ = 2$ et $u_{n+1} = 0,5uₙ + 5$.
+
+	\begin{enumerate}
+		\item Calculer puis représenter les $4$ premiers termes de cette suite.
+
+		      \correctionOr{{\color{red}
+					      \begin{multicols}{4}
+						      \begin{itemize}
+							      \item $u₁ = \directlua{tex.print(SUITE(2, function (x) return 0.5*x + 5 end)(1))}$
+							      \item $u₂ = \directlua{tex.print(SUITE(2, function (x) return 0.5*x + 5 end)(2))}$
+							      \item $u₃ = \directlua{tex.print(SUITE(2, function (x) return 0.5*x + 5 end)(3))}$
+							      \item $u₄ = \directlua{tex.print(SUITE(2, function (x) return 0.5*x + 5 end)(4))}$
+						      \end{itemize}
+					      \end{multicols}
+				      }}{}
+		\item Quel semble être le sens de variations de $u$ ?
+
+		      \correctionOr{{\color{red}Elle semble être croissante.}}{}
+		\item Montrer que $u$ n'est ni arithmétique, ni géométrique.
+		\item On définit la suite $v$ telle que pour tout $n ≥ 0$, $vₙ = uₙ - 10$.
+		      \begin{enumerate}
+			      \item Calculer $v₀$, $v₁$, $v₂$ et $v₃$.
+
+			            \correctionOr{{\color{red}
+						            \begin{multicols}{4}
+							            \begin{itemize}
+								            \item $v₀ = -4$
+								            \item $v₁ = -2$
+								            \item $v₂ = -1$
+								            \item $v₃ = -0,5$
+							            \end{itemize}
+						            \end{multicols}
+					            }}{}
+			      \item Quelle semble être la nature de la suite $v$ ?
+
+			            \correctionOr{{\color{red}Elle semble être géométrique de raison $0,5$}}{}
+			      \item \ [BONUS] Le démontrer en calculant $\dfrac{v_{n+1}}{vₙ}$.
+
+			            \correctionOr{{\color{red}
+						            \begin{align*}
+							            \dfrac{v_{n+1}}{vₙ} & = \dfrac{u_{n+1} - 10}{uₙ - 10} \\
+							                                & = \dfrac{0,5uₙ - 5}{uₙ - 10}    \\
+							                                & = 0,5\dfrac{uₙ- 10}{uₙ - 10}    \\
+							                                & = 0,5                           \\
+						            \end{align*}
+
+						            Donc $v$ est géométrique de raison $0,5$.
+					            }}{}
+		      \end{enumerate}
+	\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[5]
+	Deux entreprise nous font des offres différentes pour notre salaire mensuel :
+	\begin{itemize}
+		\item L'entreprise $A$ nous propose de commencer à $1300$€, avec une augmentation de $70$€ par an.
+		\item L'entreprise $B$ nous propose de commencer à $1200$€. Chaque année, notre salaire augmentera de $8$\%, avant de diminuer de $20$€.
+	\end{itemize}
+	\begin{enumerate}
+		\item Vérifier que l'offre de l'entreprise $B$ correspond bien à une augmentation la première année.
+		\item On appelle $a$ la suite correspondant à l'entreprise $A$, et $b$ celle correspondant à l'entreprise $B$.
+
+		      Donner une définition des suites $a$ et $b$.
+		\item Représenter dans un repère l'évolution de ces deux suites durant $10$ ans.
+
+		      \correctionOr{
+			      \begin{center}
+				      \directlua{function SCALE(x) return x / 100 - 12 end}
+				      \color{red}
+				      \begin{tikzpicture}
+					      \tikzRepere{0}{10}{0}{11}[][]
+					      \foreach \y in {0,...,11} {
+							      \pgfmathsetmacro\valy{int(1200 + 100*\y)}
+							      \draw[thick] (0,\y) -- ++(-0.2,0) node[left] {$\valy$};
+						      }
+					      \foreach \x in {0,...,10} {
+							      \draw[thick] (\x,0) -- ++(0,-0.2) node[below] {$\x$};
+							      \pgfmathsetmacro\entrpA{(13 + 0.7*\x) - 12}
+							      \node at (\x,\entrpA) {×};
+							      \node at (\x,\directlua{tex.print(SCALE(SUITE(1200, function(x) return x * 1.08 - 20 end)(\x)))}) {×};
+						      }
+				      \end{tikzpicture}
+			      \end{center}
+		      }{}
+		\item Combien d'années faut-il pour que le salaire de l'entreprise $B$ dépasse celui de l'entreprise $A$ ?
+	\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[4]
+	On lâche un poids en chute libre, à $100$m du sol. On modélise sa chute par les deux suites $v$ et $p$ suivantes :
+
+	\begin{itemize}
+		\item $vₙ$ représente la \textit{vitesse} au bout de $n$ secondes : elle est définie par $v₀ = 0$, et pour $n ≥ 0$, $v_{n+1} = v_n - 9,8$.
+		\item $pₙ$ représente la \textit{position} au bout de $n$ secondes : elle est définie par $p₀ = 0$, et pour $n ≥ 0$, $p_{n+1} = p_n - v_{n+1}$.
+	\end{itemize}
+
+	\begin{enumerate}
+		\item Quelle est la nature de la suite $v$ ?
+		\item Calculer $v_1$, $v_2$ et $v_3$. Quel est le sens de variation de $v$ ?
+		\item Au bout de combien de temps (à la seconde près) l'objet va-t'il toucher le sol ?
+	\end{enumerate}
+\end{exercice}
+
+%======================================================
+%===================== SUJET B ========================
+%======================================================
+\newpage
+\setcounter{exercice}{1}
+
+\title{Évaluation : suites (Sujet B)}
+\maketitle
+
+\begin{tcolorbox}
+	Tous les exercices sont à faire sur une feuille à part.
+
+	La calculatrice est autorisée.
+
+	Le barème est donné à titre indicatif.
+\end{tcolorbox}
+
+\begin{exercice}[4]
+	Pour chaque suite ci-dessous, dire si la suite est définie explicitement ou par récurrence, et si elle est arithmétique, géométrique ou ni l'un ni l'autre :
+	\begin{multicols}{2}
+		\begin{enumerate}[a)]
+			\item $a₀ = -15$, $a_{n+1} = a_n - 5$
+			\item $b₀ = 1$, $b_{n+1} = 3 × b_n$
+			      \columnbreak
+			\item $c₀ = 6$, $c_{n+1} = \dfrac{2c_n}{n + 5}$
+			\item pour $n > 0$, $dₙ = 5n - 1$
+		\end{enumerate}
+	\end{multicols}
+\end{exercice}
+
+\begin{exercice}[7]
+	Soit $u$ la suite définie par $u₀ = 2$ et $u_{n+1} = 0,5uₙ + 13$.
+
+	\begin{enumerate}
+		\item Calculer puis représenter les $4$ premiers termes de cette suite.
+
+		      \correctionOr{{\color{red}
+					      \begin{multicols}{4}
+						      \begin{itemize}
+							      \item $u₁ = \directlua{tex.print(SUITE(2, function (x) return 0.5*x + 13 end)(1))}$
+							      \item $u₂ = \directlua{tex.print(SUITE(2, function (x) return 0.5*x + 13 end)(2))}$
+							      \item $u₃ = \directlua{tex.print(SUITE(2, function (x) return 0.5*x + 13 end)(3))}$
+							      \item $u₄ = \directlua{tex.print(SUITE(2, function (x) return 0.5*x + 13 end)(4))}$
+						      \end{itemize}
+					      \end{multicols}
+				      }}{}
+		\item Quel semble être le sens de variations de $u$ ?
+
+		      \correctionOr{{\color{red}Elle semble être croissante.}}{}
+		\item Montrer que $u$ n'est ni arithmétique, ni géométrique.
+		\item On définit la suite $v$ telle que pour tout $n ≥ 0$, $vₙ = uₙ - 26$.
+		      \begin{enumerate}
+			      \item Calculer $v₀$, $v₁$, $v₂$ et $v₃$.
+
+			            \correctionOr{{\color{red}
+						            \begin{multicols}{4}
+							            \begin{itemize}
+								            \item $v₀ = -12$
+								            \item $v₁ = -6$
+								            \item $v₂ = -3$
+								            \item $v₃ = -1,5$
+							            \end{itemize}
+						            \end{multicols}
+					            }}{}
+			      \item Quelle semble être la nature de la suite $v$ ?
+
+			            \correctionOr{{\color{red}Elle semble être géométrique de raison $0,5$}}{}
+			      \item \ [BONUS] Le démontrer en calculant $\dfrac{v_{n+1}}{vₙ}$.
+
+			            \correctionOr{{\color{red}
+						            \begin{align*}
+							            \dfrac{v_{n+1}}{vₙ} & = \dfrac{u_{n+1} - 26}{uₙ - 26} \\
+							                                & = \dfrac{0,5uₙ - 13}{uₙ - 26}   \\
+							                                & = 0,5\dfrac{uₙ- 26}{uₙ - 26}    \\
+							                                & = 0,5                           \\
+						            \end{align*}
+
+						            Donc $v$ est géométrique de raison $0,5$.
+					            }}{}
+		      \end{enumerate}
+	\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[5]
+	Deux entreprise nous font des offres différentes pour notre salaire mensuel :
+	\begin{itemize}
+		\item L'entreprise $A$ nous propose de commencer à $1400$€, avec une augmentation de $70$€ par an.
+		\item L'entreprise $B$ nous propose de commencer à $1300$€. Chaque année, notre salaire augmentera de $8$\%, avant de diminuer de $20$€.
+	\end{itemize}
+	\begin{enumerate}
+		\item Vérifier que l'offre de l'entreprise $B$ correspond bien à une augmentation la première année.
+		\item On appelle $a$ la suite correspondant à l'entreprise $A$, et $b$ celle correspondant à l'entreprise $B$.
+
+		      Donner une définition des suites $a$ et $b$.
+		\item Représenter dans un repère l'évolution de ces deux suites durant $10$ ans.
+
+		      \correctionOr{
+			      \begin{center}
+				      \directlua{function SCALE(x) return x / 100 - 13 end}
+				      \color{red}
+				      \begin{tikzpicture}
+					      \tikzRepere{0}{10}{0}{12}[][]
+					      \foreach \y in {0,...,12} {
+							      \pgfmathsetmacro\valy{int(1300 + 100*\y)}
+							      \draw[thick] (0,\y) -- ++(-0.2,0) node[left] {$\valy$};
+						      }
+					      \foreach \x in {0,...,10} {
+							      \draw[thick] (\x,0) -- ++(0,-0.2) node[below] {$\x$};
+							      \pgfmathsetmacro\entrpA{(14 + 0.7*\x) - 13}
+							      \node at (\x,\entrpA) {×};
+							      \node at (\x,\directlua{tex.print(SCALE(SUITE(1300, function(x) return x * 1.08 - 20 end)(\x)))}) {×};
+						      }
+				      \end{tikzpicture}
+			      \end{center}
+		      }{}
+		\item Combien d'années faut-il pour que le salaire de l'entreprise $B$ dépasse celui de l'entreprise $A$ ?
+	\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[4]
+	On lâche un poids en chute libre, à $150$m du sol. On modélise sa chute par les deux suites $v$ et $p$ suivantes :
+
+	\begin{itemize}
+		\item $vₙ$ représente la \textit{vitesse} au bout de $n$ secondes : elle est définie par $v₀ = 0$, et pour $n ≥ 0$, $v_{n+1} = v_n - 9,8$.
+		\item $pₙ$ représente la \textit{position} au bout de $n$ secondes : elle est définie par $p₀ = 0$, et pour $n ≥ 0$, $p_{n+1} = p_n - v_{n+1}$.
+	\end{itemize}
+
+	\begin{enumerate}
+		\item Quelle est la nature de la suite $v$ ?
+		\item Calculer $v_1$, $v_2$ et $v_3$. Quel est le sens de variation de $v$ ?
+		\item Au bout de combien de temps (à la seconde près) l'objet va-t'il toucher le sol ?
+	\end{enumerate}
+\end{exercice}
+
+\end{document}
