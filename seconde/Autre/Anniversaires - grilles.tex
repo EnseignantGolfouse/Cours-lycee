@@ -1,7 +1,9 @@
-\documentclass[11pt]{beamer}
+\documentclass[a4paper,12pt]{article}
 
 \usepackage{tikz}
 \usepackage{ifthen}
+\usepackage[margin=2cm]{geometry}
+\usepackage{nopageno}
 
 \renewcommand{\familydefault}{\sfdefault}
 \newcounter{xcounter}
@@ -42,46 +44,35 @@
 
 \begin{document}
 
-\begin{frame}
-	\begin{center}
-		\GrilleCinq
-	\end{center}
-\end{frame}
+\newcommand{\scale}{1.4}
+\begin{center}
+	\GrilleCinq[scale=\scale]{}
 
-\begin{frame}
-	\begin{center}
-		\GrilleQuatre
-	\end{center}
-\end{frame}
+	\vfill
 
-\begin{frame}
-	\begin{center}
-		\GrilleTrois
-	\end{center}
-\end{frame}
+	\GrilleQuatre[scale=\scale]{}
 
-\begin{frame}
-	\begin{center}
-		\GrilleDeux
-	\end{center}
-\end{frame}
+	\GrilleTrois[scale=\scale]{}
 
-\begin{frame}
-	\begin{center}
-		\GrilleUn
-	\end{center}
-\end{frame}
+	\vfill
 
-\begin{frame}
-	\newcommand{\scale}{0.42}
+	\GrilleDeux[scale=\scale]{}
+
+	\vfill
+
+	\GrilleUn[scale=\scale]{}
+
+	\vfill
+
+	\renewcommand{\scale}{0.42}
 	\GrilleCinq[scale=\scale]{}
 	\GrilleQuatre[scale=\scale]{}
 	\GrilleTrois[scale=\scale]{}
-	
+
 	\vspace{0.2cm}
-	
+
 	\GrilleDeux[scale=\scale]{}
 	\GrilleUn[scale=\scale]{}
-\end{frame}
+\end{center}
 
 \end{document}
