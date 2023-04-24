@@ -1,0 +1,55 @@
+\documentclass[
+	classe=$2^{de}$
+]{exercice}
+
+\usepackage{tikz-repère}
+
+\title{Activité : fonction carrée}
+
+\begin{document}
+
+\maketitle
+
+On lance une balle dans les aires, et on veut suivre sa position.
+
+On suppose que la balle est lancée depuis l'abscisse $x = -30$cm, et que sa hauteur $h$ en fonction de son abscisse $x$ est donnée par : $h(x) = -\dfrac{x^2}{10} + 90$ (en cm).
+
+\begin{enumerate}
+	\item D'après l'énoncé, quelle doit être la hauteur de la balle lorsque $x = -30$cm ?
+
+	      Vérifier que $h(-30)$ donne le même résultat.
+	\item Calculer $h(0)$, $h(10)$, $h(20)$ et $h(30)$ :
+
+	      $$ h(0) = \correctionDots{90}\ \ h(10) = \correctionDots{80}\ \ h(20) = \correctionDots{50}\ \ h(30) = \correctionDots{\phantom{1}0} $$
+
+	      Que remarque-t'on à propos de $h(30)$ ?
+
+	      \correction{On a $h(30) = h(-30) = 0$}
+	\item Calculer $h(-20)$. \correctionDots{$50$}
+
+	      Que peut-on remarquer par rapport à la question précédente ?
+
+	      \correction{On a $h(20) = h(-20) = 50$cm}
+	\item Donner alors sans calcul la valeur de $h(-10)$. \correctionDots{$80$cm}
+	\item Tracer dans le repère ci-dessous la courbe de la fonction $h$:
+
+	      \begin{center}
+		      \begin{tikzpicture}[scale=0.8]
+			      \pgfmathsetmacro\xScaling{5}
+			      \pgfmathsetmacro\yScaling{10}
+			      \pgfmathsetmacro\scaling{10}
+			      \tikzRepere{-30/\xScaling}{30/\xScaling}{0}{10}[\xScaling][\yScaling]
+
+			      \ifdefined\makeCorrection1
+				      \draw[thick,blue,domain=-30:30] plot({\x / \xScaling},{(-(\x)*(\x)/10 + 90) / \yScaling});
+			      \fi
+		      \end{tikzpicture}
+	      \end{center}
+	\item Quelle est alors la hauteur maximale atteinte par la balle ? \correctionDots{$90$cm}
+
+	      En quelle abscisse cette hauteur est-elle atteinte ? \correctionDots{$0$\phantom{9cm}}
+
+	      En quelle abscisse la balle est-elle retombée sur le sol ? \correctionDots{$30$\phantom{cm}}
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,50 @@
+\documentclass[
+	classe=$2^{de}$
+]{exercice}
+
+\usepackage{tikz-repère}
+
+\renewcommand{\arraystretch}{1.3}
+
+\title{Activité : symétrique de la fonction carrée}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+	\begin{tikzpicture}[scale=0.8]
+		\tikzRepere{0}{16}{0}{16}[1][1]
+		% \foreach \x in {2,...,4} {
+		% \draw[thick] (\x,0) -- ++(0,-0.2) node[below] {$\x$};
+		% }
+		\ifdefined\makeCorrection
+			\foreach \x in {0,...,4} {
+					\node[blue] at (\x,\x*\x) {×};
+					\node[red] at (\x*\x,\x) {×};
+				}
+			\draw[thick,domain=0:16] plot({\x},{\x}) node[above left] {$g$};
+		\fi
+	\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}
+	\item Soit $f$ la fonction $f(x) = x^2$.
+
+	      Dans le repère ci-dessus, placer les points $(x, f(x))$ pour $x ∈ \{0, 1, 2, 3, 4\}$.
+	\item Tracer le graphe de la fonction $g(x) = x$ pour $x$ entre $0$ et $16$.
+	\item Pour chaque point placé à la question 1, placer son symétrique par rapport à la courbe de $g$.
+
+	      Donner alors les coordonnées de ces points dans le tableau suivant :
+	      \begin{center}
+		      \begin{tabular}{|l|*{5}{>{\centering}p{1cm}|}}
+			      \hline
+			      Abscisse du point : & \correction{0} & \correction{1} & \correction{4} & \correction{9} & \correction{16} \tabularnewline \hline
+			      Ordonnée du point : & \correction{0} & \correction{1} & \correction{2} & \correction{3} & \correction{4} \tabularnewline \hline
+		      \end{tabular}
+	      \end{center}
+	\item Si on appelle $h$ la fonction dont la courbe correspond à ces nouveaux points, quelle semble être l'expression de $h$ ?
+	      $$ h(x) = \correctionDots{\sqrt{x}} $$
+\end{enumerate}
+
+\end{document}

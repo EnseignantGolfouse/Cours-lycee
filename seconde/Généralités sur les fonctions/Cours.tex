@@ -5,6 +5,7 @@
 
 \usepackage{tikz-repère}
 \usepackage{tkz-tab}
+\usepackage{tabularx}
 \usetikzlibrary{automata,calc,positioning}
 
 \title{Chapitre 7 : Fonctions}
@@ -187,6 +188,96 @@
 			\tkzTabVar{+/ $7$, -/ $-2$, +/ $2$}
 		\end{tikzpicture}
 	\end{minipage}
+\end{greybox}
+
+\begin{greybox}[frametitle={Fonctions carrée et cube}]
+	\begin{center}
+		\begin{tabularx}{0.9\linewidth}{>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X}
+			La fonction \textbf{carrée} est la fonction $f(x) = x^2$       & La fonction \textbf{cube} est la fonction $g(x) = x^3$            \\
+			                                                               &                                                                   \\
+			Pour tout nombre réel $x$, on a \hspace{8em} $f(x) = f(-x)$    & Pour tout nombre réel $x$, on a \hspace{5em} $g(x) = -g(-x)$      \\
+			                                                               &                                                                   \\
+			\textit{L'axe des ordonnées} est un axe de symétrie du graphe. & \textit{Le centre du repère} est un centre de symétrie du graphe. \\
+			                                                               &                                                                   \\
+			\begin{center}\begin{tikzpicture}[scale=0.6]
+					\tikzRepere{-2.5}{2.5}{-0.5}{4.5}
+					\draw[very thick,blue,domain=-2.23:2.23] plot({\x},{\x*\x});
+				\end{tikzpicture}\end{center}
+			La courbe est une \textbf{parabole}.
+
+			Le point $(0; 0)$ est le \textbf{sommet} de cette parabole.    & \begin{center}\begin{tikzpicture}[scale=0.6]
+					\tikzRepere{-2.5}{2.5}{-4.5}{4.5}
+					\draw[very thick,blue,domain=-1.71:1.71] plot({\x},{\x*\x*\x});
+				\end{tikzpicture}\end{center}              \\
+			Tableau de variations :
+
+			\begin{center}\begin{tikzpicture}[scale=0.7]
+					\tkzTabInit{$x$ / 1 , $x^2$ / 2}{$-∞$, $0$, $+∞$}
+					\tkzTabVar{+/ , -/ $0$, +/ }
+				\end{tikzpicture}\end{center}           & Tableau de variations :
+
+			\begin{center}\begin{tikzpicture}[scale=0.7]
+					\tkzTabInit{$x$ / 1 , $x^3$ / 2}{$-∞$, $+∞$}
+					\tkzTabVar{-/ , +/ }
+				\end{tikzpicture}\end{center}
+			\\
+		\end{tabularx}
+	\end{center}
+\end{greybox}
+
+\begin{greybox}[frametitle={Rappel}]
+	La racine carrée $\sqrt{a}$ d'un nombre positif $a$ est l'unique nombre positif tel que $\sqrt{a}^2 = a$.
+\end{greybox}
+
+\begin{greybox}[frametitle={Fonction racine carrée}]
+	La \textbf{fonction racine carrée} est $f(x) = \sqrt{x}$, définie sur $\intervalle{[}{0}{+∞}{[}$.
+
+	\begin{center}
+		\begin{tabular}{|l|*{6}{>{\centering}p{1.2cm}|}}
+			\hline
+			$x$        & $0$ & $1$ & $2$     & $3$     & $4$ & $5$ \tabularnewline \hline
+			$\sqrt{x}$ & $0$ & $1$ & $≈1,41$ & $≈1,73$ & $2$ & $≈2,24$ \tabularnewline \hline
+		\end{tabular} \medskip
+
+		\begin{tikzpicture}[scale=0.7]
+			\tikzRepere{-0.5}{8.5}{-0.5}{4.5}
+			\draw[very thick,blue,domain=0:9] plot({\x},{sqrt(\x)}) node[right] {$f$};
+		\end{tikzpicture} \medskip
+
+
+		\begin{tikzpicture}[scale=0.7]
+			\tkzTabInit{$x$ / 1 , $\sqrt{x}$ / 2}{$0$, $+∞$}
+			\tkzTabVar{-/ $0$, +/ }
+		\end{tikzpicture}
+	\end{center}
+\end{greybox}
+
+\vfill
+
+\begin{greybox}[frametitle={Fonction inverse}]
+	La \textbf{fonction inverse} est $f(x) = \dfrac{1}{x}$, définie sur $\intervalle{]}{-∞}{0}{[}∪\intervalle{]}{0}{+∞}{[}$.
+
+	\begin{center}
+		\renewcommand{\arraystretch}{1.2}
+		\begin{tabular}{|l|*{9}{c|}}
+				\hline
+			$x$            & $-4$    & $-3$     & $-2$   & $-1$ & $0$ & $1$ & $2$   & $3$     & $4$  \tabularnewline \hline
+			               &         &          &        &      &     &     &       &         & \tabularnewline
+			$\dfrac{1}{x}$ & $-0,25$ & $≈-0,33$ & $-0,5$ & $-1$ & NON & $1$ & $0,5$ & $≈0,33$ & $0,25$ \tabularnewline
+			               &         &          &        &      &     &     &       &         & \tabularnewline \hline
+		\end{tabular} \medskip
+
+		\begin{tikzpicture}[scale=0.7]
+			\tikzRepere{-3.5}{3.5}{-3.5}{3.5}
+			\draw[very thick,blue,domain=-4:-0.25] plot({\x},{1/\x});
+			\draw[very thick,blue,domain=0.25:4] plot({\x},{1/\x}) node[right] {$f$};
+		\end{tikzpicture} \medskip
+
+		\begin{tikzpicture}[scale=0.7]
+			\tkzTabInit{$x$ / 1 , $\dfrac{1}{x}$ / 2}{$-∞$, $0$, $+∞$}
+			\tkzTabVar{+/ , -D+/{}/{}, -/ }
+		\end{tikzpicture}
+	\end{center}
 \end{greybox}
 
 \end{document}

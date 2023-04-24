@@ -1,0 +1,49 @@
+\documentclass[10pt]{automatisme}
+
+\usepackage{tikz-repère}
+
+\begin{document}
+
+\newcommand{\scale}{0.45}
+\begin{frame}
+	Donner l'expression des trois fonctions manquantes :
+	\begin{multicols}{2}
+
+		\begin{center}
+			\begin{tikzpicture}[scale=\scale]
+				\tikzRepere{-3.5}{3.5}{-2.5}{2.5}
+				\draw[domain=-4:4,thick,blue] plot({\x},{0.5*\x+1});
+			\end{tikzpicture}
+			$$ f(x) = 0,5x + 1 $$
+		\end{center}
+
+		\begin{center}
+			\begin{tikzpicture}[scale=\scale]
+				\tikzRepere{-3.5}{3.5}{-2.5}{2.5}
+				\draw[domain=-1.5:1.5,thick,blue] plot({\x},{2*\x});
+			\end{tikzpicture}
+			$$ f(x) = ............ $$
+		\end{center}
+
+		\columnbreak
+
+		\begin{center}
+			\begin{tikzpicture}[scale=\scale]
+				\tikzRepere{-3.5}{3.5}{-2.5}{2.5}
+				\draw[domain=-2:1,thick,blue] plot({\x},{-2*\x-1});
+			\end{tikzpicture}
+			$$ f(x) = ............ $$
+		\end{center}
+
+		\begin{center}
+			\begin{tikzpicture}[scale=\scale]
+				\tikzRepere{-3.5}{3.5}{-2.5}{2.5}
+				\draw[domain=-1:4,thick,blue] plot({\x},{\x-2});
+			\end{tikzpicture}
+			$$ f(x) = ............ $$
+		\end{center}
+
+	\end{multicols}
+\end{frame}
+
+\end{document}
