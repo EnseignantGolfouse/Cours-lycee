@@ -20,7 +20,8 @@
 
 		\begin{tikzpicture}[scale=0.7]
 			\tikzRepere{-0.5}{8.5}{-0.5}{4.5}
-			\draw[very thick,blue,domain=0:9] plot({\x},{sqrt(\x)}) node[right] {$f$};
+			\draw[very thick,blue,domain=0:1] plot({\x},{sqrt(\x)});
+			\draw[very thick,blue,domain=1:9] plot({\x},{sqrt(\x)}) node[right] {$f$};
 		\end{tikzpicture} \medskip
 
 
@@ -39,7 +40,7 @@
 	\begin{center}
 		\renewcommand{\arraystretch}{1.2}
 		\begin{tabular}{|l|*{9}{c|}}
-				\hline
+			\hline
 			$x$            & $-4$    & $-3$     & $-2$   & $-1$ & $0$ & $1$ & $2$   & $3$     & $4$  \tabularnewline \hline
 			               &         &          &        &      &     &     &       &         & \tabularnewline
 			$\dfrac{1}{x}$ & $-0,25$ & $≈-0,33$ & $-0,5$ & $-1$ & NON & $1$ & $0,5$ & $≈0,33$ & $0,25$ \tabularnewline
