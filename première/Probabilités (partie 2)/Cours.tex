@@ -57,7 +57,7 @@
 \end{propriete}
 
 \begin{exemple}
-	Si on veut obtenir la probabilité d'obtenir \textit{exactement} $1$ six sur les trois lancés : 
+	Si on veut obtenir la probabilité d'obtenir \textit{exactement} $1$ six sur les trois lancés :
 
 	Cet évènement est constitué des issues $(A, \overline{A}, \overline{A})$, $(\overline{A}, A, \overline{A})$ et $(\overline{A}, \overline{A}, A)$. Sa probabilité est donc
 
@@ -80,16 +80,55 @@
 							\draw (\nb) -- node[below] {$\frac{5}{6}$} (NAc);
 						}
 				}
-				\coordinate (TEMP) at (6,0.6);
-				\node[right=of TEMP] {→ issue $(A, \overline{A}, \overline{A})$, probabilité $\dfrac{1}{6} × \dfrac{5}{6} × \dfrac{5}{6} = \dfrac{25}{216}$};
-				\coordinate (TEMP) at (6,-1.8);
-				\node[right=of TEMP] {→ issue $(\overline{A}, A, \overline{A})$, probabilité $\dfrac{5}{6} × \dfrac{1}{6} × \dfrac{5}{6} = \dfrac{25}{216}$};
-				\coordinate (TEMP) at (6,-3.2);
-				\node[right=of TEMP] {→ issue $(\overline{A}, \overline{A}, A)$, probabilité $\dfrac{5}{6} × \dfrac{5}{6} × \dfrac{1}{6} = \dfrac{25}{216}$};
+			\coordinate (TEMP) at (6,0.6);
+			\node[right=of TEMP] {→ issue $(A, \overline{A}, \overline{A})$, probabilité $\dfrac{1}{6} × \dfrac{5}{6} × \dfrac{5}{6} = \dfrac{25}{216}$};
+			\coordinate (TEMP) at (6,-1.8);
+			\node[right=of TEMP] {→ issue $(\overline{A}, A, \overline{A})$, probabilité $\dfrac{5}{6} × \dfrac{1}{6} × \dfrac{5}{6} = \dfrac{25}{216}$};
+			\coordinate (TEMP) at (6,-3.2);
+			\node[right=of TEMP] {→ issue $(\overline{A}, \overline{A}, A)$, probabilité $\dfrac{5}{6} × \dfrac{5}{6} × \dfrac{1}{6} = \dfrac{25}{216}$};
 		\end{tikzpicture}
 
 		$$ \dfrac{25}{216} + \dfrac{25}{216} + \dfrac{25}{216} = \dfrac{75}{216} = \dfrac{25}{72} $$
 	\end{center}
+\end{exemple}
+
+\begin{definition}[Variable aléatoire]
+	Dans une expérience aléatoire, une \textbf{variable aléatoire} est un nombre réel associé à chaque issue de l'expérience. On la note avec une lettre majuscule, souvent (mais pas toujours !) $X$ ou $Y$.
+
+	Ainsi on peut définir des \textit{évènements} liés à cette variable aléatoire :
+	\begin{itemize}
+		\item $\{X = a\}$ désigne l'évènement « $X$ prend la valeur $a$ »
+		\item $\{X < a\}$ désigne l'évènement « $X$ prend une valeur strictement inférieure à $a$ »
+	\end{itemize}
+\end{definition}
+
+\begin{exemple}
+	On lance trois dés, et :
+	\begin{itemize}
+		\item Si on obtient $3$ six, on gagne $1000$€.
+		\item Sinon, on perd $10$€.
+	\end{itemize}
+	Ici la variable aléatoire est le gain $G$ que l'on peut obtenir, en euros. Il y a deux possibilités :
+	\begin{itemize}
+		\item Si on fait $3$ six, alors $G = +1000$. On a donc $P(G = 1000) = \dfrac{1}{216}$ (la probabilité de faire $3$ six).
+		\item Sinon, $G = -10$. On a donc $P(G = -10) = \dfrac{215}{216}$.
+	\end{itemize}
+
+	On dira que l'issue $(6 ; 6 ; 6)$ est \textbf{favorable} à l'évènement $\{G = 1000\}$, tandis que les issues $(1 ; 1 ; 1)$, $(2 ; 3 ; 2)$, etc... sont favorable à l'évènement $\{G = -10\}$.
+\end{exemple}
+
+\begin{definition}[Loi de probabilité]
+	Pour une variable aléatoire $X$, sa \textbf{loi de probabilité} est la description des probabilités associées à chaque valeur possible de $X$.
+\end{definition}
+
+\begin{exemple}
+	Dans l'exemple ci-dessus, la loi de probabilité de $G$ est
+	\begin{itemize}
+		\item $P(G = 1000) = \dfrac{1}{216}$
+		\item $P(G = -10) = \dfrac{215}{216}$
+	\end{itemize}
+
+	\uline{Noter que le total des probabilités est toujours $1$.}
 \end{exemple}
 
 \end{document}
