@@ -17,7 +17,7 @@
 - Somme de vecteurs, produit par un réel.
 - Relation de Chasles.
 
-## 4) Statistiques descriptives
+## 4) Statistiques descriptives et évolutions
 
 - Moyenne
 - Grande nouveauté pour eux : l'écart-type
@@ -38,7 +38,7 @@
 - Variations (croissance et décroissance). Tableau de variations.
 - Fonctions usuelles: fonction affine / carrée / cube / racine carrée / inverse.
 
-## 8) Statistiques et évolutions
+## 8) Probabilités
 
 ## 9) Géométrie classique
 
@@ -46,8 +46,6 @@
 
 - Tableaux de signes (+ fonctions usuelles)
 - Parité et symétries. Points d’intersection et position relative de courbes : lecture graphique et résolution d’équations et d’inéquations.
-
-## 11) Probabilités
 
 ## 12) Puissances
 
