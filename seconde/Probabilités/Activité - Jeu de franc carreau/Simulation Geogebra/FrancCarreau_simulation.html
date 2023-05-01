@@ -1,0 +1,122 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>GeoGebra Feuille de travail dynamique</title>
+<meta name="generator" content="GeoGebra">
+<style type="text/css"><!--body { font-family:Helvetica,sans-serif; margin-left:40px }--></style>
+</head>
+<body>
+<table border="0" width="824">
+<tr><td>
+<p>
+</p>
+
+<applet name="ggbApplet" code="geogebra.GeoGebraApplet" codebase="./" archive="http://www.geogebra.org/webstart/geogebra.jar" width="824" height="610">
+	<param name="filename" value="FrancCarreau_simulation.ggb">
+	<param name="framePossible" value="false">
+	<param name="showResetIcon" value="false">
+	<param name="enableRightClick" value="false">
+	<param name="showMenuBar" value="false">
+	<param name="showToolBar" value="false">
+	<param name="showToolBarHelp" value="false">
+	<param name="showAlgebraInput" value="false">
+Sorry, the GeoGebra Applet could not be started. Please make sure that Java 1.4.2 (or later) is installed and active in your browser (<a href="http://java.sun.com/getjava">Click here to install Java now</a>)
+</applet>
+<form id="form">
+<select name="ChoixPiece" onchange="Piece()">
+	<option value="1"> Choisir une pièce</option>
+	<option value="1.25"> 2 €</option>
+	<option value="1.1"> 1 €</option>
+	<option value="1.2"> 0.50 €</option>
+	<option value="1.05"> 0.20 €</option>
+	<option value="0.95"> 0.10 €</option>
+	<option value="1.0"> 0.05 €</option>
+	<option value="0.9"> 0.02 €</option>
+	<option value="0.8"> 0.01 €</option>
+</select>
+
+<input type="button" value="RAZ" onclick="Raz()">      <input type="button" value="1 Lancer" onclick="Lance(1)">         <input type="button" value="10 lancers" onclick="Lance(10)">                     <input type="button" value="100 lancers" onclick="Lance(100)">
+
+</form>
+<p>
+</p>
+
+<script>
+// 
+// déclarations de variables
+//
+var applet = document.ggbApplet;
+NbLancers=0
+NbVerts=0
+
+Piece() // initialise r = 1
+
+function Piece()   // choix d'une pièce
+{
+	Raz()
+	TexteCommande = "r="+form.ChoixPiece.options[form.ChoixPiece.selectedIndex].value
+	applet.evalCommand(TexteCommande)
+}
+
+
+
+
+function Raz()  // remet à zéro
+{
+	NbLancers=0
+	NbVerts=0
+	TexteCommande = "I=(0,0)"
+	applet.evalCommand(TexteCommande)
+	applet.refreshViews()
+	i=0
+	while(i<10)		// déplace les pièces en dehors de l'écran
+	{
+		TexteCommande = "C_" + i + "=(1000,0)"
+		applet.evalCommand(TexteCommande)
+		i++
+	}
+	
+}
+
+
+
+function Lance(Nb)
+{
+r= applet.getValue("r")		// r : rayon de la pièce, a : côté d'un carreau
+a= applet.getValue("a")
+nX = Math.floor(45/a)		// pour adapter la zone de lancer à l'écran
+nY = Math.floor(35/a)		// nX et nY : nombre de carreaux sur lesquels on pourra lancer
+	j=0
+	while (j<Nb)	// lance 1 , 10 ou 100 fois
+	{
+		Lance1()
+		NbLancers++
+		NbVerts = NbVerts + n
+			TauxY = 25*NbVerts/(NbLancers*10)			// fréquence de verts
+			TauxX = NbLancers/5
+			TexteCommande = "I=("+TauxX+","+TauxY+")"	// affiche un point
+			applet.evalCommand(TexteCommande)
+
+		j++
+	}
+}
+		
+function Lance1() // lance 10 pièces
+{
+	i=0 ; n = 0
+	while (i<10)
+		{
+			x = Math.random()*nX*a
+			y = Math.random()*nY*a
+			TexteCommande = "C_" + i + " = (" + x + "," + y + ")"
+			applet.evalCommand(TexteCommande)				// place la pièce
+			e=Math.abs(x-a*Math.round(x/a))
+			f=Math.abs(y-a*Math.round(y/a))
+			if (e>=r&&f>=r) n++								// compte les pièces vertes
+			i++
+		}
+}
+</script>
+<p><span style="font-size:xx-small">jn, Créé avec <a href="http://www.geogebra.org" target="_blank" >GeoGebra</a></span></p></td></tr>
+</table></body>
+</html>

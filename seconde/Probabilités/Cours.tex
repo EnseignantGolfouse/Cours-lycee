@@ -1,0 +1,66 @@
+\documentclass[
+	classe=$2^{de}$
+]{coursclass}
+
+\renewcommand{\arraystretch}{1.5}
+
+\title{Chapitre 8 : Probabilités}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{definition}[Univers, issues, évènements]
+	\begin{itemize}
+		\item Une \textbf{expérience aléatoire} est une expérience dont on ne peut pas prédire le résultat à l'avance.
+		\item Lorsqu'on fait une expérience aléatoire, les résultats que l'on peut obtenir sont appelés les \textbf{issues}.
+		\item L'ensemble complet des issues est appelé \textbf{l'univers}. On le note généralement $Ω$.
+		\item Un ensemble d'issues est un \textbf{évènement}. On le note généralement avec une lettre majuscule, comme $A$, $B$, ...
+		\item Si on a un évènement $A$, on appelle $\overline{A}$ l'\textbf{évènement contraire} de $A$ : c'est l'évènement qui contient les issues qui ne sont pas dans $A$.
+	\end{itemize}
+\end{definition}
+
+\begin{exemple}
+	\begin{itemize}
+		\item Si on lance un dé et qu'on regarde le résultat, il s'agit d'une expérience aléatoire.
+		\item Les issues sont alors $1$, $2$, $3$, $4$, $5$ et $6$. L'univers est $Ω = \{1, 2, 3, 4, 5, 6\}$.
+		\item On peut noter $A$ l'évènement « Le résultat obtenu est pair ». $A$ contient alors les issues $2$, $4$ et $6$.
+		\item $\overline{A}$ contient les issues $1$, $3$ et $5$.
+	\end{itemize}
+\end{exemple}
+
+\begin{definition}[Loi de probabilité]
+	Si on a un univers, une \textbf{loi de probabilité} consiste à :
+	\begin{itemize}
+		\item Associer un probabilité entre $0$ et $1$ à chaque issue ;
+		\item Tel que la somme des probabilités des issues soit $1$.
+	\end{itemize}
+\end{definition}
+
+\begin{exemple}
+	\begin{multicols}{2}
+		La loi de probabilité d'un dé est :
+		\begin{center}
+			\begin{tabular}{|l|c|c|c|c|c|c|}
+				\hline
+				Issue       & $1$           & $2$           & $3$           & $4$           & $5$           & $6$           \\ \hline
+				Probabilité & $\frac{1}{6}$ & $\frac{1}{6}$ & $\frac{1}{6}$ & $\frac{1}{6}$ & $\frac{1}{6}$ & $\frac{1}{6}$ \\ \hline
+			\end{tabular}
+		\end{center}
+
+		\columnbreak
+
+		La loi de probabilité d'un dé truqué peut être :
+		\begin{center}
+			\begin{tabular}{|l|c|c|c|c|c|c|}
+				\hline
+				Issue       & $1$           & $2$           & $3$           & $4$           & $5$           & $6$           \\ \hline
+				Probabilité & $\frac{1}{12}$ & $\frac{1}{3}$ & $\frac{1}{12}$ & $\frac{1}{4}$ & $\frac{1}{6}$ & $\frac{1}{12}$ \\ \hline
+			\end{tabular}
+		\end{center}
+	\end{multicols}
+\end{exemple}
+
+\end{document}

@@ -1,0 +1,153 @@
+\documentclass[
+	classe=$2^{de}$,
+]{exercice}
+
+\usepackage{tikz-repère}
+\usepackage{tcolorbox}
+\usepackage{makecell}
+\usepackage{colortbl}
+\usetikzlibrary{calc}
+
+\title{Activité : jeu de Franc Carreau}
+
+\begin{document}
+
+\maketitle
+
+\section{Expérience}
+
+\begin{tcolorbox}
+	On dispose d'un quadrillage de 8cm de côté, et d'un jeton.
+
+	On dit que le jeton est à « franc-carreau » si il ne touche pas les lignes du quadrillage.
+
+	Il faut néanmoins que le jeton atterrisse dans le quadrillage. Si ce n'est pas le cas, le lancé n'est pas valide, et il faut le refaire.
+\end{tcolorbox}
+
+\begin{enumerate}
+	\item Effectuer $16$ lancés du jeton. Quelle est la fréquence de francs-carreaux obtenus ? \correctionDots{$0,2$}
+	\item On va mettre en commun les lancés de tous les élèves, afin d'obtenir un plus grand échantillon.
+
+	      On va donc remplir ensemble le tableur suivant :
+	      \begin{center}
+		      \definecolor{mytabularcolor}{gray}{0.9}
+		      % \renewcommand{\arraystretch}{1.6}
+		      \hspace*{-1cm}\begin{tabular}{|l|c|*{16}{>{\centering}p{0.4cm}|}}
+			      \hline
+			      \rowcolor{mytabularcolor} \makecell{\          \\[0.5em] }   & $A$                            & $B$ & $C$ & $D$ & $E$ & $F$ & $G$ & $H$ & $I$ & $J$ & $K$  & $L$  & $M$  & $N$  & $O$  & $P$  & $Q$ \tabularnewline \hline
+			      \cellcolor{mytabularcolor}$1$ & \makecell[l]{\ \\[-0.75em] Élève numéro : \\[0.25em] }   & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $8$ & $9$ & $10$ & $11$ & $12$ & $13$ & $14$ & $15$ & $16$ \tabularnewline \hline
+			      \cellcolor{mytabularcolor}$2$ & \makecell[l]{\ \\[-0.75em] Cumul du nombre                                                                                                                    \\ de lancés \\[0.25em] } & $16$ & \phantom{$10$} & \phantom{$10$} & \phantom{$10$} & \phantom{$10$} & \phantom{$10$} & \phantom{$10$} & \phantom{$10$} & \phantom{$10$} & \phantom{$10$} & \phantom{$10$} & \phantom{$10$} & \phantom{$10$} & \phantom{$10$} & \phantom{$10$} & \phantom{$10$} \tabularnewline \hline
+			      \cellcolor{mytabularcolor}$3$ & \makecell[l]{\ \\[-0.75em] Cumul du nombre                                                                                                                    \\ de francs-carreaux \\[0.25em] } &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \tabularnewline \hline
+			      \cellcolor{mytabularcolor}$4$ & \makecell[l]{\ \\[-0.75em] Fréquence cumulée                                                                                                                               \\ du nombre de \\ francs-carreaux \\[0.25em] } &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \tabularnewline \hline
+		      \end{tabular}
+	      \end{center}
+
+	      Dans un tableur, quelle formule doit-on rentrer dans la case $B4$ pour calculer la fréquence ?
+
+	      \correctionDots{$=B3 / B2$}
+	\item Dans le repère ci-dessous, placer les fréquences cumulées obtenues, en fonction du nombre de lancé :
+
+	      \begin{center}
+		      \begin{tikzpicture}[scale=0.7]
+			      \tikzRepere{0.5}{16}{0.5}{8}[][]
+
+			      \foreach \x in {0,20,...,160} {
+					      \draw[thick] (\x / 10,0) -- ++(0,-0.2) node[below] {$\x$};
+				      }
+			      \foreach \y in {0,0.25,0.5,0.75,1} {
+					      \draw[thick] (0,\y*8) -- ++(-0.2,0) node[left] {$\y$};
+				      }
+			      \node[above] at (0,8.7) {fréquence cumulée};
+			      \node[left] at (21.7,0) {nombre de lancés};
+		      \end{tikzpicture}
+	      \end{center}
+	\item Quelle semble être la probabilité d'obtenir un franc-carreau ? \correctionDots{}
+\end{enumerate}
+
+\newpage
+
+\section{Calcul de la probabilité}
+
+\begin{enumerate}
+	\item A votre avis, comment varie la probabilité de franc-carreau si on change la taille du jeton ?
+
+	      \dotfill
+
+	      \dotfill
+
+	      \dotfill
+	\item Et si on change la dimension du quadrillage ?
+
+	      \dotfill
+
+	      \dotfill
+
+	      \dotfill
+\end{enumerate}
+
+On a représenté ci-dessous un carreau de la grille, de $8$cm de côté. Le jeton fait $\correctionDots{2\phantom{1}}$cm de rayon.
+
+\begin{center}
+	\pgfmathsetmacro{\x}{8}
+	\pgfmathsetmacro{\y}{2}
+	\begin{tikzpicture}
+		\coordinate (A) at (0,0);
+		\coordinate (B) at (\x,0);
+		\coordinate (C) at (\x,\x);
+		\coordinate (D) at (0,\x);
+
+		\node[below left] at (A) {$A$};
+		\node[below right] at (B) {$B$};
+		\node[above right] at (C) {$C$};
+		\node[above left] at (D) {$D$};
+
+		\draw (A) -- (B) -- (C) -- (D) -- cycle;
+
+		\coordinate (AInner) at (\y,\y);
+		\coordinate (BInner) at (\x-\y,\y);
+		\coordinate (CInner) at (\x-\y,\x-\y);
+		\coordinate (DInner) at (\y,\x-\y);
+
+		\draw[dashed,fill=white] (AInner) -- (BInner) -- (CInner) -- (DInner) -- cycle;
+
+		\draw[dashed] (CInner) -- ++(\y+1,0)
+		(C) -- ++(1,0);
+		\draw[dashed] (BInner) -- ++(\y+1,0)
+		(B) -- ++(1,0);
+		\draw[dashed] (BInner) -- ++(0,-\y-1)
+		(B) -- ++(0,-1);
+		\draw[dashed] (AInner) -- ++(0,-\y-1)
+		(A) -- ++(0,-1);
+
+		\draw[thick,<->] ($(CInner) + (\y+1,0)$) -- node[right] {\correction{$\y$cm}} ($(C) + (1,0)$);
+		\draw[thick,<->] ($(BInner) + (0,-\y-1)$) -- node[below] {\correction{$\y$cm}} ($(B) + (0,-1)$);
+		\draw[thick,<->] ($(BInner) + (\y+1,0)$) -- node[right] {\correction{$\y$cm}} ($(B) + (1,0)$);
+		\draw[thick,<->] ($(AInner) + (0,-\y-1)$) -- node[below] {\correction{$\y$cm}} ($(A) + (0,-1)$);
+	\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}
+	\item[3.] Dans quelle zone doit être le centre du jeton pour qu'il y ai un franc-carreau ? Pourquoi ?
+
+		\dotfill
+
+		\dotfill
+
+		\dotfill
+	\item[4.] En déduire la probabilité d'avoir un franc-carreau. Retrouve-t'on le résultat de la partie 1 ?
+
+		\correctionOr{$4^2 / 8^2 = 0,25$}{\dotfill}
+
+		\dotfill
+
+		\dotfill
+	\item[5.] Quelle serait cette probabilité si la grille faisait $6$cm de côté ?
+
+		\correctionOr{$4^2 / 6^2 = 0,4444$}{\dotfill}
+
+		\dotfill
+
+		\dotfill
+\end{enumerate}
+
+\end{document}
