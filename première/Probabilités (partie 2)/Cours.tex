@@ -4,6 +4,8 @@
 
 \usetikzlibrary{calc,positioning}
 
+\renewcommand{\arraystretch}{1.4}
+
 \title{Chapitre 7 : Lois de probabilités}
 \date{}
 
@@ -129,6 +131,45 @@
 	\end{itemize}
 
 	\uline{Noter que le total des probabilités est toujours $1$.}
+\end{exemple}
+
+\begin{definition}[Espérance]
+	L'\textbf{espérance} d'une variable aléatoire $X$ est la valeur de la moyenne que l'on peut \textit{espérer} obtenir si on répète l'expérience un grand nombre de fois.
+
+	Si la loi de probabilité de $X$ est donnée par
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			$a_i$        & $a_1$ & $a_2$ & $⋯$ & $a_n$ \\ \hline
+			$P(X = a_i)$ & $p_1$ & $p_2$ & $⋯$ & $p_n$ \\ \hline
+		\end{tabular}
+	\end{center}
+
+	Alors son espérance est
+	$$ E(X) = p_1a_1 + p_2a_2 + ⋯ + p_na_n $$
+\end{definition}
+
+\begin{exemple}
+	Si on jette un dé équilibré à six faces, et que l'on défini la variable aléatoire $X$ telle que :
+	\begin{itemize}
+		\item Si on obtient $1$, $2$, $3$ ou $4$, $X = 0$.
+		\item Si on obtient $5$, $X = 1$.
+		\item Si on obtient $6$, $X = 2$.
+	\end{itemize}
+
+	On a alors le tableau suivant :
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		$a$        & $0$            & $1$            & $2$            \\ \hline
+		$P(X = a)$ & $\frac{4}{6}$ & $\frac{1}{6}$ & $\frac{1}{6}$ \\ \hline
+	\end{tabular}
+
+	Et donc
+	\begin{align*}
+		E(X) & = \dfrac{4}{6}×0 + \dfrac{1}{6}×1 + \dfrac{1}{6}×2 \\
+		     & = 0 + \dfrac{1}{6} + \dfrac{2}{6}                  \\
+		     & = \dfrac{1}{2}
+	\end{align*}
 \end{exemple}
 
 \end{document}

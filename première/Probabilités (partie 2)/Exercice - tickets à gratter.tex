@@ -1,0 +1,56 @@
+\documentclass[
+	classe=$1^{ere}STI2D$,
+	landscape,
+	twocolumn,
+]{exercice}
+
+\usepackage{tcolorbox}
+\usepackage{makecell}
+
+\setlength{\columnsep}{1cm}
+\renewcommand{\arraystretch}{1.4}
+
+\title{Exercice : tickets à gratter}
+
+\begin{document}
+
+\newcommand{\Exercice}{
+	\maketitle
+
+	\begin{tcolorbox}
+		Sur $3$ $000$ $000$ de tickets de loterie, on trouve :
+		\begin{multicols}{2}
+			\begin{itemize}
+				\item $324$ $000$ lots de $1$€
+				\item $294$ $000$ lots de $2$€
+				\item $60$ $000$ lots de $4$€
+				\item $78$ $000$ lots de $10$€
+				\item $210$ lots de $100$€
+				\item $60$ lots de $400$€
+				\item $3$ lots de $4000$€
+			\end{itemize}
+		\end{multicols}
+	\end{tcolorbox}
+
+	On note $X$ la variable aléatoire correspondant au gain du joueur.
+	\begin{enumerate}
+		\item Exprimer l'évènement $\{X = 100\}$ en français.
+		\item Remplir le tableau suivant :
+		      \begin{center}
+			      \hspace*{-1cm}\begin{tabular}{|*{8}{c|}}
+				      \hline
+				      \makecell{gain $a$                                                                                                                                                      \\ (en €)} & $1$                  & $2$                  & $4$                 & $10$                 & $100$               & $400$               & $4000$              \\ \hline
+				      $P(X = a)$ & \correction{$0,108$} & \correction{$0,098$} & \correction{$0,02$} & \correction{$0,026$} & \correction{$7E-5$} & \correction{$2E-5$} & \correction{$1E-6$} \\ \hline
+			      \end{tabular}
+		      \end{center}
+		\item Donner alors l'espérance de $X$ :
+
+		      $$ E(X) = \correction{0,663€} $$
+	\end{enumerate}
+}
+
+\Exercice
+
+\newpage\Exercice
+
+\end{document}
