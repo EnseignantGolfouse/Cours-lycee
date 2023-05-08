@@ -1,0 +1,84 @@
+\documentclass[
+	classe=$1^{ere}STI2D$
+]{informatique}
+
+\usepackage{tcolorbox}
+
+\title{Activité : paradoxe “Just one more”}
+
+\begin{document}
+
+\maketitle
+
+\begin{tcolorbox}
+	On propose la situation suivante :
+
+	On démarre avec $100$€, et on tire une pièce parfaitement équilibrée à pile ou face.
+	\begin{itemize}
+		\item Si on fait face, on multiplie notre argent par $1,8$.
+		\item Sinon, on le divise par $2$.
+	\end{itemize}
+\end{tcolorbox}
+
+\begin{enumerate}
+	\item Si on alterne parfaitement face et pile, quelle est notre argent au bout de $2$ lancés ? Et de $4$ ?
+
+	      \correctionDots{au bout de $2$ lancés, on a $90$€. Au bout de $4$, on a $81$€.}
+
+	      Est-ce qu'il semble profitable de jouer à ce jeu ? \correctionDots{a priori non}
+	\item Recopier et compléter la fonction suivante dans l'éditeur de Spyder. Cette fonction calcule le gain d'un individu au bout de $n$ lancés :
+
+	      \begin{lstlisting}
+def gain_n_lances(n):
+	argent = 100
+	for i in range(........):
+		piece = randint(0,1)
+		if piece == 0:
+			argent = argent * 1.8
+		else:
+			argent = ........
+	return argent
+\end{lstlisting}
+	\item À l'aide d'une boucle, calculer la moyenne obtenue par $10\ 000$ joueurs sur $20$ lancés.
+
+	      On pourra utiliser le code ci-dessous en l'écrivant à la suite du code précédent, et en le complétant :
+	      \begin{lstlisting}
+def calcule_moyenne(nombre_joueurs, nombre_lances):
+	total = 0
+	for i in range(........):
+		total = total + ........
+	moyenne = total / ........
+	return moyenne
+
+calcule_moyenne(10000, 20)
+\end{lstlisting}
+
+	      Quelle moyenne trouve-t-on ? \correctionDots{$~5000$€ de moyenne}
+	\item Dessiner un arbre de probabilités qui représente le lancé de deux pièces, et noter l'argent gagné pour chaque issue :
+
+	      \begin{center}
+		      \begin{tikzpicture}[scale=0.7]
+			      \coordinate (Start) at (0,0);
+			      \node (P) at (3,2) {\correction{$P$}};
+			      \node (F) at (3,-2) {\correction{$F$}};
+			      \node (PP) at (6,3.5) {\correction{$P$}};
+			      \node (PF) at (6,1) {\correction{$F$}};
+			      \node (FP) at (6,-1) {\correction{$P$}};
+			      \node (FF) at (6,-3.5) {\correction{$F$}};
+
+			      \ifdefined\makeCorrection
+				      \draw (Start) -- (P)
+				      (Start) -- (F)
+				      (P) -- (PP) node[right] {$→ 25$€}
+				      (P) -- (PF) node[right] {$→ 90$€}
+				      (F) -- (FP) node[right] {$→ 90$€}
+				      (F) -- (FF) node[right] {$→ 324$€};
+			      \fi
+		      \end{tikzpicture}
+	      \end{center}
+	\item Quel est l'argent moyen gagné sur deux lancés ? \correctionDots{$132,25$€}
+	\item Bonus: À chaque lancé, l'argent moyen est multiplié par un nombre : lequel ? \correctionDots{On × par $1,5$}
+	\item Dans Python, calculer la \textit{médiane} des gains obtenus par $10\ 000$ joueurs sur $20$ lancés.
+\end{enumerate}
+
+\end{document}
