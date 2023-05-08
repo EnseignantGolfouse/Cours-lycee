@@ -1,0 +1,67 @@
+\documentclass[
+	classe=$2^{de}$
+]{informatique}
+
+\usepackage{tcolorbox}
+
+
+\begin{document}
+
+\title{Activité : le paradoxe de Saint-Petersbourg}
+\maketitle
+
+On considère le jeu de « Pile ou face » suivant :
+\begin{tcolorbox}
+	Le joueur gagne le double de sa mise en cas de victoire (« Pile »), et perd sa mise en cas de défaite (« Face »).
+
+	Le joueur peut rejouer tant que sa réserve d'argent le lui permet.
+\end{tcolorbox}
+
+Pierre, qui dispose d'une réserve de $1000$€, décide de jouer de la manière suivante :
+\begin{itemize}
+	\item Il mise $1$€ au départ du jeu ;
+	\item Tant qu'il perd, il rejoue une partie en doublant sa mise ;
+	\item Il arrête si il gagne, ou si il n'a plus assez d'argent.
+\end{itemize}
+
+\begin{enumerate}
+	\item Que se passe-t'il si Pierre joue et fait Face-Face-Face-Pile ?
+	\item Afin de simuler une partie, on propose la fonction (incomplète) ci-dessous :
+	      % TODO: demander à traduire cette fonction en français ? OU, écrire du pseudo-code... Je préfère qu'ils apprennent à lire un programme.
+	      \begin{lstlisting}
+def jeu():
+	from random import randint
+	victoire = False
+	mise = 1
+	reserve = 1000
+	while REMPLACE_MOI_DANS_LA_QUESTION_3:
+		reserve = reserve - mise
+		# La variable tirage représente un lancé de la pièce : elle vaut .... si
+		# le résultat est Pile, et .... sinon.
+		tirage = randint(0,1)
+		# Si le résultat du lancé est .........
+		if tirage == 0:
+			# Pierre gagne deux fois sa mise
+			reserve = reserve + 2 * mise
+			victoire = True
+		else:
+			# ................
+			mise = mise * 2
+	return reserve - 1000
+\end{lstlisting}
+
+	\tipbox{Rappel : les lignes commençant par \texttt{\#} sont des \uline{commentaires} : elle seront ignorées par le programme. Elle servent à décrire le comportement du programme pour le lecteur.}
+
+	      Écrire dans les pointillés des commentaires une description en français de ce que le programme modélise.
+
+	\item Retrouver, dans l'énoncé, la condition à vérifier dans la boucle \texttt{while} de la fonction.
+
+	      Recopier et compléter la fonction dans spyder.
+	\item Que représente la valeur renvoyée par la fonction ?
+	
+	\correctionDots{Il s'agit du gain de Pierre.}
+	\item Écrire un programme qui simule l'exécution de $n$ parties, $n$ étant un nombre choisi par l’utilisateur, et qui renvoie la fréquence de parties avec un gain positif d’argent.
+	\item Effectuer plusieurs simulations afin de conjecturer une valeur approchée de la probabilité de gagner de l'argent.
+\end{enumerate}
+
+\end{document}
