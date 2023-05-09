@@ -160,7 +160,7 @@
 	On a alors le tableau suivant :
 	\begin{tabular}{|c|c|c|c|}
 		\hline
-		$a$        & $0$            & $1$            & $2$            \\ \hline
+		$a$        & $0$           & $1$           & $2$           \\ \hline
 		$P(X = a)$ & $\frac{4}{6}$ & $\frac{1}{6}$ & $\frac{1}{6}$ \\ \hline
 	\end{tabular}
 
@@ -170,6 +170,31 @@
 		     & = 0 + \dfrac{1}{6} + \dfrac{2}{6}                  \\
 		     & = \dfrac{1}{2}
 	\end{align*}
+\end{exemple}
+
+\begin{definition}[Épreuve de Bernoulli]
+	Une \textbf{épreuve de Bernoulli} est une expérience aléatoire qui n'a que deux issue : le succès, ou l'échec.
+\end{definition}
+
+\begin{definition}[Loi de Bernoulli]
+	Une \textbf{loi de Bernoulli} la variable aléatoire qui vaut $1$ en cas de succès, et $0$ en cas d'échec.
+
+	La probabilité $p$ du succès est appelée le \textbf{paramètre} de cette loi. La loi de Bernoulli est alors donnée par le tableau suivant :
+	\begin{center}
+		\begin{tabular}{|c|c|c|}
+			\hline
+			$a_i$        & $0$     & $1$ \\ \hline
+			$P(X = a_i)$ & $1 - p$ & $p$ \\ \hline
+		\end{tabular}
+	\end{center}
+\end{definition}
+
+\begin{exemple}
+	Si on regarde la probabilité d'un sportif à gagner un de ses matchs :
+	\begin{itemize}
+		\item Il s'agit d'une épreuve de Bernoulli, car le sportif ne peut que perdre ou gagner.
+		\item Le nombre de victoires qu'il obtient (zéro ou une) est alors une loi de Bernoulli.
+	\end{itemize}
 \end{exemple}
 
 \end{document}
