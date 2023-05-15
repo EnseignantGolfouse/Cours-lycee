@@ -2,6 +2,8 @@
 	classe=$2^{de}$
 ]{coursclass}
 
+\usepackage{diagbox}
+
 \usetikzlibrary{calc}
 
 \renewcommand{\arraystretch}{1.5}
@@ -58,7 +60,7 @@
 		\begin{center}
 			\begin{tabular}{|l|c|c|c|c|c|c|}
 				\hline
-				Issue       & $1$           & $2$           & $3$           & $4$           & $5$           & $6$           \\ \hline
+				Issue       & $1$            & $2$           & $3$            & $4$           & $5$           & $6$            \\ \hline
 				Probabilité & $\frac{1}{12}$ & $\frac{1}{3}$ & $\frac{1}{12}$ & $\frac{1}{4}$ & $\frac{1}{6}$ & $\frac{1}{12}$ \\ \hline
 			\end{tabular}
 		\end{center}
@@ -126,6 +128,32 @@
 	Si on cherche la probabilité de l'évènement «On a fait face OU on a fait un $6$», les issues \ (Pile ; $6$), (Face ; $6$) ou (Face ; Autre) conviennent.
 
 	La probabilité de cet évènement est donc $\dfrac{1}{12} + \dfrac{1}{12} + \dfrac{5}{12} = \dfrac{7}{12}$.
+\end{exemple}
+
+\begin{definition}[Tableau à double entrée]
+	Un \textbf{Tableau à double entrée} permet de facilement représenter les résultats d'une expérience aléatoire, surtout lorsqu'on étudie deux caractères.
+\end{definition}
+
+\begin{exemple}
+	On récapitule les résultats d'une étude sur l'efficacité de trois traitements :
+	\begin{center}
+		\begin{tabular}{|l|*{2}{>{\centering}p{2cm}|}}
+			\hline
+			\diagbox{$X$ = Traitement}{$Y$ = Succès} & Réussi & Échoue \tabularnewline
+			\hline
+			Traitement A                             & $81$  & $19$     \tabularnewline
+			\hline
+			Traitement B                             & $55$    & $45$    \tabularnewline
+			\hline
+			Traitement C                             & $56$    & $44$    \tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
+	Les deux caractères sont :
+	\begin{itemize}
+		\item Le traitement choisi (A, B ou C)
+		\item Le succès du traitement (réussi ou échoué)
+	\end{itemize}
 \end{exemple}
 
 \end{document}
