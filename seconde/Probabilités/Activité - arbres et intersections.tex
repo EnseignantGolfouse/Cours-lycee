@@ -1,0 +1,68 @@
+\documentclass[
+	classe=$2^{de}$
+]{exercice}
+
+\usepackage{tcolorbox}
+
+\renewcommand{\arraystretch}{1.3}
+
+\title{Activité : les jeunes et le portable}
+
+\begin{document}
+
+\maketitle
+
+\begin{tcolorbox}
+	Un centre de loisir accueille $250$ jeunes de $7$ à $18$ ans. On a effectué une étude statistiques sur la possession d'un téléphone portable en $2018$ :
+	\begin{itemize}
+		\item Sur $40$ lycéens, $5$\% d'entre eux ne possède pas de téléphone portable.
+		\item $76$ collégiens possèdent un téléphone portable.
+		\item $87$ écoliers ne possèdent pas de téléphone portable.
+		\item Au total, $147$ des jeunes possèdent un téléphone portable.
+	\end{itemize}
+\end{tcolorbox}
+
+\begin{enumerate}
+	\item Remplir le tableau suivant :
+	      \begin{center}
+		      \begin{tabular}{|l|c|c|c|c|}
+			      \hline
+			                                           & Écoliers           & Collégiens        & Lycéens           & TOTAL              \\ \hline
+			      Possède un téléphone portable        & \correction{$33$}  & \correction{$76$} & \correction{$38$} & \correction{$147$} \\ \hline
+			      Ne possède pas de téléphone portable & \correction{$87$}  & \correction{$14$} & \correction{$2$}  & \correction{$103$} \\ \hline
+			      TOTAL                                & \correction{$120$} & \correction{$90$} & \correction{$40$} & $250$              \\ \hline
+		      \end{tabular}
+	      \end{center}
+	\item On s'intéresse aux évènements :
+	      \begin{itemize}
+		      \item $T$ «Le jeune choisi possède un téléphone portable»
+		      \item $E$ «Le jeune choisi est un écolier»
+		      \item $C$ «Le jeune choisi est un collégien»
+		      \item $L$ «Le jeune choisi est un lycéen»
+	      \end{itemize}
+	      \begin{enumerate}
+		      \item Décrire par une phrase l'évènement $\overline{T}$ (l'évènement contraire de $T$). \medskip
+
+		            \correctionOr{}{................................................................................................................................................}
+		      \item Calculer $P(T)$ et $P(\overline{T})$. \medskip
+
+		            \correctionOr{}{................................................................................................................................................}
+	      \end{enumerate}
+	\item On choisit un jeune au hasard parmi cette population. Décrire la situation avec un arbre de probabilités.
+	\item \begin{enumerate}
+		      \item Décrire par une phrase l'évènement $L ∩ T$. \medskip
+
+		            \correctionOr{}{................................................................................................................................................}
+		      \item Calculer la probabilité de cet évènement en utilisant le tableau. \correctionDots{$\dfrac{38}{250} = 15,2\%$}
+		      \item Calculer la probabilité de cet évènement en utilisant l'arbre, et vérifier qu'on obtient bien le même résultat. \correctionDots{$0,16 × 0,95 = 15,2\%$}
+	      \end{enumerate}
+	\item En utilisant l'arbre ou le tableau, calculer la probabilité de $\overline{E} ∩ T$. \correctionDots{blablabla $45,6\%$}
+	\item Pour calculer la probabilité de $\overline{E} ∪ T$, on peut utiliser la formule de l'union :
+
+	      \begin{align*}
+		      P(\overline{E} ∪ T) & = \correctionDots{P(\overline{E})} + \correctionDots{P(T)} - \correctionDots{P(\overline{E} ∩ T)} \\
+		                          & = \correctionDots{65,2\%}
+	      \end{align*}
+\end{enumerate}
+
+\end{document}

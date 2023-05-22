@@ -4,6 +4,7 @@
 
 \usepackage{tcolorbox}
 \usepackage{tikz-repère}
+\usepackage{tkz-tab}
 
 % First one is correct
 \newcommand{\correctionStrike}[2]{%
@@ -18,20 +19,13 @@
 
 \date{5 mai 2023}
 
+\newcommand{\makeCorrection}{}
 \begin{document}
 
 \title{Évaluation : fonctions (sujet A)}
 \maketitle
 
-\begin{tcolorbox}
-	Les exercices $1$, $3$ et la question $3$ de l'exercice $4$ sont à faire sur le sujet, le reste est à faire sur une feuille à part.
-
-	La calculatrice est autorisée.
-
-	Le barème est donné à titre indicatif.
-\end{tcolorbox}
-
-\begin{exercice}[2]
+\begin{exercice}
 	On dispose d'une fonction $f$, telle que
 	\begin{align*}
 		f(-1) & = 2 & f(0) & = 1 & f(1) & = 6 & f(2) & = 2 & f(3) & = -1 & f(4) & = 6
@@ -47,17 +41,21 @@
 	\end{multicols}
 \end{exercice}
 
-\begin{exercice}[3]
-	Calculer :
+\begin{exercice}
 	\begin{enumerate}
-		\item $f(4)$ pour $f(x) = x - 3$
-		\item $f(-1)$ pour $f(x) = \dfrac{5x + 1}{x - 3}$
-		\item $f(7)$ pour $f(x) = x^3 - x^2$
+		\item Si $f(x) = x - 3$,
+
+		      $f(4) = 4 - 3 = \circled{1}$
+		\item Si $f(x) = \dfrac{5x + 1}{x - 3}$,
+
+		      $f(-1) = \dfrac{5×(-1) + 1}{-1 - 3} = \dfrac{-4}{-4} = \circled{1}$
+		\item Si $f(x) = x^3 - x^2$,
+
+		      $f(7) = 7^3 - 7^2 = 343 - 49 = \circled{294}$.
 	\end{enumerate}
 \end{exercice}
 
-\begin{exercice}[4]
-	Donner l'expression de chacune de ces fonctions affines, et calculer alors l'image de $100$ :
+\begin{exercice}
 	\pgfmathsetmacro\scale{0.7}
 	\begin{multicols}{2}
 		\begin{center}
@@ -65,7 +63,7 @@
 				\tikzRepere{-3.5}{3.5}{-2.5}{2.5}
 				\draw[domain=-4:4,thick,blue] plot({\x},{0.5*\x+1});
 			\end{tikzpicture}
-			$$ f(x) = \correctionDots{} \hspace{2em} f(100) = \correctionDots{} $$
+			$$ f(x) = \correctionDots{\dfrac{1}{2}x + 1} \hspace{2em} f(100) = \correctionDots{51} $$
 		\end{center}
 
 		\begin{center}
@@ -73,7 +71,7 @@
 				\tikzRepere{-3.5}{3.5}{-2.5}{2.5}
 				\draw[domain=-1.5:1.5,thick,blue] plot({\x},{2*\x});
 			\end{tikzpicture}
-			$$ g(x) = \correctionDots{} \hspace{2em} g(100) = \correctionDots{} $$
+			$$ g(x) = \correctionDots{2x} \hspace{2em} g(100) = \correctionDots{200} $$
 		\end{center}
 
 		\columnbreak
@@ -83,7 +81,7 @@
 				\tikzRepere{-3.5}{3.5}{-2.5}{2.5}
 				\draw[domain=-2:1,thick,blue] plot({\x},{-2*\x-1});
 			\end{tikzpicture}
-			$$ h(x) = \correctionDots{} \hspace{2em} h(100) = \correctionDots{} $$
+			$$ h(x) = \correctionDots{-2x - 1} \hspace{2em} h(100) = \correctionDots{-201} $$
 		\end{center}
 
 		\begin{center}
@@ -91,7 +89,7 @@
 				\tikzRepere{-3.5}{3.5}{-2.5}{2.5}
 				\draw[domain=-1:4,thick,blue] plot({\x},{\x-2});
 			\end{tikzpicture}
-			$$ i(x) = \correctionDots{} \hspace{2em} i(100) = \correctionDots{} $$
+			$$ i(x) = \correctionDots{x - 2} \hspace{2em} i(100) = \correctionDots{98} $$
 		\end{center}
 
 	\end{multicols}
@@ -99,38 +97,31 @@
 
 \newpage
 
-\begin{exercice}[7]
-	\begin{center}
-		\begin{tikzpicture}[scale=0.7]
-			\tikzRepere{-4.5}{4.5}{-2.5}{1.5}
-			\draw[domain=-4:0,very thick,red] plot({\x},{1/3*(0.25*\x*\x*\x + 0.125*\x*\x - 3.25*\x - 2)});
-			\draw[domain=0:4,very thick,red] plot({\x},{1/3*(0.25*\x*\x*\x + 0.125*\x*\x - 3.25*\x - 2)}) node[right] {$f$};
-		\end{tikzpicture}
-	\end{center}
-
+\begin{exercice}
 	\begin{enumerate}
-		\item Quel est le domaine de définition de $f$ ?
-		\item Lire :
+		\item Le domaine de définition de $f$ est $\intervalle{[}{-4}{4}{]}$.
+		\item
 		      \begin{enumerate}
-			      \item L'image de $-4$ par $f$
-			      \item Les antécédents de $1$ par $f$
-			      \item la valeur de $f(2)$
+			      \item L'image de $-4$ par $f$ est $-1$.
+			      \item Les antécédents de $1$ par $f$ sont $-2$ et $4$.
+			      \item la valeur de $f(2)$ est $-2$.
 		      \end{enumerate}
-		\item Établir le tableau de variations de $f$.
+		\item \
+		      \begin{center}
+			      \begin{tikzpicture}[scale=0.7]
+				      \tkzTabInit{$x$ / 1 , $f(x)$ / 2}{$-4$, $-2$, $2$, $4$}
+				      \tkzTabVar{-/ $-1$, +/ $1$, -/ $-2$, +/ $1$}
+			      \end{tikzpicture}
+		      \end{center}
 	\end{enumerate}
 \end{exercice}
 
-\begin{exercice}[7]
-	On lance une balle dans les airs, et on souhaite étudier sa trajectoire. On lance la balle en l'abscisse $0$ vers le haut, à $50$cm du sol.
-
-	On admet que la trajectoire de la balle est une parabole : sa hauteur en fonction de son abscisse est donnée par la fonction $f(x) = -\dfrac{1}{40}x^2 + 2x + a$, où $a$ est un paramètre à déterminer.
-
-	(Remarque : toutes les unités sont des centimètres dans cet exercice)
-
+\begin{exercice}
 	\begin{enumerate}
-		\item D'après l'énoncé, quelle est la hauteur de la balle en l'abscisse $0$ ? Que peut-on alors dire de $f(0)$ ?
-		\item En utilisant l'expression de $f$, déterminer alors la valeur du paramètre $a$.
-		\item Représenter la fonction dans le repère suivant :
+		\item D'après l'énoncé, la hauteur de la balle en l'abscisse $0$ est $50$cm. On a donc $f(0) = 50$.
+		\item D'après la question $1$, on a l'égalité $f(0) = 50$, soit $-\dfrac{1}{40}×0^2 + 2×0 + a = a = 50$.
+		\item \
+
 		      \begin{center}
 			      \begin{tikzpicture}[scale=0.9]
 				      \pgfmathsetmacro\scale{10}
@@ -141,11 +132,18 @@
 				      \fi
 			      \end{tikzpicture}
 		      \end{center}
-		\item Établir le tableau de variations de $f$.
-		\item Lire alors sur le repère :
+		\item \
+
+		      \begin{center}
+			      \begin{tikzpicture}[scale=0.7]
+				      \tkzTabInit{$x$ / 1 , $f(x)$ / 2}{$0$, $40$, $100$}
+				      \tkzTabVar{-/ $50$, +/ $90$, -/ $0$}
+			      \end{tikzpicture}
+		      \end{center}
+		\item
 		      \begin{enumerate}
-			      \item Quelle est la hauteur maximale atteinte par la balle ?
-			      \item Quelle est l'abscisse à laquelle la balle est retombée sur le sol ?
+			      \item La hauteur maximale atteinte par la balle est $90$cm.
+			      \item La balle est retombée sur le sol à l'abscisse $100$cm.
 		      \end{enumerate}
 	\end{enumerate}
 \end{exercice}
@@ -159,15 +157,7 @@
 \title{Évaluation : fonctions (sujet B)}
 \maketitle
 
-\begin{tcolorbox}
-	Les exercices $1$, $3$ et la question $3$ de l'exercice $4$ sont à faire sur le sujet, le reste est à faire sur une feuille à part.
-
-	La calculatrice est autorisée.
-
-	Le barème est donné à titre indicatif.
-\end{tcolorbox}
-
-\begin{exercice}[2]
+\begin{exercice}
 	On dispose d'une fonction $f$, telle que
 	\begin{align*}
 		f(-2) & = 2 & f(-1) & = 1 & f(0) & = 6 & f(1) & = 2 & f(2) & = -1 & f(3) & = 6
@@ -183,17 +173,21 @@
 	\end{multicols}
 \end{exercice}
 
-\begin{exercice}[3]
-	Calculer :
+\begin{exercice}
 	\begin{enumerate}
-		\item $f(3)$ pour $f(x) = x - 2$
-		\item $f(-1)$ pour $f(x) = \dfrac{3x + 1}{x + 2}$
-		\item $f(5)$ pour $f(x) = x^3 - x^2$
+		\item Si $f(x) = x - 2$,
+
+		      $f(3) = 3 - 2 = \circled{1}$.
+		\item Si $f(x) = \dfrac{3x + 1}{x + 2}$,
+
+		      $f(-1) = \dfrac{3×(-1) + 1}{-1 + 2} = \dfrac{-2}{1} = \circled{-2}$
+		\item Si $f(x) = x^3 - x^2$,
+
+		      $f(5) = 5^3 - 5^2 = \circled{100}$.
 	\end{enumerate}
 \end{exercice}
 
-\begin{exercice}[4]
-	Donner l'expression de chacune de ces fonctions affines :
+\begin{exercice}
 	\pgfmathsetmacro\scale{0.7}
 	\begin{multicols}{2}
 		\begin{center}
@@ -201,7 +195,7 @@
 				\tikzRepere{-3.5}{3.5}{-2.5}{2.5}
 				\draw[domain=-1.5:1.5,thick,blue] plot({\x},{2*\x});
 			\end{tikzpicture}
-			$$ f(x) = \correctionDots{} \hspace{2em} f(100) = \correctionDots{} $$
+			$$ f(x) = \correctionDots{2x} \hspace{2em} f(100) = \correctionDots{200} $$
 		\end{center}
 
 		\begin{center}
@@ -209,7 +203,7 @@
 				\tikzRepere{-3.5}{3.5}{-2.5}{2.5}
 				\draw[domain=-4:4,thick,blue] plot({\x},{0.5*\x+1});
 			\end{tikzpicture}
-			$$ g(x) = \correctionDots{} \hspace{2em} g(100) = \correctionDots{} $$
+			$$ g(x) = \correctionDots{\dfrac{1}{2}x + 1} \hspace{2em} g(100) = \correctionDots{51} $$
 		\end{center}
 
 		\columnbreak
@@ -219,7 +213,7 @@
 				\tikzRepere{-3.5}{3.5}{-2.5}{2.5}
 				\draw[domain=-1:4,thick,blue] plot({\x},{\x-2});
 			\end{tikzpicture}
-			$$ h(x) = \correctionDots{} \hspace{2em} h(100) = \correctionDots{} $$
+			$$ h(x) = \correctionDots{x - 2} \hspace{2em} h(100) = \correctionDots{98} $$
 		\end{center}
 
 		\begin{center}
@@ -227,14 +221,14 @@
 				\tikzRepere{-3.5}{3.5}{-2.5}{2.5}
 				\draw[domain=-2:1,thick,blue] plot({\x},{-2*\x-1});
 			\end{tikzpicture}
-			$$ i(x) = \correctionDots{} \hspace{2em} i(100) = \correctionDots{} $$
+			$$ i(x) = \correctionDots{-2x - 1} \hspace{2em} i(100) = \correctionDots{-201} $$
 		\end{center}
 	\end{multicols}
 \end{exercice}
 
 \newpage
 
-\begin{exercice}[4]
+\begin{exercice}
 	\begin{center}
 		\begin{tikzpicture}[scale=0.7]
 			\tikzRepere{-4.5}{4.5}{-2.5}{1.5}
@@ -244,28 +238,30 @@
 	\end{center}
 
 	\begin{enumerate}
-		\item Quel est le domaine de définition de $f$ ?
-		\item Lire :
+		\item Le domaine de définition de $f$ est $\intervalle{[}{-4}{4}{]}$.
+		\item
 		      \begin{enumerate}
-			      \item L'image de $-4$ par $f$
-			      \item Les antécédents de $1$ par $f$
-			      \item la valeur de $f(1)$
+			      \item L'image de $-4$ par $f$ est $-2$.
+			      \item Les antécédents de $1$ par $f$ sont $-2$ et $4$.
+			      \item la valeur de $f(1)$ est $-1$.
 		      \end{enumerate}
-		\item Établir le tableau de variations de $f$.
+		\item \
+
+		      \begin{center}
+			      \begin{tikzpicture}[scale=0.7]
+				      \tkzTabInit{$x$ / 1 , $f(x)$ / 2}{$-4$, $-2$, $2$, $4$}
+				      \tkzTabVar{-/ $-2$, +/ $1$, -/ ${-1,5}$, +/ $1$}
+			      \end{tikzpicture}
+		      \end{center}
 	\end{enumerate}
 \end{exercice}
 
-\begin{exercice}[7]
-	On lance une balle dans les airs, et on souhaite étudier sa trajectoire. On lance la balle en l'abscisse $0$ vers le haut, à $48$cm du sol.
-
-	On admet que la trajectoire de la balle est une parabole : sa hauteur en fonction de son abscisse est donnée par la fonction $f(x) = -\dfrac{1}{50}x^2 + 2x + a$, où $a$ est un paramètre à déterminer.
-
-	(Remarque : toutes les unités sont des centimètres dans cet exercice)
-
+\begin{exercice}
 	\begin{enumerate}
-		\item D'après l'énoncé, quelle est la hauteur de la balle en l'abscisse $0$ ? Que peut-on alors dire de $f(0)$ ?
-		\item En utilisant l'expression de $f$, déterminer alors la valeur du paramètre $a$.
-		\item Représenter la fonction dans le repère suivant :
+		\item La hauteur de la balle en l'abscisse $0$ est $48$cm. On a alors $f(0) = 48$.
+		\item D'après la question $1$, on a l'égalité $f(0) = 48$, soit $-\dfrac{1}{50}×0^2 + 2×0 + a = a = 48$.
+		\item \
+
 		      \begin{center}
 			      \begin{tikzpicture}[scale=0.85]
 				      \pgfmathsetmacro\scale{10}
@@ -276,11 +272,18 @@
 				      \fi
 			      \end{tikzpicture}
 		      \end{center}
-		\item Établir le tableau de variations de $f$.
-		\item Lire alors sur le repère :
+		\item \
+
+		      \begin{center}
+			      \begin{tikzpicture}[scale=0.7]
+				      \tkzTabInit{$x$ / 1 , $f(x)$ / 2}{$0$, $50$, $120$}
+				      \tkzTabVar{-/ $48$, +/ $98$, -/ $0$}
+			      \end{tikzpicture}
+		      \end{center}
+		\item
 		      \begin{enumerate}
-			      \item Quelle est la hauteur maximale atteinte par la balle ?
-			      \item Quelle est l'abscisse à laquelle la balle est retombée sur le sol ?
+			      \item La hauteur maximale atteinte par la balle est $98$cm.
+			      \item La balle est retombée sur le sol à l'abscisse $120$cm.
 		      \end{enumerate}
 	\end{enumerate}
 \end{exercice}
