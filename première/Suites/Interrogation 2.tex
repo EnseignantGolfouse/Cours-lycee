@@ -1,0 +1,107 @@
+\documentclass[
+	classe=$1^{ere}STI2D$,
+	twocolumn,
+	landscape,
+]{évaluation}
+
+\setlength{\columnsep}{1cm}
+\renewcommand{\correctionDots}[1]{
+	\correctionOr{{\color{red}#1}}{........................................}
+}
+\newcommand{\correctionDotsSmall}[1]{
+	\correctionOr{{\color{red}#1}}{........}
+}
+
+\date{24 mai 2023}
+
+\begin{document}
+
+\title{Interrogation : suites (sujet A)}
+\maketitle
+
+\begin{exercice}
+	\begin{enumerate}
+		\item Soit $u$ la suite définie par $uₙ = 3n - 2$ pour $n ≥ 0$.
+		      \begin{enumerate}
+			      \item $u$ est-elle définie explicitement ou par récurrence ? \bigskip
+
+			            \correctionDots{explicitement}
+			      \item Donner la valeur de $u_5$ : \correctionDotsSmall{$13$}
+		      \end{enumerate}
+		\item Soit $w$ la suite définie par $w₀ = 3$ et $w_{n+1} = 2w_n$ pour $n ≥ 0$.
+		      \begin{enumerate}
+			      \item $w$ est-elle définie explicitement ou par récurrence ? \bigskip
+
+			            \correctionDots{par récurrence}
+			      \item Donner la valeur de $w_3$ : \correctionDotsSmall{$24$}
+		      \end{enumerate}
+	\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+	Soit $u$ la suite définie par $u_0 = 0$ et $u_{n+1} = 3uₙ + 1$.
+	\begin{enumerate}
+		\item Calculer :
+
+		      \begin{align*}
+			      u_1 & = \correctionDotsSmall{1} & u_2 & = \correctionDotsSmall{4} & u_3 & = \correctionDotsSmall{13} & u_4 & = \correctionDotsSmall{40}
+		      \end{align*}
+		\item On définit la suite $w$ telle que $w_n = 2u_n + 1$.
+
+		      Calculer :
+
+		      \begin{align*}
+			      w_0 & = \correctionDotsSmall{1} & w_1 & = \correctionDotsSmall{3} & w_2 & = \correctionDotsSmall{9} & w_3 & = \correctionDotsSmall{27}
+		      \end{align*}
+		\item Quelle semble être la nature de la suite $w$ ? \bigskip
+
+		      \correctionDots{Elle semble géométrique de raison $3$}
+	\end{enumerate}
+\end{exercice}
+
+
+\newpage\setcounter{exercice}{1}
+\title{Interrogation : suites (sujet B)}
+\maketitle
+
+\begin{exercice}
+	\begin{enumerate}
+		\item Soit $u$ la suite définie par $uₙ = 4n + 3$ pour $n ≥ 0$.
+		      \begin{enumerate}
+			      \item $u$ est-elle définie explicitement ou par récurrence ? \bigskip
+
+			            \correctionDots{explicitement}
+			      \item Donner la valeur de $u_5$ : \correctionDotsSmall{$23$}
+		      \end{enumerate}
+		\item Soit $w$ la suite définie par $w₀ = 5$ et $w_{n+1} = 2w_n$ pour $n ≥ 0$.
+		      \begin{enumerate}
+			      \item $w$ est-elle définie explicitement ou par récurrence ? \bigskip
+
+			            \correctionDots{par récurrence}
+			      \item Donner la valeur de $w_3$ : \correctionDotsSmall{$40$}
+		      \end{enumerate}
+	\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+	Soit $u$ la suite définie par $u_0 = 0$ et $u_{n+1} = 2uₙ + 3$.
+	\begin{enumerate}
+		\item Calculer :
+
+		      \begin{align*}
+			      u_1 & = \correctionDotsSmall{3} & u_2 & = \correctionDotsSmall{9} & u_3 & = \correctionDotsSmall{21} & u_4 & = \correctionDotsSmall{66}
+		      \end{align*}
+		\item On définit la suite $w$ telle que $w_n = u_n + 3$.
+
+		      Calculer :
+
+		      \begin{align*}
+			      w_0 & = \correctionDotsSmall{3} & w_1 & = \correctionDotsSmall{6} & w_2 & = \correctionDotsSmall{12} & w_3 & = \correctionDotsSmall{24}
+		      \end{align*}
+		\item Quelle semble être la nature de la suite $w$ ? \bigskip
+
+		      \correctionDots{Elle semble géométrique de raison $2$}
+	\end{enumerate}
+\end{exercice}
+
+\end{document}

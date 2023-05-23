@@ -1,0 +1,83 @@
+\documentclass[
+	classe=$1^{ere}STI2D$
+]{exercice}
+
+\usepackage{tikz-repère}
+
+\renewcommand{\arraystretch}{1.4}
+
+\title{Révisions : dérivation}
+
+\begin{document}
+
+\maketitle
+
+\begin{exercice}
+
+	Soit $f$ la fonction $f(x) = x² - 2,5x$.
+
+	\begin{enumerate}
+		\item Compléter et finir le calcul suivant :
+
+		      \begin{align*}
+			      f'(2) & = \lim_{h \to 0} \dfrac{\correctionOr{f(2 + h)}{............} - \correctionOr{f(2)}{............}}{\correctionDots{h}}
+		      \end{align*}
+		\item On a représenté une partie de la fonction $f$ ci-dessous :
+
+		      \begin{center}
+			      \begin{tikzpicture}
+				      \tikzRepere{-1.5}{3.5}{-3.5}{3}
+
+				      \draw[red,very thick,domain=-1:3.5] plot({\x},{\x*\x - 2.5*\x}) node[right] {$f$};
+
+				      \ifdefined\makeCorrection
+					      \draw[green,very thick,domain=0:4] plot({\x},{1.5*\x - 4});
+				      \fi
+			      \end{tikzpicture}
+		      \end{center}
+
+		      Tracer la tangente à la courbe de $f$ au point d'abscisse $2$.
+		\item Quelle est l'équation de la courbe de cette tangente ?
+	\end{enumerate}
+\end{exercice}
+
+\begin{exercice} \label{exo tableau}
+	Remplir le tableau suivant :
+
+	\begin{center}
+		\begin{tabular}{|c|*{6}{>{\centering}p{1.9cm}|}}
+			\hline
+			$f(x)$  & $1$              & $x$              & $x²$              & $x³$               & $c^{te} × g(x)$               & $g(x) + h(x)$   \tabularnewline \hline
+			$f'(x)$ & \correction{$0$} & \correction{$1$} & \correction{$2x$} & \correction{$3x²$} & \correction{$c^{te} × g'(x)$} & \correction{$g'(x) + h'(x)$} \tabularnewline \hline
+		\end{tabular}
+	\end{center}
+\end{exercice}
+
+\begin{exercice}
+	À l'aide du tableau de l'exercice \ref{exo tableau}, donner la dérivée des fonctions suivantes :
+
+	\begin{multicols}{2}
+		\begin{enumerate}
+			\item $f(x) = 3x$
+			\item $f(x) = 7$
+			\item $f(x) = x - 6$
+			\item $f(x) = x² + x$
+			\item $f(x) = -4(x + 1)$
+			\item $f(x) = 2x^2 + 6$
+			\item $f(x) = (x+1)(x - 2)$
+			\item $f(x) = x³ - 3x^2	+ 2x - 1$
+		\end{enumerate}
+	\end{multicols}
+\end{exercice}
+
+\begin{exercice}
+	Soit $f$ la fonction $f(x) = 3x² + 2x - 4$.
+
+	\begin{enumerate}
+		\item Donner la dérivée de $f$.
+		\item Établir le tableau de signes de $f'$.
+		\item En déduire le tableau de variations de $f$.
+	\end{enumerate}
+\end{exercice}
+
+\end{document}
