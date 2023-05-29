@@ -1,0 +1,79 @@
+\documentclass[
+	classe=$2^{de}$
+]{coursclass}
+
+\usepackage{tikz-repère}
+\usetikzlibrary{calc}
+
+\title{Chapitre 8 : Équations de droites}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{definition}[Vecteur directeur]
+	\begin{minipage}{0.55\textwidth}
+		Si on dispose d'une droite $(d)$ et de deux points $A$ et $B$ sur cette droite, alors $\vec{AB}$ est \textbf{un vecteur directeur} de $(d)$.
+	\end{minipage}\hspace{0.02\textwidth}
+	\begin{minipage}{0.4\textwidth}
+		\begin{tikzpicture}[scale=0.8]
+			\draw (-2,-1) -- (4,2) node[right] {$(d)$};
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (3,1.5);
+			\foreach \p in {A,B} {
+					\node[above left] at (\p) {$\p$};
+					\node at (\p) {×};
+				}
+			\draw[thick,\myArrow] (A) -- node[above left] {$\vec{AB}$} (B);
+		\end{tikzpicture}
+	\end{minipage}
+\end{definition}
+
+\begin{propriete}
+	Si on dispose d'un point $A$ et d'un vecteur $\vec{u}$,
+
+	La droite $(d)$ passant par $A$ de vecteur directeur $u$ est constituée de tous les points $M$ vérifiant :
+	$$ \vec{u} \text{ et } \vec{AM} \text{ sont colinéaires} $$
+
+	Autrement dit, une droite peut être définie par un point et un vecteur.
+\end{propriete}
+
+\begin{exemple}
+	On donne $A(-2 ; -3)$ et $\vec{u}\begin{pmatrix}1 \\ 2\end{pmatrix}$. Comme vecteurs colinéaires à $\vec{u}$, on a par exemple $\begin{pmatrix}2 \\ 4\end{pmatrix}$, $\begin{pmatrix}-1 \\ -2\end{pmatrix}$, $\begin{pmatrix}0,5 \\ 1\end{pmatrix}$ ou encore $\begin{pmatrix}3 \\ 6\end{pmatrix}$ : On peut donc placer
+
+	\begin{multicols}{2}
+		\begin{itemize}
+			\item $M₁$ tel que $\vec{AM₁} = \begin{pmatrix}2 \\ 4\end{pmatrix}$
+			\item $M₂$ tel que $\vec{AM₂} = \begin{pmatrix}-1 \\ -2\end{pmatrix}$
+			\item $M₃$ tel que $\vec{AM₃} = \begin{pmatrix}0,5 \\ 1\end{pmatrix}$
+			\item $M₄$ tel que $\vec{AM₄} = \begin{pmatrix}3 \\ 6\end{pmatrix}$
+		\end{itemize}
+	\end{multicols}
+
+	\begin{center}
+		\begin{tikzpicture}[scale=0.7]
+			\tikzRepere{-5}{5}{-5}{5}
+
+			\coordinate (A) at (-2,-3);
+			\coordinate (vecU) at (1,2);
+			\coordinate (M1) at ($(A) + (2,4)$);
+			\coordinate (M2) at ($(A) + (-1,-2)$);
+			\coordinate (M3) at ($(A) + (0.5,1)$);
+			\coordinate (M4) at ($(A) + (3,6)$);
+
+			\foreach \p in {A,M1,M2,M3,M4} {
+					\node at (\p) {×};
+					\node[below right] at (\p) {$\p$};
+				}
+		\end{tikzpicture}
+	\end{center}
+
+	On voit que ces points s'alignent pour former une droite.
+\end{exemple}
+
+\begin{definition}[Équation cartésienne d'une droite]
+
+\end{definition}
+
+\end{document}

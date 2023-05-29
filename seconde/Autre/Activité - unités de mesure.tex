@@ -1,0 +1,65 @@
+\documentclass[
+	classe=$2^{de}$
+]{exercice}
+
+\renewcommand{\arraystretch}{1.5}
+
+\title{Activité : unités de mesure}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+	\item Comment définit-on le mètre ? (Est-ce la mesure de quelque chose en particulier ?) \vspace{2em}
+
+	      \correctionOr{{\color{red}Un 40 000 000ᵉ du diamètre de la terre / Distance parcourue par la lumière dans le vide en un 299 792 458ᵉ de seconde}}{}
+	\item Remplir le tableau suivant avec les unités correspondantes :
+
+	      \begin{center}
+		      \hspace*{-0.5cm}\begin{tabular}{|p{2cm}|*{11}{>{\centering}p{1.05cm}|}}
+			      \hline
+			      Unité           & \correction{nano} & \correction{micro} & \correction{milli} & centimètre & \correction{déci} & mètre & \correction{déca} & \correction{hecto} & \correction{kilo} & \correction{méga} & \correction{giga} \tabularnewline \hline
+			      Conversion en m & $10^{-9}$         & $10^{-6}$          & $0,001$            & $0,01$     & $0,1$             & $1$   & $10$              & $100$              & $1000$            & $10^6$            & $10^9$ \tabularnewline \hline
+		      \end{tabular}
+	      \end{center}
+	\item \
+
+	      \begin{tikzpicture}
+		      \draw (0,0) grid (2,2);
+		      \node[right] at (4,1) {Le carré ci-contre fait \correctionOr{{\color{red}$2$}}{......} centimètres de côté : son aire est de \correctionOr{{\color{red}$4$cm²}}{......}.};
+
+		      \draw (0,-4) grid ++(3,3);
+		      \node[right] at (4,-2.5) {Le carré ci-contre fait \correctionOr{{\color{red}$3$}}{......} centimètres de côté : son aire est de \correctionOr{{\color{red}$9$cm²}}{......}.};
+	      \end{tikzpicture} \medskip
+
+	      Un carré de $1$m de côté fait \correctionDots{$100$} centimètres de côté ; son aire est donc de \correctionDots{$10000$}cm².
+	\item On a donc le tableau suivant (sans faire toutes les unités) :
+	      \begin{center}
+		      \begin{tabular}{|p{2cm}|*{7}{>{\centering}p{1.6cm}|}}
+			      \hline
+			      Unité            & mm²                     & cm²                   & dm²                 & m²  & dam²               & hm²                  & km² \tabularnewline \hline
+			      Conversion en m² & \correction{$0,000001$} & \correction{$0,0001$} & \correction{$0,01$} & $1$ & \correction{$100$} & \correction{$10000$} & \correction{$1000000$} \tabularnewline \hline
+		      \end{tabular}
+	      \end{center}
+	      Ainsi un hectomètre carré correspond à \correctionDots{$10000$} mètres carrés.
+	\item À l'aide d'un schéma, donner le nombre de centimètres cube dans un cube de côté $2cm$.
+
+	      Remplir alors le tableau suivant :
+
+	      \begin{center}
+		      \begin{tabular}{|p{2cm}|*{7}{>{\centering}p{1.6cm}|}}
+			      \hline
+			      Unité            & mm³                    & cm³                    & dm³                  & m³  & dam³                & hm³                 & km³ \tabularnewline \hline
+			      Conversion en m³ & \correction{$10^{-9}$} & \correction{$10^{-6}$} & \correction{$0,001$} & $1$ & \correction{$1000$} & \correction{$10^6$} & \correction{$10^9$} \tabularnewline \hline
+		      \end{tabular}
+	      \end{center}
+	\item Sachant que :
+	      \begin{itemize}
+		      \item Un litre d'eau pèse environ $1$kg
+		      \item Un litre représente un volume de \correctionOr{$1$}{......}dm³
+	      \end{itemize}
+	      Quel est le poids d'un mètre cube d'eau ?
+\end{enumerate}
+
+\end{document}

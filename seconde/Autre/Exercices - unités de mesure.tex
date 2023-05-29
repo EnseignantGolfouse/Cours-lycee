@@ -1,0 +1,38 @@
+\documentclass[10pt]{automatisme}
+
+\renewcommand{\arraystretch}{1.3}
+
+\begin{document}
+
+\begin{frame}
+	Un employé doit envoyer un rapport par courrier. Ce rapport est composé de $40$ feuilles, qu'il mettra dans une seule grande enveloppe.
+
+	Il cherche donc à savoir quel prix il va devoir payer pour l'envoi de ce rapport. \bigskip
+
+	\begin{minipage}{0.45\textwidth}
+		Grille tarifaire donnée par la poste :
+		\begin{center}
+			\begin{tabular}{|c|c|}
+				\hline
+				Poids jusqu'à ... & Tarif   \\ \hline
+				$20$g             & $1,42$€ \\ \hline
+				$100$g            & $2,39$€ \\ \hline
+				$250$g            & $4,33$€ \\ \hline
+				$0,5$kg           & $6,27$€ \\ \hline
+				$2$kg et plus     & $8,21$€ \\ \hline
+			\end{tabular}
+		\end{center}
+	\end{minipage}\hspace{0.015\textwidth}\vrule\hspace{0.015\textwidth}
+	\begin{minipage}{0.45\textwidth}
+		Informations réunies par l'employé
+		\begin{center}
+			\begin{itemize}
+				\item Masse d'un paquet de $20$ enveloppes : $2,6$hg
+				\item Dimension d'une feuille A4 : $21$cm de largeur, $29,7$cm de hauteur
+				\item Grammage d’une feuille A4 : $80$g/m²
+			\end{itemize}
+		\end{center}
+	\end{minipage}
+\end{frame}
+
+\end{document}
