@@ -50,6 +50,16 @@ def asciidoctor_compilation(path: str, artifacts_dir: str, ignored_paths: list[s
     return this
 
 
+def typst_compilation(path: str, artifacts_dir: str, ignored_paths: list[str]) -> Compilation:
+    this = Compilation("typ", "pdf")
+    this.output_dir = "pdf"
+    this.path = path
+    this.ignored_paths = ignored_paths
+    this.artifacts_dir = artifacts_dir
+    this.compilation_function = compile_typst_file
+    return this
+
+
 def find_files_in(compilation: Compilation) -> list[Tuple[str, str, str]]:
     extension = "." + compilation.input_extension
     normalized_ignored_paths: list[str] = []
@@ -133,7 +143,7 @@ def compile_adoc_file(working_dir: str, build_dir: str, output_dir: str, input_f
     - `build_dir` is the absolute directory in which to place intermediary build artifacts.
     - `output_dir` is a directory, relative to `working_dir`, in which to place the resulting pdf.
     - `input_file` is the path of the input file, relative to `working_dir`.   """
-    returned_file_tex: str = os.path.join(working_dir, input_file)
+    returned_file_adoc: str = os.path.join(working_dir, input_file)
     working_dir = os.path.abspath(working_dir)
     output_file: str = input_file[:-4] + "html"
     error: Any | None = None
@@ -156,9 +166,46 @@ def compile_adoc_file(working_dir: str, build_dir: str, output_dir: str, input_f
         raise e
     finally:
         if error != None:
-            return (returned_file_tex, error)
+            return (returned_file_adoc, error)
         else:
-            return (returned_file_tex, None)
+            return (returned_file_adoc, None)
+
+
+def compile_typst_file(working_dir: str, build_dir: str, output_dir: str, input_file: str) -> Tuple[str, Any | None]:
+    """
+    Returns `None` if no error happened.
+    Else, returns the error message.
+    # Parameters
+    - `working_dir` is the absolute directory in which subprocesses will be executed.
+    - `build_dir` is the absolute directory in which to place intermediary build artifacts.
+    - `output_dir` is a directory, relative to `working_dir`, in which to place the resulting pdf.
+    - `input_file` is the path of the input file, relative to `working_dir`.   """
+    returned_file_typst: str = os.path.join(working_dir, input_file)
+    working_dir = os.path.abspath(working_dir)
+    output_file: str = input_file[:-3] + "pdf"
+    error: Any | None = None
+    try:
+        subprocess.check_output(
+            args=[
+                "typst",
+                "compile",
+                input_file,
+                os.path.join(build_dir, output_file),
+            ],
+            stderr=subprocess.STDOUT,
+            cwd=working_dir)
+        os.makedirs(os.path.join(working_dir, output_dir), exist_ok=True)
+        shutil.copyfile(os.path.join(build_dir, output_file),
+                        os.path.join(working_dir, output_dir, output_file))
+    except subprocess.CalledProcessError as process_error:
+        error = process_error.output.decode("utf-8")
+    except Exception as e:
+        raise e
+    finally:
+        if error != None:
+            return (returned_file_typst, error)
+        else:
+            return (returned_file_typst, None)
 
 
 file_number: int = 1
@@ -192,11 +239,11 @@ def compile_all(compilation: Compilation, jobs: int) -> None:
 
     def executing_function(inputs: Tuple[str, str, str]):
         global file_number, total_ok, total_err
-        (file_tex, error) = compilation.compilation_function(
+        (input_file, error) = compilation.compilation_function(
             inputs[0], inputs[1], compilation.output_dir, inputs[2])
         print(
             Fore.CYAN + f"{file_number}/{total_files} " + Fore.RESET
-            + file_tex,
+            + input_file,
             end="")
         file_number += 1
         if error == None:
@@ -206,7 +253,7 @@ def compile_all(compilation: Compilation, jobs: int) -> None:
             total_err += 1
             print("  " + Fore.RED + "[ERROR]" + Fore.RESET)
             print(error)
-            failed_files.append(file_tex)
+            failed_files.append(input_file)
 
     with ThreadPoolExecutor(max_workers=jobs) as executor:
         to_map: list[Tuple[str, str, str]] = []
@@ -363,9 +410,12 @@ def main(script_args: list[str]) -> None:
         path, DEFAULT_ARTIFACTS_DIR, ignored)
     compile_adoc_files: Compilation = asciidoctor_compilation(
         path, DEFAULT_ARTIFACTS_DIR, ignored)
+    compile_typst_files: Compilation = typst_compilation(
+        path, DEFAULT_ARTIFACTS_DIR, ignored)
     if cleaning_level == 1:
         clean(compile_tex_files)
         clean(compile_adoc_files)
+        clean(compile_typst_files)
     elif cleaning_level == 2:
         confirm: bool = False
         full_path: str = os.path.abspath(path)
@@ -377,11 +427,13 @@ def main(script_args: list[str]) -> None:
         if confirm:
             clean_all(compile_tex_files)
             clean_all(compile_adoc_files)
+            clean_all(compile_typst_files)
         else:
             print("aborting clean.")
     else:
         compile_all(compile_adoc_files, number_of_cpus)
         compile_all(compile_tex_files, number_of_cpus)
+        compile_all(compile_typst_files, number_of_cpus)
 
 
 if __name__ == "__main__":
