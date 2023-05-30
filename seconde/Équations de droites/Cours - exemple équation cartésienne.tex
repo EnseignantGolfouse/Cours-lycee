@@ -1,0 +1,41 @@
+\documentclass[noheader]{coursclass}
+
+\usepackage{tikz-repère}
+\usetikzlibrary{calc}
+
+\begin{document}
+
+\newcommand{\ToRepeat}{
+\begin{exemple}
+	\begin{minipage}{0.55\textwidth}
+		$3x - 2y + 1 = 0$ est l'équation cartésienne de la droite $(d)$ représentée ci-contre.
+
+		Par exemple, le point de coordonnées $(1 ; 2)$ appartient à la droite, car 
+		
+		$$\correctionDots{3 × 1 - 2 × 2 + 1 = 0}$$
+	\end{minipage}\hspace{0.03\textwidth}
+	\begin{minipage}{0.4\textwidth}
+		\begin{tikzpicture}[scale=0.7]
+			\tikzRepere{-2.5}{2.5}{-2.5}{2.5}
+			\draw[very thick,red,domain=-7/3:5/3] plot({\x},{1.5*\x + 0.5});
+			\draw[very thick,dashed] (1,0) -- (1,2) -- (0,2);
+		\end{tikzpicture}
+	\end{minipage}
+\end{exemple}
+}
+
+\ToRepeat
+
+\vfill
+
+\ToRepeat
+
+\vfill
+
+\ToRepeat
+
+\vfill
+
+\ToRepeat
+
+\end{document}
