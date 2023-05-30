@@ -73,7 +73,29 @@
 \end{exemple}
 
 \begin{definition}[Équation cartésienne d'une droite]
+	Soient $a$, $b$ et $c$ trois nombres réels, tels qu'au moins l'un des nombres $a$ et $b$ est non nul.
 
+	Alors l'ensemble des solutions de l'équation
+
+	$$ ax + by + c = 0 $$
+
+	forme une droite, dont le vecteur directeur est $\begin{pmatrix}-b \\ a\end{pmatrix}$.
+
+	L'équation $ax + by + c = 0$ est appelée \textbf{l'équation cartésienne} de la droite.
 \end{definition}
+
+\begin{exemple}
+	\begin{minipage}{0.55\textwidth}
+		$3x - 2y + 1 = 0$ est l'équation cartésienne de la droite $(d)$ représentée ci-contre.
+
+		En effet, le point de coordonnées $(1 ; 2)$ appartient à la droite, car $3 × 1 - 2 × 2 + 1 = 0$.
+	\end{minipage}\hspace{0.03\textwidth}
+	\begin{minipage}{0.4\textwidth}
+		\begin{tikzpicture}[scale=0.7]
+			\tikzRepere{-2.5}{2.5}{-2.5}{2.5}
+			\draw[very thick,red,domain=-7/3:5/3] plot({\x},{1.5*\x + 0.5});
+		\end{tikzpicture}
+	\end{minipage}
+\end{exemple}
 
 \end{document}
