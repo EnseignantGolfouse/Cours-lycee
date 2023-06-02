@@ -1,3 +1,6 @@
 [submodule "git submodules/annotate-equations"]
 	path = git submodules/annotate-equations
 	url = https://github.com/st--/annotate-equations
+[submodule "git submodules/typst-canvas"]
+	path = git submodules/typst-canvas
+	url = https://github.com/johannes-wolf/typst-canvas.git
