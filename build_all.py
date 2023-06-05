@@ -182,19 +182,31 @@ def compile_typst_file(working_dir: str, build_dir: str, output_dir: str, input_
     - `input_file` is the path of the input file, relative to `working_dir`.   """
     returned_file_typst: str = os.path.join(working_dir, input_file)
     working_dir = os.path.abspath(working_dir)
+    output_file_TEMP: str = input_file[:-3] + "TEMP" + "pdf"
     output_file: str = input_file[:-3] + "pdf"
     error: Any | None = None
     try:
+        os.makedirs(build_dir, exist_ok=True)
         subprocess.check_output(
             args=[
                 "typst",
                 "compile",
                 input_file,
-                os.path.join(build_dir, output_file),
+                os.path.join(build_dir, output_file_TEMP),
             ],
             stderr=subprocess.STDOUT,
             cwd=working_dir)
         os.makedirs(os.path.join(working_dir, output_dir), exist_ok=True)
+        # Repair the pdf
+        subprocess.check_output(
+            args=[
+                "pdftocairo",
+                "-pdf",
+                os.path.join(build_dir, output_file_TEMP),
+                os.path.join(build_dir, output_file),
+            ],
+            stderr=subprocess.STDOUT,
+            cwd=working_dir)
         shutil.copyfile(os.path.join(build_dir, output_file),
                         os.path.join(working_dir, output_dir, output_file))
     except subprocess.CalledProcessError as process_error:
