@@ -1,0 +1,51 @@
+\documentclass[
+	classe=$2^{de}$,
+]{exercice}
+
+\usepackage{tikz-repère}
+
+\title{Activité : vecteurs et équations de droites}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+	\item Trouver (à l'aide d'un repère) un vecteur directeur de la droite définie par $5x - 4y + 1 = 0$ : $\begin{pmatrix}\correction{\phantom{-}4}\\\correction{5}\end{pmatrix}$
+	\item On a représenté une droite $(d_1)$ dans le repère suivant :
+	      \begin{center}
+		      \begin{tikzpicture}[scale=0.8]
+			      \tikzRepere{-3.5}{3.5}{-3.5}{3.5}
+
+			      \draw[domain=-4:4,red,very thick] plot({\x},{0.5*\x + 1}) node[right] {$(d_1)$};
+			      \ifdefined\makeCorrection
+				      \draw[domain=-10/3:2,blue,very thick] plot({\x},{-3/2*\x  - 1}) node[right] {$(d_2)$};
+			      \fi
+		      \end{tikzpicture}
+	      \end{center}
+	      \begin{enumerate}
+		      \item Donner le point de $(d_1)$ d'abscisse $2$ : $(\correctionDots{\phantom{-}2} ; \correctionDots{\phantom{-}2})$
+		      \item Donner le point de $(d_1)$ d'abscisse $-4$ : $(\correctionDots{-4} ; \correctionDots{-1})$
+		      \item On suppose maintenant que $(d_1)$ admet une équation cartésienne de la forme $x + by + c$ (c'est-à-dire $a = 1$).
+
+		            Quelles équations obtient-on en utilisant les points trouvés ci-dessus ?
+
+		            $$ \correctionDots{2 + 2b + c = 0} $$
+
+		            $$ \correctionDots{-4 - b + c = 0} $$
+		      \item Utiliser alors ces équations pour obtenir la valeur de $b$, puis de $c$. Donner alors une équation cartésienne de $(d_1)$ :
+
+		            $$ x + \correctionDots{-2}\ y + \correctionDots{\phantom{-}2} = 0 $$
+	      \end{enumerate}
+	\item On s'intéresse maintenant à la droite $(d_2)$.
+	      \begin{enumerate}
+		      \item On suppose que les points $(-2 ; 2)$ et $(0 ; -1)$ appartiennent à la droite $(d_2)$.
+
+		            Tracer cette droite dans le repère.
+		      \item Trouver alors une équation cartésienne de $(d_2)$ :
+
+		            $$ \correctionDots{\phantom{-}3}\ x + \correctionDots{\phantom{-}2}\ y + \correctionDots{\phantom{-}2} = 0 $$
+	      \end{enumerate}
+\end{enumerate}
+
+\end{document}
