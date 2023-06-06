@@ -1,0 +1,78 @@
+\documentclass[
+	classe=$2^{de}$
+]{informatique}
+
+\usepackage{tcolorbox}
+
+
+\begin{document}
+
+\title{Activité : le paradoxe de Saint-Petersbourg}
+\maketitle
+
+On considère le jeu de « Pile ou face » suivant :
+\begin{tcolorbox}
+	Le joueur gagne le double de sa mise en cas de victoire (« Face »), et perd sa mise en cas de défaite (« Pile »).
+
+	Le joueur peut rejouer tant que sa réserve d'argent le lui permet.
+\end{tcolorbox}
+
+\begin{enumerate}
+	\item Compléter la fonction ci-dessous, qui simule une partie :
+	      \begin{lstlisting}
+from random import randint
+def partie(mise):
+	tirage = randint(0, 1)
+	gain = 0
+	if tirage == 0: # "pile"
+		gain = ........
+	else:           # "face"
+		gain = ........
+	return gain
+\end{lstlisting}
+	\item On note $X$ la variable aléatoire correspondant au gain du joueur.
+
+	      Calculer et interpréter l'espérance de $X$. \correction{$𝔼(X) = 0$}
+\end{enumerate}
+\begin{tcolorbox}
+	Pierre, qui dispose d'une réserve de $1000$€, décide de jouer de la manière suivante :
+	\begin{itemize}
+		\item Il mise $1$€ au départ du jeu ;
+		\item Tant qu'il perd, il rejoue une partie en \textbf{doublant} sa mise ;
+		\item Il arrête si il gagne, ou si il n'a plus assez d'argent.
+	\end{itemize}
+\end{tcolorbox}
+\begin{enumerate}
+	\setcounter{enumi}{2}
+	\item Que se passe-t'il si Pierre joue et fait Pile-Pile-Pile-Face ? \correction{$+1$€}
+	\item Afin de simuler une partie, on propose la fonction (incomplète) ci-dessous :
+	      \begin{lstlisting}
+from random import randint
+def jeu():
+	victoire = False
+	mise = 1
+	reserve = 1000
+	while reserve > ....... and victoire == .......:
+		gain = partie(mise)
+		reserve = ................
+		if gain > 0:
+			victoire = True
+		else:
+			mise = ................
+	return reserve
+\end{lstlisting}
+	      \begin{enumerate}
+		      \item Retrouver, dans l'énoncé, la condition à vérifier dans la boucle \texttt{while} de la fonction.
+		      \item Compléter les autre pointillés.
+	      \end{enumerate}
+	\item On note $Y$ la variable aléatoire correspondant au gain de Pierre à la fin du jeu.
+	      \begin{enumerate}
+		      \item Quelle est la valeur de $Y$ si Pierre fait Pile-Pile-Face ? \correction{$1$}
+		      \item Quelle est la valeur de $Y$ si Pierre fait Pile-Face ? \correction{$1$}
+		      \item Au bout de combien de « Pile » successives Pierre perd-il de l'argent ? Quelle est alors la valeur de $Y$ ? \correction{Au bout de 9 « Pile » successives. $Y$ vaut alors $-511$€.}
+	      \end{enumerate}
+	\item Donner alors la loi de probabilités de $Y$ sous forme d'un tableau.
+	\item Calculer l'espérance de $Y$.
+\end{enumerate}
+
+\end{document}
