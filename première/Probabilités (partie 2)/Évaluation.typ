@@ -2,8 +2,6 @@
 #import "../../Typst/préambule/diagbox.typ": bdiagbox
 
 #let main(en_correction: false) = [
-#show "X": it => $upright(it)$
-#show "G": it => $upright(it)$
 #show raw: set text(size: 10pt)
 #show raw.where(block: true): set block(inset: 0.7em, stroke: 0.5pt + black, breakable: false)
 #set footnote.entry(separator: none)
@@ -11,7 +9,7 @@
 #show: évaluation.with(
   titre: "Évaluation probabilités",
   titre_en_haut: [Évaluation],
-  classe: [1$#{}^(e r e)$STI2D],
+  classe: [$1^(e r e)$STI2D],
   correction: en_correction,
 )
 
